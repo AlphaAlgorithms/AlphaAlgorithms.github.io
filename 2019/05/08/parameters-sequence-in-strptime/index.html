@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="提出问题datetime.strptime(string, format)经常会误写,颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
+  <meta name="description" content="提出问题经常会错写datetime.strptime(string, format),颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
 <meta name="keywords" content="python,datetime,linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="datetime.strptime()参数顺序的问题">
 <meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/08/parameters-sequence-in-strptime/index.html">
 <meta property="og:site_name" content="AlphaAlgorithms">
-<meta property="og:description" content="提出问题datetime.strptime(string, format)经常会误写,颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
+<meta property="og:description" content="提出问题经常会错写datetime.strptime(string, format),颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T13:30:40.294Z">
+<meta property="og:updated_time" content="2019-05-08T13:32:37.137Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="datetime.strptime()参数顺序的问题">
-<meta name="twitter:description" content="提出问题datetime.strptime(string, format)经常会误写,颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
+<meta name="twitter:description" content="提出问题经常会错写datetime.strptime(string, format),颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
 
 
 
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2019-05-08 19:47:35 / Modified: 21:30:40" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
+              <time title="Created: 2019-05-08 19:47:35 / Modified: 21:32:37" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
             
 
             
@@ -445,7 +445,7 @@
       
 
       
-        <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p><code>datetime.strptime(string, format)</code>经常会误写,颠倒两个参数的顺序而写成<code>datetime.strptime(format, string)</code> 与<code>re.find(pattern, string)</code>相混淆.</p>
+        <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>经常会错写<code>datetime.strptime(string, format)</code>,颠倒两个参数的顺序而写成<code>datetime.strptime(format, string)</code> 与<code>re.find(pattern, string)</code>相混淆.</p>
 <h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><h3 id="datetime-strptime"><a href="#datetime-strptime" class="headerlink" title="datetime.strptime()"></a>datetime.strptime()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strptime(string, format) method of builtins.type instance</span><br><span class="line">    string, format -&gt; new datetime parsed from a string (like time.strptime()).</span><br><span class="line">    </span><br><span class="line">  <span class="comment">#Case</span></span><br><span class="line"> In [<span class="number">6</span>]: datetime.strptime(<span class="string">"8 May, 2019"</span>, <span class="string">"%d %B, %Y"</span>)                                                                         </span><br><span class="line">Out[<span class="number">6</span>]: datetime.datetime(<span class="number">2019</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
 <p><code>strptime</code>的函数命名不太好, 词义模糊, 不如直接叫<code>str2time</code>.  string是source, time是result.</p>
 <p>本函数的工作是parse a string to produce a time  object.  <code>strptime</code> 的字面含义读起来却像是毫无意义的string to parse time或者是读成相反的含义parse time to produce a string.妥协的处理方法理解为”string parsed” to time.将<code>strp</code>当做一个组合名词<code>strp2time</code></p>
