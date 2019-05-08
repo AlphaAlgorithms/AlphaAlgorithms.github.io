@@ -97,14 +97,14 @@
 
 
   <meta name="description" content="提出问题datetime.strptime(string, format)经常会误写,颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
-<meta name="keywords" content="python,datetime,linux">
+<meta name="keywords" content="datetime,linux,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="datetime.strptime()参数顺序的问题">
 <meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/08/parameters-sequence-in-strptime/index.html">
 <meta property="og:site_name" content="AlphaAlgorithms">
 <meta property="og:description" content="提出问题datetime.strptime(string, format)经常会误写,颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T12:02:37.800Z">
+<meta property="og:updated_time" content="2019-05-08T13:23:01.906Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="datetime.strptime()参数顺序的问题">
 <meta name="twitter:description" content="提出问题datetime.strptime(string, format)经常会误写,颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2019-05-08 19:47:35 / Modified: 20:02:37" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
+              <time title="Created: 2019-05-08 19:47:35 / Modified: 21:23:01" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
             
 
             
@@ -407,6 +407,19 @@
 
           
             
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/08/parameters-sequence-in-strptime/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/08/parameters-sequence-in-strptime/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -447,7 +460,7 @@
 <p>三, 处理strptime从字面含义去引导直觉. strptime(string, parsed-format) to a time-object</p>
 <h3 id="datetime-strftime"><a href="#datetime-strftime" class="headerlink" title="datetime.strftime()"></a>datetime.strftime()</h3><p>容易混淆的另外一个原因是strptime的逆函数<code>strftime</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strftime(format)</span><br><span class="line">    format -&gt; strftime() style string.</span><br><span class="line">In [<span class="number">8</span>]: dt                                                                                                                    </span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2019</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">In [<span class="number">9</span>]: dt.strftime(<span class="string">"%d %B, %Y"</span>)                                                                                              </span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'08 May, 2019'</span></span><br></pre></td></tr></table></figure>
-<p>strftime的本质是<code>str2time</code></p>
+<p>strftime是<code>time2str</code></p>
 <p>受<code>strftime</code> (string format time)这个命名的影响, 很容易写作</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datetime.strftime(<span class="string">"%d %B, %Y"</span>, time_obj)</span><br></pre></td></tr></table></figure>
 <p>可能想一下会意识到没有充分利用<code>time_obj</code>已经是<code>datetime object</code>这个既成事实, 应该打开其内建的工具箱.</p>
@@ -506,11 +519,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/python/" rel="tag"># python</a>
-          
             <a href="/tags/datetime/" rel="tag"># datetime</a>
           
             <a href="/tags/linux/" rel="tag"># linux</a>
+          
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -552,6 +565,13 @@
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
 
   
 
@@ -861,6 +881,29 @@
   
 
   
+  
+  <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/05/08/parameters-sequence-in-strptime/";
+    this.page.identifier = "2019/05/08/parameters-sequence-in-strptime/";
+    this.page.title = 'datetime.strptime()参数顺序的问题';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
 
 
   
