@@ -373,7 +373,7 @@
                 
               
 
-              <time title="Created: 2019-05-08 19:47:35 / Modified: 19:59:39" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
+              <time title="Created: 2019-05-08 19:47:35 / Modified: 20:02:37" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
             
 
             
@@ -464,7 +464,7 @@
 <p>应用时刻的思维链条:</p>
 <p>parse -&gt; parse src_string to dst_time -&gt; string parsed to time-&gt; datetime.strptime(src_string, format)</p>
 <p>format -&gt; format src_time to dst_string-&gt; stringly format time to string -&gt;time_object.strftime(format)</p>
-<p>1)辨析parse or format 2)都遵循 src to dst 3) str[pf]time格式无关且.</p>
+<p>1)辨析parse or format 2)都遵循 src to dst 3) str[pf]time顺序不变.</p>
 <p>除了re.search(pattern, src)之外,还有一个不守规矩的特例.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">12</span>]: <span class="string">"source to destination"</span>.split()                                                                                      </span><br><span class="line">Out[<span class="number">12</span>]: [<span class="string">'source'</span>, <span class="string">'to'</span>, <span class="string">'destination'</span>] <span class="comment">#遵循source to destination,  convert src_str to dst_list </span></span><br><span class="line"><span class="comment">#逆操作却将要输出的结果放在了前面.</span></span><br><span class="line">In [<span class="number">13</span>]: <span class="string">" "</span>.join([<span class="string">'source'</span>, <span class="string">'to'</span>, <span class="string">'destination'</span>])                                                                            </span><br><span class="line">Out[<span class="number">13</span>]: <span class="string">'source to destination'</span></span><br><span class="line"> <span class="comment">#显然['source', 'to', 'destination'].join(" ")更为合理 convert src_list to dst_string</span></span><br></pre></td></tr></table></figure>
 <p>可能的解释, Python将所有涉及string的操作集中在了一处.</p>
