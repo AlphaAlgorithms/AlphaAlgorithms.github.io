@@ -105,7 +105,7 @@
 <meta property="og:description" content="时间的感知时间的表示,符合直觉的方式可能是”时:分:秒 周几   月日年” “6:15:00 周四 5月9日 2019” 因为查看时间, 首先只想知道现在几点了?(时) 再查看几分, 秒对机器重要,对人无关紧要. (小时是一天的进度条) 然后查看周几,是否周末,是不是该休息了? 周几与工作和生活的关系最为密切.(周几是一周的进度条) 接下来是月(月是年的进度条), 比如5月,感知到一年马上要翻过去">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://imgs.xkcd.com/comics/iso_8601.png">
-<meta property="og:updated_time" content="2019-05-13T01:16:37.322Z">
+<meta property="og:updated_time" content="2019-05-13T01:29:40.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间的表示与格式">
 <meta name="twitter:description" content="时间的感知时间的表示,符合直觉的方式可能是”时:分:秒 周几   月日年” “6:15:00 周四 5月9日 2019” 因为查看时间, 首先只想知道现在几点了?(时) 再查看几分, 秒对机器重要,对人无关紧要. (小时是一天的进度条) 然后查看周几,是否周末,是不是该休息了? 周几与工作和生活的关系最为密切.(周几是一周的进度条) 接下来是月(月是年的进度条), 比如5月,感知到一年马上要翻过去">
@@ -377,7 +377,7 @@
                 
               
 
-              <time title="Created: 2019-05-13 09:06:10 / Modified: 09:16:37" itemprop="dateCreated datePublished" datetime="2019-05-13T09:06:10+08:00">2019-05-13</time>
+              <time title="Created: 2019-05-13 09:06:10 / Modified: 09:29:40" itemprop="dateCreated datePublished" datetime="2019-05-13T09:06:10+08:00">2019-05-13</time>
             
 
             
@@ -454,21 +454,21 @@
 <p>接下来是月(月是年的进度条), 比如5月,感知到一年马上要翻过去一半了.(月是年的进度条)</p>
 <p>后面是’日’, 月和日的组合可以定义个人在时间轴上的准确坐标.(月与日的组合定义准确的时间计划)</p>
 <p>weekday(周几)是给自己看的,而月和日unambiguously定义了个人与社会协作和沟通的时间约定和坐标.</p>
-<p>还剩下年和周计数(周计数与老外沟通比较常用), 对个人的时间管理而言，获知本周是第19周，一年还剩下33个周，并没有多大的指导意义，不如现在是５月还剩下一个月今年就翻过一半了，更符合直觉和有指导作用．周计数与月日组合一样，主要作用非个人的时间管理，而是公司和组织的时间安排与考核．</p>
+<p>还剩下年和周计数(周计数与老外沟通比较常用), 对个人的时间管理而言，获知本周是第19周，一年还剩下33个周(19/52)，并无多大的指导意义，不如获知当前是５月还剩下一个月今年就翻过一半了(5/12)，更符合感知和引起下一步的行动安排．因为需要调用理性的Reasoning才能处理19或者52等复杂的数字.<br>周计数与月日组合一样，主要作用非个人的时间管理领域，比如公司和组织的项目进度安排与周绩效考核．</p>
 <p>总结:表示时间的单位与顺序</p>
 <p><code>Hour:Minute:Second   Weekday  Month:Day: Year  Weeknumber</code> 合计8个变量</p>
 <p>最少只需要三个时间变量，比如 13:00 周四</p>
 <p>但是直觉感知的顺序并没有什么用处,基于时间的沟通要建立在标准之上, 确保完全无歧义和百分百的准确性.</p>
-<h2 id="Cron中时间变量的顺序"><a href="#Cron中时间变量的顺序" class="headerlink" title="Cron中时间变量的顺序"></a>Cron中时间变量的顺序</h2><p>对时间流逝的有良好的感知会提高工作效率. 直觉感知的顺序或许是<code>hour:Minute:Secon.d   Weekday  Month:Day: Year  Weeknumber</code>, 单在实际中并无用处．执意坚持，会增加不必要的工作量．</p>
+<h2 id="Cron中时间变量的顺序"><a href="#Cron中时间变量的顺序" class="headerlink" title="Cron中时间变量的顺序"></a>Cron中时间变量的顺序</h2><p>对时间流逝的有良好的感知会提高工作效率. 直觉感知的顺序或许是<code>hour:Minute:Secon.d   Weekday  Month:Day: Year  Weeknumber</code>, 在实际中却并无用处．</p>
 <p>比如设置cron任务，固守以上的顺序不利于高效的使用该工具．</p>
 <p>Cron的顺序是　分：时：日：月：周天，5个变量</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of the month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                   7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * * command to execute</span><br></pre></td></tr></table></figure>
-<p>Cron是顺序在时间上的用武之地．其他的时间表示，不管是采用ISO格式，北美格式等，都只是文本格式，具体选择哪个时间格式，并不会引起歧义或者导致机器不工作．只有在cron中，the sequence counts.</p>
+<p>Cron是顺序在时间上的用武之地．其他的时间表示，无论是采用ISO格式，C格式等，都只是文本格式，具体选择哪个时间格式，并不会引起歧义或者导致机器不工作．只有在cron中是执行代码，the sequence counts.</p>
 <p>整合直觉感知的顺序与cron的顺序，选择crontab的 minute:hour day:month dayofweek,作为日常感知时间的基础．</p>
 <p>cron将minute作为最小单位和第一顺序是因为cron daemon按分钟扫描．</p>
 <p>在感知上, minutes:hours 与hours:minutes有何差异呢？</p>
-<p>minutes:hours的顺序，是将精力关注到一个小时之内，比如<code>15:06</code>表达出来是，在从6点到７点这一个小时的时间段内，已经过去了15分钟，知道现在已经消费了一个小时的四分之一，接下来就会自然的发问，按照这个进度，等一个小时结束能完成多少工作．</p>
-<p>而hours:minutes的顺序，是关注在一天之内，比如<code>06:15</code>表达的是，现在是早上时间，一天之计在于晨，后面的分钟15只是作为休息．</p>
+<p>minutes:hours的顺序，是将精力关注到一个小时之内，比如<code>15:06</code>表达出来是，在从6点到７点这一个小时的时间段内，已经过去了15分钟，知道现在已经消费了一个小时的四分之一(1/4)，接下来就会自然的发问，按照这个进度，等一个小时结束能完成多少工作．</p>
+<p>而hours:minutes的顺序，是关注在一天之内，比如<code>06:15</code>表达的是，现在是早上时间(6/24)，一天之计在于晨，后面的分钟15只是作为休息．</p>
 <p>总结：hour:minutes(6:15)关注的是一天之内，而minute:hour关注的是一个小时之内，以一个小时为单位做计划和考核产出．</p>
 <p>因此可以采用crontab的变量顺序作为日常时间感知的基础．</p>
 <p>引用一段话:</p>
@@ -485,8 +485,8 @@
 </blockquote>
 <h2 id="时间的格式"><a href="#时间的格式" class="headerlink" title="时间的格式"></a>时间的格式</h2><p>Cron的5个时间变量,用作时间管理和schedule jobs足矣,更广泛的应用需要更多的变量和统一的格式.</p>
 <p>以现有的顺序为基础进行扩展</p>
-<p>(随便一个固定 不变的顺序都比变化无常好得多, </p>
-<p>如果不断的变化,每次思考的时候,脑子里都是一盘散沙,</p>
+<p>(拍脑袋定一个固定不变的顺序作为思考的出发点都比变化无常顺序好得多, </p>
+<p>如果不断的变化,每次思考的时候,脑子里都是一盘散沙,每次都是从零开始.</p>
 <p>前面所有的工作都是寻找一个坚若磐石的顺序作为思考和进一步探索的基础)</p>
 <p>前面加上second+(minute, hour  day, month weekday)后面补充year and weeknumber, 还是8个变量.</p>
 <p>时间的格式以C, python采用的unix strftime格式为准.</p>
@@ -553,12 +553,11 @@
 </table>
 <p>分析:</p>
 <p>第一行, 钟表时间全部为大写,    日期时间全部为小写, WeekNumber大写%W与weekday相区分;</p>
-<p>第二行, 简单扩展, %H是24小时制, H后面的字母是I,用%I表示12小时制,同时%p标注上下午; 大写的%Y表示四位数字的年2019, </p>
-<p>还有几个个无关紧要的拓展: </p>
+<p>第二行, 简单扩展, %H是24小时制, H后面的字母是I,用%I表示12小时制,同时%p标注上下午; 大写的%Y表示四位数字的年2019;</p>
 <p>第三行, 文字描述,只有两个变量需要文字描述, weekday和month, 分别用A, B表示.weekday %A还是第一重要的.</p>
 <p>第四行, obscure扩展, 微秒的表示应该是从剩余可选字母中随机确定的, %f(fly飞逝),和数日子day 366 %j , %e空格padding.</p>
 <p>weekday与weekNumber在u, v, w这三个字母上打转, 小写是weekday大写是weekNumber.</p>
-<p>总结: 记住前三行, 日常的书写也采用该格式</p>
+<p>总结: 按照表格前三行可以在一秒钟内永久性记住, 日常的书写也采用该格式.</p>
 <p>cron中5个时间变量的时间表示: M:H d:m w(替代minute, hour, day的写法)</p>
 <p>Timezone的表示</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [7]: !date +<span class="string">"%z"</span>   <span class="comment">#UTC offset                                                                                                 </span></span><br><span class="line">+0800</span><br><span class="line">In [8]: !date +<span class="string">"%Z"</span>                                                                                                   </span><br><span class="line">CST <span class="comment">#China Standard Time</span></span><br></pre></td></tr></table></figure>
