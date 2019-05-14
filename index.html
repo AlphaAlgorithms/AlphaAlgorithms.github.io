@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">8</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">9</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">4</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">5</span></a>
 
   </li>
 
@@ -312,6 +312,228 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/14/install-rime-input-mehtods/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlphaAlgorithms">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/14/install-rime-input-mehtods/" class="post-title-link" itemprop="url">Ubuntu 18.10安装ibus-rime输入法</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-14 15:31:38 / Modified: 15:41:29" itemprop="dateCreated datePublished" datetime="2019-05-14T15:31:38+08:00">2019-05-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-fileManager/" itemprop="url" rel="index"><span itemprop="name">linux - fileManager</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/14/install-rime-input-mehtods/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/14/install-rime-input-mehtods/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>照搬 <a href="https://jingyan.baidu.com/article/4853e1e5b090a31909f7269c.html" target="_blank" rel="noopener">Ubuntu 18.04 安装 ibus-rime 输入法</a></p>
+<p>##　目的</p>
+<p>安装rime输入法的初衷是解决搜狗输入法导致系统经常性崩溃的问题。</p>
+<p>##　工具/原料</p>
+<ul>
+<li><p>Ubuntu 18.10 </p>
+</li>
+<li><p><a href="https://rime.im/" target="_blank" rel="noopener">RIME | 中州韻輸入法引擎</a></p>
+</li>
+<li><p><a href="https://github.com/rime/librime" target="_blank" rel="noopener">rime/librime: Rime Input Method Engine, the core library</a></p>
+</li>
+</ul>
+<p>##　方法与步骤</p>
+<h3 id="一、安装前的准备"><a href="#一、安装前的准备" class="headerlink" title="一、安装前的准备"></a>一、安装前的准备</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ibus-rime（安装rime输入法）</span><br><span class="line">sudo apt install librime-data-pinyin-simp （安装简体拼音库）</span><br></pre></td></tr></table></figure>
+<h3 id="二、设置自定义文件"><a href="#二、设置自定义文件" class="headerlink" title="二、设置自定义文件"></a>二、设置自定义文件</h3><p>在 <code>~/.config/ibus/rime/</code> 下新建一个文件  <code>default.custom.yaml</code> （覆盖默认设置）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ ls -lSh  ~/.config/ibus/rime | sed <span class="string">"s/<span class="variable">$USER</span>/me/g"</span></span><br><span class="line">total 32K</span><br><span class="line">drwxrwxr-x 2 me me 4.0K May 14 12:15 build</span><br><span class="line">drwxr-xr-x 2 me me 4.0K May 14 12:45 luna_pinyin.userdb</span><br><span class="line">drwxr-xr-x 2 me me 4.0K May 14 11:14 pinyin_simp.userdb</span><br><span class="line">drwxrwxr-x 3 me me 4.0K May 14 08:59 sync</span><br><span class="line">-rw-rw-r-- 1 me me  202 May 14 08:58 installation.yaml</span><br><span class="line">-rw-r--r-- 1 me me  120 May 14 12:12 default.custom.yaml</span><br><span class="line">-rw-r--r-- 1 me me   74 May 14 11:36 <span class="comment">#default.custom.yaml#</span></span><br><span class="line">-rw-rw-r-- 1 me me   34 May 14 12:15 user.yaml</span><br><span class="line">-rw-r--r-- 1 me me    0 May 14 09:33 default.custom.yaml~</span><br></pre></td></tr></table></figure>
+<p>自定义文件的内容</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">$</span> <span class="string">cat</span> <span class="string">~/.config/ibus/rime/default.custom.yaml</span></span><br><span class="line"><span class="attr">patch:</span></span><br><span class="line">  <span class="string">style/horizontal:</span> <span class="literal">true</span>  <span class="comment">#无效的设置</span></span><br><span class="line"><span class="attr">  schema_list:</span></span><br><span class="line"><span class="attr">    - schema:</span> <span class="string">luna_pinyin_simp</span></span><br><span class="line"><span class="attr">  style:</span></span><br><span class="line"><span class="attr">    - horizontal:</span> <span class="literal">true</span>  <span class="comment">#无效的设置</span></span><br></pre></td></tr></table></figure>
+<h3 id="三、重启系统，-使安装生效"><a href="#三、重启系统，-使安装生效" class="headerlink" title="三、重启系统， 使安装生效"></a>三、重启系统， 使安装生效</h3><p>###　四、调出Chinese(Rime)</p>
+<p>打开“setting（设置）”，“Region&amp;Language（区域和语言）”，点+号，添加输入法 Chinese(Rime) 。如果不用其它输入法，可以删除，其实也真不用其它输入法了</p>
+<h3 id="五、部署"><a href="#五、部署" class="headerlink" title="五、部署"></a>五、部署</h3><p>系统右上角选择输入法， 下拉部署</p>
+<p>##　注意事项</p>
+<ul>
+<li>不必要做过多的设置，够用就行。</li>
+</ul>
+<h2 id="下一步的计划"><a href="#下一步的计划" class="headerlink" title="下一步的计划"></a>下一步的计划</h2><p>研究下autokey</p>
+<p>##　参考资料</p>
+<ul>
+<li><p><a href="https://www.jianshu.com/p/cffc0ea094a7?utm_campaign=maleskine&amp;utm_content=note&amp;utm_medium=seo_notes&amp;utm_source=recommendation" target="_blank" rel="noopener">Rime输入法—鼠须管(Squirrel)词库添加及配置 - 简书</a></p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/8f988f19f41d" target="_blank" rel="noopener">ubuntu16.04 安装 rime输入法 - 简书</a></p>
+</li>
+<li><p><a href="https://github.com/rime/home/wiki/RimeWithIBus" target="_blank" rel="noopener">RimeWithIBus · rime/home Wiki</a></p>
+</li>
+<li><p><a href="https://jingyan.baidu.com/article/4853e1e5b090a31909f7269c.html" target="_blank" rel="noopener">Ubuntu 18.04 安装 ibus-rime 输入法</a></p>
+</li>
+<li><p><a href="https://withdewhua.space/2019/01/30/rime-configuration/" target="_blank" rel="noopener">Rime 输入法配置记录</a></p>
+</li>
+<li><p><a href="http://www.ifanr.com/156409" target="_blank" rel="noopener">鼠须管，“神级” 输入法 | 爱范儿</a></p>
+</li>
+<li><p><a href="https://havee.me/mac/2015-05/rime-configuration-summary.html" target="_blank" rel="noopener">Rime 输入法配置小结 - Havee’s Space</a></p>
+</li>
+<li><p><a href="https://scomper.me/gtd/-shu-xu-guan-de-diao-jiao-bi-ji" target="_blank" rel="noopener">「鼠须管」的调教笔记</a></p>
+</li>
+<li><p><a href="https://askubuntu.com/questions/193411/hot-key-to-type-todays-date" target="_blank" rel="noopener">Hot key to type today’s date? - Ask Ubuntu</a></p>
+</li>
+<li><p><a href="https://github.com/autokey/autokey" target="_blank" rel="noopener">autokey/autokey: AutoKey, a desktop automation utility for Linux and X11</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -373,7 +595,7 @@
                 
               
 
-              <time title="Created: 2019-05-13 09:06:10 / Modified: 09:29:40" itemprop="dateCreated datePublished" datetime="2019-05-13T09:06:10+08:00">2019-05-13</time>
+              <time title="Created: 2019-05-13 09:06:10 / Modified: 19:06:53" itemprop="dateCreated datePublished" datetime="2019-05-13T09:06:10+08:00">2019-05-13</time>
             
 
             
@@ -477,6 +699,9 @@
 </blockquote>
 <p>应用cron的5个时间变量作为审视和感知时间的基础．The way of looking at the world and at yourself will change.</p>
 <p>minute:hour day:month dayof week </p>
+<blockquote>
+<p>journalctl的顺序  journalctl –since  “YYYY-MM-DD HH:MM:SS” –until “”</p>
+</blockquote>
 <p>Terminal的prompt修改为</p>
 <blockquote>
 <p>15:06 AM 09 May Thursday:me@host:~:</p>
@@ -1297,7 +1522,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1353,7 +1578,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
