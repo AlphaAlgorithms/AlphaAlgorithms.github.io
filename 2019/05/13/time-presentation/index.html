@@ -105,7 +105,7 @@
 <meta property="og:description" content="时间的感知直觉对时间的感知, 是按照怎么的顺序解析的?从早晨起床这个场景中,分析大脑解析时间的顺序. 似乎理所当然的一点,Hour(时)排在最前面,Hour:Minute的组合是醒来后第一时间想要获得的信息,以判断上班是否迟到,是否有时间吃早餐?但是再想一层,上班是否迟到? 在处理Hour:Minute之前,潜意识已经先获取并处理完了一个信息:今天是周几?(Weekday).如果是周末的话,几点几">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://imgs.xkcd.com/comics/iso_8601.png">
-<meta property="og:updated_time" content="2019-05-15T01:26:06.940Z">
+<meta property="og:updated_time" content="2019-05-15T01:30:51.658Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间变量的顺序与时间表示的格式">
 <meta name="twitter:description" content="时间的感知直觉对时间的感知, 是按照怎么的顺序解析的?从早晨起床这个场景中,分析大脑解析时间的顺序. 似乎理所当然的一点,Hour(时)排在最前面,Hour:Minute的组合是醒来后第一时间想要获得的信息,以判断上班是否迟到,是否有时间吃早餐?但是再想一层,上班是否迟到? 在处理Hour:Minute之前,潜意识已经先获取并处理完了一个信息:今天是周几?(Weekday).如果是周末的话,几点几">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-15 09:26:06" itemprop="dateModified" datetime="2019-05-15T09:26:06+08:00">2019-05-15</time>
+                <time title="Modified: 2019-05-15 09:30:51" itemprop="dateModified" datetime="2019-05-15T09:30:51+08:00">2019-05-15</time>
               
             
           </span>
@@ -467,12 +467,12 @@
 <p>综上, 直觉解析时间的顺序为:<br><code>Weekday Hour:Minute Month-Day WeekNumber Year</code>, 要事第一,最重要的信息是Weekday.<br>合计8个变量, 命名为intuitive time(or intelligent time)简写为itime</p>
 <p>这也是CTIME时间格式的理念.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">2</span>]: time.ctime()    </span><br><span class="line">Out[<span class="number">2</span>]: <span class="string">'Wed May 15 08:29:38 2019'</span></span><br><span class="line">In [<span class="number">3</span>]: !date                                                                                       </span><br><span class="line">Wed May <span class="number">15</span> <span class="number">08</span>:<span class="number">31</span>:<span class="number">45</span> CST <span class="number">2019</span></span><br></pre></td></tr></table></figure>
-<p>ctime将weekday安排在最前面,然后继续先处理日期的逻辑,May:15跟在后面提高日期的精确颗粒度.但是对大脑的瞬间思考而言,则是冗余信息.因此以itime作为基石,推导拓展到其他时间顺序.</p>
+<p>ctime将weekday安排在最前面,然后遵循这个先处理日期的逻辑,May:15跟在后面提高日期的精确颗粒度.但是对大脑的瞬间思考而言,则是冗余信息.因此以itime作为基石,推导拓展到其他时间顺序.</p>
 <h2 id="Cron中时间变量的顺序"><a href="#Cron中时间变量的顺序" class="headerlink" title="Cron中时间变量的顺序"></a>Cron中时间变量的顺序</h2><p>The sequence matters.<br>时间变量顺序的第一个应用场景是cron.</p>
 <p>Cron的顺序是Minute:Hour Day:Month Weekday</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># ┌───────────── minute (0 - 59)</span><br><span class="line"># │ ┌───────────── hour (0 - 23)</span><br><span class="line"># │ │ ┌───────────── day of the month (1 - 31)</span><br><span class="line"># │ │ │ ┌───────────── month (1 - 12)</span><br><span class="line"># │ │ │ │ ┌───────────── day of the week (0 - 6) (Sunday to Saturday;</span><br><span class="line"># │ │ │ │ │                                   7 is also Sunday on some systems)</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># │ │ │ │ │</span><br><span class="line"># * * * * * command to execute</span><br></pre></td></tr></table></figure>
 <p>大脑长于处理模糊宏观的信息,而机器专于精确的信息,将最小的时间单位排在前面,是倒排的ctime.应用的时候也只需要将思考倒叙.</p>
-<p>cron将minute作为最小单位和第一顺序是因为crond按分钟扫描,可见性能经济性的角度考虑,对大脑和对机器,日常的应用,秒都是可以忽略的,不然会浪费大量的资源．</p>
+<p>cron将minute作为最小单位和第一顺序是因为crond按分钟扫描,可见从性能经济性的角度考虑,对大脑和对机器, 秒都是可以忽略的,不然会浪费大量的资源．</p>
 <p>接下来讨论一个问题:<br>在感知上, minutes:hours 与hours:minutes有何差异呢？</p>
 <p>minutes:hours的顺序，是将精力关注到一个小时之内，比如六点十五<code>15:06</code>表达出来是，在从6点到７点这一个小时的时间段内，已经过去了15分钟，知道现在已经消费了一个小时的四分之一(1/4)，接下来就会自然的发问，按照这个进度，等一个小时结束能完成多少工作．<br>而hours:minutes的顺序，是关注在一天之内，比如<code>06:15</code>表达的是，现在是早上时间(6/24)，一天之计在于晨，后面的分钟15只是作为休息．<br>总结：hour:minutes(6:15)关注的是一天之内，而minute:hour关注的是一个小时之内，以一个小时为单位做计划和考核产出．</p>
 <p>在直觉上采用哪一个作为基础,等更多的应用总结后,再行确定.暂时采用Hour:Minute的格式,因为minute:hour消耗更多大脑内存和计算资源.</p>
