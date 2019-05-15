@@ -1255,7 +1255,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-15 11:32:34" itemprop="dateModified" datetime="2019-05-15T11:32:34+08:00">2019-05-15</time>
+                <time title="Modified: 2019-05-15 22:00:39" itemprop="dateModified" datetime="2019-05-15T22:00:39+08:00">2019-05-15</time>
               
             
           </span>
@@ -1322,7 +1322,7 @@
       
         
           
-            <h2 id="时间的感知"><a href="#时间的感知" class="headerlink" title="时间的感知"></a>时间的感知</h2><p>直觉对时间的感知, 是按照怎么的顺序解析的?<br>从早晨起床这个场景中,分析大脑解析时间的顺序.</p>
+            <h2 id="时间的感知"><a href="#时间的感知" class="headerlink" title="时间的感知"></a>时间的感知</h2><p>直觉对时间的感知, 是按照怎么的顺序解析的呢?<br>从早晨起床这个场景中,分析大脑解析时间的顺序.</p>
 <p>似乎理所当然的一点,Hour(时)排在最前面,Hour:Minute的组合是醒来后第一时间想要获得的信息,以判断上班是否迟到,是否有时间吃早餐?但是再想一层,上班是否迟到? 在处理Hour:Minute之前,潜意识已经先获取并处理完了一个信息:今天是周几?(Weekday).如果是周末的话,几点几分起床并不特别重要.<br>因此,最先处理的三个变量是Weekday Hour:Minutes</p>
 <p>再看日期,Month-Day,哪个变量在前呢?<br>如果day在前,则是冗余信息,因为已经weekday在先.<br>解析日期,首先获取Month,以判断一年的进度,获得当前时间在一年中所处的位置,比如May的含义是一年已经将半.<br>日期的顺序是Month-Day </p>
 <p>还有变量week number,是对一年进度的另外一种表示.</p>
@@ -1412,7 +1412,7 @@
 </tbody>
 </table>
 <p>分析:</p>
-<p>第一行, 钟表时间全部为大写,   日期时间全部为小写, WeekNumber大写%W与weekday %w相区分;<br>第二行, 简单扩展, %H是24小时制, H后面的字母是I,用%I表示12小时制,同时%p标注上下午; 大写的%Y表示四位数字的年2019;<br>第三行, 文字描述,只有两个变量需要文字描述, weekday和month, 分别用A, B表示.weekday %A还是第一重要的.</p>
+<p>第一行, 钟表时间全部为大写,   日期时间全部为小写, WeekNumber大写%W与weekday %w相区分;<br>第二行, 简单扩展, %H是24小时制, H后面的字母是I,因此用%I表示12小时制,同时%p(postnoon)标注上下午; 大写的%Y表示四位数字的年2019;<br>第三行, 文字描述,只有两个变量能以文字描述, weekday和month, 分别用A, B表示.weekday %A还是第一重要的.</p>
 <p>前三行是常规的表示.</p>
 <p>第四行, obscure扩展, 微秒的表示应该是从剩余可选字母中随机确定的, %f(fly飞逝),和数日子day 366 %j , %e空格padding. weekday与weekNumber在u, v, w这三个字母上打转, 小写是weekday大写是weekNumber.</p>
 <p>总结: 按照表格前三行可以在一秒钟内永久性记忆, 日常的书写也采用该格式. 日如ctime <code>%a %b %d %H:%M:%S %Y</code></p>
