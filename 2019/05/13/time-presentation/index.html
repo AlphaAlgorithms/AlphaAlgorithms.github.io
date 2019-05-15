@@ -105,7 +105,7 @@
 <meta property="og:description" content="时间的感知直觉对时间的感知, 是按照怎么的顺序解析的?从早晨起床这个场景中,分析大脑解析时间的顺序. 似乎理所当然的一点,Hour(时)排在最前面,Hour:Minute的组合是醒来后第一时间想要获得的信息,以判断上班是否迟到,是否有时间吃早餐?但是再想一层,上班是否迟到? 在处理Hour:Minute之前,潜意识已经先获取并处理完了一个信息:今天是周几?(Weekday).如果是周末的话,几点几">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://imgs.xkcd.com/comics/iso_8601.png">
-<meta property="og:updated_time" content="2019-05-15T01:30:51.658Z">
+<meta property="og:updated_time" content="2019-05-15T03:32:34.464Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间变量的顺序与时间表示的格式">
 <meta name="twitter:description" content="时间的感知直觉对时间的感知, 是按照怎么的顺序解析的?从早晨起床这个场景中,分析大脑解析时间的顺序. 似乎理所当然的一点,Hour(时)排在最前面,Hour:Minute的组合是醒来后第一时间想要获得的信息,以判断上班是否迟到,是否有时间吃早餐?但是再想一层,上班是否迟到? 在处理Hour:Minute之前,潜意识已经先获取并处理完了一个信息:今天是周几?(Weekday).如果是周末的话,几点几">
@@ -394,7 +394,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-05-15 09:30:51" itemprop="dateModified" datetime="2019-05-15T09:30:51+08:00">2019-05-15</time>
+                <time title="Modified: 2019-05-15 11:32:34" itemprop="dateModified" datetime="2019-05-15T11:32:34+08:00">2019-05-15</time>
               
             
           </span>
@@ -474,7 +474,7 @@
 <p>大脑长于处理模糊宏观的信息,而机器专于精确的信息,将最小的时间单位排在前面,是倒排的ctime.应用的时候也只需要将思考倒叙.</p>
 <p>cron将minute作为最小单位和第一顺序是因为crond按分钟扫描,可见从性能经济性的角度考虑,对大脑和对机器, 秒都是可以忽略的,不然会浪费大量的资源．</p>
 <p>接下来讨论一个问题:<br>在感知上, minutes:hours 与hours:minutes有何差异呢？</p>
-<p>minutes:hours的顺序，是将精力关注到一个小时之内，比如六点十五<code>15:06</code>表达出来是，在从6点到７点这一个小时的时间段内，已经过去了15分钟，知道现在已经消费了一个小时的四分之一(1/4)，接下来就会自然的发问，按照这个进度，等一个小时结束能完成多少工作．<br>而hours:minutes的顺序，是关注在一天之内，比如<code>06:15</code>表达的是，现在是早上时间(6/24)，一天之计在于晨，后面的分钟15只是作为休息．<br>总结：hour:minutes(6:15)关注的是一天之内，而minute:hour关注的是一个小时之内，以一个小时为单位做计划和考核产出．</p>
+<p>minutes:hours的顺序，是将精力关注到一个小时之内，比如六点十五<code>15:06</code>表达出来是，在从6点到７点这一个小时的时间段内，已经过去了15分钟，知道现在已经消费了一个小时的四分之一(1/4)，接下来就会自然的发问，按照这个进度，等一个小时结束能完成多少工作．<br>而hours:minutes的顺序，是关注在一天之内，比如<code>06:15</code>表达的是，现在是早上时间(6/24)，一天之计在于晨，后面的分钟15只是作为辅助．<br>总结：hour:minutes(6:15)关注的是一天之内，而minute:hour关注的是一个小时之内，以一个小时为单位做计划和考核产出．</p>
 <p>在直觉上采用哪一个作为基础,等更多的应用总结后,再行确定.暂时采用Hour:Minute的格式,因为minute:hour消耗更多大脑内存和计算资源.</p>
 <p>总结, cron是写给机器读的,对象是机器,因此将ctime倒叙.</p>
 <p>需要记住时间顺序的另外一个应用场景是<code>journalctl</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">journalctl --since  “YYYY-MM-DD HH:MM:SS” --until “YYYY-MM-DD HH:MM:SS”</span><br></pre></td></tr></table></figure></p>
