@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="AlphaAlgorithms">
 <meta property="og:description" content="提出问题经常会错写datetime.strptime(string, format),颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T13:32:37.137Z">
+<meta property="og:updated_time" content="2019-05-15T01:40:15.364Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="datetime.strptime()参数顺序的问题">
 <meta name="twitter:description" content="提出问题经常会错写datetime.strptime(string, format),颠倒两个参数的顺序而写成datetime.strptime(format, string) 与re.find(pattern, string)相混淆. 分析问题datetime.strptime()123456strptime(string, format) method of builtins.type ins">
@@ -375,12 +375,24 @@
                 
               
 
-              <time title="Created: 2019-05-08 19:47:35 / Modified: 21:32:37" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
+              <time title="Created: 2019-05-08 19:47:35" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-15 09:40:15" itemprop="dateModified" datetime="2019-05-15T09:40:15+08:00">2019-05-15</time>
               
             
           </span>
@@ -454,28 +466,18 @@
 <p>这样看来<code>strptime</code>还是符合 <code>source</code> to <code>destination</code> 的模式.</p>
 <p>容易混淆string与format顺序的一个直接原因是存在<code>re.match(pattern, str)</code>, 按照module re的这个思路, 要事第一,对<code>strptime(string, format)</code>的处理应该将<code>format</code>拿到前面.</p>
 <p>对此的理解:</p>
-<p>一, source to destination是惯例, strptime(string, format)没有打破惯例</p>
-<p>二, regex突破了惯例, 可能因为consturct regex需要花费较多脑力,而其他如time-format并不需要.</p>
-<p>(regex的所有的methods都是将构建regex-pattern作为第一个参数)</p>
+<p>一, source to destination是惯例, strptime(string, format)没有打破惯例<br>二, regex突破了惯例, 可能因为consturct regex需要花费较多脑力,而其他如time-format并不需要.<br>(regex的所有的methods都是将构建regex-pattern作为第一个参数)</p>
 <p>三, 处理strptime从字面含义去引导直觉. strptime(string, parsed-format) to a time-object</p>
 <h3 id="datetime-strftime"><a href="#datetime-strftime" class="headerlink" title="datetime.strftime()"></a>datetime.strftime()</h3><p>容易混淆的另外一个原因是strptime的逆函数<code>strftime</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strftime(format)</span><br><span class="line">    format -&gt; strftime() style string.</span><br><span class="line">In [<span class="number">8</span>]: dt                                                                                                                    </span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2019</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">In [<span class="number">9</span>]: dt.strftime(<span class="string">"%d %B, %Y"</span>)                                                                                              </span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'08 May, 2019'</span></span><br></pre></td></tr></table></figure>
 <p>strftime是<code>time2str</code></p>
 <p>受<code>strftime</code> (string format time)这个命名的影响, 很容易写作</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datetime.strftime(<span class="string">"%d %B, %Y"</span>, time_obj)</span><br></pre></td></tr></table></figure>
-<p>可能想一下会意识到没有充分利用<code>time_obj</code>已经是<code>datetime object</code>这个既成事实, 应该打开其内建的工具箱.</p>
-<p><code>strftime</code> 中的<code>str</code>是多余的, 既然是format, return的结果一定是string.去掉str只留下 <code>ftime</code>更为简洁.</p>
-<p><code>strftime</code>对比<code>str2time</code>的优点,也是有一个显性的动词format.</p>
-<p>与<code>strptime(string,parsed_format)</code>对应</p>
+<p>可能想一下会意识到没有充分利用<code>time_obj</code>已经是<code>datetime object</code>这个既成事实, 应该打开其内建的工具箱.<br><code>strftime</code> 中的<code>str</code>是多余的, 既然是format, return的结果一定是string.去掉str只留下 <code>ftime</code>更为简洁.<br><code>strftime</code>对比<code>str2time</code>的优点,也是有一个显性的动词format.<br>与<code>strptime(string,parsed_format)</code>对应</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#strftime可以写为</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strftime</span><span class="params">(self, format)</span> -&gt; string:</span></span><br></pre></td></tr></table></figure>
 <p>观察<code>time_object.strftime(format) - &gt; string</code> 的结构,遵循 <code>src to dst</code> 的原则．作为src的time_object写在前面．输出的结果为string.</p>
-<h2 id="总结，"><a href="#总结，" class="headerlink" title="总结，　"></a>总结，　</h2><p><code>strptime  def strptime(src_string,  parsed-format) -&gt;dst_time</code> 与｀src_time_object.strftime(string_format)<code>都遵循｀src to dst</code> 的原则，引起歧义的根源是两个函数的命名．</p>
-<p>解决方案 <code>strptime</code> 直觉扩展为<code>strp</code> string parsed + to + <code>timet</code></p>
-<p><code>strftime</code>,将多余的str去掉，<code>ftime</code> format time , str当做冗余的形容词修饰format. stringly format.</p>
-<p>P.S. format time to string不是一个好的解决方案，因为颠倒了src和dst.</p>
-<p>两个动词是核心,parse or format.如果是parse的工作,输出结果time_object.做format的工作,就return string.</p>
-<p>应用时刻的思维链条:</p>
-<p>parse -&gt; parse src_string to dst_time -&gt; string parsed to time-&gt; datetime.strptime(src_string, format)</p>
+<h2 id="总结，"><a href="#总结，" class="headerlink" title="总结，　"></a>总结，　</h2><p><code>strptime  def strptime(src_string,  parsed-format) -&gt;dst_time</code> 与｀src_time_object.strftime(string_format)<code>都遵循｀src to dst</code> 的原则，引起歧义的根源是两个函数的命名．<br>解决方案 <code>strptime</code> 直觉扩展为<code>strp</code> string parsed + to + <code>timet</code><br><code>strftime</code>,将多余的str去掉，<code>ftime</code> format time , str当做冗余的形容词修饰format. stringly format.<br>P.S. format time to string不是一个好的解决方案，因为颠倒了src和dst.<br>两个动词是核心,parse or format.如果是parse的工作,输出结果time_object.做format的工作,就return string.</p>
+<p>应用时刻的思维链条:<br>parse -&gt; parse src_string to dst_time -&gt; string parsed to time-&gt; datetime.strptime(src_string, format)</p>
 <p>format -&gt; format src_time to dst_string-&gt; stringly format time to string -&gt;time_object.strftime(format)</p>
 <p>1)辨析parse or format 2)都遵循 src to dst 3) str[pf]time顺序不变.</p>
 <p>除了re.search(pattern, src)之外,还有一个不守规矩的特例.</p>
@@ -489,8 +491,7 @@
 </blockquote>
 <h2 id="date-and-clock"><a href="#date-and-clock" class="headerlink" title="date and clock"></a>date and clock</h2><p>Maintain system time是操作系统提供的最基础的service API.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ date -u</span><br><span class="line">$ sudo hwclock -u</span><br><span class="line"><span class="number">2019</span><span class="number">-05</span><span class="number">-08</span> <span class="number">20</span>:<span class="number">19</span>:<span class="number">14.764965</span>+<span class="number">08</span>:<span class="number">00</span></span><br><span class="line"><span class="comment">#str2time,</span></span><br><span class="line">$ date -d <span class="string">"08 May 2019"</span> +<span class="string">"%c"</span> </span><br><span class="line">Wed <span class="number">08</span> May <span class="number">2019</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">00</span> AM CST</span><br><span class="line"><span class="comment">#time2str, strftime </span></span><br><span class="line">$ date +<span class="string">"%d %B, %Y"</span></span><br><span class="line"><span class="number">08</span> May, <span class="number">2019</span></span><br><span class="line"><span class="comment">#思路与strptime, strftime一致.</span></span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior" target="_blank" rel="noopener"><code>strftime()</code> and <code>strptime()</code> Behavior</a></p>
-<p><a href="https://www.programiz.com/python-programming/datetime/strptime" target="_blank" rel="noopener">Python strptime() - string to datetime object</a></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior" target="_blank" rel="noopener"><code>strftime()</code> and <code>strptime()</code> Behavior</a><br><a href="https://www.programiz.com/python-programming/datetime/strptime" target="_blank" rel="noopener">Python strptime() - string to datetime object</a></p>
 <p><a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior" target="_blank" rel="noopener">datetime — Basic date and time types — Python 3.7.3 documentation</a></p>
 <p><a href="https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/" target="_blank" rel="noopener">How To Format Date For Display or Use In a Shell Script - nixCraft</a></p>
 <p><a href="https://stackoverflow.com/questions/11144408/convert-string-to-date-in-bash" target="_blank" rel="noopener">Convert string to date in bash - Stack Overflow</a></p>

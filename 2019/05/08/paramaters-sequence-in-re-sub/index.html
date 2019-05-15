@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="提出问题在写re.sub或者re.subn的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档. 比如input_string=&amp;#39;trade war修改为trade negotiation 12In [17]: re.sub(&quot;war&quot;, &quot;negotiation&quot;, &quot;trade war&quot;)">
+  <meta name="description" content="提出问题在写re.sub或者re.subn的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档.比如input_string=&amp;#39;trade war修改为trade negotiation 12In [17]: re.sub(&quot;war&quot;, &quot;negotiation&quot;, &quot;trade war&quot;)">
 <meta name="keywords" content="fileHandling,regex,textProcessing,python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="re.sub参数顺序的问题">
 <meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/08/paramaters-sequence-in-re-sub/index.html">
 <meta property="og:site_name" content="AlphaAlgorithms">
-<meta property="og:description" content="提出问题在写re.sub或者re.subn的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档. 比如input_string=&amp;#39;trade war修改为trade negotiation 12In [17]: re.sub(&quot;war&quot;, &quot;negotiation&quot;, &quot;trade war&quot;)">
+<meta property="og:description" content="提出问题在写re.sub或者re.subn的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档.比如input_string=&amp;#39;trade war修改为trade negotiation 12In [17]: re.sub(&quot;war&quot;, &quot;negotiation&quot;, &quot;trade war&quot;)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-08T06:32:26.422Z">
+<meta property="og:updated_time" content="2019-05-15T01:39:00.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="re.sub参数顺序的问题">
-<meta name="twitter:description" content="提出问题在写re.sub或者re.subn的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档. 比如input_string=&amp;#39;trade war修改为trade negotiation 12In [17]: re.sub(&quot;war&quot;, &quot;negotiation&quot;, &quot;trade war&quot;)">
+<meta name="twitter:description" content="提出问题在写re.sub或者re.subn的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档.比如input_string=&amp;#39;trade war修改为trade negotiation 12In [17]: re.sub(&quot;war&quot;, &quot;negotiation&quot;, &quot;trade war&quot;)">
 
 
 
@@ -375,12 +375,24 @@
                 
               
 
-              <time title="Created: 2019-05-08 11:54:07 / Modified: 14:32:26" itemprop="dateCreated datePublished" datetime="2019-05-08T11:54:07+08:00">2019-05-08</time>
+              <time title="Created: 2019-05-08 11:54:07" itemprop="dateCreated datePublished" datetime="2019-05-08T11:54:07+08:00">2019-05-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-15 09:39:00" itemprop="dateModified" datetime="2019-05-15T09:39:00+08:00">2019-05-15</time>
               
             
           </span>
@@ -445,8 +457,7 @@
       
 
       
-        <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>在写<code>re.sub</code>或者<code>re.subn</code>的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档.</p>
-<p>比如<code>input_string=&#39;trade war</code>修改为<code>trade negotiation</code></p>
+        <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>在写<code>re.sub</code>或者<code>re.subn</code>的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档.<br>比如<code>input_string=&#39;trade war</code>修改为<code>trade negotiation</code></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">17</span>]: re.sub(<span class="string">"war"</span>, <span class="string">"negotiation"</span>, <span class="string">"trade war"</span>)                                                                            </span><br><span class="line">Out[<span class="number">17</span>]: <span class="string">'trade negotiation'</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sub(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>) </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub</span><span class="params">(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> _compile(pattern, flags).sub(repl, string, count)<span class="comment">#首先处理regex-pattern</span></span><br></pre></td></tr></table></figure>
 <h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><p><code>pattern</code>是与source(input_string)的匹配的内容, repl是修改后的内容(destination), 这里顺序与<code>str.replace</code>是一致.</p>
@@ -469,8 +480,7 @@
 <p><code>tar</code>是将目标放在前面.</p>
 <p>再回头看 <code>re.sub</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern, repl, string) </span><br><span class="line"><span class="comment">#扩展后</span></span><br><span class="line">re.sub(pattern_from_source, replacement_to_result, source_data)</span><br></pre></td></tr></table></figure>
-<p>三个参数中<code>pattern_from_source</code>, <code>replacement_to_result</code> , <code>source_data</code> 的最后一个是<code>source_data</code>, 将source放置在最后.</p>
-<p><code>grep</code>  与 <code>sed</code>都遵循同样的模式</p>
+<p>三个参数中<code>pattern_from_source</code>, <code>replacement_to_result</code> , <code>source_data</code> 的最后一个是<code>source_data</code>, 将source放置在最后.<br><code>grep</code>  与 <code>sed</code>都遵循同样的模式</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/&#123;&#123;regex&#125;&#125;/&#123;&#123;replace&#125;&#125;/'</span> &#123;&#123;filename&#125;&#125;</span><br><span class="line">grep [OPTIONS] -e PATTERN ... [FILE...] <span class="comment">#grep regex source</span></span><br></pre></td></tr></table></figure>
 <p>例外的情况是<code>find</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point...] [expression]</span><br><span class="line">find [Option] <span class="built_in">source</span> pattern</span><br></pre></td></tr></table></figure>
