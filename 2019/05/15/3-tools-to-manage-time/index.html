@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="AlphaAlgorithms">
 <meta property="og:description" content="前情概要时间变量的顺序与时间表示的格式 总结了时间的10个变量及其直觉解析的顺序　Weekday Hour:Minute Month-Day WeekNumber Year 时间的感知与分析  阐述对时间的认知方法论以奠定高效利用和有效掌控时间的基础。 “工欲善其事必先利其器”，接下来的问题便是时间管理的工具。 时间管理的三件工具无论是手机的android系统还是Linux系统，都提供两项基本的时">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-15T13:50:07.904Z">
+<meta property="og:updated_time" content="2019-05-15T13:55:29.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="时间管理的三件工具">
 <meta name="twitter:description" content="前情概要时间变量的顺序与时间表示的格式 总结了时间的10个变量及其直觉解析的顺序　Weekday Hour:Minute Month-Day WeekNumber Year 时间的感知与分析  阐述对时间的认知方法论以奠定高效利用和有效掌控时间的基础。 “工欲善其事必先利其器”，接下来的问题便是时间管理的工具。 时间管理的三件工具无论是手机的android系统还是Linux系统，都提供两项基本的时">
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2019-05-15 21:46:10 / Modified: 21:50:07" itemprop="dateCreated datePublished" datetime="2019-05-15T21:46:10+08:00">2019-05-15</time>
+              <time title="Created: 2019-05-15 21:46:10 / Modified: 21:55:29" itemprop="dateCreated datePublished" datetime="2019-05-15T21:46:10+08:00">2019-05-15</time>
             
 
             
@@ -469,9 +469,41 @@
 <ul>
 <li><p>1.与epoch time的相互转换</p>
 <p>Use the following functions to convert between time representations:<br>人以minutes计时， 机器以second计时。</p>
-<p>| From                                                         | To                                                           | Use                                                          |<br>| ———————————————————— | ———————————————————— | ———————————————————— |<br>| seconds since the epoch                                      | <a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in UTC | <a href="https://docs.python.org/3/library/time.html#time.gmtime" target="_blank" rel="noopener"><code>gmtime()</code></a> |<br>| seconds since the epoch                                      | <a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in local time | <a href="https://docs.python.org/3/library/time.html#time.localtime" target="_blank" rel="noopener"><code>localtime()</code></a> |<br>| <a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in UTC | seconds since the epoch                                      | <a href="https://docs.python.org/3/library/calendar.html#calendar.timegm" target="_blank" rel="noopener"><code>calendar.timegm()</code></a> |<br>| <a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in local time | seconds since the epoch                                      | <a href="https://docs.python.org/3/library/time.html#time.mktime" target="_blank" rel="noopener"><code>mktime()</code></a> |</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#seconds to  timetuple</span></span><br><span class="line">In [<span class="number">8</span>]: time.localtime() <span class="comment">#local time</span></span><br><span class="line">Out[<span class="number">8</span>]: time.struct_time(tm_year=<span class="number">2019</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">15</span>, tm_hour=<span class="number">20</span>, tm_min=<span class="number">4</span>, tm_sec=<span class="number">17</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">135</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">In [<span class="number">9</span>]: time.gmtime() <span class="comment">#UTC time</span></span><br><span class="line">Out[<span class="number">9</span>]: time.struct_time(tm_year=<span class="number">2019</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">15</span>, tm_hour=<span class="number">12</span>, tm_min=<span class="number">4</span>, tm_sec=<span class="number">31</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">135</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: time.gmtime(<span class="number">100</span>)  <span class="comment">#</span></span><br><span class="line">Out[<span class="number">11</span>]: time.struct_time(tm_year=<span class="number">1970</span>, tm_mon=<span class="number">1</span>, tm_mday=<span class="number">1</span>, tm_hour=<span class="number">0</span>, tm_min=<span class="number">1</span>, tm_sec=<span class="number">40</span>, tm_wday=<span class="number">3</span>, tm_yday=<span class="number">1</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#timetuple to seconds </span></span><br><span class="line">In [<span class="number">17</span>]: calendar.timegm(time.gmtime()) <span class="comment">#UTC time </span></span><br><span class="line">Out[<span class="number">17</span>]: <span class="number">1557922318</span></span><br><span class="line">In [<span class="number">18</span>]: time.mktime(time.localtime()) <span class="comment">#Local time </span></span><br><span class="line">Out[<span class="number">18</span>]: <span class="number">1557922368.0</span></span><br></pre></td></tr></table></figure>
 </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>From</th>
+<th>To</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seconds since the epoch</td>
+<td><a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in UTC</td>
+<td><a href="https://docs.python.org/3/library/time.html#time.gmtime" target="_blank" rel="noopener"><code>gmtime()</code></a></td>
+</tr>
+<tr>
+<td>seconds since the epoch</td>
+<td><a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in local time</td>
+<td><a href="https://docs.python.org/3/library/time.html#time.localtime" target="_blank" rel="noopener"><code>localtime()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in UTC</td>
+<td>seconds since the epoch</td>
+<td><a href="https://docs.python.org/3/library/calendar.html#calendar.timegm" target="_blank" rel="noopener"><code>calendar.timegm()</code></a></td>
+</tr>
+<tr>
+<td><a href="https://docs.python.org/3/library/time.html#time.struct_time" target="_blank" rel="noopener"><code>struct_time</code></a> in local time</td>
+<td>seconds since the epoch</td>
+<td><a href="https://docs.python.org/3/library/time.html#time.mktime" target="_blank" rel="noopener"><code>mktime()</code></a></td>
+</tr>
+</tbody>
+</table>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#seconds to  timetuple</span></span><br><span class="line">In [<span class="number">8</span>]: time.localtime() <span class="comment">#local time</span></span><br><span class="line">Out[<span class="number">8</span>]: time.struct_time(tm_year=<span class="number">2019</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">15</span>, tm_hour=<span class="number">20</span>, tm_min=<span class="number">4</span>, tm_sec=<span class="number">17</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">135</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line">    </span><br><span class="line">In [<span class="number">9</span>]: time.gmtime() <span class="comment">#UTC time</span></span><br><span class="line">Out[<span class="number">9</span>]: time.struct_time(tm_year=<span class="number">2019</span>, tm_mon=<span class="number">5</span>, tm_mday=<span class="number">15</span>, tm_hour=<span class="number">12</span>, tm_min=<span class="number">4</span>, tm_sec=<span class="number">31</span>, tm_wday=<span class="number">2</span>, tm_yday=<span class="number">135</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">In [<span class="number">11</span>]: time.gmtime(<span class="number">100</span>)  <span class="comment">#</span></span><br><span class="line">Out[<span class="number">11</span>]: time.struct_time(tm_year=<span class="number">1970</span>, tm_mon=<span class="number">1</span>, tm_mday=<span class="number">1</span>, tm_hour=<span class="number">0</span>, tm_min=<span class="number">1</span>, tm_sec=<span class="number">40</span>, tm_wday=<span class="number">3</span>, tm_yday=<span class="number">1</span>, tm_isdst=<span class="number">0</span>)</span><br><span class="line"><span class="comment">#timetuple to seconds </span></span><br><span class="line">In [<span class="number">17</span>]: calendar.timegm(time.gmtime()) <span class="comment">#UTC time </span></span><br><span class="line">Out[<span class="number">17</span>]: <span class="number">1557922318</span></span><br><span class="line">In [<span class="number">18</span>]: time.mktime(time.localtime()) <span class="comment">#Local time </span></span><br><span class="line">Out[<span class="number">18</span>]: <span class="number">1557922368.0</span></span><br></pre></td></tr></table></figure>
+<ul>
 <li><p>2.第十一个时间变量 <code>tm_isdst</code> daylight saving time夏季时间</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gmtime(...) -&gt;time.struct_time,  (strptime, localtime)</span><br><span class="line">    gmtime([seconds]) -&gt; (tm_year, tm_mon, tm_mday, tm_hour, tm_min,</span><br><span class="line">                           tm_sec, tm_wday, tm_yday, tm_isdst)</span><br></pre></td></tr></table></figure>
 </li>
