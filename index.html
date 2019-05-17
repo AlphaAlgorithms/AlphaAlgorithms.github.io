@@ -373,7 +373,7 @@
                 
               
 
-              <time title="Created: 2019-05-17 15:41:38 / Modified: 15:44:07" itemprop="dateCreated datePublished" datetime="2019-05-17T15:41:38+08:00">2019-05-17</time>
+              <time title="Created: 2019-05-17 15:41:38 / Modified: 16:04:19" itemprop="dateCreated datePublished" datetime="2019-05-17T15:41:38+08:00">2019-05-17</time>
             
 
             
@@ -468,89 +468,74 @@
 <table>
 <thead>
 <tr>
-<th>• <a href="https://orgmode.org/manual/Agenda-Files.html#Agenda-Files" target="_blank" rel="noopener">Agenda Files</a>:</th>
+<th>Agenda  Views</th>
 <th></th>
-<th>Files being searched for agenda information.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td>• <a href="https://orgmode.org/manual/Agenda-Files.html#Agenda-Files" target="_blank" rel="noopener">Agenda Files</a>:</td>
+<td>Files being searched for agenda information.</td>
+</tr>
+<tr>
 <td>• <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>:</td>
-<td></td>
 <td>Keyboard access to agenda views.</td>
 </tr>
 <tr>
 <td>• <a href="https://orgmode.org/manual/Built_002din-Agenda-Views.html#Built_002din-Agenda-Views" target="_blank" rel="noopener">Built-in Agenda Views</a>:</td>
-<td></td>
 <td>What is available out of the box?</td>
 </tr>
 <tr>
 <td>• <a href="https://orgmode.org/manual/Presentation-and-Sorting.html#Presentation-and-Sorting" target="_blank" rel="noopener">Presentation and Sorting</a>:</td>
-<td></td>
 <td>How agenda items are prepared for display.</td>
 </tr>
 <tr>
 <td>• <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>:</td>
-<td></td>
 <td>Remote editing of Org trees.</td>
 </tr>
 <tr>
 <td>• <a href="https://orgmode.org/manual/Custom-Agenda-Views.html#Custom-Agenda-Views" target="_blank" rel="noopener">Custom Agenda Views</a>:</td>
-<td></td>
 <td>Defining special searches and views.</td>
 </tr>
 <tr>
 <td>• <a href="https://orgmode.org/manual/Exporting-Agenda-Views.html#Exporting-Agenda-Views" target="_blank" rel="noopener">Exporting Agenda Views</a>:</td>
-<td></td>
 <td>Writing a view to a file.</td>
 </tr>
 <tr>
 <td>• <a href="https://orgmode.org/manual/Agenda-Column-View.html#Agenda-Column-View" target="_blank" rel="noopener">Agenda Column View</a>:</td>
-<td></td>
 <td>Using column view for collected entries.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="10-1-Agenda-Files"><a href="#10-1-Agenda-Files" class="headerlink" title="10.1 Agenda Files"></a>10.1 Agenda Files</h2><blockquote>
-<p>概括:</p>
-<p>可以将directory作为org-agenda-files</p>
+<p>概括:<br>可以将directory作为org-agenda-files<br>在agenda views中工作, 对org mode的所有应用对围绕agenda view展开. </p>
 </blockquote>
 <p>The information to be shown is normally collected from all <em>agenda files</em>, the files listed in the variable <code>org-agenda-files</code>[^1]. If a directory is part of this list, all files with the extension ‘.org’ in this directory are part of the list.</p>
 <p>Thus, even if you only work with a single Org file, that file should be put into the list[^2]. You can customize <code>org-agenda-files</code>, but the easiest way to maintain it is through the following commands</p>
 <ul>
-<li><p>C-c [ (<code>org-agenda-file-to-front</code>)</p>
-<p>Add current file to the list of agenda files. The file is added to the front of the list. If it was already in the list, it is moved to the front. With a prefix argument, file is added/moved to the end.</p>
+<li><p>C-c [ (<code>org-agenda-file-to-front</code>)<br>Add current file to the list of agenda files. The file is added to the front of the list. If it was already in the list, it is moved to the front. With a prefix argument, file is added/moved to the end.</p>
 </li>
-<li><p>C-c ] (<code>org-remove-file</code>)</p>
-<p>Remove current file from the list of agenda files.</p>
+<li><p>C-c ] (<code>org-remove-file</code>)<br>Remove current file from the list of agenda files.</p>
 </li>
-<li><p>C-‘</p>
+<li><p>C-‘ or </p>
 </li>
 <li><p>C-, (<code>org-cycle-agenda-files</code>)</p>
-<p>Cycle through agenda file list, visiting one file after the other.</p>
-</li>
-<li><p>M-x org-switchb</p>
-<p>Command to use an iswitchb-like interface to switch to and between Org buffers.</p>
+<p>Cycle through agenda file list, visiting one file after the other.<br>Command to use an iswitchb-like interface to switch to and between Org buffers.</p>
 </li>
 </ul>
 <p>The Org menu contains the current list of files and can be used to visit any of them.</p>
 <p>If you would like to focus the agenda temporarily on a file not in this list, or on just one file in the list, or even on only a subtree in a file, then this can be done in different ways. For a single agenda command, you may press &lt; once or several times in the dispatcher (see <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>). To restrict the agenda scope for an extended period, use the following commands:</p>
 <ul>
-<li><p>C-c C-x &lt; (<code>org-agenda-set-restriction-lock</code>)</p>
-<p>Restrict the agenda to the current subtree. If there already is a restriction at point, remove it. When called with a universal prefix argument or with point before the first headline in a file, set the agenda scope to the entire file. This restriction remains in effect until removed with C-c C-x &gt;, or by typing either &lt; or &gt; in the agenda dispatcher. If there is a window displaying an agenda view, the new restriction takes effect immediately.</p>
+<li><p>C-c C-x &lt; (<code>org-agenda-set-restriction-lock</code>)<br>Restrict the agenda to the current subtree. If there already is a restriction at point, remove it. When called with a universal prefix argument or with point before the first headline in a file, set the agenda scope to the entire file. This restriction remains in effect until removed with C-c C-x &gt;, or by typing either &lt; or &gt; in the agenda dispatcher. If there is a window displaying an agenda view, the new restriction takes effect immediately.</p>
 </li>
-<li><p>C-c C-x &gt; (<code>org-agenda-remove-restriction-lock</code>)</p>
-<p>Remove the restriction created by C-c C-x &lt;.</p>
+<li><p>C-c C-x &gt; (<code>org-agenda-remove-restriction-lock</code>)<br>Remove the restriction created by C-c C-x &lt;.</p>
 </li>
 </ul>
 <p>When working with Speedbar, you can use the following commands in the Speedbar frame:</p>
 <ul>
-<li><p>&lt; (<code>org-speedbar-set-agenda-restriction</code>)</p>
-<p>Restrict the agenda to the item—either an Org file or a subtree in such a file—at point in the Speedbar frame. If agenda is already restricted there, remove the restriction. If there is a window displaying an agenda view, the new restriction takes effect immediately.</p>
+<li><p>&lt; (<code>org-speedbar-set-agenda-restriction</code>)<br>Restrict the agenda to the item—either an Org file or a subtree in such a file—at point in the Speedbar frame. If agenda is already restricted there, remove the restriction. If there is a window displaying an agenda view, the new restriction takes effect immediately.</p>
 </li>
-<li><blockquote>
-<p>(<code>org-agenda-remove-restriction-lock</code>)</p>
-</blockquote>
+<li><p><code>&gt;</code> (<code>org-agenda-remove-restriction-lock</code>)</p>
 <p>Remove the restriction.</p>
 </li>
 </ul>
@@ -560,7 +545,7 @@
 <li>When using the dispatcher, pressing &lt; before selecting a command actually limits the command to the current file, and ignores <code>org-agenda-files</code> until the next dispatcher command.</li>
 </ol>
 <h2 id="10-2-The-Agenda-Dispatcher"><a href="#10-2-The-Agenda-Dispatcher" class="headerlink" title="10.2 The Agenda Dispatcher"></a>10.2 The Agenda Dispatcher</h2><blockquote>
-<p>dispatcher, a, t</p>
+<p>dispatcher, a, t<br>第一个提示界面, 当下只需要关注前两个.</p>
 </blockquote>
 <p>The views are created through a dispatcher, accessible with M-x org-agenda, or, better, bound to a global key (see <a href="https://orgmode.org/manual/Activation.html#Activation" target="_blank" rel="noopener">Activation</a>). It displays a menu from which an additional letter is required to execute a command. The dispatcher offers the following default commands:</p>
 <ul>
@@ -580,7 +565,10 @@
 <p>Search for a regular expression in all agenda files and additionally in the files listed in <code>org-agenda-text-search-extra-files</code>. This uses the Emacs command <code>multi-occur</code>. A prefix argument can be used to specify the number of context lines for each match, default is</p>
 </li>
 <li><p><code># or !</code></p>
-<p>Create a list of stuck projects (see <a href="https://orgmode.org/manual/Stuck-projects.html#Stuck-projects" target="_blank" rel="noopener">Stuck projects</a>).</p>
+<p>Create a list of stuck projects (see <a href="https://orgmode.org/manual/Stuck-projects.html#Stuck-projects" target="_blank" rel="noopener">Stuck projects</a>). </p>
+<blockquote>
+<p>重点概念.</p>
+</blockquote>
 </li>
 <li><p>&lt;</p>
 <p>Restrict an agenda command to the current buffer<a href="https://orgmode.org/manual/Agenda-Dispatcher.html#FOOT93" target="_blank" rel="noopener">93</a>. After pressing &lt;, you still need to press the character selecting the command.</p>
@@ -632,7 +620,10 @@
 </tr>
 </tbody>
 </table>
-<h4 id="10-3-1-Weekly-daily-agenda"><a href="#10-3-1-Weekly-daily-agenda" class="headerlink" title="10.3.1 Weekly/daily agenda"></a>10.3.1 Weekly/daily agenda</h4><p>The purpose of the weekly/daily <em>agenda</em> is to act like a page of a paper agenda, showing all the tasks for the current week or day.</p>
+<h4 id="10-3-1-Weekly-daily-agenda"><a href="#10-3-1-Weekly-daily-agenda" class="headerlink" title="10.3.1 Weekly/daily agenda"></a>10.3.1 Weekly/daily agenda</h4><blockquote>
+<p>The default agenda-span </p>
+</blockquote>
+<p>The purpose of the weekly/daily <em>agenda</em> is to act like a page of a paper agenda, showing all the tasks for the current week or day.</p>
 <ul>
 <li><p>M-x org-agenda a (<code>org-agenda-list</code>)</p>
 <p>Compile an agenda for the current week from a list of Org files. The agenda shows the entries for each day. With a numeric prefix argument[^1]—like C-u 2 1 M-x org-agenda a—you may set the number of days to be displayed.</p>
@@ -640,7 +631,10 @@
 </ul>
 <p>The default number of days displayed in the agenda is set by the variable <code>org-agenda-span</code>. This variable can be set to any number of days you want to see by default in the agenda, or to a span name, such a <code>day</code>, <code>week</code>, <code>month</code> or <code>year</code>. For weekly agendas, the default is to start on the previous Monday (see <code>org-agenda-start-on-weekday</code>). You can also set the start date using a date shift: ‘(setq org-agenda-start-day “+10d”)’ starts the agenda ten days from today in the future.</p>
 <p>Remote editing from the agenda buffer means, for example, that you can change the dates of deadlines and appointments from the agenda buffer. The commands available in the Agenda buffer are listed in <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>.</p>
-<h4 id="1-Calendar-Diary-integration"><a href="#1-Calendar-Diary-integration" class="headerlink" title="1. Calendar/Diary integration"></a>1. Calendar/Diary integration</h4><p>Emacs contains the calendar and diary by Edward M. Reingold. The calendar displays a three-month calendar with holidays from different countries and cultures. The diary allows you to keep track of anniversaries, lunar phases, sunrise/set, recurrent appointments (weekly, monthly) and more. In this way, it is quite complementary to Org. It can be very useful to combine output from Org with the diary.</p>
+<h4 id="1-Calendar-Diary-integration"><a href="#1-Calendar-Diary-integration" class="headerlink" title="1. Calendar/Diary integration"></a>1. Calendar/Diary integration</h4><blockquote>
+<p>Work with calendar, sunrise and sunset</p>
+</blockquote>
+<p>Emacs contains the calendar and diary by Edward M. Reingold. The calendar displays a three-month calendar with holidays from different countries and cultures. The diary allows you to keep track of anniversaries, lunar phases, sunrise/set, recurrent appointments (weekly, monthly) and more. In this way, it is quite complementary to Org. It can be very useful to combine output from Org with the diary.</p>
 <p>In order to include entries from the Emacs diary into Org mode’s agenda, you only need to customize the variable</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-include-diary t)</span><br></pre></td></tr></table></figure>
 <p>After that, everything happens automatically. All diary entries including holidays, anniversaries, etc., are included in the agenda buffer created by Org mode. SPC, TAB, and RET can be used from the agenda buffer to jump to the diary file in order to edit existing diary entries. The i command to insert new entries for the current date works in the agenda buffer, as well as the commands S, M, and C to display Sunrise/Sunset times, show lunar phases and to convert to other calendars, respectively. c can be used to switch back and forth between calendar and agenda.</p>
@@ -798,7 +792,7 @@
 <p>这个功能很有意思<br>写个人看工具.</p>
 </blockquote>
 <h2 id="10-4-Presentation-and-Sorting"><a href="#10-4-Presentation-and-Sorting" class="headerlink" title="10.4 Presentation and Sorting"></a>10.4 Presentation and Sorting</h2><blockquote>
-<p>这一章里只有time specification有点用.</p>
+<p>这一章里只有time specification有点用.<br>Sort并不重要</p>
 </blockquote>
 <p>Before displaying items in an agenda view, Org mode visually prepares the items and sorts them. Each item occupies a single line. The line starts with a <em>prefix</em> that contains the <em>category</em> (see <a href="https://orgmode.org/manual/Categories.html#Categories" target="_blank" rel="noopener">Categories</a>) of the item and other important information. You can customize in which column tags are displayed through <code>org-agenda-tags-column</code>. You can also customize the prefix using the option <code>org-agenda-prefix-format</code>. This prefix is followed by a cleaned-up version of the outline headline associated with the item.</p>
 <table>
