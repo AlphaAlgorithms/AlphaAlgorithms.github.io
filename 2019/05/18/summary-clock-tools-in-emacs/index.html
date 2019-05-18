@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="Emacs中的时间管理(Datetime and Clock)前文概要:时间管理的三件工具 时间变量的顺序与时间表示的格式 Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格式 （Datetime)">
+  <meta name="description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
 <meta name="keywords" content="datetime,emacs,clock">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Emacs时间管理之Datetime与Clock工具">
 <meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/18/summary-clock-tools-in-emacs/index.html">
 <meta property="og:site_name" content="AlphaAlgorithms">
-<meta property="og:description" content="Emacs中的时间管理(Datetime and Clock)前文概要:时间管理的三件工具 时间变量的顺序与时间表示的格式 Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格式 （Datetime)">
+<meta property="og:description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T04:07:03.971Z">
+<meta property="og:updated_time" content="2019-05-18T04:17:10.943Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Emacs时间管理之Datetime与Clock工具">
-<meta name="twitter:description" content="Emacs中的时间管理(Datetime and Clock)前文概要:时间管理的三件工具 时间变量的顺序与时间表示的格式 Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格式 （Datetime)">
+<meta name="twitter:description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
 
 
 
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2019-05-18 12:01:49 / Modified: 12:07:03" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
+              <time title="Created: 2019-05-18 12:01:49 / Modified: 12:17:10" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
             
 
             
@@ -445,14 +445,14 @@
       
 
       
-        <h1 id="Emacs中的时间管理-Datetime-and-Clock"><a href="#Emacs中的时间管理-Datetime-and-Clock" class="headerlink" title="Emacs中的时间管理(Datetime and Clock)"></a>Emacs中的时间管理(Datetime and Clock)</h1><h2 id="前文概要"><a href="#前文概要" class="headerlink" title="前文概要:"></a>前文概要:</h2><p><a href="https://alphaalgorithms.github.io/2019/05/15/3-tools-to-manage-time/">时间管理的三件工具</a></p>
-<p><a href="https://alphaalgorithms.github.io/2019/05/13/time-presentation/">时间变量的顺序与时间表示的格式</a></p>
+        <h2 id="前文概要"><a href="#前文概要" class="headerlink" title="前文概要:"></a>前文概要:</h2><p><a href="https://alphaalgorithms.github.io/2019/05/15/3-tools-to-manage-time/">时间管理的三件工具</a><br>(clock, datetime, calendar)</p>
+<p><a href="https://alphaalgorithms.github.io/2019/05/13/time-presentation/">时间变量的顺序与时间表示的格式</a><br>(%a %b-d %H:%M %Y)</p>
 <h2 id="Emacs中的时间格式与任务的时间属性"><a href="#Emacs中的时间格式与任务的时间属性" class="headerlink" title="Emacs中的时间格式与任务的时间属性"></a>Emacs中的时间格式与任务的时间属性</h2><p>时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime.</p>
 <p><a href="https://orgmode.org/manual/Dates-and-Times.html#Dates-and-Times" target="_blank" rel="noopener">The Org Manual: Dates and Times</a>主要应用datetime和clock两个工具管理时间.</p>
 <ul>
 <li><p>时间戳的格式 （Datetime)</p>
 <ul>
-<li><p>datetime格式 <2019-05-18 sat 09:52> C-u C-c . 6个时间变量</2019-05-18></p>
+<li><p>datetime格式 <2019-05-18 sat 09:52> C-u C-c . 6个时间变量 %Y-%m-%d %a %H:%M</2019-05-18></p>
 </li>
 <li><p>date格式 <2019-05-18 sat> C-c . 4个时间变量</2019-05-18></p>
 </li>
@@ -460,9 +460,8 @@
 </li>
 </ul>
 <h2 id="Datetime时间戳与任务的时间属性"><a href="#Datetime时间戳与任务的时间属性" class="headerlink" title="Datetime时间戳与任务的时间属性"></a>Datetime时间戳与任务的时间属性</h2><ul>
-<li>时间(戳)到底什么?<br>时间戳从概念上辨析为两个类别 1) appointment 2) schedule.<br>可以将主动安排的时间理解为schedule, 被动参与的时间为appointment</li>
-</ul>
-<ul>
+<li><p>时间(戳)到底什么?<br>时间戳从概念上辨析为两个类别 1) appointment 2) schedule.<br>可以将主动安排的时间理解为schedule, 被动参与的时间为appointment</p>
+</li>
 <li><p>事件(任务)的四个时间属性</p>
 <ul>
 <li><p>Repeater<br>三种repeater,<br>1) standard 时间戳后面 +1w day, week, month, year<br>2) 过期后只需要补上一次, ++1w(比如每周给父母打电话)<br>3) 以档次完成时间为下一个interval的开始点,比如3个周理一次发. 理发 .+3w; 任何时间点上理完发,自动从该时间点上启动下一轮repeat.</p>
@@ -477,7 +476,7 @@
 </li>
 </ul>
 <ul>
-<li>任务的监控与跟踪 Check <ul>
+<li>任务的监控与跟踪 Check<br>整合管理deadline与schedule.<ul>
 <li><code>org-check-deadlines</code>, C-7 C-c / d #7天内将要截止的任务.变量org-deadline-warning-days</li>
 <li><code>org-check-before-date</code>, given-date前的schedule and appointments</li>
 <li><code>org-check-after-date</code>, given-date后的schedule and appointments.</li>
@@ -743,7 +742,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Emacs中的时间管理-Datetime-and-Clock"><span class="nav-text">Emacs中的时间管理(Datetime and Clock)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前文概要"><span class="nav-text">前文概要:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emacs中的时间格式与任务的时间属性"><span class="nav-text">Emacs中的时间格式与任务的时间属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datetime时间戳与任务的时间属性"><span class="nav-text">Datetime时间戳与任务的时间属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clock计时与中断处理"><span class="nav-text">Clock计时与中断处理</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前文概要"><span class="nav-text">前文概要:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Emacs中的时间格式与任务的时间属性"><span class="nav-text">Emacs中的时间格式与任务的时间属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datetime时间戳与任务的时间属性"><span class="nav-text">Datetime时间戳与任务的时间属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Clock计时与中断处理"><span class="nav-text">Clock计时与中断处理</span></a></li></ol></div>
             
 
           </div>
