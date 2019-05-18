@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="AlphaAlgorithms">
 <meta property="og:description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T04:17:10.943Z">
+<meta property="og:updated_time" content="2019-05-18T04:20:04.319Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Emacs时间管理之Datetime与Clock工具">
 <meta name="twitter:description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2019-05-18 12:01:49 / Modified: 12:17:10" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
+              <time title="Created: 2019-05-18 12:01:49 / Modified: 12:20:04" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
             
 
             
@@ -483,13 +483,19 @@
 </ul>
 </li>
 </ul>
-<h2 id="Clock计时与中断处理"><a href="#Clock计时与中断处理" class="headerlink" title="Clock计时与中断处理"></a>Clock计时与中断处理</h2><ul>
-<li>Clock<br>1) 基本计时功能,<br> <code>org-clock-in</code>, <code>org-clock-out</code><br> 可以手动修改计时, 然后调用<code>org-evaluate-time-range</code>或者<code>update-maybe</code><br>2) 任务的第五个属性, efforts<br> 总结任务的5个属性,1)schedule 2) deadline 3)repeater 4)time span 5)预测的time span(efforts).<br> efforts是核心参数,逐步提高对时间和任务的掌控.</li>
-</ul>
-<ul>
-<li>Resolve idle time and continuous clocking<br>中断计时的问题,<code>调出来org-resolve-clocks</code>重新设置.k(keep), s(substract),只用keep便可.<br>3) 总结:<br> 1) 计时与计算 2) 任务的5个时间属性 3)idle中断计时的处理.</li>
-</ul>
+<h2 id="Clock计时与中断处理"><a href="#Clock计时与中断处理" class="headerlink" title="Clock计时与中断处理"></a>Clock计时与中断处理</h2><pre><code>1) 基本计时功能, 
+ `org-clock-in`, `org-clock-out`
+ 可以手动修改计时, 然后调用` org-evaluate-time-range`或者`update-maybe`
 
+2) 任务的第五个属性, efforts 
+ 总结任务的5个属性,1)schedule 2) deadline 3)repeater 4)time span 5)预测的time span(efforts).
+ efforts是核心参数,逐步提高对时间和任务的掌控.
+
+3) Resolve idle time and continuous clocking 
+ 中断计时的问题,`调出来org-resolve-clocks`重新设置.k(keep), s(substract),只用keep便可.
+总结:
+  1) 计时与计算 2) 任务的5个时间属性 3)idle中断计时的处理.
+</code></pre>
       
     </div>
 
