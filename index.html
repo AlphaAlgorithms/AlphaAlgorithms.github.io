@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">13</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">14</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">9</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">10</span></a>
 
   </li>
 
@@ -312,6 +312,224 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/18/summary-clock-tools-in-emacs/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlphaAlgorithms">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/18/summary-clock-tools-in-emacs/" class="post-title-link" itemprop="url">Emacs时间管理之Datetime与Clock工具</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-18 12:01:49 / Modified: 12:07:03" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-orgmode/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - orgmode</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/18/summary-clock-tools-in-emacs/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/18/summary-clock-tools-in-emacs/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Emacs中的时间管理-Datetime-and-Clock"><a href="#Emacs中的时间管理-Datetime-and-Clock" class="headerlink" title="Emacs中的时间管理(Datetime and Clock)"></a>Emacs中的时间管理(Datetime and Clock)</h1><h2 id="前文概要"><a href="#前文概要" class="headerlink" title="前文概要:"></a>前文概要:</h2><p><a href="https://alphaalgorithms.github.io/2019/05/15/3-tools-to-manage-time/">时间管理的三件工具</a></p>
+<p><a href="https://alphaalgorithms.github.io/2019/05/13/time-presentation/">时间变量的顺序与时间表示的格式</a></p>
+<h2 id="Emacs中的时间格式与任务的时间属性"><a href="#Emacs中的时间格式与任务的时间属性" class="headerlink" title="Emacs中的时间格式与任务的时间属性"></a>Emacs中的时间格式与任务的时间属性</h2><p>时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime.</p>
+<p><a href="https://orgmode.org/manual/Dates-and-Times.html#Dates-and-Times" target="_blank" rel="noopener">The Org Manual: Dates and Times</a>主要应用datetime和clock两个工具管理时间.</p>
+<ul>
+<li><p>时间戳的格式 （Datetime)</p>
+<ul>
+<li><p>datetime格式 <2019-05-18 sat 09:52> C-u C-c . 6个时间变量</2019-05-18></p>
+</li>
+<li><p>date格式 <2019-05-18 sat> C-c . 4个时间变量</2019-05-18></p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Datetime时间戳与任务的时间属性"><a href="#Datetime时间戳与任务的时间属性" class="headerlink" title="Datetime时间戳与任务的时间属性"></a>Datetime时间戳与任务的时间属性</h2><ul>
+<li>时间(戳)到底什么?<br>时间戳从概念上辨析为两个类别 1) appointment 2) schedule.<br>可以将主动安排的时间理解为schedule, 被动参与的时间为appointment</li>
+</ul>
+<ul>
+<li><p>事件(任务)的四个时间属性</p>
+<ul>
+<li><p>Repeater<br>三种repeater,<br>1) standard 时间戳后面 +1w day, week, month, year<br>2) 过期后只需要补上一次, ++1w(比如每周给父母打电话)<br>3) 以档次完成时间为下一个interval的开始点,比如3个周理一次发. 理发 .+3w; 任何时间点上理完发,自动从该时间点上启动下一轮repeat.</p>
+</li>
+<li><p>Time Span<br>会议的时间<br><2019-05-18 sat 10:04>–<2019-05-18 sat 10:05></2019-05-18></2019-05-18></p>
+</li>
+<li><p>Scheduled<br>任务的开始时间,<br>SCHEDULED: <2019-05-18 sat></2019-05-18></p>
+</li>
+<li><p>Deadline<br>任务的截止时间<br>DEADLINE: <2019-05-18 sat></2019-05-18></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>任务的监控与跟踪 Check <ul>
+<li><code>org-check-deadlines</code>, C-7 C-c / d #7天内将要截止的任务.变量org-deadline-warning-days</li>
+<li><code>org-check-before-date</code>, given-date前的schedule and appointments</li>
+<li><code>org-check-after-date</code>, given-date后的schedule and appointments.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Clock计时与中断处理"><a href="#Clock计时与中断处理" class="headerlink" title="Clock计时与中断处理"></a>Clock计时与中断处理</h2><ul>
+<li>Clock<br>1) 基本计时功能,<br> <code>org-clock-in</code>, <code>org-clock-out</code><br> 可以手动修改计时, 然后调用<code>org-evaluate-time-range</code>或者<code>update-maybe</code><br>2) 任务的第五个属性, efforts<br> 总结任务的5个属性,1)schedule 2) deadline 3)repeater 4)time span 5)预测的time span(efforts).<br> efforts是核心参数,逐步提高对时间和任务的掌控.</li>
+</ul>
+<ul>
+<li>Resolve idle time and continuous clocking<br>中断计时的问题,<code>调出来org-resolve-clocks</code>重新设置.k(keep), s(substract),只用keep便可.<br>3) 总结:<br> 1) 计时与计算 2) 任务的5个时间属性 3)idle中断计时的处理.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -3382,7 +3600,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -3456,7 +3674,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
