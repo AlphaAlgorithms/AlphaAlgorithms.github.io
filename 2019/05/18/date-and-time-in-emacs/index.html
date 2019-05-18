@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="AlphaAlgorithms">
 <meta property="og:description" content="8.1 Timestamps, Deadlines and SchedulingA timestamp is a specification of a date (possibly with a time or a range of times) in a special format, either ‘’ or ‘’ or ‘’[^1]  A timestamp can appear anywh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T01:41:43.075Z">
+<meta property="og:updated_time" content="2019-05-18T03:00:16.925Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Date and Time in Emacs">
 <meta name="twitter:description" content="8.1 Timestamps, Deadlines and SchedulingA timestamp is a specification of a date (possibly with a time or a range of times) in a special format, either ‘’ or ‘’ or ‘’[^1]  A timestamp can appear anywh">
@@ -375,7 +375,7 @@
                 
               
 
-              <time title="Created: 2019-05-18 09:07:05 / Modified: 09:41:43" itemprop="dateCreated datePublished" datetime="2019-05-18T09:07:05+08:00">2019-05-18</time>
+              <time title="Created: 2019-05-18 09:07:05 / Modified: 11:00:16" itemprop="dateCreated datePublished" datetime="2019-05-18T09:07:05+08:00">2019-05-18</time>
             
 
             
@@ -461,8 +461,10 @@
 </li>
 <li><p>Diary-style sexp entries (这一项可以去掉)</p>
 <p>For more complex date specifications, Org mode supports using the special sexp diary entries implemented in the Emacs calendar/diary package. For example, with optional time:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* <span class="number">22</span>:<span class="number">00</span><span class="number">-23</span>:<span class="number">00</span> The nerd meeting on every <span class="number">2</span>nd Thursday of the month  </span><br><span class="line">        &lt;%%(diary-float t <span class="number">4</span> <span class="number">2</span>)&gt;</span><br></pre></td></tr></table></figure>
 </li>
+</ol>
+<p>​          &lt;%%(diary-float t 4 2)&gt;</p>
+<ol start="4">
 <li><p>Time/Date range</p>
 <p>Two timestamps connected by ‘–’ denote a range. The headline is shown on the first and last day of the range, and on any dates that are displayed and fall in the range. Here is an example:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">** Meeting <span class="keyword">in</span> Amsterdam</span><br><span class="line">   &lt;<span class="number">2004</span><span class="number">-08</span><span class="number">-23</span> Mon&gt;--&lt;<span class="number">2004</span><span class="number">-08</span><span class="number">-26</span> Thu&gt;</span><br></pre></td></tr></table></figure>
