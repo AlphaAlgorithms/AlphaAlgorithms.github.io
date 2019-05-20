@@ -373,7 +373,7 @@
                 
               
 
-              <time title="Created: 2019-05-20 18:17:15 / Modified: 18:23:28" itemprop="dateCreated datePublished" datetime="2019-05-20T18:17:15+08:00">2019-05-20</time>
+              <time title="Created: 2019-05-20 18:17:15 / Modified: 19:42:02" itemprop="dateCreated datePublished" datetime="2019-05-20T18:17:15+08:00">2019-05-20</time>
             
 
             
@@ -445,24 +445,30 @@
       
         
           
-            <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><p>Termux是一款能够为Android手机提供Linux环境的应用。它最大的特点就是无需root，而且自带pkg包管理软件，可以很方便的其他linux应用。</p>
-<h2 id="安装Termux"><a href="#安装Termux" class="headerlink" title="安装Termux"></a>安装Termux</h2><p>可以在Google Play Store或F-Droid上搜索Termux来安装，目前的版本是0.47。</p>
-<p>值得一提的是，在豌豆荚上，这个应用的名字似乎变成了 <code>高级终端</code>,而且版本变成了0.49，不知道是个什么情况</p>
+            <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Termux是一款能够为Android手机提供Linux环境的应用。它最大的特点就是无需root，而且自带pkg包管理软件，可以很方便的其他linux应用。</p>
+<ul>
+<li><a href="https://termux.com/" target="_blank" rel="noopener">Termux</a></li>
+<li><a href="https://github.com/termux" target="_blank" rel="noopener">Termux</a></li>
+</ul>
+<h2 id="手机安装Termux"><a href="#手机安装Termux" class="headerlink" title="手机安装Termux"></a>手机安装Termux</h2><p>可以在Google Play Store或F-Droid上搜索Termux来安装，目前的版本是0.47。</p>
 <h2 id="安装sshd"><a href="#安装sshd" class="headerlink" title="安装sshd"></a>安装sshd</h2><p>打开 <code>Termux</code> 会出现一个类似Linux终端的界面。</p>
 <p>由于sshd是包含在openssh包中的，因此我们首先需要在Termux中安装openssh</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
 <p>安装好之后，我们需要手工启动 <code>sshd</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshd</span><br></pre></td></tr></table></figure>
 <p>需要指出的是, <code>sshd</code> 监听的是8022端口而不是22号端口，因此可以使用下面命令来验证ssh服务是否开启<br>这里是需要特别注意的一点.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost -p 8022</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost -p 8022 #助记, 80是http端口, 22是ssh端口</span><br><span class="line">#提示输入密码</span><br><span class="line">passwd#设置密码</span><br></pre></td></tr></table></figure>
+<ul>
+<li><a href="https://android.stackexchange.com/questions/212633/password-to-ssh-connec-to-termux/212634#212634" target="_blank" rel="noopener">Password to ssh connec to termux - Android Enthusiasts Stack Exchange</a></li>
+</ul>
 <p>若要查看sshd的日志，则可以在Termux上执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logcat -s &apos;syslog:*&apos;</span><br></pre></td></tr></table></figure>
 <h2 id="添加Public-key"><a href="#添加Public-key" class="headerlink" title="添加Public key"></a>添加Public key</h2><p>Termux的sshd只能通过密钥登陆，因此你需要在linux客户机上生成密钥对</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
 <p>把linux客户机上的公钥加到Termux中的 <code>.ssh/authorized_keys</code>,这一步比较麻烦</p>
 <p>因为你无法使用 <code>ssh-copy-id</code>,只能先把 <code>id_rsa.pub</code> 拷贝到手机上，再在手机上打开该文件，拷贝文件内容后在Termux中用 <code>vi</code> 打开 <code>authorized_keys</code>,并复制内容进去.</p>
-<p>不过如果linux客户机上本身也开启了ssh服务的话，则会简单很多，可以在Termux上执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@linux_clinet &quot;cat ~/.ssh/id_rsa.pub&quot; &gt;&gt; ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<p>不过如果linux客户机上本身也开启了ssh服务的话，则会简单很多，可以在Termux上执行, </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ scp -P 8022 /home/me/.ssh/id_rsa.pub  192.168.1.204:~ </span><br><span class="line">  me@192.168.1.204&apos;s password: </span><br><span class="line">  id_rsa.pub</span><br></pre></td></tr></table></figure>
 <p>就行了，其中linux_clinet为linux客户机的地址，user为登陆用户</p>
 <h2 id="客户端登陆"><a href="#客户端登陆" class="headerlink" title="客户端登陆"></a>客户端登陆</h2><p>在客户端上执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 192.4.4.9 -p 8022</span><br></pre></td></tr></table></figure>
