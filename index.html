@@ -257,7 +257,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">9</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">12</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">13</span></a>
 
   </li>
 
@@ -312,6 +312,540 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/22/emacs-properties-and-columns/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="AlphaAlgorithms">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/22/emacs-properties-and-columns/" class="post-title-link" itemprop="url">Emacs 7.Properties and Columns</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-22 00:34:50 / Modified: 00:37:43" itemprop="dateCreated datePublished" datetime="2019-05-22T00:34:50+08:00">2019-05-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs/" itemprop="url" rel="index"><span itemprop="name">linux - emacs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/22/emacs-properties-and-columns/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/22/emacs-properties-and-columns/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="7-Properties-and-Columns"><a href="#7-Properties-and-Columns" class="headerlink" title="7 Properties and Columns"></a>7 Properties and Columns</h1><p>A property is a key-value pair associated with an entry. Properties can be set so they are associated with a single entry, with every entry in a tree, or with every entry in an Org file.</p>
+<p>There are two main applications for properties in Org mode. First, properties are like tags, but with a value. Imagine maintaining a file where you document bugs and plan releases for a piece of software. Instead of using tags like ‘release_1’, ‘release_2’, you can use a property, say ‘Release’, that in different subtrees has different values, such as ‘1.0’ or ‘2.0’. Second, you can use properties to implement (very basic) database capabilities in an Org buffer. Imagine keeping track of your music CDs, where properties could be things such as the album, artist, date of release, number of tracks, and so on.</p>
+<p>Properties can be conveniently edited and viewed in column view (see <a href="https://orgmode.org/manual/Column-View.html#Column-View" target="_blank" rel="noopener">Column View</a>).</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://orgmode.org/manual/Property-Syntax.html#Property-Syntax" target="_blank" rel="noopener">Property Syntax</a>:</th>
+<th>How properties are spelled out.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Special-Properties.html#Special-Properties" target="_blank" rel="noopener">Special Properties</a>:</td>
+<td>Access to other Org mode features.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Property-Searches.html#Property-Searches" target="_blank" rel="noopener">Property Searches</a>:</td>
+<td>Matching property values.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Property-Inheritance.html#Property-Inheritance" target="_blank" rel="noopener">Property Inheritance</a>:</td>
+<td>Passing values down a tree.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Column-View.html#Column-View" target="_blank" rel="noopener">Column View</a>:</td>
+<td>Tabular viewing and editing.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-1-Property-Syntax"><a href="#7-1-Property-Syntax" class="headerlink" title="7.1 Property Syntax"></a>7.1 Property Syntax</h2><blockquote>
+<p>这里先看一眼就完事.</p>
+</blockquote>
+<p>Properties are key–value pairs. When they are associated with a single entry or with a tree they need to be inserted into a special drawer (see <a href="https://orgmode.org/manual/Drawers.html#Drawers" target="_blank" rel="noopener">Drawers</a>) with the name ‘PROPERTIES’, which has to be located right below a headline, and its planning line (see <a href="https://orgmode.org/manual/Deadlines-and-Scheduling.html#Deadlines-and-Scheduling" target="_blank" rel="noopener">Deadlines and Scheduling</a>) when applicable. Each property is specified on a single line, with the key—surrounded by colons—first, and the value after it. Keys are case-insensitive. Here is an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">* CD collection</span><br><span class="line">** Classic</span><br><span class="line">*** Goldberg Variations</span><br><span class="line">    :PROPERTIES:</span><br><span class="line">    :Title:     Goldberg Variations</span><br><span class="line">    :Composer:  J.S. Bach</span><br><span class="line">    :Artist:    Glenn Gould</span><br><span class="line">    :Publisher: Deutsche Grammophon</span><br><span class="line">    :NDisks:    1</span><br><span class="line">    :END:</span><br></pre></td></tr></table></figure>
+<p>Depending on the value of <code>org-use-property-inheritance</code>, a property set this way is associated either with a single entry, or with the sub-tree defined by the entry, see <a href="https://orgmode.org/manual/Property-Inheritance.html#Property-Inheritance" target="_blank" rel="noopener">Property Inheritance</a>.</p>
+<p>You may define the allowed values for a particular property ‘Xyz’ by setting a property ‘Xyz_ALL’. This special property is <em>inherited</em>, so if you set it in a level 1 entry, it applies to the entire tree. When allowed values are defined, setting the corresponding property becomes easier and is less prone to typing errors. For the example with the CD collection, we can pre-define publishers and the number of disks in a box like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* CD collection</span><br><span class="line">  :PROPERTIES:</span><br><span class="line">  :NDisks_ALL:  1 2 3 4</span><br><span class="line">  :Publisher_ALL: &quot;Deutsche Grammophon&quot; Philips EMI</span><br><span class="line">  :END:</span><br></pre></td></tr></table></figure>
+<p>If you want to set properties that can be inherited by any entry in a file, use a line like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#+PROPERTY: NDisks_ALL 1 2 3 4</span><br></pre></td></tr></table></figure>
+<p>If you want to add to the value of an existing property, append a ‘+’ to the property name. The following results in the property ‘var’ having the value ‘foo=1 bar=2’.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+PROPERTY: var  foo=1</span><br><span class="line">#+PROPERTY: var+ bar=2</span><br></pre></td></tr></table></figure>
+<p>It is also possible to add to the values of inherited properties. The following results in the ‘Genres’ property having the value ‘Classic Baroque’ under the ‘Goldberg Variations’ subtree.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* CD collection</span><br><span class="line">** Classic</span><br><span class="line">    :PROPERTIES:</span><br><span class="line">    :Genres: Classic</span><br><span class="line">    :END:</span><br><span class="line">*** Goldberg Variations</span><br><span class="line">    :PROPERTIES:</span><br><span class="line">    :Title:     Goldberg Variations</span><br><span class="line">    :Composer:  J.S. Bach</span><br><span class="line">    :Artist:    Glenn Gould</span><br><span class="line">    :Publisher: Deutsche Grammophon</span><br><span class="line">    :NDisks:    1</span><br><span class="line">    :Genres+:   Baroque</span><br><span class="line">    :END:</span><br></pre></td></tr></table></figure>
+<p>Note that a property can only have one entry per drawer.</p>
+<p>Property values set with the global variable <code>org-global-properties</code> can be inherited by all entries in all Org files.</p>
+<p>The following commands help to work with properties:</p>
+<ul>
+<li><p>M-TAB (<code>pcomplete</code>)</p>
+<p>After an initial colon in a line, complete property keys. All keys used in the current file are offered as possible completions.</p>
+</li>
+<li><p>C-c C-x p (<code>org-set-property</code>)</p>
+<p>Set a property. This prompts for a property name and a value. If necessary, the property drawer is created as well.</p>
+</li>
+<li><p>C-u M-x org-insert-drawer</p>
+<p>Insert a property drawer into the current entry. The drawer is inserted early in the entry, but after the lines with planning information like deadlines.</p>
+</li>
+<li><p>C-c C-c (<code>org-property-action</code>)</p>
+<p>With point in a property drawer, this executes property commands.</p>
+</li>
+<li><p>C-c C-c s (<code>org-set-property</code>)</p>
+<p>Set a property in the current entry. Both the property and the value can be inserted using completion.</p>
+</li>
+<li><p>S-RIGHT (<code>org-property-next-allowed-values</code>)</p>
+</li>
+<li><p>S-LEFT (<code>org-property-previous-allowed-value</code>)</p>
+<p>Switch property at point to the next/previous allowed value.</p>
+</li>
+<li><p>C-c C-c d (<code>org-delete-property</code>)</p>
+<p>Remove a property from the current entry.</p>
+</li>
+<li><p>C-c C-c D (<code>org-delete-property-globally</code>)</p>
+<p>Globally remove a property, from all entries in the current file.</p>
+</li>
+<li><p>C-c C-c c (<code>org-compute-property-at-point</code>)</p>
+<p>Compute the property at point, using the operator and scope from the nearest column format definition.</p>
+</li>
+</ul>
+<h2 id="7-2-Special-Properties"><a href="#7-2-Special-Properties" class="headerlink" title="7.2 Special Properties"></a>7.2 Special Properties</h2><blockquote>
+<p>reserved properties, 看一样便可, </p>
+</blockquote>
+<p>  Special properties provide an alternative access method to Org mode features, like the TODO state or the priority of an entry, discussed in the previous chapters. This interface exists so that you can include these states in a column view (see <a href="https://orgmode.org/manual/Column-View.html#Column-View" target="_blank" rel="noopener">Column View</a>), or to use them in queries. The following property names are special and should not be used as keys in the properties drawer:</p>
+<table>
+<thead>
+<tr>
+<th>‘ALLTAGS’</th>
+<th>All tags, including inherited ones.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘BLOCKED’</td>
+<td><code>t</code> if task is currently blocked by children or siblings.</td>
+</tr>
+<tr>
+<td>‘CATEGORY’</td>
+<td>The category of an entry.</td>
+</tr>
+<tr>
+<td>‘CLOCKSUM’</td>
+<td>The sum of CLOCK intervals in the subtree. <code>org-clock-sum</code></td>
+</tr>
+<tr>
+<td></td>
+<td>must be run first to compute the values in the current buffer.</td>
+</tr>
+<tr>
+<td>‘CLOCKSUM_T’</td>
+<td>The sum of CLOCK intervals in the subtree for today.</td>
+</tr>
+<tr>
+<td></td>
+<td><code>org-clock-sum-today</code> must be run first to compute the</td>
+</tr>
+<tr>
+<td></td>
+<td>values in the current buffer.</td>
+</tr>
+<tr>
+<td>‘CLOSED’</td>
+<td>When was this entry closed?</td>
+</tr>
+<tr>
+<td>‘DEADLINE’</td>
+<td>The deadline time string, without the angular brackets.</td>
+</tr>
+<tr>
+<td>‘FILE’</td>
+<td>The filename the entry is located in.</td>
+</tr>
+<tr>
+<td>‘ITEM’</td>
+<td>The headline of the entry.</td>
+</tr>
+<tr>
+<td>‘PRIORITY’</td>
+<td>The priority of the entry, a string with a single letter.</td>
+</tr>
+<tr>
+<td>‘SCHEDULED’</td>
+<td>The scheduling timestamp, without the angular brackets.</td>
+</tr>
+<tr>
+<td>‘TAGS’</td>
+<td>The tags defined directly in the headline.</td>
+</tr>
+<tr>
+<td>‘TIMESTAMP’</td>
+<td>The first keyword-less timestamp in the entry.</td>
+</tr>
+<tr>
+<td>‘TIMESTAMP_IA’</td>
+<td>The first inactive timestamp in the entry.</td>
+</tr>
+<tr>
+<td>‘TODO’</td>
+<td>The TODO keyword of the entry.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-3-Property-Searches"><a href="#7-3-Property-Searches" class="headerlink" title="7.3 Property Searches"></a>7.3 Property Searches</h2><blockquote>
+<p>search是至关重要的一点.</p>
+</blockquote>
+<p>To create sparse trees and special lists with selection based on properties, the same commands are used as for tag searches (see <a href="https://orgmode.org/manual/Tag-Searches.html#Tag-Searches" target="_blank" rel="noopener">Tag Searches</a>).</p>
+<ul>
+<li><p>C-c / m or C-c \ (<code>org-match-sparse-tree</code>)</p>
+<p>Create a sparse tree with all matching entries. With a C-u prefix argument, ignore headlines that are not a TODO line.</p>
+</li>
+<li><p>M-x org-agenda m, <code>org-tags-view</code></p>
+<p>Create a global list of tag/property matches from all agenda files.</p>
+</li>
+<li><p>M-x org-agenda M (<code>org-tags-view</code>)</p>
+<p>Create a global list of tag matches from all agenda files, but check only TODO items and force checking of subitems (see the option <code>org-tags-match-list-sublevels</code>).</p>
+</li>
+</ul>
+<p>The syntax for the search string is described in <a href="https://orgmode.org/manual/Matching-tags-and-properties.html#Matching-tags-and-properties" target="_blank" rel="noopener">Matching tags and properties</a>.</p>
+<p>There is also a special command for creating sparse trees based on a single property:</p>
+<ul>
+<li><p>C-c / p</p>
+<p>Create a sparse tree based on the value of a property. This first prompts for the name of a property, and then for a value. A sparse tree is created with all entries that define this property with the given value. If you enclose the value in curly braces, it is interpreted as a regular expression and matched against the property valu</p>
+</li>
+</ul>
+<h2 id="7-4-Property-Inheritance"><a href="#7-4-Property-Inheritance" class="headerlink" title="7.4 Property Inheritance"></a>7.4 Property Inheritance</h2><blockquote>
+<p>有点意思了, 能将全部的内容打穿. </p>
+</blockquote>
+<p>The outline structure of Org documents lends itself to an inheritance model of properties: if the parent in a tree has a certain property, the children can inherit this property. Org mode does not turn this on by default, because it can slow down property searches significantly and is often not needed. However, if you find inheritance useful, you can turn it on by setting the variable <code>org-use-property-inheritance</code>. It may be set to <code>t</code> to make all properties inherited from the parent, to a list of properties that should be inherited, or to a regular expression that matches inherited properties. If a property has the value <code>nil</code>, this is interpreted as an explicit un-define of the property, so that inheritance search stops at this value and returns <code>nil</code>.</p>
+<p>Org mode has a few properties for which inheritance is hard-coded, at least for the special applications for which they are used:</p>
+<ul>
+<li><p><code>COLUMNS</code></p>
+<p>The ‘COLUMNS’ property defines the format of column view (see <a href="https://orgmode.org/manual/Column-View.html#Column-View" target="_blank" rel="noopener">Column View</a>). It is inherited in the sense that the level where a ‘COLUMNS’ property is defined is used as the starting point for a column view table, independently of the location in the subtree from where columns view is turned on.</p>
+</li>
+<li><p><code>CATEGORY</code></p>
+<p>For agenda view, a category set through a ‘CATEGORY’ property applies to the entire subtree.</p>
+</li>
+<li><p><code>ARCHIVE</code></p>
+<p>For archiving, the ‘ARCHIVE’ property may define the archive location for the entire subtree (see <a href="https://orgmode.org/manual/Moving-subtrees.html#Moving-subtrees" target="_blank" rel="noopener">Moving subtrees</a>).</p>
+</li>
+<li><p><code>LOGGING</code></p>
+<p>The ‘LOGGING’ property may define logging settings for an entry or a subtree (see <a href="https://orgmode.org/manual/Tracking-TODO-state-changes.html#Tracking-TODO-state-changes" target="_blank" rel="noopener">Tracking TODO state changes</a>).</p>
+</li>
+</ul>
+<h2 id="7-5-Column-View"><a href="#7-5-Column-View" class="headerlink" title="7.5 Column View"></a>7.5 Column View</h2><p>A great way to view and edit properties in an outline tree is <em>column view</em>. In column view, each outline node is turned into a table row. Columns in this table provide access to properties of the entries. Org mode implements columns by overlaying a tabular structure over the headline of each item. While the headlines have been turned into a table row, you can still change the visibility of the outline tree. For example, you get a compact table by switching to “contents” view—S-TAB S-TAB, or simply c while column view is active—but you can still open, read, and edit the entry below each headline. Or, you can switch to column view after executing a sparse tree command and in this way get a table only for the selected items. Column view also works in agenda buffers (see <a href="https://orgmode.org/manual/Agenda-Views.html#Agenda-Views" target="_blank" rel="noopener">Agenda Views</a>) where queries have collected selected items, possibly from a number of files.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://orgmode.org/manual/Defining-columns.html#Defining-columns" target="_blank" rel="noopener">Defining columns</a>:</th>
+<th>The COLUMNS format property.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Using-column-view.html#Using-column-view" target="_blank" rel="noopener">Using column view</a>:</td>
+<td>How to create and use column view.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Capturing-column-view.html#Capturing-column-view" target="_blank" rel="noopener">Capturing column view</a>:</td>
+<td>A dynamic block for column view.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="7-5-1-Defining-columns"><a href="#7-5-1-Defining-columns" class="headerlink" title="7.5.1 Defining columns"></a>7.5.1 Defining columns</h3><p>Setting up a column view first requires defining the columns. This is done by defining a column format line.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://orgmode.org/manual/Scope-of-column-definitions.html#Scope-of-column-definitions" target="_blank" rel="noopener">Scope of column definitions</a>:</th>
+<th>Where defined, where valid?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Column-attributes.html#Column-attributes" target="_blank" rel="noopener">Column attributes</a>:</td>
+<td>Appearance and content of a column.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>有点复杂, 不知道有啥用. </p>
+</blockquote>
+<h4 id="7-5-1-1-Scope-of-column-definitions"><a href="#7-5-1-1-Scope-of-column-definitions" class="headerlink" title="7.5.1.1 Scope of column definitions"></a>7.5.1.1 Scope of column definitions</h4><p>To define a column format for an entire file, use a line like:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#+COLUMNS: %25ITEM %TAGS %PRIORITY %TODO</span><br></pre></td></tr></table></figure>
+<p>To specify a format that only applies to a specific tree, add a ‘COLUMNS’ property to the top node of that tree, for example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">** Top node for columns view</span><br><span class="line">   :PROPERTIES:</span><br><span class="line">   :COLUMNS: %25ITEM %TAGS %PRIORITY %TODO</span><br><span class="line">   :END:</span><br></pre></td></tr></table></figure>
+<p>If a ‘COLUMNS’ property is present in an entry, it defines columns for the entry itself, and for the entire subtree below it. Since the column definition is part of the hierarchical structure of the document, you can define columns on level 1 that are general enough for all sublevels, and more specific columns further down, when you edit a deeper part of the tree.</p>
+<h4 id="7-5-1-2-Column-attributes"><a href="#7-5-1-2-Column-attributes" class="headerlink" title="7.5.1.2 Column attributes"></a>7.5.1.2 Column attributes</h4><p>A column definition sets the attributes of a column. The general definition looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%[WIDTH]PROPERTY[(TITLE)][&#123;SUMMARY-TYPE&#125;]</span><br></pre></td></tr></table></figure>
+<p>Except for the percent sign and the property name, all items are optional. The individual parts have the following meaning:</p>
+<ul>
+<li><p>WIDTH</p>
+<p>An integer specifying the width of the column in characters. If omitted, the width is determined automatically.</p>
+</li>
+<li><p>PROPERTY</p>
+<p>The property that should be edited in this column. Special properties representing meta data are allowed here as well (see <a href="https://orgmode.org/manual/Special-Properties.html#Special-Properties" target="_blank" rel="noopener">Special Properties</a>).</p>
+</li>
+<li><p>TITLE</p>
+<p>The header text for the column. If omitted, the property name is used.</p>
+</li>
+<li><p>SUMMARY-TYPE</p>
+<p>The summary type. If specified, the column values for parent nodes are computed from the children<a href="https://orgmode.org/manual/Column-attributes.html#FOOT57" target="_blank" rel="noopener">57</a>.Supported summary types are:‘+’Sum numbers in this column.‘+;%.1f’Like ‘+’, but format result with ‘%.1f’.‘$’Currency, short for ‘+;%.2f’.‘min’Smallest number in column.‘max’Largest number.‘mean’Arithmetic mean of numbers.‘X’Checkbox status, ‘[X]’ if all children are ‘[X]’.‘X/’Checkbox status, ‘[n/m]’.‘X%’Checkbox status, ‘[n%]’.‘:’Sum times, HH:MM, plain numbers are hours.‘:min’Smallest time value in column.‘:max’Largest time value.‘:mean’Arithmetic mean of time values.‘@min’Minimum age<a href="https://orgmode.org/manual/Column-attributes.html#FOOT58" target="_blank" rel="noopener">58</a> (in days/hours/mins/seconds).‘@max’Maximum age (in days/hours/mins/seconds).‘@mean’Arithmetic mean of ages (in days/hours/mins/seconds).‘est+’Add low-high estimates.You can also define custom summary types by setting <code>org-columns-summary-types</code>.</p>
+</li>
+</ul>
+<p>The ‘est+’ summary type requires further explanation. It is used for combining estimates, expressed as low-high ranges. For example, instead of estimating a particular task will take 5 days, you might estimate it as 5–6 days if you’re fairly confident you know how much work is required, or 1–10 days if you do not really know what needs to be done. Both ranges average at 5.5 days, but the first represents a more predictable delivery.</p>
+<p>When combining a set of such estimates, simply adding the lows and highs produces an unrealistically wide result. Instead, ‘est+’ adds the statistical mean and variance of the subtasks, generating a final estimate from the sum. For example, suppose you had ten tasks, each of which was estimated at 0.5 to 2 days of work. Straight addition produces an estimate of 5 to 20 days, representing what to expect if everything goes either extremely well or extremely poorly. In contrast, ‘est+’ estimates the full job more realistically, at 10–15 days.</p>
+<p>Here is an example for a complete columns definition, along with allowed values<a href="https://orgmode.org/manual/Column-attributes.html#FOOT59" target="_blank" rel="noopener">59</a>.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">:COLUMNS:  %25ITEM %9Approved(Approved?)&#123;X&#125; %Owner %11Status \</span><br><span class="line">                   %10Time_Estimate&#123;:&#125; %CLOCKSUM %CLOCKSUM_T</span><br><span class="line">:Owner_ALL:    Tammy Mark Karl Lisa Don</span><br><span class="line">:Status_ALL:   &quot;In progress&quot; &quot;Not started yet&quot; &quot;Finished&quot; &quot;&quot;</span><br><span class="line">:Approved_ALL: &quot;[ ]&quot; &quot;[X]&quot;</span><br></pre></td></tr></table></figure>
+<p>The first column, ‘%25ITEM’, means the first 25 characters of the item itself, i.e., of the headline. You probably always should start the column definition with the ‘ITEM’ specifier. The other specifiers create columns ‘Owner’ with a list of names as allowed values, for ‘Status’ with four different possible values, and for a checkbox field ‘Approved’. When no width is given after the ‘%’ character, the column is exactly as wide as it needs to be in order to fully display all values. The ‘Approved’ column does have a modified title (‘Approved?’, with a question mark). Summaries are created for the ‘Time_Estimate’ column by adding time duration expressions like HH:MM, and for the ‘Approved’ column, by providing an ‘[X]’ status if all children have been checked. The ‘CLOCKSUM’ and ‘CLOCKSUM_T’ columns are special, they lists the sums of CLOCK intervals in the subtree, either for all clocks or just for today.</p>
+<h3 id="7-5-2-Using-column-view"><a href="#7-5-2-Using-column-view" class="headerlink" title="7.5.2 Using column view"></a>7.5.2 Using column view</h3><blockquote>
+<p>平白叙述, 没有应用实例. </p>
+</blockquote>
+<h4 id="Turning-column-view-on-or-off"><a href="#Turning-column-view-on-or-off" class="headerlink" title="Turning column view on or off"></a>Turning column view on or off</h4><ul>
+<li><p>C-c C-x C-c (<code>org-columns</code>)</p>
+<p>Turn on column view. If point is before the first headline in the file, column view is turned on for the entire file, using the ‘#+COLUMNS’ definition. If point is somewhere inside the outline, this command searches the hierarchy, up from point, for a ‘COLUMNS’ property that defines a format. When one is found, the column view table is established for the tree starting at the entry that contains the ‘COLUMNS’ property. If no such property is found, the format is taken from the ‘#+COLUMNS’ line or from the variable <code>org-columns-default-format</code>, and column view is established for the current entry and its subtree.</p>
+</li>
+<li><p>r or g (<code>org-columns-redo</code>)</p>
+<p>Recreate the column view, to include recent changes made in the buffer.</p>
+</li>
+<li><p>q (<code>org-columns-quit</code>)</p>
+<p>Exit column view.</p>
+</li>
+</ul>
+<h4 id="Editing-values"><a href="#Editing-values" class="headerlink" title="Editing values"></a>Editing values</h4><ul>
+<li><p>LEFT, RIGHT, UP, DOWN</p>
+<p>Move through the column view from field to field.</p>
+</li>
+<li><p>1..9,0</p>
+<p>Directly select the Nth allowed value, 0 selects the 10th value.</p>
+</li>
+<li><p>n or S-RIGHT (<code>org-columns-next-allowed-value</code>)</p>
+</li>
+<li><p>p or S-LEFT (<code>org-columns-previous-allowed-value</code>)</p>
+<p>Switch to the next/previous allowed value of the field. For this, you have to have specified allowed values for a property.</p>
+</li>
+<li><p>e (<code>org-columns-edit-value</code>)</p>
+<p>Edit the property at point. For the special properties, this invokes the same interface that you normally use to change that property. For example, the tag completion or fast selection interface pops up when editing a ‘TAGS’ property.</p>
+</li>
+<li><p>C-c C-c (<code>org-columns-set-tags-or-toggle</code>)</p>
+<p>When there is a checkbox at point, toggle it.</p>
+</li>
+<li><p>v (<code>org-columns-show-value</code>)</p>
+<p>View the full value of this property. This is useful if the width of the column is smaller than that of the value.</p>
+</li>
+<li><p>a (<code>org-columns-edit-allowed</code>)</p>
+<p>Edit the list of allowed values for this property. If the list is found in the hierarchy, the modified values is stored there. If no list is found, the new value is stored in the first entry that is part of the current column view.</p>
+</li>
+</ul>
+<h4 id="Modifying-column-view-on-the-fly"><a href="#Modifying-column-view-on-the-fly" class="headerlink" title="Modifying column view on-the-fly"></a>Modifying column view on-the-fly</h4><ul>
+<li><p>&lt; (<code>org-columns-narrow</code>)</p>
+</li>
+<li><blockquote>
+<p>(<code>org-columns-widen</code>)</p>
+</blockquote>
+<p>Make the column narrower/wider by one character.</p>
+</li>
+<li><p>S-M-RIGHT (<code>org-columns-new</code>)</p>
+<p>Insert a new column, to the left of the current column.</p>
+</li>
+<li><p>S-M-LEFT (<code>org-columns-delete</code>)</p>
+<p>Delete the current column.</p>
+</li>
+</ul>
+<h3 id="7-5-3-Capturing-column-view"><a href="#7-5-3-Capturing-column-view" class="headerlink" title="7.5.3 Capturing column view"></a>7.5.3 Capturing column view</h3><blockquote>
+<p>弄得这么负责, 有啥鸟用. </p>
+</blockquote>
+<p>Since column view is just an overlay over a buffer, it cannot be exported or printed directly. If you want to capture a column view, use a ‘columnview’ dynamic block (see <a href="https://orgmode.org/manual/Dynamic-Blocks.html#Dynamic-Blocks" target="_blank" rel="noopener">Dynamic Blocks</a>). The frame of this block looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">* The column view</span><br><span class="line">#+BEGIN: columnview :hlines 1 :id &quot;label&quot;</span><br><span class="line">#+END:</span><br></pre></td></tr></table></figure>
+<p>This dynamic block has the following parameters:</p>
+<ul>
+<li><p>‘:id’</p>
+<p>This is the most important parameter. Column view is a feature that is often localized to a certain (sub)tree, and the capture block might be at a different location in the file. To identify the tree whose view to capture, you can use four values:‘local’Use the tree in which the capture block is located.‘global’Make a global view, including all headings in the file.‘file:FILENAME’Run column view at the top of the FILENAME file.‘LABEL’Call column view in the tree that has an ‘ID’ property with the value LABEL. You can use M-x org-id-copy to create a globally unique ID for the current entry and copy it to the kill-ring.</p>
+</li>
+<li><p>‘:hlines’</p>
+<p>When <code>t</code>, insert an hline after every line. When a number N, insert an hline before each headline with level <code>&lt;= N</code>.</p>
+</li>
+<li><p>‘:vlines’</p>
+<p>When non-<code>nil</code>, force column groups to get vertical lines.</p>
+</li>
+<li><p>‘:maxlevel’</p>
+<p>When set to a number, do not capture entries below this level.</p>
+</li>
+<li><p>‘:skip-empty-rows’</p>
+<p>When non-<code>nil</code>, skip rows where the only non-empty specifier of the column view is ‘ITEM’.</p>
+</li>
+<li><p>‘:indent’</p>
+<p>When non-<code>nil</code>, indent each ‘ITEM’ field according to its level.</p>
+</li>
+<li><p>‘:format’</p>
+<p>Specify a column attribute (see <a href="https://orgmode.org/manual/Column-attributes.html#Column-attributes" target="_blank" rel="noopener">Column attributes</a>) for the dynamic block.</p>
+</li>
+</ul>
+<p>The following commands insert or update the dynamic block:</p>
+<ul>
+<li><p>C-c C-x i (<code>org-insert-columns-dblock</code>)</p>
+<p>Insert a dynamic block capturing a column view. Prompt for the scope or ID of the view.</p>
+</li>
+<li><p>C-c C-c C-c C-x C-u (<code>org-dblock-update</code>)</p>
+<p>Update dynamic block at point. point needs to be in the ‘#+BEGIN’ line of the dynamic block.</p>
+</li>
+<li><p>C-u C-c C-x C-u (<code>org-update-all-dblocks</code>)</p>
+<p>Update all dynamic blocks (see <a href="https://orgmode.org/manual/Dynamic-Blocks.html#Dynamic-Blocks" target="_blank" rel="noopener">Dynamic Blocks</a>). This is useful if you have several clock table blocks, column-capturing blocks or other dynamic blocks in a buffer.</p>
+</li>
+</ul>
+<p>You can add formulas to the column view table and you may add plotting instructions in front of the table—these survive an update of the block. If there is a ‘TBLFM’ keyword after the table, the table is recalculated automatically after an update.</p>
+<p>An alternative way to capture and process property values into a table is provided by Eric Schulte’s ‘org-collector.el’, which is a contributed package<a href="https://orgmode.org/manual/Capturing-column-view.html#FOOT60" target="_blank" rel="noopener">60</a>. It provides a general API to collect properties from entries in a certain scope, and arbitrary Lisp expressions to process these values before inserting them into a table or a dynamic block.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -3603,231 +4137,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/08/parameters-sequence-in-strptime/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gabriel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="AlphaAlgorithms">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/08/parameters-sequence-in-strptime/" class="post-title-link" itemprop="url">datetime.strptime()参数顺序的问题</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-08 19:47:35" itemprop="dateCreated datePublished" datetime="2019-05-08T19:47:35+08:00">2019-05-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-05-15 09:40:15" itemprop="dateModified" datetime="2019-05-15T09:40:15+08:00">2019-05-15</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-system/" itemprop="url" rel="index"><span itemprop="name">linux - system</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/08/parameters-sequence-in-strptime/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/08/parameters-sequence-in-strptime/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>经常会错写<code>datetime.strptime(string, format)</code>,颠倒两个参数的顺序而写成<code>datetime.strptime(format, string)</code> 与<code>re.find(pattern, string)</code>相混淆.</p>
-<h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><h3 id="datetime-strptime"><a href="#datetime-strptime" class="headerlink" title="datetime.strptime()"></a>datetime.strptime()</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strptime(string, format) method of builtins.type instance</span><br><span class="line">    string, format -&gt; new datetime parsed from a string (like time.strptime()).</span><br><span class="line">    </span><br><span class="line">  <span class="comment">#Case</span></span><br><span class="line"> In [<span class="number">6</span>]: datetime.strptime(<span class="string">"8 May, 2019"</span>, <span class="string">"%d %B, %Y"</span>)                                                                         </span><br><span class="line">Out[<span class="number">6</span>]: datetime.datetime(<span class="number">2019</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<p><code>strptime</code>的函数命名不太好, 词义模糊, 不如直接叫<code>str2time</code>.  string是source, time是result.</p>
-<p>本函数的工作是parse a string to produce a time  object.  <code>strptime</code> 的字面含义读起来却像是毫无意义的string to parse time或者是读成相反的含义parse time to produce a string.妥协的处理方法理解为”string parsed” to time.将<code>strp</code>当做一个组合名词<code>strp2time</code></p>
-<p>官方的<code>strptime</code>命名比较<code>str2time</code>的优点是存在动词parse,点出函数的内部逻辑需要做的核心工作是解析,将普通的字符串解析成为有实际价值和意义的时间对象.(更像是开发者提醒自己非写给API的用户)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">datetime.strptime(string, format)</span><br><span class="line"><span class="comment">#扩展为</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strptime</span><span class="params">(src_string, parsed_format)</span> -&gt; "dst_time_object":</span></span><br></pre></td></tr></table></figure>
-<p>这样看来<code>strptime</code>还是符合 <code>source</code> to <code>destination</code> 的模式.</p>
-<p>容易混淆string与format顺序的一个直接原因是存在<code>re.match(pattern, str)</code>, 按照module re的这个思路, 要事第一,对<code>strptime(string, format)</code>的处理应该将<code>format</code>拿到前面.</p>
-<p>对此的理解:</p>
-<p>一, source to destination是惯例, strptime(string, format)没有打破惯例<br>二, regex突破了惯例, 可能因为consturct regex需要花费较多脑力,而其他如time-format并不需要.<br>(regex的所有的methods都是将构建regex-pattern作为第一个参数)</p>
-<p>三, 处理strptime从字面含义去引导直觉. strptime(string, parsed-format) to a time-object</p>
-<h3 id="datetime-strftime"><a href="#datetime-strftime" class="headerlink" title="datetime.strftime()"></a>datetime.strftime()</h3><p>容易混淆的另外一个原因是strptime的逆函数<code>strftime</code></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">strftime(format)</span><br><span class="line">    format -&gt; strftime() style string.</span><br><span class="line">In [<span class="number">8</span>]: dt                                                                                                                    </span><br><span class="line">Out[<span class="number">8</span>]: datetime.datetime(<span class="number">2019</span>, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">In [<span class="number">9</span>]: dt.strftime(<span class="string">"%d %B, %Y"</span>)                                                                                              </span><br><span class="line">Out[<span class="number">9</span>]: <span class="string">'08 May, 2019'</span></span><br></pre></td></tr></table></figure>
-<p>strftime是<code>time2str</code></p>
-<p>受<code>strftime</code> (string format time)这个命名的影响, 很容易写作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">datetime.strftime(<span class="string">"%d %B, %Y"</span>, time_obj)</span><br></pre></td></tr></table></figure>
-<p>可能想一下会意识到没有充分利用<code>time_obj</code>已经是<code>datetime object</code>这个既成事实, 应该打开其内建的工具箱.<br><code>strftime</code> 中的<code>str</code>是多余的, 既然是format, return的结果一定是string.去掉str只留下 <code>ftime</code>更为简洁.<br><code>strftime</code>对比<code>str2time</code>的优点,也是有一个显性的动词format.<br>与<code>strptime(string,parsed_format)</code>对应</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#strftime可以写为</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">strftime</span><span class="params">(self, format)</span> -&gt; string:</span></span><br></pre></td></tr></table></figure>
-<p>观察<code>time_object.strftime(format) - &gt; string</code> 的结构,遵循 <code>src to dst</code> 的原则．作为src的time_object写在前面．输出的结果为string.</p>
-<h2 id="总结，"><a href="#总结，" class="headerlink" title="总结，　"></a>总结，　</h2><p><code>strptime  def strptime(src_string,  parsed-format) -&gt;dst_time</code> 与｀src_time_object.strftime(string_format)<code>都遵循｀src to dst</code> 的原则，引起歧义的根源是两个函数的命名．<br>解决方案 <code>strptime</code> 直觉扩展为<code>strp</code> string parsed + to + <code>timet</code><br><code>strftime</code>,将多余的str去掉，<code>ftime</code> format time , str当做冗余的形容词修饰format. stringly format.<br>P.S. format time to string不是一个好的解决方案，因为颠倒了src和dst.<br>两个动词是核心,parse or format.如果是parse的工作,输出结果time_object.做format的工作,就return string.</p>
-<p>应用时刻的思维链条:<br>parse -&gt; parse src_string to dst_time -&gt; string parsed to time-&gt; datetime.strptime(src_string, format)</p>
-<p>format -&gt; format src_time to dst_string-&gt; stringly format time to string -&gt;time_object.strftime(format)</p>
-<p>1)辨析parse or format 2)都遵循 src to dst 3) str[pf]time顺序不变.</p>
-<p>除了re.search(pattern, src)之外,还有一个不守规矩的特例.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">12</span>]: <span class="string">"source to destination"</span>.split()                                                                                      </span><br><span class="line">Out[<span class="number">12</span>]: [<span class="string">'source'</span>, <span class="string">'to'</span>, <span class="string">'destination'</span>] <span class="comment">#遵循source to destination,  convert src_str to dst_list </span></span><br><span class="line"><span class="comment">#逆操作却将要输出的结果放在了前面.</span></span><br><span class="line">In [<span class="number">13</span>]: <span class="string">" "</span>.join([<span class="string">'source'</span>, <span class="string">'to'</span>, <span class="string">'destination'</span>])                                                                            </span><br><span class="line">Out[<span class="number">13</span>]: <span class="string">'source to destination'</span></span><br><span class="line"> <span class="comment">#显然['source', 'to', 'destination'].join(" ")更为合理 convert src_list to dst_string</span></span><br></pre></td></tr></table></figure>
-<p>可能的解释, Python将所有涉及string的操作集中在了一处.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">16</span>]: len([m <span class="keyword">for</span> m <span class="keyword">in</span> dir(str) <span class="keyword">if</span> <span class="keyword">not</span> m.startswith(<span class="string">"__"</span>)])                                                                 </span><br><span class="line">Out[<span class="number">16</span>]: <span class="number">45</span></span><br><span class="line">In [<span class="number">17</span>]: len([m <span class="keyword">for</span> m <span class="keyword">in</span> dir(list) <span class="keyword">if</span> <span class="keyword">not</span> m.startswith(<span class="string">"__"</span>)])                                                                </span><br><span class="line">Out[<span class="number">17</span>]: <span class="number">11</span></span><br></pre></td></tr></table></figure>
-<p>methods of string 是list的四倍.</p>
-<blockquote>
-<p>辨析特例与常规.</p>
-<p>regex和”,”.join是特例, strptime, strftime, str.split是常规.</p>
-</blockquote>
-<h2 id="date-and-clock"><a href="#date-and-clock" class="headerlink" title="date and clock"></a>date and clock</h2><p>Maintain system time是操作系统提供的最基础的service API.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ date -u</span><br><span class="line">$ sudo hwclock -u</span><br><span class="line"><span class="number">2019</span><span class="number">-05</span><span class="number">-08</span> <span class="number">20</span>:<span class="number">19</span>:<span class="number">14.764965</span>+<span class="number">08</span>:<span class="number">00</span></span><br><span class="line"><span class="comment">#str2time,</span></span><br><span class="line">$ date -d <span class="string">"08 May 2019"</span> +<span class="string">"%c"</span> </span><br><span class="line">Wed <span class="number">08</span> May <span class="number">2019</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">00</span> AM CST</span><br><span class="line"><span class="comment">#time2str, strftime </span></span><br><span class="line">$ date +<span class="string">"%d %B, %Y"</span></span><br><span class="line"><span class="number">08</span> May, <span class="number">2019</span></span><br><span class="line"><span class="comment">#思路与strptime, strftime一致.</span></span><br></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior" target="_blank" rel="noopener"><code>strftime()</code> and <code>strptime()</code> Behavior</a><br><a href="https://www.programiz.com/python-programming/datetime/strptime" target="_blank" rel="noopener">Python strptime() - string to datetime object</a></p>
-<p><a href="https://docs.python.org/3/library/datetime.html#strftime-strptime-behavior" target="_blank" rel="noopener">datetime — Basic date and time types — Python 3.7.3 documentation</a></p>
-<p><a href="https://www.cyberciti.biz/faq/linux-unix-formatting-dates-for-display/" target="_blank" rel="noopener">How To Format Date For Display or Use In a Shell Script - nixCraft</a></p>
-<p><a href="https://stackoverflow.com/questions/11144408/convert-string-to-date-in-bash" target="_blank" rel="noopener">Convert string to date in bash - Stack Overflow</a></p>
-<p><a href="https://www.gnu.org/software/coreutils/manual/html_node/Examples-of-date.html" target="_blank" rel="noopener">GNU Coreutils: Examples of date</a></p>
-<p><a href="https://www.geeksforgeeks.org/date-command-linux-examples/" target="_blank" rel="noopener">date command in Linux with examples - GeeksforGeeks</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -3874,7 +4183,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -3907,7 +4216,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">8</span>
+                      
+                    
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
