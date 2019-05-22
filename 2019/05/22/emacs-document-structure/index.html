@@ -96,14 +96,18 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="emacs document structure">
+  <meta name="description" content="Org is an outliner. Outlines allow a document to be organized in a hierarchical structure, which, least for me, is the best representation of notes and thoughts. An overview of this structure is achi">
+<meta name="keywords" content="emacs,orgmode,documentStructure">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.Document Strucure">
 <meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/22/emacs-document-structure/index.html">
 <meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="Org is an outliner. Outlines allow a document to be organized in a hierarchical structure, which, least for me, is the best representation of notes and thoughts. An overview of this structure is achi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-22T01:51:35.994Z">
+<meta property="og:updated_time" content="2019-05-22T02:46:49.594Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="emacs document structure">
+<meta name="twitter:title" content="2.Document Strucure">
+<meta name="twitter:description" content="Org is an outliner. Outlines allow a document to be organized in a hierarchical structure, which, least for me, is the best representation of notes and thoughts. An overview of this structure is achi">
 
 
 
@@ -121,7 +125,7 @@
   };
 </script>
 
-  <title>emacs document structure | DummyHead</title>
+  <title>2.Document Strucure | DummyHead</title>
   
 
 
@@ -238,7 +242,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">18</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">19</span></a>
 
   </li>
         
@@ -345,7 +349,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">emacs document structure
+          <h2 class="post-title" itemprop="name headline">2.Document Strucure
 
               
             
@@ -371,12 +375,34 @@
                 
               
 
-              <time title="Created: 2019-05-22 09:51:35" itemprop="dateCreated datePublished" datetime="2019-05-22T09:51:35+08:00">2019-05-22</time>
+              <time title="Created: 2019-05-22 09:51:35 / Modified: 10:46:49" itemprop="dateCreated datePublished" datetime="2019-05-22T09:51:35+08:00">2019-05-22</time>
             
 
+            
+              
+
+              
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-orgmode/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - orgmode</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -419,7 +445,384 @@
       
 
       
-        
+        <hr>
+<p>Org is an outliner. Outlines allow a document to be organized in a hierarchical structure, which, least for me, is the best representation of notes and thoughts. An overview of this structure is achieved by folding, i.e., hiding large parts of the document to show only the general document structure and the parts currently being worked on. Org greatly simplifies the use of outlines by compressing the entire show and hide functionalities into a single command, <code>org-cycle</code>, which is bound to the TAB key.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://orgmode.org/manual/Headlines.html#Headlines" target="_blank" rel="noopener">Headlines</a>:</th>
+<th>How to typeset Org tree headlines.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Visibility-Cycling.html#Visibility-Cycling" target="_blank" rel="noopener">Visibility Cycling</a>:</td>
+<td>Show and hide, much simplified.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Motion.html#Motion" target="_blank" rel="noopener">Motion</a>:</td>
+<td>Jumping to other headlines.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Structure-Editing.html#Structure-Editing" target="_blank" rel="noopener">Structure Editing</a>:</td>
+<td>Changing sequence and level of headlines.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Sparse-Trees.html#Sparse-Trees" target="_blank" rel="noopener">Sparse Trees</a>:</td>
+<td>Matches embedded in context.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Plain-Lists.html#Plain-Lists" target="_blank" rel="noopener">Plain Lists</a>:</td>
+<td>Additional structure within an entry.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Drawers.html#Drawers" target="_blank" rel="noopener">Drawers</a>:</td>
+<td>Tucking stuff away.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Blocks.html#Blocks" target="_blank" rel="noopener">Blocks</a>:</td>
+<td>Folding blocks.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Creating-Footnotes.html#Creating-Footnotes" target="_blank" rel="noopener">Creating Footnotes</a>:</td>
+<td>How footnotes are defined in Org’s syntax.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-1-Headlines"><a href="#2-1-Headlines" class="headerlink" title="2.1 Headlines"></a>2.1 Headlines</h2><blockquote>
+<p>最大的收获便是:<br>org-cycle-separator-lines 此功能可以控制.</p>
+</blockquote>
+<p>Headlines define the structure of an outline tree. The headlines in Org start with one or more stars, on the left margin<a href="https://orgmode.org/manual/Headlines.html#FOOT3" target="_blank" rel="noopener">3</a>. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">* Top level headline</span><br><span class="line">** Second level</span><br><span class="line">*** Third level</span><br><span class="line">    some text</span><br><span class="line">*** Third level</span><br><span class="line">    more text</span><br><span class="line">* Another top level headline</span><br></pre></td></tr></table></figure>
+<p>The name defined in <code>org-footnote-section</code> is reserved. Do not use it as a title for your own headings.</p>
+<p>Some people find the many stars too noisy and would prefer an outline that has whitespace followed by a single star as headline starters. See <a href="https://orgmode.org/manual/Clean-View.html#Clean-View" target="_blank" rel="noopener">Clean View</a>.</p>
+<p>An empty line after the end of a subtree is considered part of it and is hidden when the subtree is folded. However, if you leave at least two empty lines, one empty line remains visible after folding the subtree, in order to structure the collapsed view. See the variable <code>org-cycle-separator-lines</code> to modify this behavior.</p>
+<blockquote>
+<p>See the variables <code>org-special-ctrl-a/e</code>, <code>org-special-ctrl-k</code>, and <code>org-ctrl-k-protect-subtree</code> to configure special behavior of C-a, C-e, and C-k in headlines. Note also that clocking only works with headings indented less than 30 stars.</p>
+</blockquote>
+<h2 id="2-2-Visibility-Cycling"><a href="#2-2-Visibility-Cycling" class="headerlink" title="2.2 Visibility Cycling"></a>2.2 Visibility Cycling</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://orgmode.org/manual/Global-and-local-cycling.html#Global-and-local-cycling" target="_blank" rel="noopener">Global and local cycling</a>:</th>
+<th>Cycling through various visibility states.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Initial-visibility.html#Initial-visibility" target="_blank" rel="noopener">Initial visibility</a>:</td>
+<td>Setting the initial visibility state.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Catching-invisible-edits.html#Catching-invisible-edits" target="_blank" rel="noopener">Catching invisible edits</a>:</td>
+<td>Preventing mistakes when editing invisible parts.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2-1-Global-and-local-cycling"><a href="#2-2-1-Global-and-local-cycling" class="headerlink" title="2.2.1 Global and local cycling"></a>2.2.1 Global and local cycling</h3><blockquote>
+<p>Tab and S-Tab, 其余无关紧要.</p>
+</blockquote>
+<p>Outlines make it possible to hide parts of the text in the buffer. Org uses just two commands, bound to TAB and S-TAB to change the visibility in the buffer.</p>
+<ul>
+<li><p>TAB (<code>org-cycle</code>)</p>
+<p><em>Subtree cycling</em>: Rotate current subtree among the states,</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">,-&gt; FOLDED -&gt; CHILDREN -&gt; SUBTREE --.</span><br><span class="line"><span class="string">'----------------------------------------------------'</span></span><br><span class="line"><span class="comment">#有意思的一点, display的是subtree</span></span><br></pre></td></tr></table></figure>
+<p>Point must be on a headline for this to work<a href="https://orgmode.org/manual/Global-and-local-cycling.html#FOOT4" target="_blank" rel="noopener">4</a>.</p>
+</li>
+<li><p>S-TAB (<code>org-global-cycle</code>)</p>
+</li>
+<li><p>C-u TAB</p>
+<p><em>Global cycling</em>: Rotate the entire buffer among the states, </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">,-&gt; OVERVIEW -&gt; CONTENTS -&gt; SHOW ALL --.</span><br><span class="line"><span class="string">'---------------------------------------------------------'</span></span><br><span class="line"><span class="comment">#棒呀.</span></span><br></pre></td></tr></table></figure>
+<p>When S-TAB is called with a numeric prefix argument N, the CONTENTS view up to headlines of level N are shown. Note that inside tables (see <a href="https://orgmode.org/manual/Tables.html#Tables" target="_blank" rel="noopener">Tables</a>), S-TAB jumps to the previous field instead.You can run global cycling using TAB only if point is at the very beginning of the buffer, but not on a headline, and <code>org-cycle-global-at-bob</code> is set to a non-<code>nil</code> value.</p>
+<blockquote>
+<p>前面两个足够, 后面的用不到. </p>
+</blockquote>
+</li>
+<li><p>C-u C-u TAB (<code>org-set-startup-visibility</code>)</p>
+<p>Switch back to the startup visibility of the buffer (see <a href="https://orgmode.org/manual/Initial-visibility.html#Initial-visibility" target="_blank" rel="noopener">Initial visibility</a>).</p>
+</li>
+<li><p>C-u C-u C-u TAB (<code>outline-show-all</code>)</p>
+<p>Show all, including drawers.</p>
+</li>
+<li><p>C-c C-r (<code>org-reveal</code>)</p>
+<p>Reveal context around point, showing the current entry, the following heading and the hierarchy above. Useful for working near a location that has been exposed by a sparse tree command (see <a href="https://orgmode.org/manual/Sparse-Trees.html#Sparse-Trees" target="_blank" rel="noopener">Sparse Trees</a>) or an agenda command (see <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>). With a prefix argument show, on each level, all sibling headings. With a double prefix argument, also show the entire subtree of the parent.</p>
+</li>
+<li><p>C-c C-k (<code>outline-show-branches</code>)</p>
+<p>Expose all the headings of the subtree, CONTENTS view for just one subtree.</p>
+</li>
+<li><p>C-c TAB (<code>outline-show-children</code>)</p>
+<p>Expose all direct children of the subtree. With a numeric prefix argument N, expose all children down to level N.</p>
+</li>
+<li><p>C-c C-x b (<code>org-tree-to-indirect-buffer</code>)</p>
+<p>Show the current subtree in an indirect buffer<a href="https://orgmode.org/manual/Global-and-local-cycling.html#FOOT5" target="_blank" rel="noopener">5</a>. With a numeric prefix argument, N, go up to level N and then take that tree. If N is negative then go up that many levels. With a C-u prefix, do not remove the previously used indirect buffer.</p>
+</li>
+<li><p>C-c C-x v (<code>org-copy-visible</code>)</p>
+<p>Copy the <em>visible</em> text in the region into the kill ring.</p>
+</li>
+</ul>
+<blockquote>
+<ol>
+<li>See, however, the option <code>org-cycle-emulate-tab</code>.</li>
+<li>The indirect buffer contains the entire buffer, but is narrowed to the current tree. Editing the indirect buffer also changes the original buffer, but without affecting visibility in that buffer. For more information about indirect buffers, see <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Indirect-Buffers.html#Indirect-Buffers" target="_blank" rel="noopener">(emacs)GNU Emacs Manual</a>.</li>
+</ol>
+</blockquote>
+<h3 id="2-2-2-Initial-visibility"><a href="#2-2-2-Initial-visibility" class="headerlink" title="2.2.2 Initial visibility"></a>2.2.2 Initial visibility</h3><p>When Emacs first visits an Org file, the global state is set to OVERVIEW, i.e., only the top level headlines are visible<a href="https://orgmode.org/manual/Initial-visibility.html#FOOT6" target="_blank" rel="noopener">6</a>. This can be configured through the variable <code>org-startup-folded</code>, or on a per-file basis by adding one of the following lines anywhere in the buffer:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#+STARTUP: overview</span><br><span class="line">#+STARTUP: content</span><br><span class="line">#+STARTUP: showall</span><br><span class="line">#+STARTUP: showeverything</span><br></pre></td></tr></table></figure>
+<p>Furthermore, any entries with a ‘VISIBILITY’ property (see <a href="https://orgmode.org/manual/Properties-and-Columns.html#Properties-and-Columns" target="_blank" rel="noopener">Properties and Columns</a>) get their visibility adapted accordingly. Allowed values for this property are ‘folded’, ‘children’, ‘content’, and ‘all’.</p>
+<ul>
+<li><p>C-u C-u TAB (<code>org-set-startup-visibility</code>)</p>
+<p>Switch back to the startup visibility of the buffer, i.e., whatever is requested by startup options and ‘VISIBILITY’ properties in individual entries.</p>
+</li>
+</ul>
+<h3 id="2-2-3-Catching-invisible-edits"><a href="#2-2-3-Catching-invisible-edits" class="headerlink" title="2.2.3 Catching invisible edits"></a>2.2.3 Catching invisible edits</h3><p>Sometimes you may inadvertently edit an invisible part of the buffer and be confused on what has been edited and how to undo the mistake. Setting <code>org-catch-invisible-edits</code> to non-<code>nil</code> helps preventing this. See the docstring of this option on how Org should catch invisible edits and process them.</p>
+<h2 id="2-3-Motion"><a href="#2-3-Motion" class="headerlink" title="2.3 Motion"></a>2.3 Motion</h2><p>The following commands jump to other headlines in the buffer.</p>
+<ul>
+<li><p>C-c C-n (<code>outline-next-visible-heading</code>)</p>
+<p>Next heading.</p>
+</li>
+<li><p>C-c C-p (<code>outline-previous-visible-heading</code>)</p>
+<p>Previous heading.</p>
+</li>
+<li><p>C-c C-f (<code>org-forward-same-level</code>)</p>
+<p>Next heading same level.</p>
+</li>
+<li><p>C-c C-b (<code>org-backward-same-level</code>)</p>
+<p>Previous heading same level.</p>
+</li>
+<li><p>C-c C-u (<code>outline-up-heading</code>)</p>
+<p>Backward to higher level heading.</p>
+</li>
+<li><p>C-c C-j (<code>org-goto</code>)</p>
+<p>Jump to a different place without changing the current outline visibility. Shows the document structure in a temporary buffer, where you can use the following keys to find your destination:TABCycle visibility.DOWN / nnnnnnnnUPNext/previous visible headline.RETSelect this location./Do a Sparse-tree searchThe following keys work if you turn off <code>org-goto-auto-isearch</code>n / pNext/previous visible headline.f / bNext/previous headline same level.uOne level up.0 … 9Digit argument.qQuit.See also the variable <code>org-goto-interface</code>.</p>
+</li>
+</ul>
+<blockquote>
+<p>没啥用, 不必要如此精确的操作. </p>
+</blockquote>
+<h2 id="2-4-Structure-Editing"><a href="#2-4-Structure-Editing" class="headerlink" title="2.4 Structure Editing"></a>2.4 Structure Editing</h2><blockquote>
+<p>不必要,  最基本的操作可以解决问题. </p>
+</blockquote>
+<ul>
+<li><p>M-RET (<code>org-meta-return</code>)</p>
+<p>Insert a new heading, item or row.If the command is used at the <em>beginning</em> of a line, and if there is a heading or a plain list item (see <a href="https://orgmode.org/manual/Plain-Lists.html#Plain-Lists" target="_blank" rel="noopener">Plain Lists</a>) at point, the new heading/item is created <em>before</em> the current line. When used at the beginning of a regular line of text, turn that line into a heading.When this command is used in the middle of a line, the line is split and the rest of the line becomes the new item or headline. If you do not want the line to be split, customize <code>org-M-RET-may-split-line</code>.Calling the command with a C-u prefix unconditionally inserts a new heading at the end of the current subtree, thus preserving its contents. With a double C-u C-u prefix, the new heading is created at the end of the parent subtree instead.</p>
+</li>
+<li><p>C-RET (<code>org-insert-heading-respect-content</code>)</p>
+<p>Insert a new heading at the end of the current subtree.</p>
+</li>
+<li><p>M-S-RET (<code>org-insert-todo-heading</code>)</p>
+<p>Insert new TODO entry with same level as current heading. See also the variable <code>org-treat-insert-todo-heading-as-state-change</code>.</p>
+</li>
+<li><p>C-S-RET (<code>org-insert-todo-heading-respect-content</code>)</p>
+<p>Insert new TODO entry with same level as current heading. Like C-RET, the new headline is inserted after the current subtree.</p>
+</li>
+<li><p>TAB (<code>org-cycle</code>)</p>
+<p>In a new entry with no text yet, the first TAB demotes the entry to become a child of the previous one. The next TAB makes it a parent, and so on, all the way to top level. Yet another TAB, and you are back to the initial level.</p>
+</li>
+<li><p>M-LEFT (<code>org-do-promote</code>)</p>
+<p>Promote current heading by one level.</p>
+</li>
+<li><p>M-RIGHT (<code>org-do-demote</code>)</p>
+<p>Demote current heading by one level.</p>
+</li>
+<li><p>M-S-LEFT (<code>org-promote-subtree</code>)</p>
+<p>Promote the current subtree by one level.</p>
+</li>
+<li><p>M-S-RIGHT (<code>org-demote-subtree</code>)</p>
+<p>Demote the current subtree by one level.</p>
+</li>
+<li><p>M-UP (<code>org-move-subtree-up</code>)</p>
+<p>Move subtree up, i.e., swap with previous subtree of same level.</p>
+</li>
+<li><p>M-DOWN (<code>org-move-subtree-down</code>)</p>
+<p>Move subtree down, i.e., swap with next subtree of same level.</p>
+</li>
+<li><p>C-c @ (<code>org-mark-subtree</code>)</p>
+<p>Mark the subtree at point. Hitting repeatedly marks subsequent subtrees of the same level as the marked subtree.</p>
+</li>
+<li><p>C-c C-x C-w (<code>org-cut-subtree</code>)</p>
+<p>Kill subtree, i.e., remove it from buffer but save in kill ring. With a numeric prefix argument N, kill N sequential subtrees.</p>
+</li>
+<li><p>C-c C-x M-w (<code>org-copy-subtree</code>)</p>
+<p>Copy subtree to kill ring. With a numeric prefix argument N, copy the N sequential subtrees.</p>
+</li>
+<li><p>C-c C-x C-y (<code>org-paste-subtree</code>)</p>
+<p>Yank subtree from kill ring. This does modify the level of the subtree to make sure the tree fits in nicely at the yank position. The yank level can also be specified with a numeric prefix argument, or by yanking after a headline marker like ‘<em>**</em>’.</p>
+</li>
+<li><p>C-y (<code>org-yank</code>)</p>
+<p>Depending on the variables <code>org-yank-adjusted-subtrees</code> and <code>org-yank-folded-subtrees</code>, Org’s internal <code>yank</code> command pastes subtrees folded and in a clever way, using the same command as C-c C-x C-y. With the default settings, no level adjustment takes place, but the yanked tree is folded unless doing so would swallow text previously visible. Any prefix argument to this command forces a normal <code>yank</code> to be executed, with the prefix passed along. A good way to force a normal yank is C-u C-y. If you use <code>yank-pop</code> after a yank, it yanks previous kill items plainly, without adjustment and folding.</p>
+</li>
+<li><p>C-c C-x c (<code>org-clone-subtree-with-time-shift</code>)</p>
+<p>Clone a subtree by making a number of sibling copies of it. You are prompted for the number of copies to make, and you can also specify if any timestamps in the entry should be shifted. This can be useful, for example, to create a number of tasks related to a series of lectures to prepare. For more details, see the docstring of the command <code>org-clone-subtree-with-time-shift</code>.</p>
+</li>
+<li><p>C-c C-w (<code>org-refile</code>)</p>
+<p>Refile entry or region to a different location. See <a href="https://orgmode.org/manual/Refile-and-Copy.html#Refile-and-Copy" target="_blank" rel="noopener">Refile and Copy</a>.</p>
+</li>
+<li><p>C-c ^ (<code>org-sort</code>)</p>
+<p>Sort same-level entries. When there is an active region, all entries in the region are sorted. Otherwise the children of the current headline are sorted. The command prompts for the sorting method, which can be alphabetically, numerically, by time—first timestamp with active preferred, creation time, scheduled time, deadline time—by priority, by TODO keyword—in the sequence the keywords have been defined in the setup—or by the value of a property. Reverse sorting is possible as well. You can also supply your own function to extract the sorting key. With a C-u prefix, sorting is case-sensitive.</p>
+</li>
+<li><p>C-x n s (<code>org-narrow-to-subtree</code>)</p>
+<p>Narrow buffer to current subtree.</p>
+</li>
+<li><p>C-x n b (<code>org-narrow-to-block</code>)</p>
+<p>Narrow buffer to current block.</p>
+</li>
+<li><p>C-x n w (<code>widen</code>)</p>
+<p>Widen buffer to remove narrowing.</p>
+</li>
+<li><p>C-c * (<code>org-toggle-heading</code>)</p>
+<p>Turn a normal line or plain list item into a headline—so that it becomes a subheading at its location. Also turn a headline into a normal line by removing the stars. If there is an active region, turn all lines in the region into headlines. If the first line in the region was an item, turn only the item lines into headlines. Finally, if the first line is a headline, remove the stars from all headlines in the region.</p>
+</li>
+</ul>
+<p>When there is an active region—i.e., when Transient Mark mode is active—promotion and demotion work on all headlines in the region. To select a region of headlines, it is best to place both point and mark at the beginning of a line, mark at the beginning of the first headline, and point at the line just after the last headline to change. Note that when point is inside a table (see <a href="https://orgmode.org/manual/Tables.html#Tables" target="_blank" rel="noopener">Tables</a>), the Meta-Cursor keys have different functionality.</p>
+<h2 id="2-5-Sparse-Trees"><a href="#2-5-Sparse-Trees" class="headerlink" title="2.5 Sparse Trees"></a>2.5 Sparse Trees</h2><p>An important feature of Org mode is the ability to construct <em>sparse trees</em> for selected information in an outline tree, so that the entire document is folded as much as possible, but the selected information is made visible along with the headline structure above it<a href="https://orgmode.org/manual/Sparse-Trees.html#FOOT7" target="_blank" rel="noopener">7</a>. Just try it out and you will see immediately how it works.</p>
+<p>Org mode contains several commands creating such trees, all these commands can be accessed through a dispatcher:</p>
+<ul>
+<li><p>C-c / (<code>org-sparse-tree</code>)</p>
+<p>This prompts for an extra key to select a sparse-tree creating command.</p>
+</li>
+<li><p>C-c / r or C-c / / (<code>org-occur</code>)</p>
+<p>Prompts for a regexp and shows a sparse tree with all matches. If the match is in a headline, the headline is made visible. If the match is in the body of an entry, headline and body are made visible. In order to provide minimal context, also the full hierarchy of headlines above the match is shown, as well as the headline following the match. Each match is also highlighted; the highlights disappear when the buffer is changed by an editing command, or by pressing C-c C-c<a href="https://orgmode.org/manual/Sparse-Trees.html#FOOT8" target="_blank" rel="noopener">8</a>. When called with a C-u prefix argument, previous highlights are kept, so several calls to this command can be stacked.</p>
+</li>
+<li><p>M-g n or M-g M-n (<code>next-error</code>)</p>
+<p>Jump to the next sparse tree match in this buffer.</p>
+</li>
+<li><p>M-g p or M-g M-p (<code>previous-error</code>) (M-g g就是go的含义)</p>
+<p>Jump to the previous sparse tree match in this buffer.</p>
+</li>
+</ul>
+<p>For frequently used sparse trees of specific search strings, you can use the variable <code>org-agenda-custom-commands</code> to define fast keyboard access to specific sparse trees. These commands will then be accessible through the agenda dispatcher (see <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>). For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-custom-commands</span><br><span class="line">      &apos;((&quot;f&quot; occur-tree &quot;FIXME&quot;)))</span><br></pre></td></tr></table></figure>
+<p>defines the key f as a shortcut for creating a sparse tree matching the string ‘FIXME’.</p>
+<p>The other sparse tree commands select headings based on TODO keywords, tags, or properties and are discussed later in this manual.</p>
+<p>To print a sparse tree, you can use the Emacs command <code>ps-print-buffer-with-faces</code> which does not print invisible parts of the document. Or you can use the command C-c C-e v to export only the visible part of the document and print the resulting file.</p>
+<blockquote>
+<ol>
+<li>See also the variable <code>org-show-context-detail</code> to decide how much context is shown around each match.</li>
+<li>This depends on the option <code>org-remove-highlights-with-change</code>.</li>
+</ol>
+</blockquote>
+<h2 id="2-6-Plain-Lists"><a href="#2-6-Plain-Lists" class="headerlink" title="2.6 Plain Lists"></a>2.6 Plain Lists</h2><blockquote>
+<p>关键的是几个转换的命令,<br>C-c C-* Turn全部, 尤其是checkbox, 日后将会常用</p>
+</blockquote>
+<p>Within an entry of the outline tree, hand-formatted lists can provide additional structure. They also provide a way to create lists of checkboxes (see <a href="https://orgmode.org/manual/Checkboxes.html#Checkboxes" target="_blank" rel="noopener">Checkboxes</a>). Org supports editing such lists, and every exporter (see <a href="https://orgmode.org/manual/Exporting.html#Exporting" target="_blank" rel="noopener">Exporting</a>) can parse and format them.</p>
+<p>Org knows ordered lists, unordered lists, and description lists.</p>
+<ul>
+<li><em>Unordered</em> list items start with ‘-’, ‘+’, or ‘*’<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT9" target="_blank" rel="noopener">9</a> as bullets.</li>
+<li><em>Ordered</em> list items start with a numeral followed by either a period or a right parenthesis<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT10" target="_blank" rel="noopener">10</a>, such as ‘1.’ or ‘1)’<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT11" target="_blank" rel="noopener">11</a> If you want a list to start with a different value—e.g., 20—start the text of the item with ‘[@20]’<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT12" target="_blank" rel="noopener">12</a>. Those constructs can be used in any item of the list in order to enforce a particular numbering.</li>
+<li><em>Description</em> list items are unordered list items, and contain the separator ‘::’ to distinguish the description <em>term</em> from the description.</li>
+</ul>
+<p>Items belonging to the same list must have the same indentation on the first line. In particular, if an ordered list reaches number ‘10.’, then the 2-digit numbers must be written left-aligned with the other numbers in the list. An item ends before the next line that is less or equally indented than its bullet/number.</p>
+<p>A list ends whenever every item has ended, which means before any line less or equally indented than items at top level. It also ends before two blank lines. In that case, all items are closed. Here is an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* Lord of the Rings</span><br><span class="line">My favorite scenes are (in this order)</span><br><span class="line">1. The attack of the Rohirrim</span><br><span class="line">2. Eowyn&apos;s fight with the witch king</span><br><span class="line">   + this was already my favorite scene in the book</span><br><span class="line">   + I really like Miranda Otto.</span><br><span class="line">3. Peter Jackson being shot by Legolas</span><br><span class="line">   - on DVD only</span><br><span class="line">   He makes a really funny face when it happens.</span><br><span class="line">But in the end, no individual scenes matter but the film as a whole.</span><br><span class="line">Important actors in this film are:</span><br><span class="line">- Elijah Wood :: He plays Frodo</span><br><span class="line">- Sean Astin :: He plays Sam, Frodo&apos;s friend. I still remember him</span><br><span class="line">     very well from his role as Mikey Walsh in /The Goonies/.</span><br></pre></td></tr></table></figure>
+<p>Org supports these lists by tuning filling and wrapping commands to deal with them correctly, and by exporting them properly (see <a href="https://orgmode.org/manual/Exporting.html#Exporting" target="_blank" rel="noopener">Exporting</a>). Since indentation is what governs the structure of these lists, many structural constructs like ‘#+BEGIN_’ blocks can be indented to signal that they belong to a particular item.</p>
+<p>If you find that using a different bullet for a sub-list—than that used for the current list-level—improves readability, customize the variable <code>org-list-demote-modify-bullet</code>. To get a greater difference of indentation between items and theirs sub-items, customize <code>org-list-indent-offset</code>.</p>
+<p>The following commands act on items when point is in the first line of an item—the line with the bullet or number. Some of them imply the application of automatic rules to keep list structure intact. If some of these actions get in your way, configure <code>org-list-automatic-rules</code> to disable them individually.</p>
+<ul>
+<li><p>TAB (<code>org-cycle</code>)</p>
+<p>Items can be folded just like headline levels. Normally this works only if point is on a plain list item. For more details, see the variable <code>org-cycle-include-plain-lists</code>. If this variable is set to <code>integrate</code>, plain list items are treated like low-level headlines. The level of an item is then given by the indentation of the bullet/number. Items are always subordinate to real headlines, however; the hierarchies remain completely separated. In a new item with no text yet, the first TAB demotes the item to become a child of the previous one. Subsequent TABs move the item to meaningful levels in the list and eventually get it back to its initial position.</p>
+</li>
+<li><p>M-RET (<code>org-insert-heading</code>)</p>
+<p>Insert new item at current level. With a prefix argument, force a new heading (see <a href="https://orgmode.org/manual/Structure-Editing.html#Structure-Editing" target="_blank" rel="noopener">Structure Editing</a>). If this command is used in the middle of an item, that item is <em>split</em> in two, and the second part becomes the new item<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT13" target="_blank" rel="noopener">13</a>. If this command is executed <em>before item’s body</em>, the new item is created <em>before</em> the current one.</p>
+</li>
+<li><p>M-S-RET</p>
+<p>Insert a new item with a checkbox (see <a href="https://orgmode.org/manual/Checkboxes.html#Checkboxes" target="_blank" rel="noopener">Checkboxes</a>).</p>
+</li>
+<li><p>S-UP</p>
+</li>
+<li><p>S-DOWN</p>
+<p>Jump to the previous/next item in the current list, but only if <code>org-support-shift-select</code> is off<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT14" target="_blank" rel="noopener">14</a>. If not, you can still use paragraph jumping commands like C-UP and C-DOWN to quite similar effect.</p>
+</li>
+<li><p>M-UP</p>
+</li>
+<li><p>M-DOWN</p>
+<p>Move the item including subitems up/down<a href="https://orgmode.org/manual/Plain-Lists.html#FOOT15" target="_blank" rel="noopener">15</a>, i.e., swap with previous/next item of same indentation. If the list is ordered, renumbering is automatic.</p>
+</li>
+<li><p>M-LEFT</p>
+</li>
+<li><p>M-RIGHT</p>
+<p>Decrease/increase the indentation of an item, leaving children alone.</p>
+</li>
+<li><p>M-S-LEFT</p>
+</li>
+<li><p>M-S-RIGHT</p>
+<p>Decrease/increase the indentation of the item, including subitems. Initially, the item tree is selected based on current indentation. When these commands are executed several times in direct succession, the initially selected region is used, even if the new indentation would imply a different hierarchy. To use the new hierarchy, break the command chain by moving point.As a special case, using this command on the very first item of a list moves the whole list. This behavior can be disabled by configuring <code>org-list-automatic-rules</code>. The global indentation of a list has no influence on the text <em>after</em> the list.</p>
+</li>
+<li><p>C-c C-c</p>
+<p>If there is a checkbox (see <a href="https://orgmode.org/manual/Checkboxes.html#Checkboxes" target="_blank" rel="noopener">Checkboxes</a>) in the item line, toggle the state of the checkbox. In any case, verify bullets and indentation consistency in the whole list.</p>
+</li>
+<li><p>C-c -</p>
+<p>Cycle the entire list level through the different itemize/enumerate bullets (‘-’, ‘+’, ‘*’, ‘1.’, ‘1)’) or a subset of them, depending on <code>org-plain-list-ordered-item-terminator</code>, the type of list, and its indentation. With a numeric prefix argument N, select the Nth bullet from this list. If there is an active region when calling this, selected text is changed into an item. With a prefix argument, all lines are converted to list items. If the first line already was a list item, any item marker is removed from the list. Finally, even without an active region, a normal line is converted into a list item.</p>
+</li>
+<li><p>C-c *</p>
+<p>Turn a plain list item into a headline—so that it becomes a subheading at its location. See <a href="https://orgmode.org/manual/Structure-Editing.html#Structure-Editing" target="_blank" rel="noopener">Structure Editing</a>, for a detailed explanation.</p>
+</li>
+<li><p>C-c C-*</p>
+<p>Turn the whole plain list into a subtree of the current heading. Checkboxes (see <a href="https://orgmode.org/manual/Checkboxes.html#Checkboxes" target="_blank" rel="noopener">Checkboxes</a>) become TODO, respectively DONE, keywords when unchecked, respectively checked.</p>
+</li>
+<li><p>S-LEFT</p>
+</li>
+<li><p>S-RIGHT</p>
+<p>This command also cycles bullet styles when point is in on the bullet or anywhere in an item line, details depending on <code>org-support-shift-select</code>.</p>
+</li>
+<li><p>C-c ^</p>
+<p>Sort the plain list. Prompt for the sorting method: numerically, alphabetically, by time, or by custom function.</p>
+</li>
+</ul>
+<h2 id="2-7-Drawers"><a href="#2-7-Drawers" class="headerlink" title="2.7 Drawers"></a>2.7 Drawers</h2><blockquote>
+<p>最重要的基本概念之一．</p>
+</blockquote>
+<p>Sometimes you want to keep information associated with an entry, but you normally do not want to see it. For this, Org mode has <em>drawers</em>. They can contain anything but a headline and another drawer. Drawers look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">** This is a headline</span><br><span class="line">Still outside the drawer</span><br><span class="line">:DRAWERNAME:</span><br><span class="line">This is inside the drawer.</span><br><span class="line">:END:</span><br><span class="line">After the drawer.</span><br></pre></td></tr></table></figure>
+<p>You can interactively insert a drawer at point by calling <code>org-insert-drawer</code>, which is bound to C-c C-x d. With an active region, this command puts the region inside the drawer. With a prefix argument, this command calls <code>org-insert-property-drawer</code>, which creates a ‘PROPERTIES’ drawer right below the current headline. Org mode uses this special drawer for storing properties (see<a href="https://orgmode.org/manual/Properties-and-Columns.html#Properties-and-Columns" target="_blank" rel="noopener">Properties and Columns</a>). You cannot use it for anything else.</p>
+<p>Completion over drawer keywords is also possible using M-TAB<a href="https://orgmode.org/manual/Drawers.html#FOOT16" target="_blank" rel="noopener">16</a>.</p>
+<p>Visibility cycling (see <a href="https://orgmode.org/manual/Visibility-Cycling.html#Visibility-Cycling" target="_blank" rel="noopener">Visibility Cycling</a>) on the headline hides and shows the entry, but keep the drawer collapsed to a single line. In order to look inside the drawer, you need to move point to the drawer line and press TAB there.</p>
+<p>You can also arrange for state change notes (see <a href="https://orgmode.org/manual/Tracking-TODO-state-changes.html#Tracking-TODO-state-changes" target="_blank" rel="noopener">Tracking TODO state changes</a>) and clock times (see <a href="https://orgmode.org/manual/Clocking-Work-Time.html#Clocking-Work-Time" target="_blank" rel="noopener">Clocking Work Time</a>) to be stored in a ‘LOGBOOK’ drawer. If you want to store a quick note there, in a similar way to state changes, use</p>
+<ul>
+<li><p>C-c C-z</p>
+<p>Add a time-stamped note to the ‘LOGBOOK’ drawer.</p>
+<blockquote>
+<p>　手动插入便可．</p>
+</blockquote>
+</li>
+</ul>
+<p>##　2.8 Blocks</p>
+<blockquote>
+<p>了解其formal概念是block即可.<br>文本编辑中的基本概念. 与HTML贯通起来. </p>
+</blockquote>
+<p>Org mode uses ‘#+BEGIN’ … ‘#+END’ blocks for various purposes from including source code examples (see <a href="https://orgmode.org/manual/Literal-Examples.html#Literal-Examples" target="_blank" rel="noopener">Literal Examples</a>) to capturing time logging information (see <a href="https://orgmode.org/manual/Clocking-Work-Time.html#Clocking-Work-Time" target="_blank" rel="noopener">Clocking Work Time</a>). These blocks can be folded and unfolded by pressing TAB in the ‘#+BEGIN’ line. You can also get all blocks folded at startup by configuring the variable <code>org-hide-block-startup</code> or on a per-file basis by using</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+STARTUP: hideblocks</span><br><span class="line">#+STARTUP: nohideblocks</span><br></pre></td></tr></table></figure>
+<h2 id="2-9-Creating-Footnotes"><a href="#2-9-Creating-Footnotes" class="headerlink" title="2.9 Creating Footnotes"></a>2.9 Creating Footnotes</h2><blockquote>
+<p>构建方式与markdown不同.</p>
+</blockquote>
+<p>Org mode supports the creation of footnotes.</p>
+<p>A footnote is started by a footnote marker in square brackets in column 0, no indentation allowed. It ends at the next footnote definition, headline, or after two consecutive empty lines. The footnote reference is simply the marker in square brackets, inside text. Markers always start with ‘fn:’. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The Org homepage[fn:1] now looks a lot better than it used to.</span><br><span class="line">...</span><br><span class="line">[fn:1] The link is: https://orgmode.org</span><br></pre></td></tr></table></figure>
+<p>Org mode extends the number-based syntax to <em>named</em> footnotes and optional inline definition. Here are the valid references:</p>
+<ul>
+<li><p>‘[fn:NAME]’</p>
+<p>A named footnote reference, where NAME is a unique label word, or, for simplicity of automatic creation, a number.</p>
+</li>
+<li><p>‘[fn:: This is the inline definition of this footnote]’</p>
+<p>A LaTeX-like anonymous footnote where the definition is given directly at the reference point.</p>
+</li>
+<li><p>‘[fn:NAME: a definition]’</p>
+<p>An inline definition of a footnote, which also specifies a name for the note. Since Org allows multiple references to the same note, you can then use ‘[fn:NAME]’ to create additional references.</p>
+</li>
+</ul>
+<p>Footnote labels can be created automatically, or you can create names yourself. This is handled by the variable <code>org-footnote-auto-label</code> and its corresponding ‘STARTUP’ keywords. See the docstring of that variable for details.</p>
+<p>The following command handles footnotes:</p>
+<ul>
+<li><p>C-c C-x f</p>
+<p>The footnote action command.When point is on a footnote reference, jump to the definition. When it is at a definition, jump to the—first—reference.Otherwise, create a new footnote. Depending on the variable <code>org-footnote-define-inline</code><a href="https://orgmode.org/manual/Creating-Footnotes.html#FOOT17" target="_blank" rel="noopener">17</a>, the definition is placed right into the text as part of the reference, or separately into the location determined by the variable <code>org-footnote-section</code>.When this command is called with a prefix argument, a menu of additional options is offered:sSort the footnote definitions by reference sequence.rRenumber the simple ‘fn:N’ footnotes.SShort for first r, then s action.nRename all footnotes into a ‘fn:1’ … ‘fn:n’ sequence.dDelete the footnote at point, including definition and references.Depending on the variable <code>org-footnote-auto-adjust</code><a href="https://orgmode.org/manual/Creating-Footnotes.html#FOOT18" target="_blank" rel="noopener">18</a>, renumbering and sorting footnotes can be automatic after each insertion or deletion.</p>
+</li>
+<li><p>C-c C-c</p>
+<p>If point is on a footnote reference, jump to the definition. If it is at the definition, jump back to the reference. When called at a footnote location with a prefix argument, offer the same menu as C-c C-x f.</p>
+</li>
+<li><p>C-c C-o or mouse-1/2</p>
+<p>Footnote labels are also links to the corresponding definition or reference, and you can use the usual commands to follow these links.</p>
+</li>
+</ul>
+
       
     </div>
 
@@ -439,6 +842,16 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/emacs/" rel="tag"># emacs</a>
+          
+            <a href="/tags/orgmode/" rel="tag"># orgmode</a>
+          
+            <a href="/tags/documentStructure/" rel="tag"># documentStructure</a>
+          
+        </div>
       
 
       
@@ -508,8 +921,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -610,7 +1032,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -652,6 +1076,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Headlines"><span class="nav-text">2.1 Headlines</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Visibility-Cycling"><span class="nav-text">2.2 Visibility Cycling</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-Global-and-local-cycling"><span class="nav-text">2.2.1 Global and local cycling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-Initial-visibility"><span class="nav-text">2.2.2 Initial visibility</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-Catching-invisible-edits"><span class="nav-text">2.2.3 Catching invisible edits</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Motion"><span class="nav-text">2.3 Motion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-Structure-Editing"><span class="nav-text">2.4 Structure Editing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-Sparse-Trees"><span class="nav-text">2.5 Sparse Trees</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-6-Plain-Lists"><span class="nav-text">2.6 Plain Lists</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-7-Drawers"><span class="nav-text">2.7 Drawers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-9-Creating-Footnotes"><span class="nav-text">2.9 Creating Footnotes</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -807,7 +1248,7 @@
   var disqus_config = function() {
     this.page.url = "https://alphaalgorithms.github.io/2019/05/22/emacs-document-structure/";
     this.page.identifier = "2019/05/22/emacs-document-structure/";
-    this.page.title = 'emacs document structure';
+    this.page.title = '2.Document Strucure';
     };
   function loadComments() {
     var d = document, s = d.createElement('script');
