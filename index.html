@@ -373,7 +373,7 @@
                 
               
 
-              <time title="Created: 2019-05-23 14:25:13 / Modified: 14:44:15" itemprop="dateCreated datePublished" datetime="2019-05-23T14:25:13+08:00">2019-05-23</time>
+              <time title="Created: 2019-05-23 14:25:13 / Modified: 21:42:00" itemprop="dateCreated datePublished" datetime="2019-05-23T14:25:13+08:00">2019-05-23</time>
             
 
             
@@ -463,8 +463,15 @@
 <li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Menu-Bar.html#Menu-Bar" target="_blank" rel="noopener">Menu Bar</a>: How to use the menu bar.</li>
 </ul>
 <h2 id="2-Kinds-of-User-Input"><a href="#2-Kinds-of-User-Input" class="headerlink" title="2 Kinds of User Input"></a>2 Kinds of User Input</h2><p>GNU Emacs is primarily designed for use with the keyboard. While it is possible to use the mouse to issue editing commands through the menu bar and tool bar, that is not as efficient as using the keyboard. Therefore, this manual mainly documents how to edit with the keyboard.</p>
-<p>Keyboard input into Emacs is based on a heavily-extended version of ASCII. Simple characters, like ‘a’, ‘B’, ‘3’, ‘=’, and the space character (denoted as <spc>), are entered by typing the corresponding key. Control characters, such as <ret>, <tab>, <del>, <esc>, <f1>, <home>, and <left>, are also entered this way, as are certain characters found on non-English keyboards (see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/International.html#International" target="_blank" rel="noopener">International</a>).</left></home></f1></esc></del></tab></ret></spc></p>
-<p>Emacs also recognizes control characters that are entered using modifier keys. Two commonly-used modifier keys are <control> (usually labeled <ctrl>), and <meta> (usually labeled <alt>)<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/User-Input.html#fn-1" target="_blank" rel="noopener">1</a>. For example, Control-a is entered by holding down the <ctrl> key while pressing a; we will refer to this as C-a for short. Similarly, <meta>-a, or M-a for short, is entered by holding down the <alt> key and pressing a. Modifier keys can also be applied to non-alphanumerical characters, e.g., C-<f1> or M-<left>.</left></f1></alt></ctrl></alt></ctrl></control></p>
+<p>Keyboard input into Emacs is based on a heavily-extended version of ASCII. </p>
+<ul>
+<li>Simple characters, like ‘a’, ‘B’, ‘3’, ‘=’, and the space character (denoted as <spc>), are entered by typing the corresponding key. </spc></li>
+<li>Control characters, such as <ret>, <tab>, <del>, <esc>, <f1>, <home>, and <left>, are also entered this way, as are certain characters found on non-English keyboards (see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/International.html#International" target="_blank" rel="noopener">International</a>).</left></home></f1></esc></del></tab></ret></li>
+<li>Emacs also recognizes control characters that are entered using modifier keys. Two commonly-used modifier keys are <control> (usually labeled <ctrl>), and <meta> (usually labeled <alt>)<a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/User-Input.html#fn-1" target="_blank" rel="noopener">1</a>. For example, Control-a is entered by holding down the <ctrl> key while pressing a; we will refer to this as C-a for short. Similarly, <meta>-a, or M-a for short, is entered by holding down the <alt> key and pressing a. Modifier keys can also be applied to non-alphanumerical characters, e.g., C-<f1> or M-<left>.</left></f1></alt></ctrl></alt></ctrl></control></li>
+</ul>
+<blockquote>
+<p>分类清晰, User Input, 从这里设置键盘一类别,<br>1) Simple 2) Control 3) Modifier </p>
+</blockquote>
 <p>You can also type Meta characters using two-character sequences starting with <esc>. Thus, you can enter M-a by typing <esc> a. You can enter C-M-a (holding down both <ctrl> and <alt>, then pressing a) by typing <esc> C-a. Unlike <meta>, <esc> is entered as a separate character. You don’t hold down <esc> while typing the next character; instead, press <esc> and release it, then enter the next character. This feature is useful on certain text terminals where the <meta> key does not function reliably.</esc></esc></esc></esc></alt></ctrl></esc></esc></p>
 <p>On graphical displays, the window manager might block some keyboard inputs, including M-<tab>, M-<spc>, C-M-d and C-M-l. If you have this problem, you can either customize your window manager to not block those keys, or rebind the affected Emacs commands (see <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Customization.html#Customization" target="_blank" rel="noopener">Customization</a>).</spc></tab></p>
 <p>Simple characters and control characters, as well as certain non-keyboard inputs such as mouse clicks, are collectively referred to as input events. For details about how Emacs internally handles input events, see <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Input-Events.html#Input-Events" target="_blank" rel="noopener">Input Events</a>.</p>
@@ -521,6 +528,9 @@
 <li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Arguments.html#Arguments" target="_blank" rel="noopener">Arguments</a>: Numeric arguments for repeating a command N times.</li>
 <li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Repeating.html#Repeating" target="_blank" rel="noopener">Repeating</a>: Repeating the previous command quickly.</li>
 </ul>
+<blockquote>
+<p>basic editing,  重要的基本概念．<br>pointer moving, </p>
+</blockquote>
 <h2 id="8-The-Minibuffer"><a href="#8-The-Minibuffer" class="headerlink" title="8 The Minibuffer"></a>8 The Minibuffer</h2><p>The minibuffer is where Emacs commands read complicated arguments, such as file names, buffer names, Emacs command names, or Lisp expressions. We call it the “minibuffer” because it’s a special-purpose buffer with a small amount of screen space. You can use the usual Emacs editing commands in the minibuffer to edit the argument text.</p>
 <ul>
 <li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Basic-Minibuffer.html#Basic-Minibuffer" target="_blank" rel="noopener">Basic Minibuffer</a>: Basic usage of the minibuffer.</li>
@@ -905,6 +915,9 @@
 <li><p><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/External-Lisp.html#External-Lisp" target="_blank" rel="noopener">External Lisp</a>: Communicating through Emacs with a separate Lisp.</p>
 </li>
 </ul>
+<blockquote>
+<p>功能性的部分. Project management,,</p>
+</blockquote>
 <h2 id="28-Maintaining-Large-Programs"><a href="#28-Maintaining-Large-Programs" class="headerlink" title="28 Maintaining Large Programs"></a>28 Maintaining Large Programs</h2><p>This chapter describes Emacs features for maintaining medium- to large-size programs and packages. These features include:</p>
 <ul>
 <li>Unified interface to Support for Version Control Systems (VCS) that record the history of changes to source files.</li>
