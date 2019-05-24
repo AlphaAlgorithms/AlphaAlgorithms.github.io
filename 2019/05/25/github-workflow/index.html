@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="准备工作 打开git bash，切换到桌面 新建 problems.doc 的Word文档 (用于记录操作过程中的问题,可以截图) 打开problems.doc文件(格式如下图左侧所示^_^)  123cd ~/desktop #打开桌面touch problems.doc #新建 Word文档start problems.doc #打开文档.   Fork English文件夹:(以我新注册账户">
+<meta name="keywords" content="git,github">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github workflow">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/25/github-workflow/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="准备工作 打开git bash，切换到桌面 新建 problems.doc 的Word文档 (用于记录操作过程中的问题,可以截图) 打开problems.doc文件(格式如下图左侧所示^_^)  123cd ~/desktop #打开桌面touch problems.doc #新建 Word文档start problems.doc #打开文档.   Fork English文件夹:(以我新注册账户">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fp3pvzp9bfj30pw0d0405.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pw303hzj30rt0g8whi.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pvyebyjj30us0h4gp1.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pw5efbtj30pr0dltbj.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fp3pwjyk2tj30j30csq4i.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcly1fp3pwh4gbej30ls0gwtd4.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pvugkabj30br0h90th.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pw1viduj30l501qweu.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pw4c658j30l403x3zh.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcly1fp3pwi1hc6j30jp0g0gph.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pvww510j30tp0gj76a.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcly1fp3pwkxsbmj30oy0h976l.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pw0odooj30oh0dr404.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fp3pvvk3jqj30qk0hkwih.jpg">
+<meta property="og:updated_time" content="2019-05-24T23:46:15.655Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="github workflow">
+<meta name="twitter:description" content="准备工作 打开git bash，切换到桌面 新建 problems.doc 的Word文档 (用于记录操作过程中的问题,可以截图) 打开problems.doc文件(格式如下图左侧所示^_^)  123cd ~/desktop #打开桌面touch problems.doc #新建 Word文档start problems.doc #打开文档.   Fork English文件夹:(以我新注册账户">
+<meta name="twitter:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1fp3pvzp9bfj30pw0d0405.jpg">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/05/25/github-workflow/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>github workflow | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">22</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">12</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">18</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/25/github-workflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">github workflow
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-25 07:45:29 / Modified: 07:46:15" itemprop="dateCreated datePublished" datetime="2019-05-25T07:45:29+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/management/" itemprop="url" rel="index"><span itemprop="name">management</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/25/github-workflow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/25/github-workflow/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ol>
+<li>打开git bash，切换到桌面</li>
+<li>新建 problems.doc 的Word文档 (用于记录操作过程中的问题,可以截图)</li>
+<li>打开problems.doc文件(格式如下图左侧所示^_^)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd ~/desktop <span class="comment">#打开桌面</span></span><br><span class="line">touch problems.doc <span class="comment">#新建 Word文档</span></span><br><span class="line">start problems.doc <span class="comment">#打开文档.</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1fp3pvzp9bfj30pw0d0405.jpg" alt="0.prepare"></p>
+<ol start="4">
+<li><p>Fork English文件夹:(以我新注册账户doufukuai为例)</p>
+<blockquote>
+<p>doufukai(someone全拼)是新注册的账户,这里代表你,要用你的名字和账户替代.</p>
+<p>账户M-DFK(someone的首字母)代表我的账户.</p>
+</blockquote>
+<p><code>start www.github.com</code>  打开GitHub网页</p>
+<p>(推荐使用Chrome浏览器)</p>
+<p>​</p>
+<p>2) 从M-DFK账户fork,English库</p>
+<p><code>start https://github.com/M-DFK/English</code></p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pw303hzj30rt0g8whi.jpg" alt="refork"></p>
+</li>
+</ol>
+<h2 id="初次作业流程"><a href="#初次作业流程" class="headerlink" title="初次作业流程"></a>初次作业流程</h2><ol>
+<li><p>回到你的GitHub账户中的English库中,</p>
+<p>(备注, 账户doufukuai代表你的账户, M-DFK代表我的账户)</p>
+</li>
+<li><p>复制 库的地址.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pvyebyjj30us0h4gp1.jpg" alt="copy git link"></p>
+</li>
+<li><p>在git bash中,使用git clone命令,可以将所有文件下载到本地.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切换到桌面</span></span><br><span class="line">cd ~/desktop</span><br><span class="line">git clone git@github.com:doufukuai/English.git</span><br><span class="line"><span class="comment">#git clone 后面跟着的是你的地址,比如 </span></span><br><span class="line"><span class="comment">#@melody真的操作.</span></span><br><span class="line"><span class="comment">#git clone https://github.com/liuzhen11/English.git</span></span><br></pre></td></tr></table></figure>
+<p><a href="mailto:&#39;git@github.com" target="_blank" rel="noopener">&#39;git@github.com</a>:doufukuai/English.git’ 是刚才复制的地址.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pw5efbtj30pr0dltbj.jpg" alt="git clone"></p>
+</li>
+<li><p>进入下载到桌面上的English文件,打开你的的文档 @someone.md 开始写作业.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#切换到english目录下</span></span><br><span class="line">cd english</span><br><span class="line"><span class="comment">#打开你的作业文件,可以手动到english文件内打开,或者用下面的命令打开.</span></span><br><span class="line">start @someone.md</span><br><span class="line"><span class="comment">#这里替换成你的文件, 比如 start @melody真</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fp3pwjyk2tj30j30csq4i.jpg" alt="homework"></p>
+</li>
+<li><p>写完作业且保存后,使用<code>git add</code>命令将作业添加到staging 区,这一步看起来繁琐,却很有用.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add @someone.md </span><br><span class="line"><span class="comment"># git add @melody真.md</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再将作业commit到Master分支</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">'@someone 2018-3-7'</span></span><br><span class="line"><span class="comment">#git commit -m '@melody 2018-03-16'</span></span><br></pre></td></tr></table></figure>
+<p>​</p>
+<p>m是message的缩写,<code>-</code>前面的这个连接线不要漏掉.</p>
+<p>message的内容是 名字 + 日期 ‘@someone 2018-3-7’</p>
+</li>
+<li><p>将更新的作业推送到someone的GitHub网页账户上.(也称为origin分支)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+<p>这条命令的意思是 push (someone更新的内容) to origin branch from master branch</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcly1fp3pwh4gbej30ls0gwtd4.jpg" alt="origin"></p>
+</li>
+<li><p>完成,去网页里查看一下是否有变化.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pvugkabj30br0h90th.jpg" alt="update"></p>
+</li>
+<li><p>用<code>git remote</code>命令,将M-DFK的库与本地库相关联.(也称为upstream分支)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream https://github.com/M-DFK/English.git</span><br><span class="line"><span class="comment">#这里不做任何更改,照搬复制.</span></span><br></pre></td></tr></table></figure>
+<p>不更改,整行复制,’<a href="https://github.com/M-DFK/English.git&#39;是M-DFK的Enlish库" target="_blank" rel="noopener">https://github.com/M-DFK/English.git&#39;是M-DFK的Enlish库</a>.</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pw1viduj30l501qweu.jpg" alt="add upstream"></p>
+</li>
+<li><p>检查是否添加成功</p>
+<pre><code>git remote -v
+</code></pre><p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pw4c658j30l403x3zh.jpg" alt="confirm remote"></p>
+</li>
+</ol>
+<h2 id="日常工作流程"><a href="#日常工作流程" class="headerlink" title="日常工作流程"></a>日常工作流程</h2><p>以上是初始设置的流程, 以后不需要从重复上述操作.</p>
+<p>下面是你每日交作业的标准流程.</p>
+<ol>
+<li>写作业前:(将M-DFK库的最近更新下载到本地)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1.切换到english文件夹下.</span></span><br><span class="line">cd ~/desktop/english <span class="comment">#切换到enligh文件夹下.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#如果换了一台设置好SSH的新电脑,不需要重复初次工作流程的步骤.</span></span><br><span class="line"><span class="comment">#先输入下面的命令, (初次工作流程的第九步)</span></span><br><span class="line"><span class="comment">#如果没有换新电脑,略过这一步.</span></span><br><span class="line">git remote add upstream https://github.com/M-DFK/English.git</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 2. 写作业前:(将M-DFK库的最近更新下载到本地)</span></span><br><span class="line">git fetch upstream  <span class="comment">#获取远程更新到本地</span></span><br><span class="line">git merge upstream/master <span class="comment">#与本地内容合并.</span></span><br><span class="line"><span class="comment"># 3. 打开你的文件写作业.</span></span><br><span class="line">start @someone.md   <span class="comment">#打开@someone.md这个文件, 开始写作业.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 4.写完作业后的操作</span></span><br><span class="line">git add @someone.md</span><br><span class="line">git commit -m <span class="string">'@someone2018-3-7'</span></span><br><span class="line">git push origin master</span><br><span class="line"><span class="comment">#如果报错,输入以下命令,强制更新.</span></span><br><span class="line">git push -f origin master</span><br><span class="line"><span class="comment"># f 是force 强制</span></span><br><span class="line"><span class="comment"># 4.最后一步, pull request</span></span><br><span class="line"><span class="comment"># 到你的github的english库中发起pull request</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcly1fp3pwi1hc6j30jp0g0gph.jpg" alt="daily_work"></p>
+<ol start="4">
+<li><p>关键的一步<strong>Pull Request</strong>, 登录你的GitHub账户,</p>
+<p>1 ) 新建 pull request</p>
+</li>
+</ol>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1fp3pvww510j30tp0gj76a.jpg" alt="pull request"></p>
+<pre><code>2) 填写内容后创建.
+</code></pre><p><img src="https://ws2.sinaimg.cn/large/006tKfTcly1fp3pwkxsbmj30oy0h976l.jpg" alt="pr content"></p>
+<p>​    3) 点击创建后,出现的界面</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1fp3pw0odooj30oh0dr404.jpg" alt="success"></p>
+<h2 id="记录问题"><a href="#记录问题" class="headerlink" title="记录问题"></a>记录问题</h2><p>不要忘记,创建的Word文件,用来记录问题, 和收集错误的截图.</p>
+<p>最好能先百度找找, 将搜到的内容也存到里面.</p>
+<h2 id="命令行练习"><a href="#命令行练习" class="headerlink" title="命令行练习"></a>命令行练习</h2><p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fp3pvvk3jqj30qk0hkwih.jpg" alt="practice"></p>
+<p>推荐资料:</p>
+<p>1) 中文资料 <a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">Git教程 - 廖雪峰的官方网站</a></p>
+<p>2) 英文资料:<a href="https://help.github.com/articles/working-with-forks/" target="_blank" rel="noopener">Working with forks - User Documentation</a></p>
+<p>阅读资料过程中遇到的问题,也请放到<code>problems.doc</code>中.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/github/" rel="tag"># github</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/25/github-setup/" rel="next" title="Github同步设置">
+                <i class="fa fa-chevron-left"></i> Github同步设置
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#准备工作"><span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初次作业流程"><span class="nav-text">初次作业流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日常工作流程"><span class="nav-text">日常工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记录问题"><span class="nav-text">记录问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令行练习"><span class="nav-text">命令行练习</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/05/25/github-workflow/";
+    this.page.identifier = "2019/05/25/github-workflow/";
+    this.page.title = 'github workflow';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

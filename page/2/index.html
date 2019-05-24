@@ -257,7 +257,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">12</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">17</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">18</span></a>
 
   </li>
 
@@ -312,6 +312,703 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/17/emacs-agenda-views/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/17/emacs-agenda-views/" class="post-title-link" itemprop="url">Emacs Agenda Views</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-17 15:41:38 / Modified: 17:59:05" itemprop="dateCreated datePublished" datetime="2019-05-17T15:41:38+08:00">2019-05-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-orgmode/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - orgmode</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-orgmode/timeManagement/" itemprop="url" rel="index"><span itemprop="name">timeManagement</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/17/emacs-agenda-views/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/17/emacs-agenda-views/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Due to the way Org works, TODO items, time-stamped items, and tagged headlines can be scattered throughout a file or even a number of files. To get an overview of open action items, or of events that are important for a particular date, this information must be collected, sorted and displayed in an organized way.</p>
+<p>Org can select items based on various criteria and display them in a separate buffer. Six different view types are provided:</p>
+<ul>
+<li>an <em>agenda</em> that is like a calendar and shows information for specific dates,</li>
+<li>a <em>TODO list</em> that covers all unfinished action items,</li>
+<li>a <em>match view</em>, showings headlines based on the tags, properties, and TODO state associated with them,</li>
+<li>a <em>text search view</em> that shows all entries from multiple files that contain specified keywords,</li>
+<li>a <em>stuck projects view</em> showing projects that currently do not move along, and</li>
+<li><em>custom views</em> that are special searches and combinations of different views.</li>
+</ul>
+<p>The extracted information is displayed in a special <em>agenda buffer</em>. This buffer is read-only, but provides commands to visit the corresponding locations in the original Org files, and even to edit these files remotely.</p>
+<p>By default, the report ignores commented (see <a href="https://orgmode.org/manual/Comment-Lines.html#Comment-Lines" target="_blank" rel="noopener">Comment Lines</a>) and archived (see <a href="https://orgmode.org/manual/Internal-archiving.html#Internal-archiving" target="_blank" rel="noopener">Internal archiving</a>) entries. You can override this by setting <code>org-agenda-skip-comment-trees</code> and <code>org-agenda-skip-archived-trees</code> to <code>nil</code>.</p>
+<p>Two variables control how the agenda buffer is displayed and whether the window configuration is restored when the agenda exits: <code>org-agenda-window-setup</code> and <code>org-agenda-restore-windows-after-quit</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Agenda  Views</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Agenda-Files.html#Agenda-Files" target="_blank" rel="noopener">Agenda Files</a>:</td>
+<td>Files being searched for agenda information.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>:</td>
+<td>Keyboard access to agenda views.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Built_002din-Agenda-Views.html#Built_002din-Agenda-Views" target="_blank" rel="noopener">Built-in Agenda Views</a>:</td>
+<td>What is available out of the box?</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Presentation-and-Sorting.html#Presentation-and-Sorting" target="_blank" rel="noopener">Presentation and Sorting</a>:</td>
+<td>How agenda items are prepared for display.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>:</td>
+<td>Remote editing of Org trees.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Custom-Agenda-Views.html#Custom-Agenda-Views" target="_blank" rel="noopener">Custom Agenda Views</a>:</td>
+<td>Defining special searches and views.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Exporting-Agenda-Views.html#Exporting-Agenda-Views" target="_blank" rel="noopener">Exporting Agenda Views</a>:</td>
+<td>Writing a view to a file.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Agenda-Column-View.html#Agenda-Column-View" target="_blank" rel="noopener">Agenda Column View</a>:</td>
+<td>Using column view for collected entries.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-1-Agenda-Files"><a href="#10-1-Agenda-Files" class="headerlink" title="10.1 Agenda Files"></a>10.1 Agenda Files</h2><blockquote>
+<p>概括:<br>可以将directory作为org-agenda-files<br>在agenda views中工作, 对org mode的所有应用对围绕agenda view展开. </p>
+</blockquote>
+<p>The information to be shown is normally collected from all <em>agenda files</em>, the files listed in the variable <code>org-agenda-files</code>[^1]. If a directory is part of this list, all files with the extension ‘.org’ in this directory are part of the list.</p>
+<p>Thus, even if you only work with a single Org file, that file should be put into the list[^2]. You can customize <code>org-agenda-files</code>, but the easiest way to maintain it is through the following commands</p>
+<ul>
+<li><p>C-c [ (<code>org-agenda-file-to-front</code>)<br>Add current file to the list of agenda files. The file is added to the front of the list. If it was already in the list, it is moved to the front. With a prefix argument, file is added/moved to the end.</p>
+</li>
+<li><p>C-c ] (<code>org-remove-file</code>)<br>Remove current file from the list of agenda files.</p>
+</li>
+<li><p>C-‘ or </p>
+</li>
+<li><p>C-, (<code>org-cycle-agenda-files</code>)</p>
+<p>Cycle through agenda file list, visiting one file after the other.<br>Command to use an iswitchb-like interface to switch to and between Org buffers.</p>
+</li>
+</ul>
+<p>The Org menu contains the current list of files and can be used to visit any of them.</p>
+<p>If you would like to focus the agenda temporarily on a file not in this list, or on just one file in the list, or even on only a subtree in a file, then this can be done in different ways. For a single agenda command, you may press &lt; once or several times in the dispatcher (see <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>). To restrict the agenda scope for an extended period, use the following commands:</p>
+<ul>
+<li><p>C-c C-x &lt; (<code>org-agenda-set-restriction-lock</code>)<br>Restrict the agenda to the current subtree. If there already is a restriction at point, remove it. When called with a universal prefix argument or with point before the first headline in a file, set the agenda scope to the entire file. This restriction remains in effect until removed with C-c C-x &gt;, or by typing either &lt; or &gt; in the agenda dispatcher. If there is a window displaying an agenda view, the new restriction takes effect immediately.</p>
+</li>
+<li><p>C-c C-x &gt; (<code>org-agenda-remove-restriction-lock</code>)<br>Remove the restriction created by C-c C-x &lt;.</p>
+</li>
+</ul>
+<p>When working with Speedbar, you can use the following commands in the Speedbar frame:</p>
+<ul>
+<li><p>&lt; (<code>org-speedbar-set-agenda-restriction</code>)<br>Restrict the agenda to the item—either an Org file or a subtree in such a file—at point in the Speedbar frame. If agenda is already restricted there, remove the restriction. If there is a window displaying an agenda view, the new restriction takes effect immediately.</p>
+</li>
+<li><p><code>&gt;</code> (<code>org-agenda-remove-restriction-lock</code>)</p>
+<p>Remove the restriction.</p>
+</li>
+</ul>
+<hr>
+<h3 id="Footnotes"><a href="#Footnotes" class="headerlink" title="Footnotes"></a>Footnotes</h3><ol>
+<li>If the value of that variable is not a list, but a single file name, then the list of agenda files in maintained in that external file.</li>
+<li>When using the dispatcher, pressing &lt; before selecting a command actually limits the command to the current file, and ignores <code>org-agenda-files</code> until the next dispatcher command.</li>
+</ol>
+<h2 id="10-2-The-Agenda-Dispatcher"><a href="#10-2-The-Agenda-Dispatcher" class="headerlink" title="10.2 The Agenda Dispatcher"></a>10.2 The Agenda Dispatcher</h2><blockquote>
+<p>dispatcher, a, t<br>第一个提示界面, 当下只需要关注前两个.<br>采纳动词dispatch协助思考.</p>
+</blockquote>
+<p>The views are created through a dispatcher, accessible with M-x org-agenda, or, better, bound to a global key (see <a href="https://orgmode.org/manual/Activation.html#Activation" target="_blank" rel="noopener">Activation</a>). It displays a menu from which an additional letter is required to execute a command. The dispatcher offers the following default commands:</p>
+<ul>
+<li><p>a<br>Create the calendar-like agenda (see <a href="https://orgmode.org/manual/Weekly_002fdaily-agenda.html#Weekly_002fdaily-agenda" target="_blank" rel="noopener">Weekly/daily agenda</a>).</p>
+</li>
+<li><p>t or T<br>Create a list of all TODO items (see <a href="https://orgmode.org/manual/Global-TODO-list.html#Global-TODO-list" target="_blank" rel="noopener">Global TODO list</a>).</p>
+</li>
+<li><p>m or M<br>Create a list of headlines matching a given expression (see <a href="https://orgmode.org/manual/Matching-tags-and-properties.html#Matching-tags-and-properties" target="_blank" rel="noopener">Matching tags and properties</a>).</p>
+</li>
+<li><p>s<br>Create a list of entries selected by a boolean expression of keywords and/or regular expressions that must or must not occur in the entry.</p>
+</li>
+<li><p>/<br>Search for a regular expression in all agenda files and additionally in the files listed in <code>org-agenda-text-search-extra-files</code>. This uses the Emacs command <code>multi-occur</code>. A prefix argument can be used to specify the number of context lines for each match, default is</p>
+</li>
+<li><p><code># or !</code><br>Create a list of stuck projects (see <a href="https://orgmode.org/manual/Stuck-projects.html#Stuck-projects" target="_blank" rel="noopener">Stuck projects</a>). </p>
+<blockquote>
+<p>重点概念.</p>
+</blockquote>
+</li>
+<li><p>&lt;<br>Restrict an agenda command to the current buffer<a href="https://orgmode.org/manual/Agenda-Dispatcher.html#FOOT93" target="_blank" rel="noopener">93</a>. After pressing &lt;, you still need to press the character selecting the command.</p>
+</li>
+<li><p>&lt; &lt;<br>If there is an active region, restrict the following agenda command to the region. Otherwise, restrict it to the current subtree<a href="https://orgmode.org/manual/Agenda-Dispatcher.html#FOOT94" target="_blank" rel="noopener">94</a>. After pressing &lt; &lt;, you still need to press the character selecting the command.</p>
+</li>
+<li><p>*<br>Toggle sticky agenda views. By default, Org maintains only a single agenda buffer and rebuilds it each time you change the view, to make sure everything is always up to date. If you switch between views often and the build time bothers you, you can turn on sticky agenda buffers (make this the default by customizing the variable <code>org-agenda-sticky</code>). With sticky agendas, the dispatcher only switches to the selected view, you need to update it by hand with r or g. You can toggle sticky agenda view any time with <code>org-toggle-sticky-agenda</code>.</p>
+</li>
+</ul>
+<p>You can also define custom commands that are accessible through the dispatcher, just like the default commands. This includes the possibility to create extended agenda buffers that contain several blocks together, for example the weekly agenda, the global TODO list and a number of special tags matches. See <a href="https://orgmode.org/manual/Custom-Agenda-Views.html#Custom-Agenda-Views" target="_blank" rel="noopener">Custom Agenda Views</a>.</p>
+<h3 id="Footnotes-1"><a href="#Footnotes-1" class="headerlink" title="Footnotes"></a>Footnotes</h3><ol>
+<li><p>For backward compatibility, you can also press 1 to restrict to the current buffer.</p>
+</li>
+<li><p>For backward compatibility, you can also press 0 to restrict to the current region/subtree.</p>
+</li>
+</ol>
+<h2 id="10-3-The-Built-in-Agenda-Views"><a href="#10-3-The-Built-in-Agenda-Views" class="headerlink" title="10.3 The Built-in Agenda Views"></a>10.3 The Built-in Agenda Views</h2><p>In this section we describe the built-in views.</p>
+<blockquote>
+<p>进入正题.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Agenda View</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Weekly_002fdaily-agenda.html#Weekly_002fdaily-agenda" target="_blank" rel="noopener">Weekly/daily agenda</a>:</td>
+<td>The calendar page with current tasks.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Global-TODO-list.html#Global-TODO-list" target="_blank" rel="noopener">Global TODO list</a>:</td>
+<td>All unfinished action items.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Matching-tags-and-properties.html#Matching-tags-and-properties" target="_blank" rel="noopener">Matching tags and properties</a>:</td>
+<td>Structured information with fine-tuned search.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Search-view.html#Search-view" target="_blank" rel="noopener">Search view</a>:</td>
+<td>Find entries by searching for text.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Stuck-projects.html#Stuck-projects" target="_blank" rel="noopener">Stuck projects</a>:</td>
+<td>Find projects you need to review.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="10-3-1-Weekly-daily-agenda"><a href="#10-3-1-Weekly-daily-agenda" class="headerlink" title="10.3.1 Weekly/daily agenda"></a>10.3.1 Weekly/daily agenda</h3><blockquote>
+<p>The default agenda-span 设置成两天,  提问如何设置成前后一天的模式.</p>
+</blockquote>
+<p>The purpose of the weekly/daily <em>agenda</em> is to act like a page of a paper agenda, showing all the tasks for the current week or day.</p>
+<ul>
+<li><p>M-x org-agenda a (<code>org-agenda-list</code>)</p>
+<p>Compile an agenda for the current week from a list of Org files. The agenda shows the entries for each day. With a numeric prefix argument[^1]—like C-u 2 1 M-x org-agenda a—you may set the number of days to be displayed.</p>
+</li>
+</ul>
+<p>The default number of days displayed in the agenda is set by the variable <code>org-agenda-span</code>. This variable can be set to any number of days you want to see by default in the agenda, or to a span name, such a <code>day</code>, <code>week</code>, <code>month</code> or <code>year</code>. For weekly agendas, the default is to start on the previous Monday (see <code>org-agenda-start-on-weekday</code>). You can also set the start date using a date shift: ‘(setq org-agenda-start-day “+10d”)’ starts the agenda ten days from today in the future.</p>
+<p>Remote editing from the agenda buffer means, for example, that you can change the dates of deadlines and appointments from the agenda buffer. The commands available in the Agenda buffer are listed in <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>.</p>
+<h4 id="1-Calendar-Diary-integration"><a href="#1-Calendar-Diary-integration" class="headerlink" title="1. Calendar/Diary integration"></a>1. Calendar/Diary integration</h4><blockquote>
+<p>Work with calendar, sunrise and sunset<br>calendar工具的应用, 增加三个自然规律的变量, sunrise, sunset and moon phase </p>
+</blockquote>
+<p>Emacs contains the calendar and diary by Edward M. Reingold. The calendar displays a three-month calendar with holidays from different countries and cultures. The diary allows you to keep track of anniversaries, lunar phases, sunrise/set, recurrent appointments (weekly, monthly) and more. In this way, it is quite complementary to Org. It can be very useful to combine output from Org with the diary.</p>
+<p>In order to include entries from the Emacs diary into Org mode’s agenda, you only need to customize the variable</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-include-diary t)</span><br></pre></td></tr></table></figure>
+<p>After that, everything happens automatically. All diary entries including holidays, anniversaries, etc., are included in the agenda buffer created by Org mode. SPC, TAB, and RET can be used from the agenda buffer to jump to the diary file in order to edit existing diary entries. The i command to insert new entries for the current date works in the agenda buffer, as well as the commands S, M, and C to display Sunrise/Sunset times, show lunar phases and to convert to other calendars, respectively. c can be used to switch back and forth between calendar and agenda.</p>
+<blockquote>
+<p>获取当前的坐标</p>
+<p><a href="http://manpages.ubuntu.com/manpages/disco/en/man3/libgps.3.html" target="_blank" rel="noopener">Ubuntu Manpage: libgps - C service library for communicating with the GPS daemon</a><br><a href="https://stackoverflow.com/questions/15329152/how-to-use-install-gps-python-library" target="_blank" rel="noopener">how to use/install gps python library - Stack Overflow</a></p>
+</blockquote>
+<p>If you are using the diary only for S-exp entries and holidays, it is faster to not use the above setting, but instead to copy or even move the entries into an Org file. Org mode evaluates diary-style sexp entries, and does it faster because there is no overhead for first creating the diary display. Note that the sexp entries must start at the left margin, no whitespace is allowed before them, as seen in the following segment of an Org file:<a href="https://orgmode.org/manual/Weekly_002fdaily-agenda.html#FOOT96" target="_blank" rel="noopener">96</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">* Holidays</span><br><span class="line">  :PROPERTIES:</span><br><span class="line">  :CATEGORY: Holiday</span><br><span class="line">  :END:</span><br><span class="line">%%(org-calendar-holiday)   ; special function for holiday names</span><br><span class="line"></span><br><span class="line">* Birthdays</span><br><span class="line">  :PROPERTIES:</span><br><span class="line">  :CATEGORY: Ann</span><br><span class="line">  :END:</span><br><span class="line">%%(org-anniversary 1956  5 14) Arthur Dent is %d years old</span><br><span class="line">%%(org-anniversary 1869 10  2) Mahatma Gandhi would be %d years old</span><br></pre></td></tr></table></figure>
+<h4 id="2-Anniversaries-from-BBDB"><a href="#2-Anniversaries-from-BBDB" class="headerlink" title="2. Anniversaries from BBDB"></a>2. Anniversaries from BBDB</h4><p>If you are using the Insidious Big Brother Database to store your contacts, you very likely prefer to store anniversaries in BBDB rather than in a separate Org or diary file. Org supports this and can show BBDB anniversaries as part of the agenda. All you need to do is to add the following to one of your agenda files:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* Anniversaries</span><br><span class="line">  :PROPERTIES:</span><br><span class="line">  :CATEGORY: Anniv</span><br><span class="line">  :END:</span><br><span class="line">%%(org-bbdb-anniversaries)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1973-06-22</span><br><span class="line">06-22</span><br><span class="line">1955-08-02 wedding</span><br><span class="line">2008-04-14 %s released version 6.01 of Org mode, %d years ago</span><br></pre></td></tr></table></figure>
+<p>After a change to BBDB, or for the first agenda display during an Emacs session, the agenda display suffers a short delay as Org updates its hash with anniversaries. However, from then on things will be very fast, much faster in fact than a long list of ‘%%(diary-anniversary)’ entries in an Org or Diary file.</p>
+<p>If you would like to see upcoming anniversaries with a bit of forewarning, you can use the following instead:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">* Anniversaries</span><br><span class="line">  :PROPERTIES:</span><br><span class="line">  :CATEGORY: Anniv</span><br><span class="line">  :END:</span><br><span class="line">%%(org-bbdb-anniversaries-future 3)</span><br></pre></td></tr></table></figure>
+<p>That will give you three days’ warning: on the anniversary date itself and the two days prior. The argument is optional: if omitted, it defaults to 7.</p>
+<h4 id="3-Appointment-reminders"><a href="#3-Appointment-reminders" class="headerlink" title="3. Appointment reminders"></a>3. Appointment reminders</h4><p>Org can interact with Emacs appointments notification facility. To add the appointments of your agenda files, use the command <code>org-agenda-to-appt</code>. This command lets you filter through the list of your appointments and add only those belonging to a specific category or matching a regular expression. It also reads a ‘APPT_WARNTIME’ property which overrides the value of <code>appt-message-warning-time</code> for this appointment. See the docstring for details.</p>
+<h4 id="Footnotes-2"><a href="#Footnotes-2" class="headerlink" title="Footnotes"></a>Footnotes</h4><ol>
+<li>For backward compatibility, the universal prefix argument C-u causes all TODO entries to be listed before the agenda. This feature is deprecated, use the dedicated TODO list, or a block agenda instead (see <a href="https://orgmode.org/manual/Block-agenda.html#Block-agenda" target="_blank" rel="noopener">Block agenda</a>).</li>
+<li>The variable <code>org-anniversary</code> used in the example is just like <code>diary-anniversary</code>, but the argument order is always according to ISO and therefore independent of the value of <code>calendar-date-style</code>.</li>
+</ol>
+<blockquote>
+<p>后续计划, 研究下agenda-view与diary的结合.</p>
+</blockquote>
+<h3 id="10-3-2-The-global-TODO-list"><a href="#10-3-2-The-global-TODO-list" class="headerlink" title="10.3.2 The global TODO list"></a>10.3.2 The global TODO list</h3><p>The global TODO list contains all unfinished TODO items formatted and collected into a single place.</p>
+<ul>
+<li><p>M-x org-agenda t (<code>org-todo-list</code>)</p>
+<p>Show the global TODO list. This collects the TODO items from all agenda files (see <a href="https://orgmode.org/manual/Agenda-Views.html#Agenda-Views" target="_blank" rel="noopener">Agenda Views</a>) into a single buffer. By default, this lists items with a state the is not a DONE state. The buffer is in <code>agenda-mode</code>, so there are commands to examine and manipulate the TODO entries directly from that buffer (see <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>).</p>
+</li>
+<li><p>M-x org-agenda T (<code>org-todo-list</code>)</p>
+<p>Like the above, but allows selection of a specific TODO keyword. You can also do this by specifying a prefix argument to t. You are prompted for a keyword, and you may also specify several keywords by separating them with ‘|’ as the boolean OR operator. With a numeric prefix, the Nth keyword in <code>org-todo-keywords</code> is selected.The r key in the agenda buffer regenerates it, and you can give a prefix argument to this command to change the selected TODO keyword, for example 3 r. If you often need a search for a specific keyword, define a custom command for it (see <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>).Matching specific TODO keywords can also be done as part of a tags search (see <a href="https://orgmode.org/manual/Tag-Searches.html#Tag-Searches" target="_blank" rel="noopener">Tag Searches</a>).</p>
+</li>
+</ul>
+<p>Remote editing of TODO items means that you can change the state of a TODO entry with a single key press. The commands available in the TODO list are described in <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>.</p>
+<p>Normally the global TODO list simply shows all headlines with TODO keywords. This list can become very long. There are two ways to keep it more compact:</p>
+<ul>
+<li>Some people view a TODO item that has been <em>scheduled</em> for execution or have a <em>deadline</em> (see <a href="https://orgmode.org/manual/Timestamps.html#Timestamps" target="_blank" rel="noopener">Timestamps</a>) as no longer <em>open</em>. Configure the variables <code>org-agenda-todo-ignore-scheduled</code>, <code>org-agenda-todo-ignore-deadlines</code>, <code>org-agenda-todo-ignore-timestamp</code> and/or <code>org-agenda-todo-ignore-with-date</code> to exclude such items from the global TODO list.</li>
+<li>TODO items may have sublevels to break up the task into subtasks. In such cases it may be enough to list only the highest level TODO headline and omit the sublevels from the global list. Configure the variable <code>org-agenda-todo-list-sublevels</code> to get this behavior.</li>
+</ul>
+<blockquote>
+<p>todo的sublevel </p>
+</blockquote>
+<h3 id="10-3-3-Matching-tags-and-properties"><a href="#10-3-3-Matching-tags-and-properties" class="headerlink" title="10.3.3 Matching tags and properties"></a>10.3.3 Matching tags and properties</h3><blockquote>
+<p>与编程相结合, 稍微了解一点.</p>
+</blockquote>
+<p>If headlines in the agenda files are marked with <em>tags</em> (see <a href="https://orgmode.org/manual/Tags.html#Tags" target="_blank" rel="noopener">Tags</a>), or have properties (see <a href="https://orgmode.org/manual/Properties-and-Columns.html#Properties-and-Columns" target="_blank" rel="noopener">Properties and Columns</a>), you can select headlines based on this metadata and collect them into an agenda buffer. The match syntax described here also applies when creating sparse trees with C-c / m.</p>
+<ul>
+<li><p>M-x org-agenda m (<code>org-tags-view</code>)</p>
+<p>Produce a list of all headlines that match a given set of tags. The command prompts for a selection criterion, which is a boolean logic expression with tags, like ‘+work+urgent-withboss’ or ‘work|home’ (see <a href="https://orgmode.org/manual/Tags.html#Tags" target="_blank" rel="noopener">Tags</a>). If you often need a specific search, define a custom command for it (see <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>).</p>
+</li>
+<li><p>M-x org-agenda M (<code>org-tags-view</code>)</p>
+<p>Like m, but only select headlines that are also TODO items and force checking subitems (see the variable <code>org-tags-match-list-sublevels</code>). To exclude scheduled/deadline items, see the variable <code>org-agenda-tags-todo-honor-ignore-options</code>. Matching specific TODO keywords together with a tags match is also possible, see <a href="https://orgmode.org/manual/Tag-Searches.html#Tag-Searches" target="_blank" rel="noopener">Tag Searches</a>.</p>
+</li>
+</ul>
+<p>The commands available in the tags list are described in <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>.</p>
+<p>A search string can use Boolean operators ‘&amp;’ for AND and ‘|’ for OR. ‘&amp;’ binds more strongly than ‘|’. Parentheses are currently not implemented. Each element in the search is either a tag, a regular expression matching tags, or an expression like ‘PROPERTY OPERATOR VALUE’ with a comparison operator, accessing a property value. Each element may be preceded by ‘-’ to select against it, and ‘+’ is syntactic sugar for positive selection. The AND operator ‘&amp;’ is optional when ‘+’ or ‘-’ is present. Here are some examples, using only tags.</p>
+<ul>
+<li><p><code>+work-boss</code><br>Select headlines tagged ‘work’, but discard those also tagged ‘boss’.</p>
+</li>
+<li><p><code>work|laptop</code><br>Selects lines tagged ‘work’ or ‘laptop’.</p>
+</li>
+<li><p><code>work|laptop+night</code><br>Like before, but require the ‘laptop’ lines to be tagged also ‘night’.</p>
+</li>
+</ul>
+<p>Instead of a tag, you may also specify a regular expression enclosed in curly braces. For example, ‘work+{^boss.<em>}’ matches headlines that contain the tag ‘:work:’ and any tag </em>starting* with ‘boss’.</p>
+<blockquote>
+<p>an amazing function.</p>
+</blockquote>
+<p>Group tags (see <a href="https://orgmode.org/manual/Tag-Hierarchy.html#Tag-Hierarchy" target="_blank" rel="noopener">Tag Hierarchy</a>) are expanded as regular expressions. E.g., if ‘work’ is a group tag for the group ‘:work:lab:conf:’, then searching for ‘work’ also searches for ‘{(?:work|lab|conf)}’ and searching for ‘-work’ searches for all headlines but those with one of the tags in the group (i.e., ‘-{(?:work|lab|conf)}’).</p>
+<p>You may also test for properties (see <a href="https://orgmode.org/manual/Properties-and-Columns.html#Properties-and-Columns" target="_blank" rel="noopener">Properties and Columns</a>) at the same time as matching tags. The properties may be real properties, or special properties that represent other metadata (see <a href="https://orgmode.org/manual/Special-Properties.html#Special-Properties" target="_blank" rel="noopener">Special Properties</a>). For example, the property ‘TODO’ represents the TODO keyword of the entry. Or, the property ‘LEVEL’ represents the level of an entry. So searching ‘+LEVEL=3+boss-TODO=”DONE”’ lists all level three headlines that have the tag ‘boss’ and are <em>not</em> marked with the TODO keyword ‘DONE’. In buffers with <code>org-odd-levels-only</code> set, ‘LEVEL’ does not count the number of stars, but ‘LEVEL=2’ corresponds to 3 stars etc.</p>
+<p>Here are more examples:</p>
+<ul>
+<li><p>‘work+TODO=”WAITING”’<br>Select ‘work’-tagged TODO lines with the specific TODO keyword ‘WAITING’.</p>
+</li>
+<li><p>‘work+TODO=”WAITING”|home+TODO=”WAITING”’<br>Waiting tasks both at work and at home.</p>
+</li>
+</ul>
+<p>When matching properties, a number of different operators can be used to test the value of a property. Here is a complex example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+work-boss+PRIORITY=&quot;A&quot;+Coffee=&quot;unlimited&quot;+Effort&lt;2</span><br><span class="line">         +With=&#123;Sarah|Denny&#125;+SCHEDULED&gt;=&quot;&lt;2008-10-11&gt;&quot;</span><br></pre></td></tr></table></figure>
+<p>The type of comparison depends on how the comparison value is written:</p>
+<ul>
+<li>If the comparison value is a plain number, a numerical comparison is done, and the allowed operators are ‘&lt;’, ‘=’, ‘&gt;’, ‘&lt;=’, ‘&gt;=’, and ‘&lt;&gt;’.</li>
+<li>If the comparison value is enclosed in double-quotes, a string comparison is done, and the same operators are allowed.</li>
+<li>If the comparison value is enclosed in double-quotes <em>and</em> angular brackets (like ‘DEADLINE&lt;=”<2008-12-24 18:30>“’), both values are assumed to be date/time specifications in the standard Org way, and the comparison is done accordingly. Valid values also include ‘“<now>“’ for now (including time), ‘“<today>“’, and ‘“<tomorrow>“’ for these days at 0:00 hours, i.e., without a time specification. You can also use strings like ‘“&lt;+5d&gt;”’ or ‘“<-2m>“’ with units ‘d’, ‘w’, ‘m’, and ‘y’ for day, week, month, and year, respectively.</-2m></tomorrow></today></now></2008-12-24></li>
+<li>If the comparison value is enclosed in curly braces, a regexp match is performed, with ‘=’ meaning that the regexp matches the property value, and ‘&lt;&gt;’ meaning that it does not match.</li>
+</ul>
+<p>So the search string in the example finds entries tagged ‘work’ but not ‘boss’, which also have a priority value ‘A’, a ‘Coffee’ property with the value ‘unlimited’, an ‘EFFORT’ property that is numerically smaller than 2, a ‘With’ property that is matched by the regular expression ‘Sarah|Denny’, and that are scheduled on or after October 11, 2008.</p>
+<p>You can configure Org mode to use property inheritance during a search, but beware that this can slow down searches considerably. See <a href="https://orgmode.org/manual/Property-Inheritance.html#Property-Inheritance" target="_blank" rel="noopener">Property Inheritance</a>, for details.</p>
+<p>For backward compatibility, and also for typing speed, there is also a different way to test TODO states in a search. For this, terminate the tags/property part of the search string (which may include several terms connected with ‘|’) with a ‘/’ and then specify a Boolean expression just for TODO keywords. The syntax is then similar to that for tags, but should be applied with care: for example, a positive selection on several TODO keywords cannot meaningfully be combined with boolean AND. However, <em>negative selection</em> combined with AND can be meaningful. To make sure that only lines are checked that actually have any TODO keyword (resulting in a speed-up), use M-x org-agenda M, or equivalently start the TODO part after the slash with ‘!’. Using M-x org-agenda M or ‘/!’ does not match TODO keywords in a DONE state. Examples:</p>
+<ul>
+<li><p>‘work/WAITING’<br>Same as ‘work+TODO=”WAITING”’.</p>
+</li>
+<li><p>‘work/!-WAITING-NEXT’<br>Select ‘work’-tagged TODO lines that are neither ‘WAITING’ nor ‘NEXT’.</p>
+</li>
+<li><p>‘work/!+WAITING|+NEXT’<br>Select ‘work’-tagged TODO lines that are either ‘WAITING’ or ‘NEXT’.</p>
+</li>
+</ul>
+<blockquote>
+<p>这一部分过分复杂, 等以后再来看吧.</p>
+</blockquote>
+<h3 id="10-3-4-Search-view"><a href="#10-3-4-Search-view" class="headerlink" title="10.3.4 Search view"></a>10.3.4 Search view</h3><p>This agenda view is a general text search facility for Org mode entries. It is particularly useful to find notes.</p>
+<ul>
+<li><p>M-x org-agenda s (<code>org-search-view</code>)</p>
+<p>This is a special search that lets you select entries by matching a substring or specific words using a boolean logic.</p>
+</li>
+</ul>
+<p>For example, the search string ‘computer equipment’ matches entries that contain ‘computer equipment’ as a substring, even if the two words are separated by more space or a line break.</p>
+<p>Search view can also search for specific keywords in the entry, using Boolean logic. The search string ‘+computer +wifi -ethernet -{8.11[bg]}’ matches note entries that contain the keywords ‘computer’ and ‘wifi’, but not the keyword ‘ethernet’, and which are also not matched by the regular expression ‘8.11[bg]’, meaning to exclude both ‘8.11b’ and ‘8.11g’. The first ‘+’ is necessary to turn on boolean search, other ‘+’ characters are optional. For more details, see the docstring of the command <code>org-search-view</code>.</p>
+<p>You can incrementally adjust a boolean search with the following keys</p>
+<table>
+<thead>
+<tr>
+<th>[</th>
+<th>Add a positive search word</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>]</td>
+<td>Add a negative search word</td>
+</tr>
+<tr>
+<td>{</td>
+<td>Add a positive regular expression</td>
+</tr>
+<tr>
+<td>}</td>
+<td>Add a negative regular expression</td>
+</tr>
+</tbody>
+</table>
+<p>Note that in addition to the agenda files, this command also searches the files listed in <code>org-agenda-text-search-extra-files</code>.</p>
+<h3 id="10-3-5-Stuck-projects"><a href="#10-3-5-Stuck-projects" class="headerlink" title="10.3.5 Stuck projects"></a>10.3.5 Stuck projects</h3><blockquote>
+<p>这是有用的一项.</p>
+</blockquote>
+<p>If you are following a system like David Allen’s GTD to organize your work, one of the “duties” you have is a regular review to make sure that all projects move along. A <em>stuck</em> project is a project that has no defined next actions, so it never shows up in the TODO lists Org mode produces. During the review, you need to identify such projects and define next actions for them.</p>
+<ul>
+<li><p>M-x org-agenda # (<code>org-agenda-list-stuck-projects</code>)</p>
+<p>List projects that are stuck.</p>
+</li>
+<li><p>M-x org-agenda !</p>
+<p>Customize the variable <code>org-stuck-projects</code> to define what a stuck project is and how to find it.</p>
+</li>
+</ul>
+<p>You almost certainly need to configure this view before it works for you. The built-in default assumes that all your projects are level-2 headlines, and that a project is not stuck if it has at least one entry marked with a TODO keyword ‘TODO’ or ‘NEXT’ or ‘NEXTACTION’.</p>
+<p>Let’s assume that you, in your own way of using Org mode, identify projects with a tag ‘:PROJECT:’, and that you use a TODO keyword ‘MAYBE’ to indicate a project that should not be considered yet. Let’s further assume that the TODO keyword ‘DONE’ marks finished projects, and that ‘NEXT’ and ‘TODO’ indicate next actions. The tag ‘:@shop:’ indicates shopping and is a next action even without the NEXT tag. Finally, if the project contains the special word ‘IGNORE’ anywhere, it should not be listed either. In this case you would start by identifying eligible projects with a tags/TODO match (see <a href="https://orgmode.org/manual/Tag-Searches.html#Tag-Searches" target="_blank" rel="noopener">Tag Searches</a>) ‘+PROJECT/-MAYBE-DONE’, and then check for ‘TODO’, ‘NEXT’, ‘@shop’, and ‘IGNORE’ in the subtree to identify projects that are not stuck. The correct customization for this is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(setq org-stuck-projects</span><br><span class="line">      &apos;(&quot;+PROJECT/-MAYBE-DONE&quot; (&quot;NEXT&quot; &quot;TODO&quot;) (&quot;@shop&quot;)</span><br><span class="line">        &quot;\\&lt;IGNORE\\&gt;&quot;))</span><br></pre></td></tr></table></figure>
+<p>Note that if a project is identified as non-stuck, the subtree of this entry is searched for stuck projects.</p>
+<blockquote>
+<p>这个功能很有意思<br>org mode名副其实是写给人看的工具. </p>
+</blockquote>
+<h2 id="10-4-Presentation-and-Sorting"><a href="#10-4-Presentation-and-Sorting" class="headerlink" title="10.4 Presentation and Sorting"></a>10.4 Presentation and Sorting</h2><blockquote>
+<p>这一章里只有time specification有点用.<br>Sort并不重要, 只关注presentation<br>修改time grid.</p>
+</blockquote>
+<p>Before displaying items in an agenda view, Org mode visually prepares the items and sorts them. Each item occupies a single line. The line starts with a <em>prefix</em> that contains the <em>category</em> (see <a href="https://orgmode.org/manual/Categories.html#Categories" target="_blank" rel="noopener">Categories</a>) of the item and other important information. You can customize in which column tags are displayed through <code>org-agenda-tags-column</code>. You can also customize the prefix using the option <code>org-agenda-prefix-format</code>. This prefix is followed by a cleaned-up version of the outline headline associated with the item.</p>
+<table>
+<thead>
+<tr>
+<th>Presentation and Sort</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Categories.html#Categories" target="_blank" rel="noopener">Categories</a>:</td>
+<td>Not all tasks are equal.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Time_002dof_002dday-specifications.html#Time_002dof_002dday-specifications" target="_blank" rel="noopener">Time-of-day specifications</a>:</td>
+<td>How the agenda knows the time.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Sorting-of-agenda-items.html#Sorting-of-agenda-items" target="_blank" rel="noopener">Sorting of agenda items</a>:</td>
+<td>The order of things.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Filtering_002flimiting-agenda-times.html#Filtering_002flimiting-agenda-times" target="_blank" rel="noopener">Filtering/limiting agenda times</a>:</td>
+<td>Dynamically narrow the agenda.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="10-4-1-Categories"><a href="#10-4-1-Categories" class="headerlink" title="10.4.1 Categories"></a>10.4.1 Categories</h3><p>The category is a broad label assigned to each agenda item. By default, the category is simply derived from the file name, but you can also specify it with a special line in the buffer, like this:</p>
+<blockquote>
+<p> 等日后用的时候再说.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#+CATEGORY: Thesis</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>If you would like to have a special category for a single entry or a (sub)tree, give the entry a ‘CATEGORY’ property with the special category you want to apply as the value.</p>
+<p>The display in the agenda buffer looks best if the category is not longer than 10 characters.</p>
+<p>You can set up icons for category by customizing the <code>org-agenda-category-icon-alist</code> variable.</p>
+<h3 id="10-4-2-Time-of-day-specifications"><a href="#10-4-2-Time-of-day-specifications" class="headerlink" title="10.4.2 Time-of-day specifications"></a>10.4.2 Time-of-day specifications</h3><blockquote>
+<p>本章的关键, 从这里修改time-grid</p>
+</blockquote>
+<p>Org mode checks each agenda item for a time-of-day specification. The time can be part of the timestamp that triggered inclusion into the agenda, for example</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;2005-05-10 Tue 19:00&gt;</span><br></pre></td></tr></table></figure>
+<p>Time ranges can be specified with two timestamps:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;2005-05-10 Tue 20:30&gt;--&lt;2005-05-10 Tue 22:15&gt;</span><br></pre></td></tr></table></figure>
+<p>In the headline of the entry itself, a time(range)—like ‘12:45’ or a ‘8:30-1pm’—may also appear as plain text[^1].<br>If the agenda integrates the Emacs diary (see <a href="https://orgmode.org/manual/Weekly_002fdaily-agenda.html#Weekly_002fdaily-agenda" target="_blank" rel="noopener">Weekly/daily agenda</a>), time specifications in diary entries are recognized as well.<br>For agenda display, Org mode extracts the time and displays it in a standard 24 hour format as part of the prefix. The example times in the previous paragraphs would end up in the agenda like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> 8:30-13:00 Arthur Dent lies in front of the bulldozer</span><br><span class="line">12:45...... Ford Prefect arrives and takes Arthur to the pub</span><br><span class="line">19:00...... The Vogon reads his poem</span><br><span class="line">20:30-22:15 Marvin escorts the Hitchhikers to the bridge</span><br></pre></td></tr></table></figure>
+<p>If the agenda is in single-day mode, or for the display of today, the timed entries are embedded in a time grid, like</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> 8:00...... ------------------</span><br><span class="line"> 8:30-13:00 Arthur Dent lies in front of the bulldozer</span><br><span class="line">10:00...... ------------------</span><br><span class="line">12:00...... ------------------</span><br><span class="line">12:45...... Ford Prefect arrives and takes Arthur to the pub</span><br><span class="line">14:00...... ------------------</span><br><span class="line">16:00...... ------------------</span><br><span class="line">18:00...... ------------------</span><br><span class="line">19:00...... The Vogon reads his poem</span><br><span class="line">20:00...... ------------------</span><br><span class="line">20:30-22:15 Marvin escorts the Hitchhikers to the bridge</span><br></pre></td></tr></table></figure>
+<p>The time grid can be turned on and off with the variable <code>org-agenda-use-time-grid</code>, and can be configured with <code>org-agenda-time-grid</code>.</p>
+<hr>
+<h3 id="Footnotes-3"><a href="#Footnotes-3" class="headerlink" title="Footnotes"></a>Footnotes</h3><ol>
+<li>You can, however, disable this by setting <code>org-agenda-search-headline-for-time</code> variable to a <code>nil</code> value.</li>
+</ol>
+<h3 id="10-4-3-Sorting-of-agenda-items"><a href="#10-4-3-Sorting-of-agenda-items" class="headerlink" title="10.4.3 Sorting of agenda items"></a>10.4.3 Sorting of agenda items</h3><p>Before being inserted into a view, the items are sorted. How this is done depends on the type of view.</p>
+<ul>
+<li>For the daily/weekly agenda, the items for each day are sorted. The default order is to first collect all items containing an explicit time-of-day specification. These entries are shown at the beginning of the list, as a <em>schedule</em> for the day. After that, items remain grouped in categories, in the sequence given by <code>org-agenda-files</code>. Within each category, items are sorted by priority (see <a href="https://orgmode.org/manual/Priorities.html#Priorities" target="_blank" rel="noopener">Priorities</a>), which is composed of the base priority (2000 for priority ‘A’, 1000 for ‘B’, and 0 for ‘C’), plus additional increments for overdue scheduled or deadline items.</li>
+<li>For the TODO list, items remain in the order of categories, but within each category, sorting takes place according to priority (see <a href="https://orgmode.org/manual/Priorities.html#Priorities" target="_blank" rel="noopener">Priorities</a>). The priority used for sorting derives from the priority cookie, with additions depending on how close an item is to its due or scheduled date.</li>
+<li>For tags matches, items are not sorted at all, but just appear in the sequence in which they are found in the agenda files.</li>
+</ul>
+<p>Sorting can be customized using the variable <code>org-agenda-sorting-strategy</code>, and may also include criteria based on the estimated effort of an entry (see <a href="https://orgmode.org/manual/Effort-Estimates.html#Effort-Estimates" target="_blank" rel="noopener">Effort Estimates</a>).</p>
+<blockquote>
+<p>并没有啥用.</p>
+</blockquote>
+<h3 id="10-4-4-Filtering-limiting-agenda-times"><a href="#10-4-4-Filtering-limiting-agenda-times" class="headerlink" title="10.4.4  Filtering/limiting agenda times"></a>10.4.4  Filtering/limiting agenda times</h3><blockquote>
+<p>并没啥用.</p>
+</blockquote>
+<p>Agenda built-in or customized commands are statically defined. Agenda filters and limits provide two ways of dynamically narrowing down the list of agenda entries: <em>filters</em> and <em>limits</em>. Filters only act on the display of the items, while limits take effect before the list of agenda entries is built. Filters are more often used interactively, while limits are mostly useful when defined as local variables within custom agenda commands.</p>
+<h4 id="1-Filtering-in-the-agend"><a href="#1-Filtering-in-the-agend" class="headerlink" title="1. Filtering in the agend"></a>1. Filtering in the agend</h4><ul>
+<li><p>/ (<code>org-agenda-filter-by-tag</code>)</p>
+<p>Filter the agenda view with respect to a tag and/or effort estimates. The difference between this and a custom agenda command is that filtering is very fast, so that you can switch quickly between different filters without having to recreate the agenda.<a href="https://orgmode.org/manual/Filtering_002flimiting-agenda-times.html#FOOT98" target="_blank" rel="noopener">98</a>You are prompted for a tag selection letter; SPC means any tag at all. Pressing TAB at that prompt offers completion to select a tag, including any tags that do not have a selection character. The command then hides all entries that do not contain or inherit this tag. When called with prefix argument, remove the entries that <em>do</em> have the tag. A second / at the prompt turns off the filter and shows any hidden entries. Pressing + or - switches between filtering and excluding the next tag.Org also supports automatic, context-aware tag filtering. If the variable <code>org-agenda-auto-exclude-function</code> is set to a user-defined function, that function can decide which tags should be excluded from the agenda automatically. Once this is set, the / command then accepts RET as a sub-option key and runs the auto exclusion logic. For example, let’s say you use a ‘Net’ tag to identify tasks which need network access, an ‘Errand’ tag for errands in town, and a ‘Call’ tag for making phone calls. You could auto-exclude these tags based on the availability of the Internet, and outside of business hours, with something like this:<code>(defun org-my-auto-exclude-function (tag)   (and (cond         ((string= tag &quot;Net&quot;)          (/= 0 (call-process &quot;/sbin/ping&quot; nil nil nil                              &quot;-c1&quot; &quot;-q&quot; &quot;-t1&quot; &quot;mail.gnu.org&quot;)))         ((or (string= tag &quot;Errand&quot;) (string= tag &quot;Call&quot;))          (let ((hour (nth 2 (decode-time))))            (or (&lt; hour 8) (&gt; hour 21)))))        (concat &quot;-&quot; tag)))  (setq org-agenda-auto-exclude-function &#39;org-my-auto-exclude-function)</code></p>
+</li>
+<li><p>&lt; (<code>org-agenda-filter-by-category</code>)<br>Filter the current agenda view with respect to the category of the item at point. Pressing &lt; another time removes this filter. When called with a prefix argument exclude the category of the item at point from the agenda.You can add a filter preset in custom agenda commands through the option <code>org-agenda-category-filter-preset</code>. See <a href="https://orgmode.org/manual/Setting-options.html#Setting-options" target="_blank" rel="noopener">Setting options</a>.</p>
+</li>
+<li><p>^ (<code>org-agenda-filter-by-top-headline</code>)<br>Filter the current agenda view and only display the siblings and the parent headline of the one at point.</p>
+</li>
+<li><p>= (<code>org-agenda-filter-by-regexp</code>)<br>Filter the agenda view by a regular expression: only show agenda entries matching the regular expression the user entered. When called with a prefix argument, it filters <em>out</em> entries matching the regexp. Called in a regexp-filtered agenda view, remove the filter, unless there are two universal prefix arguments, in which case filters are cumulated.You can add a filter preset in custom agenda commands through the option <code>org-agenda-regexp-filter-preset</code>. See <a href="https://orgmode.org/manual/Setting-options.html#Setting-options" target="_blank" rel="noopener">Setting options</a>.</p>
+</li>
+<li><p>_ (<code>org-agenda-filter-by-effort</code>)<br>Filter the agenda view with respect to effort estimates. You first need to set up allowed efforts globally, for example<code>(setq org-global-properties       &#39;((&quot;Effort_ALL&quot;. &quot;0 0:10 0:30 1:00 2:00 3:00 4:00&quot;)))</code>You can then filter for an effort by first typing an operator, one of &lt;, &gt; and =, and then the one-digit index of an effort estimate in your array of allowed values, where 0 means the 10th value. The filter then restricts to entries with effort smaller-or-equal, equal, or larger-or-equal than the selected value. For application of the operator, entries without a defined effort are treated according to the value of <code>org-sort-agenda-noeffort-is-high</code>.When called with a prefix argument, it removes entries matching the condition. With two universal prefix arguments, it clears effort filters, which can be accumulated.You can add a filter preset in custom agenda commands through the option <code>org-agenda-effort-filter-preset</code>. See <a href="https://orgmode.org/manual/Setting-options.html#Setting-options" target="_blank" rel="noopener">Setting options</a>.</p>
+</li>
+<li><p>| (<code>org-agenda-filter-remove-all</code>)</p>
+<p>Remove all filters in the current agenda view.</p>
+</li>
+</ul>
+<h3 id="2-Setting-limits-for-the-agenda"><a href="#2-Setting-limits-for-the-agenda" class="headerlink" title="2. Setting limits for the agenda"></a>2. Setting limits for the agenda</h3><p>Here is a list of options that you can set, either globally, or locally in your custom agenda views (see <a href="https://orgmode.org/manual/Custom-Agenda-Views.html#Custom-Agenda-Views" target="_blank" rel="noopener">Custom Agenda Views</a>).</p>
+<ul>
+<li><p><code>org-agenda-max-entries</code></p>
+<p>Limit the number of entries.</p>
+</li>
+<li><p><code>org-agenda-max-effort</code></p>
+<p>Limit the duration of accumulated efforts (as minutes).</p>
+</li>
+<li><p><code>org-agenda-max-todos</code></p>
+<p>Limit the number of entries with TODO keywords.</p>
+</li>
+<li><p><code>org-agenda-max-tags</code></p>
+<p>Limit the number of tagged entries.</p>
+</li>
+</ul>
+<p>When set to a positive integer, each option excludes entries from other categories: for example, ‘(setq org-agenda-max-effort 100)’ limits the agenda to 100 minutes of effort and exclude any entry that has no effort property. If you want to include entries with no effort property, use a negative value for <code>org-agenda-max-effort</code>. One useful setup is to use <code>org-agenda-max-entries</code> locally in a custom command. For example, this custom command displays the next five entries with a ‘NEXT’ TODO keyword.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-custom-commands</span><br><span class="line">      &apos;((&quot;n&quot; todo &quot;NEXT&quot;</span><br><span class="line">         ((org-agenda-max-entries 5)))))</span><br></pre></td></tr></table></figure>
+<p>Once you mark one of these five entry as DONE, rebuilding the agenda will again the next five entries again, including the first entry that was excluded so far.</p>
+<p>You can also dynamically set temporary limits, which are lost when rebuilding the agenda:</p>
+<ul>
+<li><p>~ (<code>org-agenda-limit-interactively</code>)</p>
+<p>This prompts for the type of limit to apply and its value.</p>
+</li>
+</ul>
+<hr>
+<h3 id="Footnotes-4"><a href="#Footnotes-4" class="headerlink" title="Footnotes"></a>Footnotes</h3><ol>
+<li>Custom commands can preset a filter by binding the variable <code>org-agenda-tag-filter-preset</code> as an option. This filter is then applied to the view and persists as a basic filter through refreshes and more secondary filtering. The filter is a global property of the entire agenda view—in a block agenda, you should only set this in the global options section, not in the section of an individual block.</li>
+</ol>
+<h2 id="10-5-Commands-in-the-Agenda-Buffer"><a href="#10-5-Commands-in-the-Agenda-Buffer" class="headerlink" title="10.5 Commands in the Agenda Buffer"></a>10.5 Commands in the Agenda Buffer</h2><blockquote>
+<p>没啥用．</p>
+</blockquote>
+<p>Entries in the agenda buffer are linked back to the Org file or diary file where they originate. You are not allowed to edit the agenda buffer itself, but commands are provided to show and jump to the original entry location, and to edit the Org files “remotely” from the agenda buffer. In this way, all information is stored only once, removing the risk that your agenda and note files may diverge.</p>
+<p>Some commands can be executed with mouse clicks on agenda lines. For the other commands, point needs to be in the desired line.</p>
+<h2 id="10-6-Custom-Agenda-Views"><a href="#10-6-Custom-Agenda-Views" class="headerlink" title="10.6 Custom Agenda Views"></a>10.6 Custom Agenda Views</h2><blockquote>
+<p>没啥用.</p>
+</blockquote>
+<p>Custom agenda commands serve two purposes: to store and quickly access frequently used TODO and tags searches, and to create special composite agenda buffers. Custom agenda commands are accessible through the dispatcher (see <a href="https://orgmode.org/manual/Agenda-Dispatcher.html#Agenda-Dispatcher" target="_blank" rel="noopener">Agenda Dispatcher</a>), just like the default commands.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://orgmode.org/manual/Storing-searches.html#Storing-searches" target="_blank" rel="noopener">Storing searches</a>:</th>
+<th>Type once, use often.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Block-agenda.html#Block-agenda" target="_blank" rel="noopener">Block agenda</a>:</td>
+<td>All the stuff you need in a single buffer.</td>
+</tr>
+<tr>
+<td>• <a href="https://orgmode.org/manual/Setting-options.html#Setting-options" target="_blank" rel="noopener">Setting options</a>:</td>
+<td>Changing the rules.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-7-Exporting-Agenda-Views"><a href="#10-7-Exporting-Agenda-Views" class="headerlink" title="10.7 Exporting Agenda Views"></a>10.7 Exporting Agenda Views</h2><p>If you are away from your computer, it can be very useful to have a printed version of some agenda views to carry around. Org mode can export custom agenda views as plain text, HTML<a href="https://orgmode.org/manual/Exporting-Agenda-Views.html#FOOT104" target="_blank" rel="noopener">104</a>, Postscript, PDF<a href="https://orgmode.org/manual/Exporting-Agenda-Views.html#FOOT105" target="_blank" rel="noopener">105</a>, and iCalendar files. If you want to do this only occasionally, use the following command:</p>
+<ul>
+<li><p>C-x C-w (<code>org-agenda-write</code>)</p>
+<p>Write the agenda view to a file.</p>
+</li>
+</ul>
+<p>If you need to export certain agenda views frequently, you can associate any custom agenda command with a list of output file names<a href="https://orgmode.org/manual/Exporting-Agenda-Views.html#FOOT106" target="_blank" rel="noopener">106</a>. Here is an example that first defines custom commands for the agenda and the global TODO list, together with a number of files to which to export them. Then we define two block agenda commands and specify file names for them as well. File names can be relative to the current working directory, or absolute.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-custom-commands</span><br><span class="line">      &apos;((&quot;X&quot; agenda &quot;&quot; nil (&quot;agenda.html&quot; &quot;agenda.ps&quot;))</span><br><span class="line">        (&quot;Y&quot; alltodo &quot;&quot; nil (&quot;todo.html&quot; &quot;todo.txt&quot; &quot;todo.ps&quot;))</span><br><span class="line">        (&quot;h&quot; &quot;Agenda and Home-related tasks&quot;</span><br><span class="line">         ((agenda &quot;&quot;)</span><br><span class="line">          (tags-todo &quot;home&quot;)</span><br><span class="line">          (tags &quot;garden&quot;))</span><br><span class="line">         nil</span><br><span class="line">         (&quot;~/views/home.html&quot;))</span><br><span class="line">        (&quot;o&quot; &quot;Agenda and Office-related tasks&quot;</span><br><span class="line">         ((agenda)</span><br><span class="line">          (tags-todo &quot;work&quot;)</span><br><span class="line">          (tags &quot;office&quot;))</span><br><span class="line">         nil</span><br><span class="line">         (&quot;~/views/office.ps&quot; &quot;~/calendars/office.ics&quot;))))</span><br></pre></td></tr></table></figure>
+<p>The extension of the file name determines the type of export. If it is ‘.html’, Org mode uses the htmlize package to convert the buffer to HTML and save it to this file name. If the extension is ‘.ps’, <code>ps-print-buffer-with-faces</code> is used to produce Postscript output. If the extension is ‘.ics’, iCalendar export is run export over all files that were used to construct the agenda, and limit the export to entries listed in the agenda. Any other extension produces a plain ASCII file.</p>
+<p>The export files are <em>not</em> created when you use one of those commands interactively because this might use too much overhead. Instead, there is a special command to produce <em>all</em> specified files in one step:</p>
+<ul>
+<li><p>e (<code>org-store-agenda-views</code>)</p>
+<p>Export all agenda views that have export file names associated with them.</p>
+</li>
+</ul>
+<p>You can use the options section of the custom agenda commands to also set options for the export commands. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-custom-commands</span><br><span class="line">      &apos;((&quot;X&quot; agenda &quot;&quot;</span><br><span class="line">         ((ps-number-of-columns 2)</span><br><span class="line">          (ps-landscape-mode t)</span><br><span class="line">          (org-agenda-prefix-format &quot; [ ] &quot;)</span><br><span class="line">          (org-agenda-with-colors nil)</span><br><span class="line">          (org-agenda-remove-tags t))</span><br><span class="line">         (&quot;theagenda.ps&quot;))))</span><br></pre></td></tr></table></figure>
+<p>This command sets two options for the Postscript exporter, to make it print in two columns in landscape format—the resulting page can be cut in two and then used in a paper agenda. The remaining settings modify the agenda prefix to omit category and scheduling information, and instead include a checkbox to check off items. We also remove the tags to make the lines compact, and we do not want to use colors for the black-and-white printer. Settings specified in <code>org-agenda-exporter-settings</code> also apply, e.g.,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(setq org-agenda-exporter-settings</span><br><span class="line">      &apos;((ps-number-of-columns 2)</span><br><span class="line">        (ps-landscape-mode t)</span><br><span class="line">        (org-agenda-add-entry-text-maxlines 5)</span><br><span class="line">        (htmlize-output-type &apos;css)))</span><br></pre></td></tr></table></figure>
+<p>but the settings in <code>org-agenda-custom-commands</code> take precedence.</p>
+<p>From the command line you may also use:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">emacs -eval (org-batch-store-agenda-views) -kill</span><br></pre></td></tr></table></figure>
+<p>or, if you need to modify some parameters<a href="https://orgmode.org/manual/Exporting-Agenda-Views.html#FOOT107" target="_blank" rel="noopener">107</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">emacs -eval &apos;(org-batch-store-agenda-views                      \</span><br><span class="line">              org-agenda-span (quote month)                     \</span><br><span class="line">              org-agenda-start-day &quot;2007-11-01&quot;                 \</span><br><span class="line">              org-agenda-include-diary nil                      \</span><br><span class="line">              org-agenda-files (quote (&quot;~/org/project.org&quot;)))&apos;  \</span><br><span class="line">      -kill</span><br></pre></td></tr></table></figure>
+<p>which creates the agenda views restricted to the file ‘~/org/project.org’, without diary entries and with a 30-day extent.</p>
+<p>You can also extract agenda information in a way that allows further processing by other programs. See <a href="https://orgmode.org/manual/Extracting-Agenda-Information.html#Extracting-Agenda-Information" target="_blank" rel="noopener">Extracting Agenda Information</a>, for more information.</p>
+<h2 id="10-8-Using-Column-View-in-the-Agenda"><a href="#10-8-Using-Column-View-in-the-Agenda" class="headerlink" title="10.8 Using Column View in the Agenda"></a>10.8 Using Column View in the Agenda</h2><blockquote>
+<p> 没啥用.</p>
+</blockquote>
+<p>Column view (see <a href="https://orgmode.org/manual/Column-View.html#Column-View" target="_blank" rel="noopener">Column View</a>) is normally used to view and edit properties embedded in the hierarchical structure of an Org file. It can be quite useful to use column view also from the agenda, where entries are collected by certain criteria.</p>
+<ul>
+<li><p>C-c C-x C-c (<code>org-agenda-columns</code>)</p>
+<p>Turn on column view in the agenda.</p>
+</li>
+</ul>
+<p>To understand how to use this properly, it is important to realize that the entries in the agenda are no longer in their proper outline environment. This causes the following issues:</p>
+<ol>
+<li><p>Org needs to make a decision which columns format to use. Since the entries in the agenda are collected from different files, and different files may have different columns formats, this is a non-trivial problem. Org first checks if the variable <code>org-overriding-columns-format</code> is currently set, and if so, takes the format from there. Otherwise it takes the format associated with the first item in the agenda, or, if that item does not have a specific format (defined in a property, or in its file), it uses <code>org-columns-default-format</code>.</p>
+</li>
+<li><p>If any of the columns has a summary type defined (see</p>
+</li>
+</ol>
+<p>   Column attributes</p>
+<p>   ), turning on column view in the agenda visits all relevant agenda files and make sure that the computations of this property are up to date. This is also true for the special ‘</p>
+<p>   CLOCKSUM</p>
+<p>   ’ property. Org then sums the values displayed in the agenda. In the daily/weekly agenda, the sums cover a single day; in all other views they cover the entire block.</p>
+<p>   It is important to realize that the agenda may show the same entry <em>twice</em>—for example as scheduled and as a deadline—and it may show two entries from the same hierarchy (for example a <em>parent</em> and its <em>child</em>). In these cases, the summation in the agenda leads to incorrect results because some values count double.</p>
+<ol start="3">
+<li><p>When the column view in the agenda shows the ‘CLOCKSUM’ property, that is always the entire clocked time for this item. So even in the daily/weekly agenda, the clocksum listed in column view may originate from times outside the current view. This has the advantage that you can compare these values with a column listing the planned total effort for a task—one of the major applications for column view in the agenda. If you want information about clocked time in the displayed period use clock table mode (press R in the agenda).</p>
+</li>
+<li><p>When the column view in the agenda shows the ‘CLOCKSUM_T’ property, that is always today’s clocked time for this item. So even in the weekly agenda, the clocksum listed in column view only originates from today. This lets you compare the time you spent on a task for today, with the time already spent—via ‘CLOCKSUM’—and with the planned total effort for it.</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -2182,7 +2879,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2221,7 +2918,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">11</span>
+                      
+                    
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
