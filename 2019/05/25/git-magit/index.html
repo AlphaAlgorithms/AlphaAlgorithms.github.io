@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="categories:  linux emacs magit        A Git Porcelain inside EmacsIt’s Magit! A Git Porcelain inside Emacs Magit is an interface to the version control system Git, implemented as an Emacs package. Mag">
+<meta name="keywords" content="emacs,git,magit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Magit Documentation">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/05/25/git-magit/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="categories:  linux emacs magit        A Git Porcelain inside EmacsIt’s Magit! A Git Porcelain inside Emacs Magit is an interface to the version control system Git, implemented as an Emacs package. Mag">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-05-25T00:07:34.971Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Magit Documentation">
+<meta name="twitter:description" content="categories:  linux emacs magit        A Git Porcelain inside EmacsIt’s Magit! A Git Porcelain inside Emacs Magit is an interface to the version control system Git, implemented as an Emacs package. Mag">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/05/25/git-magit/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Magit Documentation | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">23</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">12</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">19</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/25/git-magit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Magit Documentation
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-25 08:05:59 / Modified: 08:07:34" itemprop="dateCreated datePublished" datetime="2019-05-25T08:05:59+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/25/git-magit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/25/git-magit/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>categories:</p>
+<ul>
+<li>linux<ul>
+<li>emacs<ul>
+<li>magit </li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="A-Git-Porcelain-inside-Emacs"><a href="#A-Git-Porcelain-inside-Emacs" class="headerlink" title="A Git Porcelain inside Emacs"></a>A Git Porcelain inside Emacs</h2><p><a href="https://magit.vc/" target="_blank" rel="noopener">It’s Magit! A Git Porcelain inside Emacs</a></p>
+<p>Magit is an interface to the version control system <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>, implemented as an <a href="https://www.gnu.org/software/emacs" target="_blank" rel="noopener">Emacs</a> package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. <a href="https://magit.vc/" target="_blank" rel="noopener">(less)</a></p>
+<p>Staging and otherwise applying changes is one of the most important features in a Git porcelain and here Magit outshines anything else, including Git itself. Git’s own staging interface (<code>git add --patch</code>) is so cumbersome that many users only use it in exceptional cases. In Magit staging a hunk or even just part of a hunk is as trivial as staging all changes made to a file.</p>
+<p>The most visible part of Magit’s interface is the status buffer, which displays information about the current repository. Its content is created by running several Git commands and making their output actionable. Among other things, it displays information about the current branch, lists unpulled and unpushed changes and contains sections displaying the staged and unstaged changes. That might sound noisy, but, since sections are collapsible, it’s not.</p>
+<p>To stage or unstage a change one places the cursor on the change and then types <code>s</code> or <code>u</code>. The change can be a file or a hunk, or when the region is active (i.e. when there is a selection) several files or hunks, or even just part of a hunk. The change or changes that these commands - and many others - would act on are highlighted.</p>
+<p>Magit also implements several other “apply variants” in addition to staging and unstaging. One can discard or reverse a change, or apply it to the working tree. Git’s own porcelain only supports this for staging and unstaging and you would have to do something like <code>git diff ... | ??? | git apply ...</code> to discard, revert, or apply a single hunk on the command line. In fact that’s exactly what Magit does internally (which is what lead to the term “apply variants”).</p>
+<p>Magit isn’t just for Git experts, but it does assume some prior experience with Git as well as Emacs. That being said, many users have reported that using Magit was what finally taught them what Git it is capable off and how to use it to its fullest. Other users wished they had switched to Emacs sooner so that they would have gotten their hands on Magit earlier.</p>
+<p>While one has to know the basic features of Emacs to be able to make full use of Magit, acquiring just enough Emacs skills doesn’t take long and is worth it, even for users who prefer other editors. Vim users are advised to give <a href="https://bitbucket.org/lyro/evil/wiki/Home" target="_blank" rel="noopener">Evil</a> the “Extensible VI Layer for Emacs”, and <a href="https://github.com/syl20bnr/spacemacs" target="_blank" rel="noopener">Spacemacs</a> an “Emacs starter-kit focused on Evil” a try.</p>
+<p>Magit provides a consistent and efficient Git porcelain. After a short learning period, you will be able to perform most of your daily version control tasks faster than you would on the command line. You will likely also start using features that seemed too daunting in the past.</p>
+<p>Magit fully embraces Git. It exposes many advanced features using a simple but flexible interface instead of only wrapping the trivial ones like many GUI clients do. Of course Magit supports logging, cloning, pushing, and other commands that usually don’t fail in spectacular ways; but it also supports tasks that often cannot be completed in a single step. Magit fully supports tasks such as merging, rebasing, cherry-picking, reverting, and blaming by not only providing a command to initiate these tasks but also by displaying context sensitive information along the way and providing commands that are useful for resolving conflicts and resuming the sequence after doing so.</p>
+<p>Magit wraps and in many cases improves upon at least the following Git porcelain commands: add, am, bisect, blame, branch, checkout, cherry, cherry-pick, clean, clone, commit, config, describe, diff, fetch, format-patch, init, log, merge, merge-tree, mv, notes, pull, rebase, reflog, remote, request-pull, reset, revert, rm, show, stash, submodule, and tag. Many more Magit porcelain commands are implemented on top of Git plumbing commands.</p>
+<blockquote>
+<p>两点：staging and status buffer. </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><a href="https://magit.vc/manual/magit/Introduction.html#Introduction" target="_blank" rel="noopener">Introduction</a>:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Installation.html#Installation" target="_blank" rel="noopener">Installation</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Getting-Started.html#Getting-Started" target="_blank" rel="noopener">Getting Started</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Interface-Concepts.html#Interface-Concepts" target="_blank" rel="noopener">Interface Concepts</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Inspecting.html#Inspecting" target="_blank" rel="noopener">Inspecting</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Manipulating.html#Manipulating" target="_blank" rel="noopener">Manipulating</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Transferring.html#Transferring" target="_blank" rel="noopener">Transferring</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Miscellaneous.html#Miscellaneous" target="_blank" rel="noopener">Miscellaneous</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Customizing.html#Customizing" target="_blank" rel="noopener">Customizing</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Plumbing.html#Plumbing" target="_blank" rel="noopener">Plumbing</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/FAQ.html#FAQ" target="_blank" rel="noopener">FAQ</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Debugging-Tools.html#Debugging-Tools" target="_blank" rel="noopener">Debugging Tools</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Keystroke-Index.html#Keystroke-Index" target="_blank" rel="noopener">Keystroke Index</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Command-Index.html#Command-Index" target="_blank" rel="noopener">Command Index</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Function-Index.html#Function-Index" target="_blank" rel="noopener">Function Index</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Variable-Index.html#Variable-Index" target="_blank" rel="noopener">Variable Index</a>:</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-Getting-Started"><a href="#3-Getting-Started" class="headerlink" title="3 Getting Started"></a>3 Getting Started</h2><p>This short tutorial describes the most essential features that many Magitians use on a daily basis. It only scratches the surface but should be enough to get you started.</p>
+<p>IMPORTANT: It is safest if you clone some repository just for this tutorial. Alternatively you can use an existing local repository, but if you do that, then you should commit all uncommitted changes before proceeding.</p>
+<p>To display information about the current Git repository, type <code>M-x magit-status RET</code>. You will be using this command a lot, and should therefore give it a global key binding. This is what we recommend:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x g&quot;) &apos;magit-status)</span><br></pre></td></tr></table></figure>
+<p>Most Magit commands are commonly invoked from the status buffer. It can be considered the primary interface for interacting with Git using Magit. Many other Magit buffers may exist at a given time, but they are often created from this buffer.</p>
+<p>Depending on what state your repository is in, this buffer may contain sections titled “Staged changes”, “Unstaged changes”, “Unmerged into origin/master”, “Unpushed to origin/master”, and many others.</p>
+<p>Since we are starting from a safe state, which you can easily return to (by doing a <code>git reset --hard PRE-MAGIT-STATE</code>), there currently are not staged or unstaged changes. Edit some files and save the changes. Then go back to the status buffer, while at the same time refreshing it, by typing <code>C-x g</code>. (When the status buffer, or any Magit buffer for that matter, is the current buffer, then you can also use just <code>g</code> to refresh it).</p>
+<p>Move between sections using <code>p</code> and <code>n</code>. Note that the bodies of some sections are hidden. Type <code>TAB</code> to expand or collapse the section at point. You can also use <code>C-tab</code> to cycle the visibility of the current section and its children. Move to a file section inside the section named “Unstaged changes” and type <code>s</code> to stage the changes you have made to that file. That file now appears under “Staged changes”.</p>
+<p>Magit can stage and unstage individual hunks, not just complete files. Move to the file you have just staged, expand it using <code>TAB</code>, move to one of the hunks using <code>n</code>, and unstage just that by typing <code>u</code>. Note how the staging (<code>s</code>) and unstaging (<code>u</code>) commands operate on the change at point. Many other commands behave the same way.</p>
+<p>You can also un-/stage just part of a hunk. Inside the body of a hunk section (move there using <code>C-n</code>), set the mark using <code>C-SPC</code> and move down until some added and/or removed lines fall inside the region but not all of them. Again type <code>s</code> to stage.</p>
+<p>It is also possible to un-/stage multiple files at once. Move to a file section, type <code>C-SPC</code>, move to the next file using <code>n</code>, and then <code>s</code> to stage both files. Note that both the mark and point have to be on the headings of sibling sections for this to work. If the region looks like it does in other buffers, then it doesn’t select Magit sections that can be acted on as a unit.</p>
+<p>And then of course you want to commit your changes. Type <code>c</code>. This shows the available commit commands and arguments in a buffer at the bottom of the frame. Each command and argument is prefixed with the key that invokes/sets it. Do not worry about this for now. We want to create a “normal” commit, which is done by typing <code>c</code> again.</p>
+<p>Now two new buffers appear. One is for writing the commit message, the other shows a diff with the changes that you are about to committed. Write a message and then type <code>C-c C-c</code> to actually create the commit.</p>
+<p>You probably don’t want to push the commit you just created because you just committed some random changes, but if that is not the case you could push it by typing <code>P</code> to show all the available push commands and arguments and then <code>p</code> to push to a branch with the same name as the local branch onto the remote configured as the push-remote. (If the push-remote is not configured yet, then you would first be prompted for the remote to push to.)</p>
+<p>So far we have mentioned the commit, push, and log transient prefix commands. These are probably among the transients you will be using the most, but many others exist. To show a transient that lists all other transients (as well as the various apply commands and some other essential commands), type <code>h</code>. Try a few.</p>
+<p>The key bindings in that transient correspond to the bindings in Magit buffers, including but not limited to the status buffer. So you could type <code>h d</code> to bring up the diff transient, but once you remember that “d” stands for “diff”, you would usually do so by just typing <code>d</code>. But this “prefix of prefixes” is useful even once you have memorized all the bindings, as it can provide easy access to Magit commands from non-Magit buffers. You should create a global key binding for this command too:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x M-g&quot;) &apos;magit-dispatch)</span><br></pre></td></tr></table></figure>
+<p>In the same vein, you might also want to enable <code>global-magit-file-mode</code> to get some more Magit key bindings in regular file-visiting buffers (see <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Files.html#Minor-Mode-for-Buffers-Visiting-Files" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Files</a>).</p>
+<p>It is not necessary that you do so now, but if you stick with Magit, then it is highly recommended that you read the next section too.</p>
+<hr>
+<p>Next: <a href="https://magit.vc/manual/magit/Interface-Concepts.html#Interface-Concepts" target="_blank" rel="noopener">Interface Concepts</a>, Previous: <a href="https://magit.vc/manual/magit/Installation.html#Installation" target="_blank" rel="noopener">Installation</a>, Up: <a href="https://magit.vc/manual/magit/index.html#Top" target="_blank" rel="noopener">Top</a>   [<a href="https://magit.vc/manual/magit/index.html#SEC_Contents" target="_blank" rel="noopener">Contents</a>][<a href="https://magit.vc/manual/magit/Keystroke-Index.html#Keystroke-Index" target="_blank" rel="noopener">Index</a>]</p>
+<h2 id="4-Interface-Concepts"><a href="#4-Interface-Concepts" class="headerlink" title="4 Interface Concepts"></a>4 Interface Concepts</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Modes-and-Buffers.html#Modes-and-Buffers" target="_blank" rel="noopener">Modes and Buffers</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Sections.html#Sections" target="_blank" rel="noopener">Sections</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Transient-Commands.html#Transient-Commands" target="_blank" rel="noopener">Transient Commands</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Completion-Confirmation-and-the-Selection.html#Completion-Confirmation-and-the-Selection" target="_blank" rel="noopener">Completion, Confirmation and the Selection</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Running-Git.html#Running-Git" target="_blank" rel="noopener">Running Git</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-1-Modes-and-Buffers"><a href="#4-1-Modes-and-Buffers" class="headerlink" title="4.1 Modes and Buffers"></a>4.1 Modes and Buffers</h3><p>Magit provides several major-modes. For each of these modes there usually exists only one buffer per repository. Separate modes and thus buffers exist for commits, diffs, logs, and some other things.</p>
+<p>Besides these special purpose buffers, there also exists an overview buffer, called the <strong>status buffer</strong>. It’s usually from this buffer that the user invokes Git commands, or creates or visits other buffers.</p>
+<p>In this manual we often speak about “Magit buffers”. By that we mean buffers whose major-modes derive from <code>magit-mode</code>.</p>
+<ul>
+<li><p>M-x magit-toggle-buffer-lock     (<code>magit-toggle-buffer-lock</code>)</p>
+<p>This command locks the current buffer to its value or if the buffer is already locked, then it unlocks it.Locking a buffer to its value prevents it from being reused to display another value. The name of a locked buffer contains its value, which allows telling it apart from other locked buffers and the unlocked buffer.Not all Magit buffers can be locked to their values; for example, it wouldn’t make sense to lock a status buffer.There can only be a single unlocked buffer using a certain major-mode per repository. So when a buffer is being unlocked and another unlocked buffer already exists for that mode and repository, then the former buffer is instead deleted and the latter is displayed in its place.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Switching-Buffers.html#Switching-Buffers" target="_blank" rel="noopener">Switching Buffers</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Naming-Buffers.html#Naming-Buffers" target="_blank" rel="noopener">Naming Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Quitting-Windows.html#Quitting-Windows" target="_blank" rel="noopener">Quitting Windows</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Automatic-Refreshing-of-Magit-Buffers.html#Automatic-Refreshing-of-Magit-Buffers" target="_blank" rel="noopener">Automatic Refreshing of Magit Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" target="_blank" rel="noopener">Automatic Saving of File-Visiting Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Automatic-Reverting-of-File_002dVisiting-Buffers.html#Automatic-Reverting-of-File_002dVisiting-Buffers" target="_blank" rel="noopener">Automatic Reverting of File-Visiting Buffers</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-2-Sections"><a href="#4-2-Sections" class="headerlink" title="4.2 Sections"></a>4.2 Sections</h3><p>Magit buffers are organized into nested sections, which can be collapsed and expanded, similar to how sections are handled in Org mode. Each section also has a type, and some sections also have a value. For each section type there can also be a local keymap, shared by all sections of that type.</p>
+<p>Taking advantage of the section value and type, many commands operate on the current section, or when the region is active and selects sections of the same type, all of the selected sections. Commands that only make sense for a particular section type (as opposed to just behaving differently depending on the type) are usually bound in section type keymaps.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Section-Movement.html#Section-Movement" target="_blank" rel="noopener">Section Movement</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Visibility.html#Section-Visibility" target="_blank" rel="noopener">Section Visibility</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Hooks.html#Section-Hooks" target="_blank" rel="noopener">Section Hooks</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Types-and-Values.html#Section-Types-and-Values" target="_blank" rel="noopener">Section Types and Values</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Options.html#Section-Options" target="_blank" rel="noopener">Section Options</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-Transient-Commands"><a href="#4-3-Transient-Commands" class="headerlink" title="4.3 Transient Commands"></a>4.3 Transient Commands</h3><p>Many Magit commands are implemented as <strong>transient</strong> commands. First the user invokes a <strong>prefix</strong> command, which causes its <strong>infix</strong> arguments and <strong>suffix</strong> commands to be displayed in the echo area. The user then optionally sets some infix arguments and finally invokes one of the suffix commands.</p>
+<p>This is implemented in the library <code>transient</code>. Earlier Magit releases used the package <code>magit-popup</code> and even earlier versions library <code>magit-key-mode</code>.</p>
+<p>Transient is documented in <a href="https://magit.vc/manual/transient/index.html#Top" target="_blank" rel="noopener">(transient)Top</a>.</p>
+<ul>
+<li><p>C-c C-c     (<code>magit-dispatch</code>)</p>
+<p>This transient prefix command binds most of Magit’s other prefix commands as suffix commands and displays them in a temporary buffer until one of them is invoked. Invoking such a sub-prefix causes the suffixes of that command to be bound and displayed instead of those of <code>magit-dispatch</code>.</p>
+</li>
+</ul>
+<p>This command is also, or especially, useful outside Magit buffers, so you should setup a global binding:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x M-g&quot;) &apos;magit-dispatch)</span><br></pre></td></tr></table></figure>
+<p>Transient commands remember the used arguments for subsequent invocations. Two transients, the log and diff transients (see <a href="https://magit.vc/manual/magit/Logging.html#Logging" target="_blank" rel="noopener">Logging</a> and <a href="https://magit.vc/manual/magit/Diffing.html#Diffing" target="_blank" rel="noopener">Diffing</a>), may behave a bit differently, depending on the value of <code>magit-use-sticky-arguments</code>.</p>
+<ul>
+<li><p>User Option: <strong>magit-use-sticky-arguments</strong></p>
+<p>This option controls how the diff and log transients reuse arguments from existing buffers.When <code>t</code> (the default value), then the log or diff transients reuses the arguments from the current repository’s log or diff buffer, respectively. When no log or diff buffer exists for the current repository, these transients use the default value of <code>magit-log-arguments</code> or <code>magit-diff-arguments</code>.When <code>current</code>, log and diff transients will only reuse the arguments if the current buffer is derived from <code>magit-log-mode</code> or <code>magit-diff-mode</code>, respectively.When <code>nil</code>, the default value of <code>magit-log-arguments</code> or <code>magit-diff-arguments</code> is always used.</p>
+</li>
+</ul>
+<hr>
+<h3 id="4-4-Completion-Confirmation-and-the-Selection"><a href="#4-4-Completion-Confirmation-and-the-Selection" class="headerlink" title="4.4 Completion, Confirmation and the Selection"></a>4.4 Completion, Confirmation and the Selection</h3><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Action-Confirmation.html#Action-Confirmation" target="_blank" rel="noopener">Action Confirmation</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Completion-and-Confirmation.html#Completion-and-Confirmation" target="_blank" rel="noopener">Completion and Confirmation</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/The-Selection.html#The-Selection" target="_blank" rel="noopener">The Selection</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/The-hunk_002dinternal-region.html#The-hunk_002dinternal-region" target="_blank" rel="noopener">The hunk-internal region</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Support-for-Completion-Frameworks.html#Support-for-Completion-Frameworks" target="_blank" rel="noopener">Support for Completion Frameworks</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Additional-Completion-Options.html#Additional-Completion-Options" target="_blank" rel="noopener">Additional Completion Options</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-5-Running-Git"><a href="#4-5-Running-Git" class="headerlink" title="4.5 Running Git"></a>4.5 Running Git</h3><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Viewing-Git-Output.html#Viewing-Git-Output" target="_blank" rel="noopener">Viewing Git Output</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Git-Process-Status.html#Git-Process-Status" target="_blank" rel="noopener">Git Process Status</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Running-Git-Manually.html#Running-Git-Manually" target="_blank" rel="noopener">Running Git Manually</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Git-Executable.html#Git-Executable" target="_blank" rel="noopener">Git Executable</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Global-Git-Arguments.html#Global-Git-Arguments" target="_blank" rel="noopener">Global Git Arguments</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-5-1-Viewing-Git-Output"><a href="#4-5-1-Viewing-Git-Output" class="headerlink" title="4.5.1 Viewing Git Output"></a>4.5.1 Viewing Git Output</h4><p>Magit runs Git either for side-effects (e.g. when pushing) or to get some value (e.g. the name of the current branch).</p>
+<p>When Git is run for side-effects, the process output is logged in a per-repository log buffer, which can be consulted using the <code>magit-process</code> command when things don’t go as expected.</p>
+<p>The output/errors for up to ‘magit-process-log-max’ Git commands are retained.</p>
+<ul>
+<li><p>$     (<code>magit-process</code>)</p>
+<p>This commands displays the process buffer for the current repository.</p>
+</li>
+</ul>
+<p>Inside that buffer, the usual key bindings for navigating and showing sections are available. There is one additional command.</p>
+<ul>
+<li><p>k     (<code>magit-process-kill</code>)</p>
+<p>This command kills the process represented by the section at point.</p>
+</li>
+<li><p>User Option: <strong>magit-git-debug</strong></p>
+<p>When this is non-nil then the output of all calls to git are logged in the process buffer. This is useful when debugging, otherwise it just negatively affects performance.</p>
+</li>
+</ul>
+<h2 id="5-Inspecting"><a href="#5-Inspecting" class="headerlink" title="5 Inspecting"></a>5 Inspecting</h2><p>The functionality provided by Magit can be roughly divided into three groups: </p>
+<p>inspecting existing data,<br>manipulating existing data or adding new data,<br> transferring data. (划分的好.)</p>
+<p>Of course that is a rather crude distinction that often falls short, but it’s more useful than no distinction at all. This section is concerned with inspecting data, the next two with manipulating and transferring it. Then follows a section about miscellaneous functionality, which cannot easily be fit into this distinction.</p>
+<p>Of course other distinctions make sense too, e.g. Git’s distinction between porcelain and plumbing commands, which for the most part is equivalent to Emacs’ distinction between interactive commands and non-interactive functions. All of the sections mentioned before are mainly concerned with the porcelain – Magit’s plumbing layer is described later.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Status-Buffer.html#Status-Buffer" target="_blank" rel="noopener">Status Buffer</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Repository-List.html#Repository-List" target="_blank" rel="noopener">Repository List</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Logging.html#Logging" target="_blank" rel="noopener">Logging</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Diffing.html#Diffing" target="_blank" rel="noopener">Diffing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Ediffing.html#Ediffing" target="_blank" rel="noopener">Ediffing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/References-Buffer.html#References-Buffer" target="_blank" rel="noopener">References Buffer</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Bisecting.html#Bisecting" target="_blank" rel="noopener">Bisecting</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Visiting-Blobs.html#Visiting-Blobs" target="_blank" rel="noopener">Visiting Blobs</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Blaming.html#Blaming" target="_blank" rel="noopener">Blaming</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-1-Status-Buffer"><a href="#5-1-Status-Buffer" class="headerlink" title="5.1 Status Buffer"></a>5.1 Status Buffer</h3><p>While other Magit buffers contain e.g. one particular diff or one particular log, the status buffer contains the diffs for staged and unstaged changes, logs for unpushed and unpulled commits, lists of stashes and untracked files, and information related to the current branch.</p>
+<p>During certain incomplete operations – for example when a merge resulted in a conflict – additional information is displayed that helps proceeding with or aborting the operation.</p>
+<p>The command <code>magit-status</code> displays the status buffer belonging to the current repository in another window. This command is used so often that it should be bound globally. We recommend using <code>C-x g</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x g&quot;) &apos;magit-status)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>C-x g     (<code>magit-status</code>)</p>
+<p>When invoked from within an existing Git repository, then this command shows the status of that repository in a buffer.If the current directory isn’t located within a Git repository, then this command prompts for an existing repository or an arbitrary directory, depending on the option <code>magit-repository-directories</code>, and the status for the selected repository is shown instead.If that option specifies any existing repositories, then the user is asked to select one of them.Otherwise the user is asked to select an arbitrary directory using regular file-name completion. If the selected directory is the top-level directory of an existing working tree, then the status buffer for that is shown.Otherwise the user is offered to initialize the selected directory as a new repository. After creating the repository its status buffer is shown.These fallback behaviors can also be forced using one or more prefix arguments:With two prefix arguments (or more precisely a numeric prefix value of 16 or greater) an arbitrary directory is read, which is then acted on as described above. The same could be accomplished using the command <code>magit-init</code>.With a single prefix argument an existing repository is read from the user, or if no repository can be found based on the value of <code>magit-repository-directories</code>, then the behavior is the same as with two prefix arguments.</p>
+</li>
+<li><p>User Option: <strong>magit-repository-directories</strong></p>
+<p>List of directories that are Git repositories or contain Git repositories.Each element has the form <code>(DIRECTORY . DEPTH)</code>. DIRECTORY has to be a directory or a directory file-name, a string. DEPTH, an integer, specifies the maximum depth to look for Git repositories. If it is 0, then only add DIRECTORY itself.This option controls which repositories are being listed by <code>magit-list-repositories</code>. It also affects <code>magit-status</code> (which see) in potentially surprising ways (see above).</p>
+</li>
+<li><p>Command: <strong>ido-enter-magit-status</strong></p>
+<p>From an Ido prompt used to open a file, instead drop into <code>magit-status</code>. This is similar to <code>ido-magic-delete-char</code>, which, despite its name, usually causes a Dired buffer to be created.To make this command available, use something like:<code>(add-hook &#39;ido-setup-hook           (lambda ()             (define-key ido-completion-map               (kbd \&quot;C-x g\&quot;) &#39;ido-enter-magit-status)))</code>Starting with Emacs 25.1 the Ido keymaps are defined just once instead of every time Ido is invoked, so now you can modify it like pretty much every other keymap:<code>(define-key ido-common-completion-map   (kbd \&quot;C-x g\&quot;) &#39;ido-enter-magit-status)</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Status-Sections.html#Status-Sections" target="_blank" rel="noopener">Status Sections</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Status-Header-Sections.html#Status-Header-Sections" target="_blank" rel="noopener">Status Header Sections</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Status-Module-Sections.html#Status-Module-Sections" target="_blank" rel="noopener">Status Module Sections</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Status-Options.html#Status-Options" target="_blank" rel="noopener">Status Options</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-Manipulating"><a href="#6-Manipulating" class="headerlink" title="6 Manipulating"></a>6 Manipulating</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Repository-Setup.html#Repository-Setup" target="_blank" rel="noopener">Repository Setup</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Staging-and-Unstaging.html#Staging-and-Unstaging" target="_blank" rel="noopener">Staging and Unstaging</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Applying.html#Applying" target="_blank" rel="noopener">Applying</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Committing.html#Committing" target="_blank" rel="noopener">Committing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Branching.html#Branching" target="_blank" rel="noopener">Branching</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Merging.html#Merging" target="_blank" rel="noopener">Merging</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Resolving-Conflicts.html#Resolving-Conflicts" target="_blank" rel="noopener">Resolving Conflicts</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Rebasing.html#Rebasing" target="_blank" rel="noopener">Rebasing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Cherry-Picking.html#Cherry-Picking" target="_blank" rel="noopener">Cherry Picking</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Resetting.html#Resetting" target="_blank" rel="noopener">Resetting</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Stashing.html#Stashing" target="_blank" rel="noopener">Stashing</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-Transferring"><a href="#7-Transferring" class="headerlink" title="7 Transferring"></a>7 Transferring</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Remotes.html#Remotes" target="_blank" rel="noopener">Remotes</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Fetching.html#Fetching" target="_blank" rel="noopener">Fetching</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Pulling.html#Pulling" target="_blank" rel="noopener">Pulling</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Pushing.html#Pushing" target="_blank" rel="noopener">Pushing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Plain-Patches.html#Plain-Patches" target="_blank" rel="noopener">Plain Patches</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Maildir-Patches.html#Maildir-Patches" target="_blank" rel="noopener">Maildir Patches</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-Miscellaneous"><a href="#8-Miscellaneous" class="headerlink" title="8 Miscellaneous"></a>8 Miscellaneous</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Tagging.html#Tagging" target="_blank" rel="noopener">Tagging</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Notes.html#Notes" target="_blank" rel="noopener">Notes</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Submodules.html#Submodules" target="_blank" rel="noopener">Submodules</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Subtree.html#Subtree" target="_blank" rel="noopener">Subtree</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Worktree.html#Worktree" target="_blank" rel="noopener">Worktree</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Common-Commands.html#Common-Commands" target="_blank" rel="noopener">Common Commands</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes" target="_blank" rel="noopener">Wip Modes</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Files.html#Minor-Mode-for-Buffers-Visiting-Files" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Files</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Blobs.html#Minor-Mode-for-Buffers-Visiting-Blobs" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Blobs</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-Customizing"><a href="#9-Customizing" class="headerlink" title="9 Customizing"></a>9 Customizing</h2><p>Both Git and Emacs are highly customizable. Magit is both a Git porcelain as well as an Emacs package, so it makes sense to customize it using both Git variables as well as Emacs options. However this flexibility doesn’t come without problems, including but not limited to the following.</p>
+<ul>
+<li><p>Some Git variables automatically have an effect in Magit without requiring any explicit support. Sometimes that is desirable - in other cases, it breaks Magit.</p>
+<p>When a certain Git setting breaks Magit but you want to keep using that setting on the command line, then that can be accomplished by overriding the value for Magit only by appending something like <code>(&quot;-c&quot; &quot;some.variable=compatible-value&quot;)</code> to <code>magit-git-global-arguments</code>.</p>
+</li>
+<li><p>Certain settings like <code>fetch.prune=true</code> are respected by Magit commands (because they simply call the respective Git command) but their value is not reflected in the respective transient buffers. In this case the <code>--prune</code> argument in <code>magit-fetch</code> might be active or inactive, but that doesn’t keep the Git variable from being honored by the suffix commands anyway. So pruning might happen despite the <code>--prune</code> arguments being displayed in a way that seems to indicate that no pruning will happen.</p>
+</li>
+</ul>
+<p>I intend to address these and similar issues in a future release.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Per_002dRepository-Configuration.html#Per_002dRepository-Configuration" target="_blank" rel="noopener">Per-Repository Configuration</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Essential-Settings.html#Essential-Settings" target="_blank" rel="noopener">Essential Settings</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-Plumbing"><a href="#10-Plumbing" class="headerlink" title="10 Plumbing"></a>10 Plumbing</h2><p>The following sections describe how to use several of Magit’s core abstractions to extend Magit itself or implement a separate extension.</p>
+<p>A few of the low-level features used by Magit have been factored out into separate libraries/packages, so that they can be used by other packages, without having to depend on Magit. See <a href="https://magit.vc/manual/with-editor/index.html#Top" target="_blank" rel="noopener">(with-editor)Top</a> for information about <code>with-editor</code>. <code>transient</code> doesn’t have a manual yet.</p>
+<p>If you are trying to find an unused key that you can bind to a command provided by your own Magit extension, then checkout <a href="https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry" target="_blank" rel="noopener">https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry</a>.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Calling-Git.html#Calling-Git" target="_blank" rel="noopener">Calling Git</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Plumbing.html#Section-Plumbing" target="_blank" rel="noopener">Section Plumbing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Refreshing-Buffers.html#Refreshing-Buffers" target="_blank" rel="noopener">Refreshing Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Conventions.html#Conventions" target="_blank" rel="noopener">Conventions</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Appendix-A-FAQ"><a href="#Appendix-A-FAQ" class="headerlink" title="Appendix A FAQ"></a>Appendix A FAQ</h2><p>The next two nodes lists frequently asked questions. For a list of frequently <strong>and recently</strong>asked questions, i.e. questions that haven’t made it into the manual yet, see<a href="https://github.com/magit/magit/wiki/FAQ" target="_blank" rel="noopener">https://github.com/magit/magit/wiki/FAQ</a>.</p>
+<p>Please also use the <a href="https://magit.vc/manual/magit/Debugging-Tools.html#Debugging-Tools" target="_blank" rel="noopener">Debugging Tools</a>.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/FAQ-_002d-How-to-_2026_003f.html#FAQ-_002d-How-to-_2026_003f" target="_blank" rel="noopener">FAQ - How to …?</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/FAQ-_002d-Issues-and-Errors.html#FAQ-_002d-Issues-and-Errors" target="_blank" rel="noopener">FAQ - Issues and Errors</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/emacs/" rel="tag"># emacs</a>
+          
+            <a href="/tags/git/" rel="tag"># git</a>
+          
+            <a href="/tags/magit/" rel="tag"># magit</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/25/github-workflow/" rel="next" title="github workflow">
+                <i class="fa fa-chevron-left"></i> github workflow
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">19</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Git-Porcelain-inside-Emacs"><span class="nav-text">A Git Porcelain inside Emacs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Getting-Started"><span class="nav-text">3 Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Interface-Concepts"><span class="nav-text">4 Interface Concepts</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-Modes-and-Buffers"><span class="nav-text">4.1 Modes and Buffers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Sections"><span class="nav-text">4.2 Sections</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-Transient-Commands"><span class="nav-text">4.3 Transient Commands</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-Completion-Confirmation-and-the-Selection"><span class="nav-text">4.4 Completion, Confirmation and the Selection</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-5-Running-Git"><span class="nav-text">4.5 Running Git</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-1-Viewing-Git-Output"><span class="nav-text">4.5.1 Viewing Git Output</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Inspecting"><span class="nav-text">5 Inspecting</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Status-Buffer"><span class="nav-text">5.1 Status Buffer</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-Manipulating"><span class="nav-text">6 Manipulating</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Transferring"><span class="nav-text">7 Transferring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Miscellaneous"><span class="nav-text">8 Miscellaneous</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-Customizing"><span class="nav-text">9 Customizing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-Plumbing"><span class="nav-text">10 Plumbing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Appendix-A-FAQ"><span class="nav-text">Appendix A FAQ</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/05/25/git-magit/";
+    this.page.identifier = "2019/05/25/git-magit/";
+    this.page.title = 'Magit Documentation';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
