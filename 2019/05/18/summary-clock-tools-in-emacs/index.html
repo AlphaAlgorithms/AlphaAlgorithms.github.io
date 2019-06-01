@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="DummyHead">
 <meta property="og:description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T04:23:09.645Z">
+<meta property="og:updated_time" content="2019-06-01T07:34:14.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Emacs时间管理之Datetime与Clock工具">
 <meta name="twitter:description" content="前文概要:时间管理的三件工具(clock, datetime, calendar) 时间变量的顺序与时间表示的格式(%a %b-d %H:%M %Y) Emacs中的时间格式与任务的时间属性时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime. The Org Manual: Dates and Times主要应用datetime和clock两个工具管理时间.  时间戳的格">
@@ -242,7 +242,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">24</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">25</span></a>
 
   </li>
         
@@ -261,7 +261,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">14</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">15</span></a>
 
   </li>
         
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">20</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">21</span></a>
 
   </li>
 
@@ -375,12 +375,24 @@
                 
               
 
-              <time title="Created: 2019-05-18 12:01:49 / Modified: 12:23:09" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
+              <time title="Created: 2019-05-18 12:01:49" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-01 15:34:14" itemprop="dateModified" datetime="2019-06-01T15:34:14+08:00">2019-06-01</time>
               
             
           </span>
@@ -483,19 +495,16 @@
 </ul>
 </li>
 </ul>
-<h2 id="Clock计时与中断处理"><a href="#Clock计时与中断处理" class="headerlink" title="Clock计时与中断处理"></a>Clock计时与中断处理</h2><pre><code>1) 基本计时功能, 
- `org-clock-in`, `org-clock-out`
- 可以手动修改计时, 然后调用` org-evaluate-time-range`或者`update-maybe`
+<h2 id="Clock计时与中断处理"><a href="#Clock计时与中断处理" class="headerlink" title="Clock计时与中断处理"></a>Clock计时与中断处理</h2><ol>
+<li><p>基本计时功能,<br><code>org-clock-in</code>, <code>org-clock-out</code><br>可以手动修改计时, 然后调用<code>org-evaluate-time-range</code>或者<code>update-maybe</code></p>
+</li>
+<li><p>任务的第五个属性, efforts<br>总结任务的5个属性,1)schedule 2) deadline 3)repeater 4)time span 5)预测的time span(efforts).<br>efforts是核心参数,逐步提高对时间和任务的掌控.</p>
+</li>
+</ol>
+<ol start="3">
+<li>Resolve idle time and continuous clocking<br>中断计时的问题,<code>调出来org-resolve-clocks</code>重新设置.k(keep), s(substract),只用keep便可.<br>总结:<br>1) 计时与计算 2) 任务的5个时间属性 3)idle中断计时的处理.</li>
+</ol>
 
-2) 任务的第五个属性, efforts 
- 总结任务的5个属性,1)schedule 2) deadline 3)repeater 4)time span 5)预测的time span(efforts).
- efforts是核心参数,逐步提高对时间和任务的掌控.
-
-3) Resolve idle time and continuous clocking 
- 中断计时的问题,`调出来org-resolve-clocks`重新设置.k(keep), s(substract),只用keep便可.
-总结:
-  1) 计时与计算 2) 任务的5个时间属性 3)idle中断计时的处理.
-</code></pre>
       
     </div>
 
@@ -623,7 +632,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -668,7 +677,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -733,7 +744,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">24</span>
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
