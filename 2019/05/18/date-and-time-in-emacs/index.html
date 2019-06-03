@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="DummyHead">
 <meta property="og:description" content="8.1 Timestamps, Deadlines and SchedulingA timestamp is a specification of a date (possibly with a time or a range of times) in a special format, either ‘’ or ‘’ or ‘’[^1]  A timestamp can appear anywh">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-05-18T03:00:16.925Z">
+<meta property="og:updated_time" content="2019-06-02T08:03:40.231Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Date and Time in Emacs">
 <meta name="twitter:description" content="8.1 Timestamps, Deadlines and SchedulingA timestamp is a specification of a date (possibly with a time or a range of times) in a special format, either ‘’ or ‘’ or ‘’[^1]  A timestamp can appear anywh">
@@ -242,7 +242,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">26</span></a>
 
   </li>
         
@@ -261,7 +261,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
 
   </li>
         
@@ -280,7 +280,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">22</span></a>
 
   </li>
 
@@ -375,12 +375,24 @@
                 
               
 
-              <time title="Created: 2019-05-18 09:07:05 / Modified: 11:00:16" itemprop="dateCreated datePublished" datetime="2019-05-18T09:07:05+08:00">2019-05-18</time>
+              <time title="Created: 2019-05-18 09:07:05" itemprop="dateCreated datePublished" datetime="2019-05-18T09:07:05+08:00">2019-05-18</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-02 16:03:40" itemprop="dateModified" datetime="2019-06-02T16:03:40+08:00">2019-06-02</time>
               
             
           </span>
@@ -457,7 +469,7 @@
 <li>Tmestamp with repeater interval(repeater)</li>
 </ol>
 <p>A timestamp may contain a <em>repeater interval</em>, indicating that it applies not only on the given date, but again and again after a certain interval of N days (d), weeks (w), months (m), or years (y). The following shows up in the agenda every Wednesday:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Pick up Sam at school   </span><br><span class="line">&lt;<span class="number">2007</span><span class="number">-05</span><span class="number">-16</span> Wed <span class="number">12</span>:<span class="number">30</span> +<span class="number">1</span>w&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Pick up Sam at school   </span><br><span class="line">&lt;<span class="number">2007</span><span class="number">-05</span><span class="number">-16</span> Wed <span class="number">12</span>:<span class="number">30</span> +<span class="number">1</span>w&gt;q</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Diary-style sexp entries (这一项可以去掉)</p>
 <p>For more complex date specifications, Org mode supports using the special sexp diary entries implemented in the Emacs calendar/diary package. For example, with optional time:</p>
@@ -493,7 +505,8 @@
 <p><2019-05-16 thu 15:46>–<2019-05-16 thu 15:46> #Consecutive </2019-05-16></2019-05-16></p>
 </blockquote>
 <p>另外还有两节无关紧要的内容.</p>
-<h4 id="8-2-1-The-Org-Manual-The-date-time-prompt"><a href="#8-2-1-The-Org-Manual-The-date-time-prompt" class="headerlink" title="8.2.1 The Org Manual: The date/time prompt"></a>8.2.1 <a href="https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt" target="_blank" rel="noopener">The Org Manual: The date/time prompt</a></h4><h4 id="8-2-2-The-Org-Manual-Custom-time-format"><a href="#8-2-2-The-Org-Manual-Custom-time-format" class="headerlink" title="8.2.2 The Org Manual: Custom time format"></a>8.2.2 <a href="https://orgmode.org/manual/Custom-time-format.html#Custom-time-format" target="_blank" rel="noopener">The Org Manual: Custom time format</a></h4><h2 id="8-3-Deadlines-and-Scheduling"><a href="#8-3-Deadlines-and-Scheduling" class="headerlink" title="8.3 Deadlines and Scheduling"></a>8.3 Deadlines and Scheduling</h2><p>A timestamp may be preceded by special keywords to facilitate planning. Both the timestamp and the keyword have to be positioned immediately after the task they refer to.</p>
+<h4 id="8-2-1-The-Org-Manual-The-date-time-prompt"><a href="#8-2-1-The-Org-Manual-The-date-time-prompt" class="headerlink" title="8.2.1 The Org Manual: The date/time prompt"></a>8.2.1 <a href="https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt" target="_blank" rel="noopener">The Org Manual: The date/time prompt</a></h4><h4 id="8-2-2-The-Org-Manual-Custom-time-format"><a href="#8-2-2-The-Org-Manual-Custom-time-format" class="headerlink" title="8.2.2 The Org Manual: Custom time format"></a>8.2.2 <a href="https://orgmode.org/manual/Custom-time-format.html#Custom-time-format" target="_blank" rel="noopener">The Org Manual: Custom time format</a></h4><p>q</p>
+<h2 id="8-3-Deadlines-and-Scheduling"><a href="#8-3-Deadlines-and-Scheduling" class="headerlink" title="8.3 Deadlines and Scheduling"></a>8.3 Deadlines and Scheduling</h2><p>A timestamp may be preceded by special keywords to facilitate planning. Both the timestamp and the keyword have to be positioned immediately after the task they refer to.</p>
 <ul>
 <li><p>‘DEADLINE’</p>
 <p>Meaning: the task (most likely a TODO item, though not necessarily) is supposed to be finished on that date.</p>
@@ -905,7 +918,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -952,7 +965,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -1019,7 +1034,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

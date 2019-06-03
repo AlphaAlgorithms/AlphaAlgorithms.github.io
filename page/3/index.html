@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">26</span></a>
 
   </li>
         
@@ -257,7 +257,7 @@
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">15</span></a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">22</span></a>
 
   </li>
 
@@ -312,6 +312,220 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/08/paramaters-sequence-in-re-sub/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/08/paramaters-sequence-in-re-sub/" class="post-title-link" itemprop="url">re.sub参数顺序的问题</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-08 11:54:07" itemprop="dateCreated datePublished" datetime="2019-05-08T11:54:07+08:00">2019-05-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-20 21:35:25" itemprop="dateModified" datetime="2019-05-20T21:35:25+08:00">2019-05-20</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-fileManager/" itemprop="url" rel="index"><span itemprop="name">linux - fileManager</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/08/paramaters-sequence-in-re-sub/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/08/paramaters-sequence-in-re-sub/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="提出问题"><a href="#提出问题" class="headerlink" title="提出问题"></a>提出问题</h2><p>在写<code>re.sub</code>或者<code>re.subn</code>的时候, 常常会不太确定引用参数的顺序, 需要中断的时间查看提示或者help文档.<br>比如<code>input_string=&#39;trade war</code>修改为<code>trade negotiation</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">17</span>]: re.sub(<span class="string">"war"</span>, <span class="string">"negotiation"</span>, <span class="string">"trade war"</span>)                                                                            </span><br><span class="line">Out[<span class="number">17</span>]: <span class="string">'trade negotiation'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sub(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>) </span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sub</span><span class="params">(pattern, repl, string, count=<span class="number">0</span>, flags=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> _compile(pattern, flags).sub(repl, string, count)<span class="comment">#首先处理regex-pattern</span></span><br></pre></td></tr></table></figure>
+<h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><p><code>pattern</code>是与source(input_string)的匹配的内容, repl是修改后的内容(destination), 这里顺序与<code>str.replace</code>是一致.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace(self, old, new, count=-1, /)</span><br></pre></td></tr></table></figure>
+<p>old 来自source, new是输出到destination结果中.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">In [<span class="number">16</span>]: <span class="string">"trade war"</span>.replace(<span class="string">"war"</span>, <span class="string">"negotiation"</span>)                                                                            </span><br><span class="line">Out[<span class="number">16</span>]: <span class="string">'trade negotiation'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>sed</code>也遵循同样的模式.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">s/regexp/replacement/</span><br><span class="line">       Attempt  to  match  regexp  against  the  pattern  space.   If successful, replace that portion matched <span class="keyword">with</span></span><br><span class="line">       replacement.  The replacement may contain the special character &amp; to refer to that portion  of  the  pattern</span><br><span class="line">       space  which  matched,  <span class="keyword">and</span>  the  special  escapes \<span class="number">1</span> through \<span class="number">9</span> to refer to the corresponding matching sub-</span><br><span class="line">       expressions <span class="keyword">in</span> the regexp.</span><br></pre></td></tr></table></figure>
+<p>regex-pattern匹配 source 数据中的内容, replacement则是替换后输出到destination结果中.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">'trade war'</span> | sed <span class="string">"s/war/negotiation/g"</span></span><br><span class="line">trade negotiation</span><br></pre></td></tr></table></figure>
+<p>其他的Text Processing </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">echo</span> <span class="string">"trade-war"</span> | tr <span class="string">"-"</span> <span class="string">"\n"</span></span><br><span class="line">trade</span><br><span class="line">war</span><br><span class="line">   tr [OPTION]... SET1 [SET2]</span><br></pre></td></tr></table></figure>
+<p>SET1 is from the source, SET2 is the result of the destination after been processed.</p>
+<p>总结这种模式和思维惯例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function source destination</span><br></pre></td></tr></table></figure>
+<p>Text Processing如此, </p>
+<p>File Handling的utilities遵循同样的模式.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mv [OPTION]... SOURCE... DIRECTORY</span><br><span class="line">cp [OPTION]... [-T] SOURCE DEST</span><br><span class="line">ln [OPTION]... Source... DIRECTORY   </span><br><span class="line">rsync [OPTION...] SRC... [DEST] </span><br><span class="line">scp  SRC... DEST</span><br><span class="line">dd <span class="keyword">if</span>=/dev/&#123;&#123;source_drive&#125;&#125; of=/dev/&#123;&#123;dest_drive&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>例外的情况是tar.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -c [-f ARCHIVE] [OPTIONS] [FILE...]</span><br><span class="line">tar -cvf dest_archive.tar.gz    source_dir</span><br><span class="line">tart -cvf backup.tar  /home/me/</span><br></pre></td></tr></table></figure>
+<p><code>tar</code>是将目标放在前面.</p>
+<p>再回头看 <code>re.sub</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">re.sub(pattern, repl, string) </span><br><span class="line"><span class="comment">#扩展后</span></span><br><span class="line">re.sub(pattern_from_source, replacement_to_result, source_data)</span><br></pre></td></tr></table></figure>
+<p>三个参数中<code>pattern_from_source</code>, <code>replacement_to_result</code> , <code>source_data</code> 的最后一个是<code>source_data</code>, 将source放置在最后.<br><code>grep</code>  与 <code>sed</code>都遵循同样的模式</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">'s/&#123;&#123;regex&#125;&#125;/&#123;&#123;replace&#125;&#125;/'</span> &#123;&#123;filename&#125;&#125;</span><br><span class="line">grep [OPTIONS] -e PATTERN ... [FILE...] <span class="comment">#grep regex source</span></span><br></pre></td></tr></table></figure>
+<p>例外的情况是<code>find</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">find [-H] [-L] [-P] [-D debugopts] [-Olevel] [starting-point...] [expression]</span><br><span class="line">find [Option] <span class="built_in">source</span> pattern</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h2><p>Data Stream Processing和File Handling遵循<code>subroutine src dst</code> 模式.两个例外的情况是<code>tar and find</code></p>
+<p>这个问题之所以值得探讨,是因为涉及底层的方法论和工作模式.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -567,7 +781,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -614,7 +828,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -681,7 +897,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
