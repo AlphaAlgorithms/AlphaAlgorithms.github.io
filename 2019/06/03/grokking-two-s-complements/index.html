@@ -96,21 +96,21 @@
 
 
 
-  <meta name="description" content="基本概念反码是个生造出来的概念．所谓反码，英语里又叫ones’ complement（对1求补）所谓补码，英语里又叫two’s complement（对2求补） ##　模的概念 首先灌输一个新的概念叫，模 什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？ 有两种方式：  逆时针将时针拨4小时 顺时针将时针拨8（12-">
+  <meta name="description" content="基本概念反码是个生造出来的概念．所谓反码，英语里又叫ones’ complement（对1求补）所谓补码，英语里又叫two’s complement（对2求补） 模的概念首先灌输一个新的概念叫，模 什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？ 有两种方式：  逆时针将时针拨4小时 顺时针将时针拨8（12-4）小时">
 <meta name="keywords" content="binary">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Grokking原码, 补码, 反码">
 <meta property="og:url" content="https://alphaalgorithms.github.io/2019/06/03/grokking-two-s-complements/index.html">
 <meta property="og:site_name" content="DummyHead">
-<meta property="og:description" content="基本概念反码是个生造出来的概念．所谓反码，英语里又叫ones’ complement（对1求补）所谓补码，英语里又叫two’s complement（对2求补） ##　模的概念 首先灌输一个新的概念叫，模 什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？ 有两种方式：  逆时针将时针拨4小时 顺时针将时针拨8（12-">
+<meta property="og:description" content="基本概念反码是个生造出来的概念．所谓反码，英语里又叫ones’ complement（对1求补）所谓补码，英语里又叫two’s complement（对2求补） 模的概念首先灌输一个新的概念叫，模 什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？ 有两种方式：  逆时针将时针拨4小时 顺时针将时针拨8（12-4）小时">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://alphaalgorithms.github.io/home/gaowei/Reference/Post/grokking-two-s-complements.assets/copy-and-complement.png">
 <meta property="og:image" content="https://alphaalgorithms.github.io/home/gaowei/Reference/Post/grokking-two-s-complements.assets/retain-symbols.png">
 <meta property="og:image" content="https://alphaalgorithms.github.io/home/gaowei/Reference/Post/grokking-two-s-complements.assets/retain-symbols2.png">
-<meta property="og:updated_time" content="2019-06-03T07:40:28.475Z">
+<meta property="og:updated_time" content="2019-06-03T07:42:27.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Grokking原码, 补码, 反码">
-<meta name="twitter:description" content="基本概念反码是个生造出来的概念．所谓反码，英语里又叫ones’ complement（对1求补）所谓补码，英语里又叫two’s complement（对2求补） ##　模的概念 首先灌输一个新的概念叫，模 什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？ 有两种方式：  逆时针将时针拨4小时 顺时针将时针拨8（12-">
+<meta name="twitter:description" content="基本概念反码是个生造出来的概念．所谓反码，英语里又叫ones’ complement（对1求补）所谓补码，英语里又叫two’s complement（对2求补） 模的概念首先灌输一个新的概念叫，模 什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？ 有两种方式：  逆时针将时针拨4小时 顺时针将时针拨8（12-4）小时">
 <meta name="twitter:image" content="https://alphaalgorithms.github.io/home/gaowei/Reference/Post/grokking-two-s-complements.assets/copy-and-complement.png">
 
 
@@ -379,7 +379,7 @@
                 
               
 
-              <time title="Created: 2019-06-03 15:38:57 / Modified: 15:40:28" itemprop="dateCreated datePublished" datetime="2019-06-03T15:38:57+08:00">2019-06-03</time>
+              <time title="Created: 2019-06-03 15:38:57 / Modified: 15:42:27" itemprop="dateCreated datePublished" datetime="2019-06-03T15:38:57+08:00">2019-06-03</time>
             
 
             
@@ -450,8 +450,7 @@
 
       
         <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>反码是个生造出来的概念．<br>所谓反码，英语里又叫ones’ complement（对1求补）<br>所谓补码，英语里又叫two’s complement（对2求补）</p>
-<p>##　模的概念</p>
-<p>首先灌输一个新的概念叫，模</p>
+<h2 id="模的概念"><a href="#模的概念" class="headerlink" title="模的概念"></a>模的概念</h2><p>首先灌输一个新的概念叫，模</p>
 <p>什么是“模”，想象日常使用的钟表，它可以显示0～12点的时间，假设现在是2点钟，请用手动拨动时针的方式将时间减4小时，你会怎么做？</p>
 <p>有两种方式：</p>
 <ol>
@@ -771,7 +770,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在回到二进制的计算机世界"><span class="nav-text">现在回到二进制的计算机世界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终问题，那书和老师为什么要用原码，反码来讲补码-？"><span class="nav-text">最终问题，那书和老师为什么要用原码，反码来讲补码 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面是吐槽"><span class="nav-text">下面是吐槽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保留符号的运算"><span class="nav-text">保留符号的运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模的概念"><span class="nav-text">模的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#现在回到二进制的计算机世界"><span class="nav-text">现在回到二进制的计算机世界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最终问题，那书和老师为什么要用原码，反码来讲补码-？"><span class="nav-text">最终问题，那书和老师为什么要用原码，反码来讲补码 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面是吐槽"><span class="nav-text">下面是吐槽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保留符号的运算"><span class="nav-text">保留符号的运算</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
