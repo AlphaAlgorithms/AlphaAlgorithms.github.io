@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="In this chapter, we build on what we have learned in previous chapters by looking at more complex functions. The copy-to-buffer function illustrates use of two save-excursionexpressions in one definit">
+<meta name="keywords" content="elisp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro to elisp 5. A Few More Complex Functions">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/06/11/elisp-more-complex-functions/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="In this chapter, we build on what we have learned in previous chapters by looking at more complex functions. The copy-to-buffer function illustrates use of two save-excursionexpressions in one definit">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-11T01:23:18.284Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intro to elisp 5. A Few More Complex Functions">
+<meta name="twitter:description" content="In this chapter, we build on what we have learned in previous chapters by looking at more complex functions. The copy-to-buffer function illustrates use of two save-excursionexpressions in one definit">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/06/11/elisp-more-complex-functions/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Intro to elisp 5. A Few More Complex Functions | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">27</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/11/elisp-more-complex-functions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Intro to elisp 5. A Few More Complex Functions
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-11 09:20:03 / Modified: 09:23:18" itemprop="dateCreated datePublished" datetime="2019-06-11T09:20:03+08:00">2019-06-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/11/elisp-more-complex-functions/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/11/elisp-more-complex-functions/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>In this chapter, we build on what we have learned in previous chapters by looking at more complex functions. The <code>copy-to-buffer</code> function illustrates use of two <code>save-excursion</code>expressions in one definition, while the <code>insert-buffer</code> function illustrates use of an asterisk in an <code>interactive</code> expression, use of <code>or</code>, and the important distinction between a name and the object to which the name refers.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#copy_002dto_002dbuffer" target="_blank" rel="noopener">copy-to-buffer</a>: With <code>set-buffer</code>, <code>get-buffer-create</code>.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#insert_002dbuffer" target="_blank" rel="noopener">insert-buffer</a>: Read-only, and with <code>or</code>.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#beginning_002dof_002dbuffer" target="_blank" rel="noopener">beginning-of-buffer</a>: Shows <code>goto-char</code>, <code>point-min</code>, and <code>push-mark</code>.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Second-Buffer-Related-Review" target="_blank" rel="noopener">Second Buffer Related Review</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#optional-Exercise" target="_blank" rel="noopener">optional Exercise</a></li>
+</ul>
+<h3 id="5-1-The-Definition-of-copy-to-buffer"><a href="#5-1-The-Definition-of-copy-to-buffer" class="headerlink" title="5.1 The Definition of copy-to-buffer"></a>5.1 The Definition of <code>copy-to-buffer</code></h3><p>After understanding how <code>append-to-buffer</code> works, it is easy to understand <code>copy-to-buffer</code>. This function copies text into a buffer, but instead of adding to the second buffer, it replaces all the previous text in the second buffer.</p>
+<p>The body of <code>copy-to-buffer</code> looks like this,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">(interactive &quot;BCopy to buffer: \nr&quot;)</span><br><span class="line">(let ((oldbuf (current-buffer)))</span><br><span class="line">  (with-current-buffer (get-buffer-create buffer)</span><br><span class="line">    (barf-if-buffer-read-only)</span><br><span class="line">    (erase-buffer)</span><br><span class="line">    (save-excursion</span><br><span class="line">      (insert-buffer-substring oldbuf start end)))))</span><br></pre></td></tr></table></figure>
+<p>The <code>copy-to-buffer</code> function has a simpler <code>interactive</code> expression than <code>append-to-buffer</code>.</p>
+<p>The definition then says</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(with-current-buffer (get-buffer-create buffer) ...</span><br></pre></td></tr></table></figure>
+<p>First, look at the earliest inner expression; that is evaluated first. That expression starts with <code>get-buffer-create buffer</code>. The function tells the computer to use the buffer with the name specified as the one to which you are copying, or if such a buffer does not exist, to create it. Then, the <code>with-current-buffer</code> function evaluates its body with that buffer temporarily current.</p>
+<p>(This demonstrates another way to shift the computer’s attention but not the user’s. The <code>append-to-buffer</code> function showed how to do the same with <code>save-excursion</code> and <code>set-buffer</code>. <code>with-current-buffer</code> is a newer, and arguably easier, mechanism.)</p>
+<p>The <code>barf-if-buffer-read-only</code> function sends you an error message saying the buffer is read-only if you cannot modify it.</p>
+<p>The next line has the <code>erase-buffer</code> function as its sole contents. That function erases the buffer.</p>
+<p>Finally, the last two lines contain the <code>save-excursion</code> expression with <code>insert-buffer-substring</code> as its body. The <code>insert-buffer-substring</code> expression copies the text from the buffer you are in (and you have not seen the computer shift its attention, so you don’t know that that buffer is now called <code>oldbuf</code>).</p>
+<p>Incidentally, this is what is meant by “replacement”. To replace text, Emacs erases the previous text and then inserts new text.</p>
+<p>In outline, the body of <code>copy-to-buffer</code> looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(let (bind-oldbuf-to-value-of-current-buffer)</span><br><span class="line">    (with-the-buffer-you-are-copying-to</span><br><span class="line">      (but-do-not-erase-or-copy-to-a-read-only-buffer)</span><br><span class="line">      (erase-buffer)</span><br><span class="line">      (save-excursion</span><br><span class="line">        insert-substring-from-oldbuf-into-buffer)))</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-The-Definition-of-insert-buffer"><a href="#5-2-The-Definition-of-insert-buffer" class="headerlink" title="5.2 The Definition of insert-buffer"></a>5.2 The Definition of <code>insert-buffer</code></h3><p><code>insert-buffer</code> is yet another buffer-related function. This command copies another buffer <em>into</em> the current buffer. It is the reverse of <code>append-to-buffer</code> or <code>copy-to-buffer</code>, since they copy a region of text <em>from</em> the current buffer to another buffer.</p>
+<p>Here is a discussion based on the original code. The code was simplified in 2003 and is harder to understand.</p>
+<p>(See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#New-insert_002dbuffer" target="_blank" rel="noopener">New Body for <code>insert-buffer</code></a>, to see a discussion of the new body.)</p>
+<p>In addition, this code illustrates the use of <code>interactive</code> with a buffer that might be read-only and the important distinction between the name of an object and the object actually referred to.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#insert_002dbuffer-code" target="_blank" rel="noopener">insert-buffer code</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#insert_002dbuffer-interactive" target="_blank" rel="noopener">insert-buffer interactive</a>: When you can read, but not write.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#insert_002dbuffer-body" target="_blank" rel="noopener">insert-buffer body</a>: The body has an <code>or</code> and a <code>let</code>.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#if-_0026-or" target="_blank" rel="noopener">if &amp; or</a>: Using an <code>if</code> instead of an <code>or</code>.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Insert-or" target="_blank" rel="noopener">Insert or</a>: How the <code>or</code> expression works.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Insert-let" target="_blank" rel="noopener">Insert let</a>: Two <code>save-excursion</code> expressions.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#New-insert_002dbuffer" target="_blank" rel="noopener">New insert-buffer</a></li>
+</ul>
+<h4 id="The-Code-for-insert-buffer"><a href="#The-Code-for-insert-buffer" class="headerlink" title="The Code for insert-buffer"></a>The Code for <code>insert-buffer</code></h4><p>Here is the earlier code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">(defun insert-buffer (buffer)</span><br><span class="line">  &quot;Insert after point the contents of BUFFER.</span><br><span class="line">Puts mark after the inserted text.</span><br><span class="line">BUFFER may be a buffer or a buffer name.&quot;</span><br><span class="line">  (interactive &quot;*bInsert buffer: &quot;)</span><br><span class="line">  (or (bufferp buffer)</span><br><span class="line">      (setq buffer (get-buffer buffer)))</span><br><span class="line">  (let (start end newmark)</span><br><span class="line">    (save-excursion</span><br><span class="line">      (save-excursion</span><br><span class="line">        (set-buffer buffer)</span><br><span class="line">        (setq start (point-min) end (point-max)))</span><br><span class="line">      (insert-buffer-substring buffer start end)</span><br><span class="line">      (setq newmark (point)))</span><br><span class="line">    (push-mark newmark)))</span><br></pre></td></tr></table></figure>
+<p>As with other function definitions, you can use a template to see an outline of the function:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun insert-buffer (buffer)</span><br><span class="line">  &quot;documentation...&quot;</span><br><span class="line">  (interactive &quot;*bInsert buffer: &quot;)</span><br><span class="line">  body...)</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-1-The-Interactive-Expression-in-insert-buffer"><a href="#5-2-1-The-Interactive-Expression-in-insert-buffer" class="headerlink" title="5.2.1 The Interactive Expression in insert-buffer"></a>5.2.1 The Interactive Expression in <code>insert-buffer</code></h4><p>In <code>insert-buffer</code>, the argument to the <code>interactive</code> declaration has two parts, an asterisk, ‘*’, and ‘bInsert buffer: ’.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Read_002donly-buffer" target="_blank" rel="noopener">Read-only buffer</a>: When a buffer cannot be modified.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#b-for-interactive" target="_blank" rel="noopener">b for interactive</a>: An existing buffer or else its name.</li>
+</ul>
+<h5 id="A-Read-only-Buffer"><a href="#A-Read-only-Buffer" class="headerlink" title="A Read-only Buffer"></a>A Read-only Buffer</h5><p>The asterisk is for the situation when the current buffer is a read-only buffer—a buffer that cannot be modified. If <code>insert-buffer</code> is called when the current buffer is read-only, a message to this effect is printed in the echo area and the terminal may beep or blink at you; you will not be permitted to insert anything into current buffer. The asterisk does not need to be followed by a newline to separate it from the next argument.</p>
+<h5 id="‘b’-in-an-Interactive-Expression"><a href="#‘b’-in-an-Interactive-Expression" class="headerlink" title="‘b’ in an Interactive Expression"></a>‘b’ in an Interactive Expression</h5><p>The next argument in the interactive expression starts with a lower case ‘b’. (This is different from the code for <code>append-to-buffer</code>, which uses an upper-case ‘B’. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#append_002dto_002dbuffer" target="_blank" rel="noopener">The Definition of <code>append-to-buffer</code></a>.) The lower-case ‘b’ tells the Lisp interpreter that the argument for <code>insert-buffer</code> should be an existing buffer or else its name. (The upper-case ‘B’ option provides for the possibility that the buffer does not exist.) Emacs will prompt you for the name of the buffer, offering you a default buffer, with name completion enabled. If the buffer does not exist, you receive a message that says “No match”; your terminal may beep at you as well.</p>
+<p>The new and simplified code generates a list for <code>interactive</code>. It uses the <code>barf-if-buffer-read-only</code> and <code>read-buffer</code> functions with which we are already familiar and the <code>progn</code> special form with which we are not. (It will be described later.)</p>
+<h4 id="5-2-2-The-Body-of-the-insert-buffer-Function"><a href="#5-2-2-The-Body-of-the-insert-buffer-Function" class="headerlink" title="5.2.2 The Body of the insert-buffer Function"></a>5.2.2 The Body of the <code>insert-buffer</code> Function</h4><p>The body of the <code>insert-buffer</code> function has two major parts: an <code>or</code> expression and a <code>let</code> expression. The purpose of the <code>or</code> expression is to ensure that the argument <code>buffer</code> is bound to a buffer and not just the name of a buffer. The body of the <code>let</code> expression contains the code which copies the other buffer into the current buffer.</p>
+<p>In outline, the two expressions fit into the <code>insert-buffer</code> function like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(defun insert-buffer (buffer)</span><br><span class="line">  &quot;documentation...&quot;</span><br><span class="line">  (interactive &quot;*bInsert buffer: &quot;)</span><br><span class="line">  (or ...</span><br><span class="line">      ...</span><br><span class="line">  (let (varlist)</span><br><span class="line">      body-of-let... )</span><br></pre></td></tr></table></figure>
+<p>To understand how the <code>or</code> expression ensures that the argument <code>buffer</code> is bound to a buffer and not to the name of a buffer, it is first necessary to understand the <code>or</code> function.</p>
+<p>Before doing this, let me rewrite this part of the function using <code>if</code> so that you can see what is done in a manner that will be familiar.</p>
+<h4 id="5-2-3-insert-buffer-With-an-if-Instead-of-an-or"><a href="#5-2-3-insert-buffer-With-an-if-Instead-of-an-or" class="headerlink" title="5.2.3 insert-buffer With an if Instead of an or"></a>5.2.3 <code>insert-buffer</code> With an <code>if</code> Instead of an <code>or</code></h4><p>The job to be done is to make sure the value of <code>buffer</code> is a buffer itself and not the name of a buffer. If the value is the name, then the buffer itself must be got.</p>
+<p>You can imagine yourself at a conference where an usher is wandering around holding a list with your name on it and looking for you: the usher is bound to your name, not to you; but when the usher finds you and takes your arm, the usher becomes bound to you.</p>
+<p>In Lisp, you might describe this situation like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if (not (holding-on-to-guest))</span><br><span class="line">    (find-and-take-arm-of-guest))</span><br></pre></td></tr></table></figure>
+<p>We want to do the same thing with a buffer—if we do not have the buffer itself, we want to get it.</p>
+<p>Using a predicate called <code>bufferp</code> that tells us whether we have a buffer (rather than its name), we can write the code like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if (not (bufferp buffer))              ; if-part</span><br><span class="line">    (setq buffer (get-buffer buffer)))  ; then-part</span><br></pre></td></tr></table></figure>
+<p>Here, the true-or-false-test of the <code>if</code> expression is <code>(not (bufferp buffer))</code>; and the then-part is the expression <code>(setq buffer (get-buffer buffer))</code>.</p>
+<p>In the test, the function <code>bufferp</code> returns true if its argument is a buffer—but false if its argument is the name of the buffer. (The last character of the function name <code>bufferp</code> is the character ‘p’; as we saw earlier, such use of ‘p’ is a convention that indicates that the function is a predicate, which is a term that means that the function will determine whether some property is true or false. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Wrong-Type-of-Argument" target="_blank" rel="noopener">Using the Wrong Type Object as an Argument</a>.)</p>
+<p>The function <code>not</code> precedes the expression <code>(bufferp buffer)</code>, so the true-or-false-test looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(not (bufferp buffer))</span><br></pre></td></tr></table></figure>
+<p><code>not</code> is a function that returns true if its argument is false and false if its argument is true. So if <code>(bufferp buffer)</code> returns true, the <code>not</code> expression returns false and vice versa.</p>
+<p>Using this test, the <code>if</code> expression works as follows: when the value of the variable <code>buffer</code> is actually a buffer rather than its name, the true-or-false-test returns false and the <code>if</code>expression does not evaluate the then-part. This is fine, since we do not need to do anything to the variable <code>buffer</code> if it really is a buffer.</p>
+<p>On the other hand, when the value of <code>buffer</code> is not a buffer itself, but the name of a buffer, the true-or-false-test returns true and the then-part of the expression is evaluated. In this case, the then-part is <code>(setq buffer (get-buffer buffer))</code>. This expression uses the <code>get-buffer</code> function to return an actual buffer itself, given its name. The <code>setq</code> then sets the variable <code>buffer</code> to the value of the buffer itself, replacing its previous value (which was the name of the buffer).</p>
+<h4 id="5-2-4-The-or-in-the-Body"><a href="#5-2-4-The-or-in-the-Body" class="headerlink" title="5.2.4 The or in the Body"></a>5.2.4 The <code>or</code> in the Body</h4><p>The purpose of the <code>or</code> expression in the <code>insert-buffer</code> function is to ensure that the argument <code>buffer</code> is bound to a buffer and not just to the name of a buffer. The previous section shows how the job could have been done using an <code>if</code> expression. However, the <code>insert-buffer</code> function actually uses <code>or</code>. To understand this, it is necessary to understand how <code>or</code>works.</p>
+<p>An <code>or</code> function can have any number of arguments. It evaluates each argument in turn and returns the value of the first of its arguments that is not <code>nil</code>. Also, and this is a crucial feature of <code>or</code>, it does not evaluate any subsequent arguments after returning the first non-<code>nil</code> value.</p>
+<p>The <code>or</code> expression looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(or (bufferp buffer)</span><br><span class="line">    (setq buffer (get-buffer buffer)))</span><br></pre></td></tr></table></figure>
+<p>The first argument to <code>or</code> is the expression <code>(bufferp buffer)</code>. This expression returns true (a non-<code>nil</code> value) if the buffer is actually a buffer, and not just the name of a buffer. In the <code>or</code> expression, if this is the case, the <code>or</code> expression returns this true value and does not evaluate the next expression—and this is fine with us, since we do not want to do anything to the value of <code>buffer</code> if it really is a buffer.</p>
+<p>On the other hand, if the value of <code>(bufferp buffer)</code> is <code>nil</code>, which it will be if the value of <code>buffer</code> is the name of a buffer, the Lisp interpreter evaluates the next element of the <code>or</code>expression. This is the expression <code>(setq buffer (get-buffer buffer))</code>. This expression returns a non-<code>nil</code> value, which is the value to which it sets the variable <code>buffer</code>—and this value is a buffer itself, not the name of a buffer.</p>
+<p>The result of all this is that the symbol <code>buffer</code> is always bound to a buffer itself rather than to the name of a buffer. All this is necessary because the <code>set-buffer</code> function in a following line only works with a buffer itself, not with the name to a buffer.</p>
+<p>Incidentally, using <code>or</code>, the situation with the usher would be written like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(or (holding-on-to-guest) (find-and-take-arm-of-guest))</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-5-The-let-Expression-in-insert-buffer"><a href="#5-2-5-The-let-Expression-in-insert-buffer" class="headerlink" title="5.2.5 The let Expression in insert-buffer"></a>5.2.5 The <code>let</code> Expression in <code>insert-buffer</code></h4><p>After ensuring that the variable <code>buffer</code> refers to a buffer itself and not just to the name of a buffer, the <code>insert-buffer function</code> continues with a <code>let</code> expression. This specifies three local variables, <code>start</code>, <code>end</code>, and <code>newmark</code> and binds them to the initial value <code>nil</code>. These variables are used inside the remainder of the <code>let</code> and temporarily hide any other occurrence of variables of the same name in Emacs until the end of the <code>let</code>.</p>
+<p>The body of the <code>let</code> contains two <code>save-excursion</code> expressions. First, we will look at the inner <code>save-excursion</code> expression in detail. The expression looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(save-excursion</span><br><span class="line">  (set-buffer buffer)</span><br><span class="line">  (setq start (point-min) end (point-max)))</span><br></pre></td></tr></table></figure>
+<p>The expression <code>(set-buffer buffer)</code> changes Emacs’s attention from the current buffer to the one from which the text will copied. In that buffer, the variables <code>start</code> and <code>end</code> are set to the beginning and end of the buffer, using the commands <code>point-min</code> and <code>point-max</code>. Note that we have here an illustration of how <code>setq</code> is able to set two variables in the same expression. The first argument of <code>setq</code> is set to the value of its second, and its third argument is set to the value of its fourth.</p>
+<p>After the body of the inner <code>save-excursion</code> is evaluated, the <code>save-excursion</code> restores the original buffer, but <code>start</code> and <code>end</code> remain set to the values of the beginning and end of the buffer from which the text will be copied.</p>
+<p>The outer <code>save-excursion</code> expression looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(save-excursion</span><br><span class="line">  (inner-save-excursion-expression</span><br><span class="line">     (go-to-new-buffer-and-set-start-and-end)</span><br><span class="line">  (insert-buffer-substring buffer start end)</span><br><span class="line">  (setq newmark (point)))</span><br></pre></td></tr></table></figure>
+<p>The <code>insert-buffer-substring</code> function copies the text <em>into</em> the current buffer <em>from</em> the region indicated by <code>start</code> and <code>end</code> in <code>buffer</code>. Since the whole of the second buffer lies between <code>start</code> and <code>end</code>, the whole of the second buffer is copied into the buffer you are editing. Next, the value of point, which will be at the end of the inserted text, is recorded in the variable <code>newmark</code>.</p>
+<p>After the body of the outer <code>save-excursion</code> is evaluated, point is relocated to its original place.</p>
+<p>However, it is convenient to locate a mark at the end of the newly inserted text and locate point at its beginning. The <code>newmark</code> variable records the end of the inserted text. In the last line of the <code>let</code> expression, the <code>(push-mark newmark)</code> expression function sets a mark to this location. (The previous location of the mark is still accessible; it is recorded on the mark ring and you can go back to it with C-u C-<spc>.) Meanwhile, point is located at the beginning of the inserted text, which is where it was before you called the insert function, the position of which was saved by the first <code>save-excursion</code>.</spc></p>
+<p>The whole <code>let</code> expression looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(let (start end newmark)</span><br><span class="line">  (save-excursion</span><br><span class="line">    (save-excursion</span><br><span class="line">      (set-buffer buffer)</span><br><span class="line">      (setq start (point-min) end (point-max)))</span><br><span class="line">    (insert-buffer-substring buffer start end)</span><br><span class="line">    (setq newmark (point)))</span><br><span class="line">  (push-mark newmark))</span><br></pre></td></tr></table></figure>
+<p>Like the <code>append-to-buffer</code> function, the <code>insert-buffer</code> function uses <code>let</code>, <code>save-excursion</code>, and <code>set-buffer</code>. In addition, the function illustrates one way to use <code>or</code>. All these functions are building blocks that we will find and use again and again.</p>
+<h4 id="5-2-6-New-Body-for-insert-buffer"><a href="#5-2-6-New-Body-for-insert-buffer" class="headerlink" title="5.2.6 New Body for insert-buffer"></a>5.2.6 New Body for <code>insert-buffer</code></h4><p>The body in the GNU Emacs 22 version is more confusing than the original.</p>
+<p>It consists of two expressions,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(push-mark</span><br><span class="line"> (save-excursion</span><br><span class="line">   (insert-buffer-substring (get-buffer buffer))</span><br><span class="line">   (point)))</span><br><span class="line">     </span><br><span class="line"> nil</span><br></pre></td></tr></table></figure>
+<p>except, and this is what confuses novices, very important work is done inside the <code>push-mark</code> expression.</p>
+<p>The <code>get-buffer</code> function returns a buffer with the name provided. You will note that the function is <em>not</em> called <code>get-buffer-create</code>; it does not create a buffer if one does not already exist. The buffer returned by <code>get-buffer</code>, an existing buffer, is passed to <code>insert-buffer-substring</code>, which inserts the whole of the buffer (since you did not specify anything else).</p>
+<p>The location into which the buffer is inserted is recorded by <code>push-mark</code>. Then the function returns <code>nil</code>, the value of its last command. Put another way, the <code>insert-buffer</code> function exists only to produce a side effect, inserting another buffer, not to return any value.</p>
+<h3 id="5-3-Complete-Definition-of-beginning-of-buffer"><a href="#5-3-Complete-Definition-of-beginning-of-buffer" class="headerlink" title="5.3 Complete Definition of beginning-of-buffer"></a>5.3 Complete Definition of <code>beginning-of-buffer</code></h3><p>The basic structure of the <code>beginning-of-buffer</code> function has already been discussed. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#simplified_002dbeginning_002dof_002dbuffer" target="_blank" rel="noopener">A Simplified <code>beginning-of-buffer</code> Definition</a>.) This section describes the complex part of the definition.</p>
+<p>As previously described, when invoked without an argument, <code>beginning-of-buffer</code> moves the cursor to the beginning of the buffer (in truth, the beginning of the accessible portion of the buffer), leaving the mark at the previous position. However, when the command is invoked with a number between one and ten, the function considers that number to be a fraction of the length of the buffer, measured in tenths, and Emacs moves the cursor that fraction of the way from the beginning of the buffer. Thus, you can either call this function with the key command M-&lt;, which will move the cursor to the beginning of the buffer, or with a key command such as C-u 7 M-&lt; which will move the cursor to a point 70% of the way through the buffer. If a number bigger than ten is used for the argument, it moves to the end of the buffer.</p>
+<p>The <code>beginning-of-buffer</code> function can be called with or without an argument. The use of the argument is optional.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Optional-Arguments" target="_blank" rel="noopener">Optional Arguments</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#beginning_002dof_002dbuffer-opt-arg" target="_blank" rel="noopener">beginning-of-buffer opt arg</a>: Example with optional argument.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#beginning_002dof_002dbuffer-complete" target="_blank" rel="noopener">beginning-of-buffer complete</a></li>
+</ul>
+<h4 id="5-3-1-Optional-Arguments"><a href="#5-3-1-Optional-Arguments" class="headerlink" title="5.3.1 Optional Arguments"></a>5.3.1 Optional Arguments</h4><p>Unless told otherwise, Lisp expects that a function with an argument in its function definition will be called with a value for that argument. If that does not happen, you get an error and a message that says ‘Wrong number of arguments’.</p>
+<p>However, optional arguments are a feature of Lisp: a particular keyword is used to tell the Lisp interpreter that an argument is optional. The keyword is <code>&amp;optional</code>. (The ‘&amp;’ in front of ‘optional’ is part of the keyword.) In a function definition, if an argument follows the keyword <code>&amp;optional</code>, no value need be passed to that argument when the function is called.</p>
+<p>The first line of the function definition of <code>beginning-of-buffer</code> therefore looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(defun beginning-of-buffer (&amp;optional arg)</span><br></pre></td></tr></table></figure>
+<p>In outline, the whole function looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">(defun beginning-of-buffer (&amp;optional arg)</span><br><span class="line">  &quot;documentation...&quot;</span><br><span class="line">  (interactive &quot;P&quot;)</span><br><span class="line">  (or (is-the-argument-a-cons-cell arg)</span><br><span class="line">      (and are-both-transient-mark-mode-and-mark-active-true)</span><br><span class="line">      (push-mark))</span><br><span class="line">  (let (determine-size-and-set-it)</span><br><span class="line">  (goto-char</span><br><span class="line">    (if-there-is-an-argument</span><br><span class="line">        figure-out-where-to-go</span><br><span class="line">      else-go-to</span><br><span class="line">      (point-min))))</span><br><span class="line">   do-nicety</span><br></pre></td></tr></table></figure>
+<p>The function is similar to the <code>simplified-beginning-of-buffer</code> function except that the <code>interactive</code> expression has <code>&quot;P&quot;</code> as an argument and the <code>goto-char</code> function is followed by an if-then-else expression that figures out where to put the cursor if there is an argument that is not a cons cell.</p>
+<p>(Since I do not explain a cons cell for many more chapters, please consider ignoring the function <code>consp</code>. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#List-Implementation" target="_blank" rel="noopener">How Lists are Implemented</a>, and <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Cons-Cell-Type" target="_blank" rel="noopener">Cons Cell and List Types</a>.)</p>
+<p>The <code>&quot;P&quot;</code> in the <code>interactive</code> expression tells Emacs to pass a prefix argument, if there is one, to the function in raw form. A prefix argument is made by typing the <meta> key followed by a number, or by typing C-u and then a number. (If you don’t type a number, C-u defaults to a cons cell with a 4. A lowercase <code>&quot;p&quot;</code> in the <code>interactive</code> expression causes the function to convert a prefix arg to a number.)</p>
+<p>The true-or-false-test of the <code>if</code> expression looks complex, but it is not: it checks whether <code>arg</code> has a value that is not <code>nil</code> and whether it is a cons cell. (That is what <code>consp</code> does; it checks whether its argument is a cons cell.) If <code>arg</code> has a value that is not <code>nil</code> (and is not a cons cell), which will be the case if <code>beginning-of-buffer</code> is called with a numeric argument, then this true-or-false-test will return true and the then-part of the <code>if</code> expression will be evaluated. On the other hand, if <code>beginning-of-buffer</code> is not called with an argument, the value of <code>arg</code> will be <code>nil</code> and the else-part of the <code>if</code> expression will be evaluated. The else-part is simply <code>point-min</code>, and when this is the outcome, the whole <code>goto-char</code> expression is <code>(goto-char (point-min))</code>, which is how we saw the <code>beginning-of-buffer</code> function in its simplified form.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/elisp/" rel="tag"># elisp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/elisp-buffer-functions/" rel="next" title="Intro elisp 4. A Few Buffer-Related Functions">
+                <i class="fa fa-chevron-left"></i> Intro elisp 4. A Few Buffer-Related Functions
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-The-Definition-of-copy-to-buffer"><span class="nav-text">5.1 The Definition of copy-to-buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-The-Definition-of-insert-buffer"><span class="nav-text">5.2 The Definition of insert-buffer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-Code-for-insert-buffer"><span class="nav-text">The Code for insert-buffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-1-The-Interactive-Expression-in-insert-buffer"><span class="nav-text">5.2.1 The Interactive Expression in insert-buffer</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-Read-only-Buffer"><span class="nav-text">A Read-only Buffer</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#‘b’-in-an-Interactive-Expression"><span class="nav-text">‘b’ in an Interactive Expression</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-2-The-Body-of-the-insert-buffer-Function"><span class="nav-text">5.2.2 The Body of the insert-buffer Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-3-insert-buffer-With-an-if-Instead-of-an-or"><span class="nav-text">5.2.3 insert-buffer With an if Instead of an or</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-4-The-or-in-the-Body"><span class="nav-text">5.2.4 The or in the Body</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-5-The-let-Expression-in-insert-buffer"><span class="nav-text">5.2.5 The let Expression in insert-buffer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-6-New-Body-for-insert-buffer"><span class="nav-text">5.2.6 New Body for insert-buffer</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-Complete-Definition-of-beginning-of-buffer"><span class="nav-text">5.3 Complete Definition of beginning-of-buffer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-1-Optional-Arguments"><span class="nav-text">5.3.1 Optional Arguments</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/06/11/elisp-more-complex-functions/";
+    this.page.identifier = "2019/06/11/elisp-more-complex-functions/";
+    this.page.title = 'Intro to elisp 5. A Few More Complex Functions';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="To the untutored eye, Lisp is a strange programming language. In Lisp code there are parentheses everywhere. Some people even claim that the name stands for “Lots of Isolated Silly Parentheses”. But t">
+<meta name="keywords" content="elisp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro to elisp 1. List Processing">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/06/11/elisp-list/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="To the untutored eye, Lisp is a strange programming language. In Lisp code there are parentheses everywhere. Some people even claim that the name stands for “Lots of Isolated Silly Parentheses”. But t">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-11T01:28:50.366Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intro to elisp 1. List Processing">
+<meta name="twitter:description" content="To the untutored eye, Lisp is a strange programming language. In Lisp code there are parentheses everywhere. Some people even claim that the name stands for “Lots of Isolated Silly Parentheses”. But t">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/06/11/elisp-list/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Intro to elisp 1. List Processing | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">27</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/11/elisp-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Intro to elisp 1. List Processing
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-11 07:47:28 / Modified: 09:28:50" itemprop="dateCreated datePublished" datetime="2019-06-11T07:47:28+08:00">2019-06-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/11/elisp-list/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/11/elisp-list/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>To the untutored eye, Lisp is a strange programming language. In Lisp code there are parentheses everywhere. Some people even claim that the name stands for “Lots of Isolated Silly Parentheses”. But the claim is unwarranted. Lisp stands for LISt Processing, and the programming language handles <em>lists</em> (and lists of lists) by putting them between parentheses. The parentheses mark the boundaries of the list. Sometimes a list is preceded by an apostrophe ‘’’, called a single-quote in Lisp.<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-1" target="_blank" rel="noopener">1</a> Lists are the basis of Lisp.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Lisp-Lists" target="_blank" rel="noopener">Lisp Lists</a>: What are lists?</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Run-a-Program" target="_blank" rel="noopener">Run a Program</a>: Any list in Lisp is a program ready to run.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Making-Errors" target="_blank" rel="noopener">Making Errors</a>: Generating an error message.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Names-_0026-Definitions" target="_blank" rel="noopener">Names &amp; Definitions</a>: Names of symbols and function definitions.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Lisp-Interpreter" target="_blank" rel="noopener">Lisp Interpreter</a>: What the Lisp interpreter does.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Evaluation" target="_blank" rel="noopener">Evaluation</a>: Running a program.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Variables" target="_blank" rel="noopener">Variables</a>: Returning a value from a variable.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Arguments" target="_blank" rel="noopener">Arguments</a>: Passing information to a function.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#set-_0026-setq" target="_blank" rel="noopener">set &amp; setq</a>: Setting the value of a variable.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Summary" target="_blank" rel="noopener">Summary</a>: The major points.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Error-Message-Exercises" target="_blank" rel="noopener">Error Message Exercises</a></li>
+</ul>
+<h3 id="1-1-Lisp-Lists"><a href="#1-1-Lisp-Lists" class="headerlink" title="1.1 Lisp Lists"></a>1.1 Lisp Lists</h3><p>In Lisp, a list looks like this: <code>&#39;(rose violet daisy buttercup)</code>. This list is preceded by a single apostrophe. It could just as well be written as follows, which looks more like the kind of list you are likely to be familiar with:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&apos;(rose</span><br><span class="line">  violet</span><br><span class="line">  daisy</span><br><span class="line">  buttercup)</span><br></pre></td></tr></table></figure>
+<p>The elements of this list are the names of the four different flowers, separated from each other by whitespace and surrounded by parentheses, like flowers in a field with a stone wall around them.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Numbers-Lists" target="_blank" rel="noopener">Numbers Lists</a>: List have numbers, other lists, in them.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Lisp-Atoms" target="_blank" rel="noopener">Lisp Atoms</a>: Elemental entities.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Whitespace-in-Lists" target="_blank" rel="noopener">Whitespace in Lists</a>: Formatting lists to be readable.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Typing-Lists" target="_blank" rel="noopener">Typing Lists</a>: How GNU Emacs helps you type lists.</li>
+</ul>
+<h4 id="Numbers-Lists-inside-of-Lists"><a href="#Numbers-Lists-inside-of-Lists" class="headerlink" title="Numbers, Lists inside of Lists"></a>Numbers, Lists inside of Lists</h4><p>Lists can also have numbers in them, as in this list: <code>(+ 2 2)</code>. This list has a plus-sign, ‘+’, followed by two ‘2’s, each separated by whitespace.</p>
+<p>In Lisp, both data and programs are represented the same way; that is, they are both lists of words, numbers, or other lists, separated by whitespace and surrounded by parentheses. (Since a program looks like data, one program may easily serve as data for another; this is a very powerful feature of Lisp.) (Incidentally, these two parenthetical remarks are <em>not</em>Lisp lists, because they contain ‘;’ and ‘.’ as punctuation marks.)</p>
+<p>Here is another list, this time with a list inside of it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;(this list has (a list inside of it))</span><br></pre></td></tr></table></figure>
+<p>The components of this list are the words ‘this’, ‘list’, ‘has’, and the list ‘(a list inside of it)’. The interior list is made up of the words ‘a’, ‘list’, ‘inside’, ‘of’, ‘it’.</p>
+<h4 id="1-1-1-Lisp-Atoms"><a href="#1-1-1-Lisp-Atoms" class="headerlink" title="1.1.1 Lisp Atoms"></a>1.1.1 Lisp Atoms</h4><p>In Lisp, what we have been calling words are called atoms. This term comes from the historical meaning of the word atom, which means “indivisible”. As far as Lisp is concerned, the words we have been using in the lists cannot be divided into any smaller parts and still mean the same thing as part of a program; likewise with numbers and single character symbols like ‘+’. On the other hand, unlike an ancient atom, a list can be split into parts. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#car-cdr-_0026-cons" target="_blank" rel="noopener"><code>car</code> <code>cdr</code> &amp; <code>cons</code> Fundamental Functions</a>.)</p>
+<p>In a list, atoms are separated from each other by whitespace. They can be right next to a parenthesis.</p>
+<p>Technically speaking, a list in Lisp consists of parentheses surrounding atoms separated by whitespace or surrounding other lists or surrounding both atoms and other lists. A list can have just one atom in it or have nothing in it at all. A list with nothing in it looks like this: <code>()</code>, and is called the empty list. Unlike anything else, an empty list is considered both an atom and a list at the same time.</p>
+<p>The printed representation of both atoms and lists are called symbolic expressions or, more concisely, s-expressions. The word expression by itself can refer to either the printed representation, or to the atom or list as it is held internally in the computer. Often, people use the term expression indiscriminately. (Also, in many texts, the word form is used as a synonym for expression.)</p>
+<p>Incidentally, the atoms that make up our universe were named such when they were thought to be indivisible; but it has been found that physical atoms are not indivisible. Parts can split off an atom or it can fission into two parts of roughly equal size. Physical atoms were named prematurely, before their truer nature was found. In Lisp, certain kinds of atom, such as an array, can be separated into parts; but the mechanism for doing this is different from the mechanism for splitting a list. As far as list operations are concerned, the atoms of a list are unsplittable.</p>
+<p>As in English, the meanings of the component letters of a Lisp atom are different from the meaning the letters make as a word. For example, the word for the South American sloth, the ‘ai’, is completely different from the two words, ‘a’, and ‘i’.</p>
+<p>There are many kinds of atom in nature but only a few in Lisp: for example, numbers, such as 37, 511, or 1729, and symbols, such as ‘+’, ‘foo’, or ‘forward-line’. The words we have listed in the examples above are all symbols. In everyday Lisp conversation, the word “atom” is not often used, because programmers usually try to be more specific about what kind of atom they are dealing with. Lisp programming is mostly about symbols (and sometimes numbers) within lists. (Incidentally, the preceding three word parenthetical remark is a proper list in Lisp, since it consists of atoms, which in this case are symbols, separated by whitespace and enclosed by parentheses, without any non-Lisp punctuation.)</p>
+<p>Text between double quotation marks—even sentences or paragraphs—is also an atom. Here is an example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;(this list includes &quot;text between quotation marks.&quot;)</span><br></pre></td></tr></table></figure>
+<p>In Lisp, all of the quoted text including the punctuation mark and the blank spaces is a single atom. This kind of atom is called a string (for “string of characters”) and is the sort of thing that is used for messages that a computer can print for a human to read. Strings are a different kind of atom than numbers or symbols and are used differently.</p>
+<h4 id="1-1-2-Whitespace-in-Lists"><a href="#1-1-2-Whitespace-in-Lists" class="headerlink" title="1.1.2 Whitespace in Lists"></a>1.1.2 Whitespace in Lists</h4><p>The amount of whitespace in a list does not matter. From the point of view of the Lisp language,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;(this list</span><br><span class="line">   looks like this)</span><br></pre></td></tr></table></figure>
+<p>is exactly the same as this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;(this list looks like this)</span><br></pre></td></tr></table></figure>
+<p>Both examples show what to Lisp is the same list, the list made up of the symbols ‘this’, ‘list’, ‘looks’, ‘like’, and ‘this’ in that order.</p>
+<p>Extra whitespace and newlines are designed to make a list more readable by humans. When Lisp reads the expression, it gets rid of all the extra whitespace (but it needs to have at least one space between atoms in order to tell them apart.)</p>
+<p>Odd as it seems, the examples we have seen cover almost all of what Lisp lists look like! Every other list in Lisp looks more or less like one of these examples, except that the list may be longer and more complex. In brief, a list is between parentheses, a string is between quotation marks, a symbol looks like a word, and a number looks like a number. (For certain situations, square brackets, dots and a few other special characters may be used; however, we will go quite far without them.)</p>
+<h4 id="1-1-3-GNU-Emacs-Helps-You-Type-Lists"><a href="#1-1-3-GNU-Emacs-Helps-You-Type-Lists" class="headerlink" title="1.1.3 GNU Emacs Helps You Type Lists"></a>1.1.3 GNU Emacs Helps You Type Lists</h4><p>When you type a Lisp expression in GNU Emacs using either Lisp Interaction mode or Emacs Lisp mode, you have available to you several commands to format the Lisp expression so it is easy to read. For example, pressing the <tab> key automatically indents the line the cursor is on by the right amount. A command to properly indent the code in a region is customarily bound to M-C-. Indentation is designed so that you can see which elements of a list belong to which list—elements of a sub-list are indented more than the elements of the enclosing list.</tab></p>
+<p>In addition, when you type a closing parenthesis, Emacs momentarily jumps the cursor back to the matching opening parenthesis, so you can see which one it is. This is very useful, since every list you type in Lisp must have its closing parenthesis match its opening parenthesis. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/emacs.html#Major-Modes" target="_blank" rel="noopener">Major Modes</a>, for more information about Emacs’s modes.)</p>
+<h3 id="1-2-Run-a-Program"><a href="#1-2-Run-a-Program" class="headerlink" title="1.2 Run a Program"></a>1.2 Run a Program</h3><p>A list in Lisp—any list—is a program ready to run. If you run it (for which the Lisp jargon is evaluate), the computer will do one of three things: do nothing except return to you the list itself; send you an error message; or, treat the first symbol in the list as a command to do something. (Usually, of course, it is the last of these three things that you really want!)</p>
+<p>The single apostrophe, <code>&#39;</code>, that I put in front of some of the example lists in preceding sections is called a quote; when it precedes a list, it tells Lisp to do nothing with the list, other than take it as it is written. But if there is no quote preceding a list, the first item of the list is special: it is a command for the computer to obey. (In Lisp, these commands are called <em>functions</em>.) The list <code>(+ 2 2)</code> shown above did not have a quote in front of it, so Lisp understands that the <code>+</code> is an instruction to do something with the rest of the list: add the numbers that follow.</p>
+<p>If you are reading this inside of GNU Emacs in Info, here is how you can evaluate such a list: place your cursor immediately after the right hand parenthesis of the following list and then type C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 2 2)</span><br></pre></td></tr></table></figure>
+<p>You will see the number <code>4</code> appear in the echo area<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-2" target="_blank" rel="noopener">2</a>. (What you have just done is evaluate the list. The echo area is the line at the bottom of the screen that displays or echoes text.) Now try the same thing with a quoted list: place the cursor right after the following list and type C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;(this is a quoted list)</span><br></pre></td></tr></table></figure>
+<p>You will see <code>(this is a quoted list)</code> appear in the echo area.</p>
+<p>In both cases, what you are doing is giving a command to the program inside of GNU Emacs called the Lisp interpreter—giving the interpreter a command to evaluate the expression. The name of the Lisp interpreter comes from the word for the task done by a human who comes up with the meaning of an expression—who interprets it.</p>
+<p>You can also evaluate an atom that is not part of a list—one that is not surrounded by parentheses; again, the Lisp interpreter translates from the humanly readable expression to the language of the computer. But before discussing this (see <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Variables" target="_blank" rel="noopener">Variables</a>), we will discuss what the Lisp interpreter does when you make an error.</p>
+<h3 id="1-3-Generate-an-Error-Message"><a href="#1-3-Generate-an-Error-Message" class="headerlink" title="1.3 Generate an Error Message"></a>1.3 Generate an Error Message</h3><p>Partly so you won’t worry if you do it accidentally, we will now give a command to the Lisp interpreter that generates an error message. This is a harmless activity; and indeed, we will often try to generate error messages intentionally. Once you understand the jargon, error messages can be informative. Instead of being called “error” messages, they should be called “help” messages. They are like signposts to a traveler in a strange country; deciphering them can be hard, but once understood, they can point the way.</p>
+<p>The error message is generated by a built-in GNU Emacs debugger. We will enter the debugger. You get out of the debugger by typing <code>q</code>.</p>
+<p>What we will do is evaluate a list that is not quoted and does not have a meaningful command as its first element. Here is a list almost exactly the same as the one we just used, but without the single-quote in front of it. Position the cursor right after it and type C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(this is an unquoted list)</span><br></pre></td></tr></table></figure>
+<p>A <em>Backtrace</em> window will open up and you should see the following in it:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---------- Buffer: *Backtrace* ----------</span><br><span class="line">Debugger entered--Lisp error: (void-function this)</span><br><span class="line">  (this is an unquoted list)</span><br><span class="line">  eval((this is an unquoted list) nil)</span><br><span class="line">  elisp--eval-last-sexp(nil)</span><br><span class="line">  eval-last-sexp(nil)</span><br><span class="line">  funcall-interactively(eval-last-sexp nil)</span><br><span class="line">  call-interactively(eval-last-sexp nil nil)</span><br><span class="line">  command-execute(eval-last-sexp)</span><br><span class="line">---------- Buffer: *Backtrace* ----------</span><br></pre></td></tr></table></figure>
+<p>Your cursor will be in this window (you may have to wait a few seconds before it becomes visible). To quit the debugger and make the debugger window go away, type:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q</span><br></pre></td></tr></table></figure>
+<p>Please type q right now, so you become confident that you can get out of the debugger. Then, type C-x C-e again to re-enter it.</p>
+<p>Based on what we already know, we can almost read this error message.</p>
+<p>You read the <em>Backtrace</em> buffer from the bottom up; it tells you what Emacs did. When you typed C-x C-e, you made an interactive call to the command <code>eval-last-sexp</code>. <code>eval</code>is an abbreviation for “evaluate” and <code>sexp</code> is an abbreviation for “symbolic expression”. The command means “evaluate last symbolic expression”, which is the expression just before your cursor.</p>
+<p>Each line above tells you what the Lisp interpreter evaluated next. The most recent action is at the top. The buffer is called the <em>Backtrace</em> buffer because it enables you to track Emacs backwards.</p>
+<p>At the top of the <em>Backtrace</em> buffer, you see the line:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Debugger entered--Lisp error: (void-function this)</span><br></pre></td></tr></table></figure>
+<p>The Lisp interpreter tried to evaluate the first atom of the list, the word ‘this’. It is this action that generated the error message ‘void-function this’.</p>
+<p>The message contains the words ‘void-function’ and ‘this’.</p>
+<p>The word ‘function’ was mentioned once before. It is a very important word. For our purposes, we can define it by saying that a function is a set of instructions to the computer that tell the computer to do something.</p>
+<p>Now we can begin to understand the error message: ‘void-function this’. The function (that is, the word ‘this’) does not have a definition of any set of instructions for the computer to carry out.</p>
+<p>The slightly odd word, ‘void-function’, is designed to cover the way Emacs Lisp is implemented, which is that when a symbol does not have a function definition attached to it, the place that should contain the instructions is void.</p>
+<p>On the other hand, since we were able to add 2 plus 2 successfully, by evaluating <code>(+ 2 2)</code>, we can infer that the symbol <code>+</code> must have a set of instructions for the computer to obey and those instructions must be to add the numbers that follow the <code>+</code>.</p>
+<p>It is possible to prevent Emacs entering the debugger in cases like this. We do not explain how to do that here, but we will mention what the result looks like, because you may encounter a similar situation if there is a bug in some Emacs code that you are using. In such cases, you will see only one line of error message; it will appear in the echo area and look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Symbol&apos;s function definition is void: this</span><br></pre></td></tr></table></figure>
+<p>The message goes away as soon as you type a key, even just to move the cursor.</p>
+<p>We know the meaning of the word ‘Symbol’. It refers to the first atom of the list, the word ‘this’. The word ‘function’ refers to the instructions that tell the computer what to do. (Technically, the symbol tells the computer where to find the instructions, but this is a complication we can ignore for the moment.)</p>
+<p>The error message can be understood: ‘Symbol’s function definition is void: this’. The symbol (that is, the word ‘this’) lacks instructions for the computer to carry out.</p>
+<h3 id="1-4-Symbol-Names-and-Function-Definitions"><a href="#1-4-Symbol-Names-and-Function-Definitions" class="headerlink" title="1.4 Symbol Names and Function Definitions"></a>1.4 Symbol Names and Function Definitions</h3><p>We can articulate another characteristic of Lisp based on what we have discussed so far—an important characteristic: a symbol, like <code>+</code>, is not itself the set of instructions for the computer to carry out. Instead, the symbol is used, perhaps temporarily, as a way of locating the definition or set of instructions. What we see is the name through which the instructions can be found. Names of people work the same way. I can be referred to as ‘Bob’; however, I am not the letters ‘B’, ‘o’, ‘b’ but am, or was, the consciousness consistently associated with a particular life-form. The name is not me, but it can be used to refer to me.</p>
+<p>In Lisp, one set of instructions can be attached to several names. For example, the computer instructions for adding numbers can be linked to the symbol <code>plus</code> as well as to the symbol <code>+</code> (and are in some dialects of Lisp). Among humans, I can be referred to as ‘Robert’ as well as ‘Bob’ and by other words as well.</p>
+<p>On the other hand, a symbol can have only one function definition attached to it at a time. Otherwise, the computer would be confused as to which definition to use. If this were the case among people, only one person in the world could be named ‘Bob’. However, the function definition to which the name refers can be changed readily. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Install" target="_blank" rel="noopener">Install a Function Definition</a>.)</p>
+<p>Since Emacs Lisp is large, it is customary to name symbols in a way that identifies the part of Emacs to which the function belongs. Thus, all the names for functions that deal with Texinfo start with ‘texinfo-’ and those for functions that deal with reading mail start with ‘rmail-’. </p>
+<h3 id="1-5-The-Lisp-Interpreter"><a href="#1-5-The-Lisp-Interpreter" class="headerlink" title="1.5 The Lisp Interpreter"></a>1.5 The Lisp Interpreter</h3><p>Based on what we have seen, we can now start to figure out what the Lisp interpreter does when we command it to evaluate a list. First, it looks to see whether there is a quote before the list; if there is, the interpreter just gives us the list. On the other hand, if there is no quote, the interpreter looks at the first element in the list and sees whether it has a function definition. If it does, the interpreter carries out the instructions in the function definition. Otherwise, the interpreter prints an error message.</p>
+<p>This is how Lisp works. Simple. There are added complications which we will get to in a minute, but these are the fundamentals. Of course, to write Lisp programs, you need to know how to write function definitions and attach them to names, and how to do this without confusing either yourself or the computer.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Complications" target="_blank" rel="noopener">Complications</a>: Variables, Special forms, Lists within.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Byte-Compiling" target="_blank" rel="noopener">Byte Compiling</a>: Specially processing code for speed.</li>
+</ul>
+<h4 id="Complications"><a href="#Complications" class="headerlink" title="Complications"></a>Complications</h4><p>Now, for the first complication. In addition to lists, the Lisp interpreter can evaluate a symbol that is not quoted and does not have parentheses around it. The Lisp interpreter will attempt to determine the symbol’s value as a variable. This situation is described in the section on variables. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Variables" target="_blank" rel="noopener">Variables</a>.)</p>
+<p>The second complication occurs because some functions are unusual and do not work in the usual manner. Those that don’t are called special forms. They are used for special jobs, like defining a function, and there are not many of them. In the next few chapters, you will be introduced to several of the more important special forms.</p>
+<p>As well as special forms, there are also macros. A macro is a construct defined in Lisp, which differs from a function in that it translates a Lisp expression into another expression that is to be evaluated in place of the original expression. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Lisp-macro" target="_blank" rel="noopener">Lisp macro</a>.)</p>
+<p>For the purposes of this introduction, you do not need to worry too much about whether something is a special form, macro, or ordinary function. For example, <code>if</code> is a special form (see <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#if" target="_blank" rel="noopener">if</a>), but <code>when</code> is a macro (see <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Lisp-macro" target="_blank" rel="noopener">Lisp macro</a>). In earlier versions of Emacs, <code>defun</code> was a special form, but now it is a macro (see <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#defun" target="_blank" rel="noopener">defun</a>). It still behaves in the same way.</p>
+<p>The final complication is this: if the function that the Lisp interpreter is looking at is not a special form, and if it is part of a list, the Lisp interpreter looks to see whether the list has a list inside of it. If there is an inner list, the Lisp interpreter first figures out what it should do with the inside list, and then it works on the outside list. If there is yet another list embedded inside the inner list, it works on that one first, and so on. It always works on the innermost list first. The interpreter works on the innermost list first, to evaluate the result of that list. The result may be used by the enclosing expression.</p>
+<p>Otherwise, the interpreter works left to right, from one expression to the next.</p>
+<h4 id="1-5-1-Byte-Compiling"><a href="#1-5-1-Byte-Compiling" class="headerlink" title="1.5.1 Byte Compiling"></a>1.5.1 Byte Compiling</h4><p>One other aspect of interpreting: the Lisp interpreter is able to interpret two kinds of entity: humanly readable code, on which we will focus exclusively, and specially processed code, called byte compiled code, which is not humanly readable. Byte compiled code runs faster than humanly readable code.</p>
+<p>You can transform humanly readable code into byte compiled code by running one of the compile commands such as <code>byte-compile-file</code>. Byte compiled code is usually stored in a file that ends with a .elc extension rather than a .el extension. You will see both kinds of file in the emacs/lisp directory; the files to read are those with .el extensions.</p>
+<p>As a practical matter, for most things you might do to customize or extend Emacs, you do not need to byte compile; and I will not discuss the topic here. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Byte-Compilation" target="_blank" rel="noopener">Byte Compilation</a>, for a full description of byte compilation.</p>
+<h3 id="1-6-Evaluation"><a href="#1-6-Evaluation" class="headerlink" title="1.6 Evaluation"></a>1.6 Evaluation</h3><p>When the Lisp interpreter works on an expression, the term for the activity is called evaluation. We say that the interpreter “evaluates the expression”. I’ve used this term several times before. The word comes from its use in everyday language, “to ascertain the value or amount of; to appraise”, according to Webster’s New Collegiate Dictionary.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#How-the-Interpreter-Acts" target="_blank" rel="noopener">How the Interpreter Acts</a>: Returns and Side Effects…</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Evaluating-Inner-Lists" target="_blank" rel="noopener">Evaluating Inner Lists</a>: Lists within lists…</li>
+</ul>
+<h4 id="How-the-Lisp-Interpreter-Acts"><a href="#How-the-Lisp-Interpreter-Acts" class="headerlink" title="How the Lisp Interpreter Acts"></a>How the Lisp Interpreter Acts</h4><p>After evaluating an expression, the Lisp interpreter will most likely return the value that the computer produces by carrying out the instructions it found in the function definition, or perhaps it will give up on that function and produce an error message. (The interpreter may also find itself tossed, so to speak, to a different function or it may attempt to repeat continually what it is doing for ever and ever in an infinite loop. These actions are less common; and we can ignore them.) Most frequently, the interpreter returns a value.</p>
+<p>At the same time the interpreter returns a value, it may do something else as well, such as move a cursor or copy a file; this other kind of action is called a side effect. Actions that we humans think are important, such as printing results, are often side effects to the Lisp interpreter. It is fairly easy to learn to use side effects.</p>
+<p>In summary, evaluating a symbolic expression most commonly causes the Lisp interpreter to return a value and perhaps carry out a side effect; or else produce an error.</p>
+<h4 id="How-the-Lisp-Interpreter-Acts-1"><a href="#How-the-Lisp-Interpreter-Acts-1" class="headerlink" title="How the Lisp Interpreter Acts"></a>How the Lisp Interpreter Acts</h4><p>After evaluating an expression, the Lisp interpreter will most likely return the value that the computer produces by carrying out the instructions it found in the function definition, or perhaps it will give up on that function and produce an error message. (The interpreter may also find itself tossed, so to speak, to a different function or it may attempt to repeat continually what it is doing for ever and ever in an infinite loop. These actions are less common; and we can ignore them.) Most frequently, the interpreter returns a value.</p>
+<p>At the same time the interpreter returns a value, it may do something else as well, such as move a cursor or copy a file; this other kind of action is called a side effect. Actions that we humans think are important, such as printing results, are often side effects to the Lisp interpreter. It is fairly easy to learn to use side effects.</p>
+<p>In summary, evaluating a symbolic expression most commonly causes the Lisp interpreter to return a value and perhaps carry out a side effect; or else produce an error.</p>
+<h4 id="1-6-1-Evaluating-Inner-Lists"><a href="#1-6-1-Evaluating-Inner-Lists" class="headerlink" title="1.6.1 Evaluating Inner Lists"></a>1.6.1 Evaluating Inner Lists</h4><p>If evaluation applies to a list that is inside another list, the outer list may use the value returned by the first evaluation as information when the outer list is evaluated. This explains why inner expressions are evaluated first: the values they return are used by the outer expressions.</p>
+<p>We can investigate this process by evaluating another addition example. Place your cursor after the following expression and type C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 2 (+ 3 3))</span><br></pre></td></tr></table></figure>
+<p>The number 8 will appear in the echo area.</p>
+<p>What happens is that the Lisp interpreter first evaluates the inner expression, <code>(+ 3 3)</code>, for which the value 6 is returned; then it evaluates the outer expression as if it were written <code>(+ 2 6)</code>, which returns the value 8. Since there are no more enclosing expressions to evaluate, the interpreter prints that value in the echo area.</p>
+<p>Now it is easy to understand the name of the command invoked by the keystrokes C-x C-e: the name is <code>eval-last-sexp</code>. The letters <code>sexp</code> are an abbreviation for “symbolic expression”, and <code>eval</code> is an abbreviation for “evaluate”. The command evaluates the last symbolic expression.</p>
+<p>As an experiment, you can try evaluating the expression by putting the cursor at the beginning of the next line immediately following the expression, or inside the expression.</p>
+<p>Here is another copy of the expression:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 2 (+ 3 3))</span><br></pre></td></tr></table></figure>
+<p>If you place the cursor at the beginning of the blank line that immediately follows the expression and type C-x C-e, you will still get the value 8 printed in the echo area. Now try putting the cursor inside the expression. If you put it right after the next to last parenthesis (so it appears to sit on top of the last parenthesis), you will get a 6 printed in the echo area! This is because the command evaluates the expression <code>(+ 3 3)</code>.</p>
+<p>Now put the cursor immediately after a number. Type C-x C-e and you will get the number itself. In Lisp, if you evaluate a number, you get the number itself—this is how numbers differ from symbols. If you evaluate a list starting with a symbol like <code>+</code>, you will get a value returned that is the result of the computer carrying out the instructions in the function definition attached to that name. If a symbol by itself is evaluated, something different happens, as we will see in the next section.</p>
+<h3 id="1-7-Variables"><a href="#1-7-Variables" class="headerlink" title="1.7 Variables"></a>1.7 Variables</h3><p>In Emacs Lisp, a symbol can have a value attached to it just as it can have a function definition attached to it. The two are different. The function definition is a set of instructions that a computer will obey. A value, on the other hand, is something, such as number or a name, that can vary (which is why such a symbol is called a variable). The value of a symbol can be any expression in Lisp, such as a symbol, number, list, or string. A symbol that has a value is often called a variable.</p>
+<p>A symbol can have both a function definition and a value attached to it at the same time. Or it can have just one or the other. The two are separate. This is somewhat similar to the way the name Cambridge can refer to the city in Massachusetts and have some information attached to the name as well, such as “great programming center”.</p>
+<p>Another way to think about this is to imagine a symbol as being a chest of drawers. The function definition is put in one drawer, the value in another, and so on. What is put in the drawer holding the value can be changed without affecting the contents of the drawer holding the function definition, and vice versa.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fill_002dcolumn-Example" target="_blank" rel="noopener">fill-column Example</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Void-Function" target="_blank" rel="noopener">Void Function</a>: The error message for a symbol without a function.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Void-Variable" target="_blank" rel="noopener">Void Variable</a>: The error message for a symbol without a value.</li>
+</ul>
+<h4 id="1-7-1-Error-Message-for-a-Symbol-Without-a-Function"><a href="#1-7-1-Error-Message-for-a-Symbol-Without-a-Function" class="headerlink" title="1.7.1 Error Message for a Symbol Without a Function"></a>1.7.1 Error Message for a Symbol Without a Function</h4><p>When we evaluated <code>fill-column</code> to find its value as a variable, we did not place parentheses around the word. This is because we did not intend to use it as a function name.</p>
+<p>If <code>fill-column</code> were the first or only element of a list, the Lisp interpreter would attempt to find the function definition attached to it. But <code>fill-column</code> has no function definition. Try evaluating this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(fill-column)</span><br></pre></td></tr></table></figure>
+<p>You will create a <em>Backtrace</em> buffer that says:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">---------- Buffer: *Backtrace* ----------</span><br><span class="line">Debugger entered--Lisp error: (void-function fill-column)</span><br><span class="line">  (fill-column)</span><br><span class="line">  eval((fill-column) nil)</span><br><span class="line">  elisp--eval-last-sexp(nil)</span><br><span class="line">  eval-last-sexp(nil)</span><br><span class="line">  funcall-interactively(eval-last-sexp nil)</span><br><span class="line">  call-interactively(eval-last-sexp nil nil)</span><br><span class="line">  command-execute(eval-last-sexp)</span><br><span class="line">---------- Buffer: *Backtrace* ----------</span><br></pre></td></tr></table></figure>
+<p>(Remember, to quit the debugger and make the debugger window go away, type q in the <em>Backtrace</em> buffer.)</p>
+<h4 id="1-7-2-Error-Message-for-a-Symbol-Without-a-Value"><a href="#1-7-2-Error-Message-for-a-Symbol-Without-a-Value" class="headerlink" title="1.7.2 Error Message for a Symbol Without a Value"></a>1.7.2 Error Message for a Symbol Without a Value</h4><p>If you attempt to evaluate a symbol that does not have a value bound to it, you will receive an error message. You can see this by experimenting with our 2 plus 2 addition. In the following expression, put your cursor right after the <code>+</code>, before the first number 2, type C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 2 2)</span><br></pre></td></tr></table></figure>
+<p>In GNU Emacs 22, you will create a <em>Backtrace</em> buffer that says:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---------- Buffer: *Backtrace* ----------</span><br><span class="line">Debugger entered--Lisp error: (void-variable +)</span><br><span class="line">  eval(+)</span><br><span class="line">  elisp--eval-last-sexp(nil)</span><br><span class="line">  eval-last-sexp(nil)</span><br><span class="line">  funcall-interactively(eval-last-sexp nil)</span><br><span class="line">  call-interactively(eval-last-sexp nil nil)</span><br><span class="line">  command-execute(eval-last-sexp)</span><br><span class="line">---------- Buffer: *Backtrace* ----------</span><br></pre></td></tr></table></figure>
+<p>(Again, you can quit the debugger by typing q in the <em>Backtrace</em> buffer.)</p>
+<p>This backtrace is different from the very first error message we saw, which said, ‘Debugger entered–Lisp error: (void-function this)’. In this case, the function does not have a value as a variable; while in the other error message, the function (the word ‘this’) did not have a definition.</p>
+<p>In this experiment with the <code>+</code>, what we did was cause the Lisp interpreter to evaluate the <code>+</code> and look for the value of the variable instead of the function definition. We did this by placing the cursor right after the symbol rather than after the parenthesis of the enclosing list as we did before. As a consequence, the Lisp interpreter evaluated the preceding s-expression, which in this case was <code>+</code> by itself.</p>
+<p>Since <code>+</code> does not have a value bound to it, just the function definition, the error message reported that the symbol’s value as a variable was void.</p>
+<h3 id="1-8-Arguments"><a href="#1-8-Arguments" class="headerlink" title="1.8 Arguments"></a>1.8 Arguments</h3><p>To see how information is passed to functions, let’s look again at our old standby, the addition of two plus two. In Lisp, this is written as follows:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 2 2)</span><br></pre></td></tr></table></figure>
+<p>If you evaluate this expression, the number 4 will appear in your echo area. What the Lisp interpreter does is add the numbers that follow the <code>+</code>.</p>
+<p>The numbers added by <code>+</code> are called the arguments of the function <code>+</code>. These numbers are the information that is given to or passed to the function.</p>
+<p>The word “argument” comes from the way it is used in mathematics and does not refer to a disputation between two people; instead it refers to the information presented to the function, in this case, to the <code>+</code>. In Lisp, the arguments to a function are the atoms or lists that follow the function. The values returned by the evaluation of these atoms or lists are passed to the function. Different functions require different numbers of arguments; some functions require none at all.<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-3" target="_blank" rel="noopener">3</a></p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Data-types" target="_blank" rel="noopener">Data types</a>: Types of data passed to a function.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Args-as-Variable-or-List" target="_blank" rel="noopener">Args as Variable or List</a>: An argument can be the value of a variable or list.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Variable-Number-of-Arguments" target="_blank" rel="noopener">Variable Number of Arguments</a>: Some functions may take a variable number of arguments.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Wrong-Type-of-Argument" target="_blank" rel="noopener">Wrong Type of Argument</a>: Passing an argument of the wrong type to a function.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#message" target="_blank" rel="noopener">message</a>: A useful function for sending messages.</li>
+</ul>
+<h4 id="1-8-1-Arguments’-Data-Types"><a href="#1-8-1-Arguments’-Data-Types" class="headerlink" title="1.8.1 Arguments’ Data Types"></a>1.8.1 Arguments’ Data Types</h4><p>The type of data that should be passed to a function depends on what kind of information it uses. The arguments to a function such as <code>+</code> must have values that are numbers, since <code>+</code>adds numbers. Other functions use different kinds of data for their arguments.</p>
+<p>For example, the <code>concat</code> function links together or unites two or more strings of text to produce a string. The arguments are strings. Concatenating the two character strings <code>abc</code>, <code>def</code> produces the single string <code>abcdef</code>. This can be seen by evaluating the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(concat &quot;abc&quot; &quot;def&quot;)</span><br></pre></td></tr></table></figure>
+<p>The value produced by evaluating this expression is <code>&quot;abcdef&quot;</code>.</p>
+<p>A function such as <code>substring</code> uses both a string and numbers as arguments. The function returns a part of the string, a substring of the first argument. This function takes three arguments. Its first argument is the string of characters, the second and third arguments are numbers that indicate the beginning (inclusive) and end (exclusive) of the substring. The numbers are a count of the number of characters (including spaces and punctuation) from the beginning of the string. Note that the characters in a string are numbered from zero, not one.</p>
+<p>For example, if you evaluate the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(substring &quot;The quick brown fox jumped.&quot; 16 19)</span><br></pre></td></tr></table></figure>
+<p>you will see <code>&quot;fox&quot;</code> appear in the echo area. The arguments are the string and the two numbers.</p>
+<p>Note that the string passed to <code>substring</code> is a single atom even though it is made up of several words separated by spaces. Lisp counts everything between the two quotation marks as part of the string, including the spaces. You can think of the <code>substring</code> function as a kind of atom smasher since it takes an otherwise indivisible atom and extracts a part. However, <code>substring</code> is only able to extract a substring from an argument that is a string, not from another type of atom such as a number or symbol.</p>
+<h4 id="1-8-3-Variable-Number-of-Arguments"><a href="#1-8-3-Variable-Number-of-Arguments" class="headerlink" title="1.8.3 Variable Number of Arguments"></a>1.8.3 Variable Number of Arguments</h4><p>Some functions, such as <code>concat</code>, <code>+</code> or <code>*</code>, take any number of arguments. (The <code>*</code> is the symbol for multiplication.) This can be seen by evaluating each of the following expressions in the usual way. What you will see in the echo area is printed in this text after ‘⇒’, which you may read as “evaluates to”.</p>
+<p>In the first set, the functions have no arguments:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(+)       ⇒ 0</span><br><span class="line"></span><br><span class="line">(*)       ⇒ 1</span><br></pre></td></tr></table></figure>
+<p>In this set, the functions have one argument each:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(+ 3)     ⇒ 3</span><br><span class="line"></span><br><span class="line">(* 3)     ⇒ 3</span><br></pre></td></tr></table></figure>
+<p>In this set, the functions have three arguments each:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(+ 3 4 5) ⇒ 12</span><br><span class="line"></span><br><span class="line">(* 3 4 5) ⇒ 60</span><br></pre></td></tr></table></figure>
+<h4 id="1-8-4-Using-the-Wrong-Type-Object-as-an-Argument"><a href="#1-8-4-Using-the-Wrong-Type-Object-as-an-Argument" class="headerlink" title="1.8.4 Using the Wrong Type Object as an Argument"></a>1.8.4 Using the Wrong Type Object as an Argument</h4><p>When a function is passed an argument of the wrong type, the Lisp interpreter produces an error message. For example, the <code>+</code> function expects the values of its arguments to be numbers. As an experiment we can pass it the quoted symbol <code>hello</code> instead of a number. Position the cursor after the following expression and type C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(+ 2 &apos;hello)</span><br></pre></td></tr></table></figure>
+<p>When you do this you will generate an error message. What has happened is that <code>+</code> has tried to add the 2 to the value returned by <code>&#39;hello</code>, but the value returned by <code>&#39;hello</code> is the symbol <code>hello</code>, not a number. Only numbers can be added. So <code>+</code> could not carry out its addition.</p>
+<p>You will create and enter a <em>Backtrace</em> buffer that says:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">---------- Buffer: *Backtrace* ----------</span><br><span class="line">Debugger entered--Lisp error:</span><br><span class="line">         (wrong-type-argument number-or-marker-p hello)</span><br><span class="line">  +(2 hello)</span><br><span class="line">  eval((+ 2 &apos;hello) nil)</span><br><span class="line">  elisp--eval-last-sexp(t)</span><br><span class="line">  eval-last-sexp(nil)</span><br><span class="line">  funcall-interactively(eval-print-last-sexp nil)</span><br><span class="line">  call-interactively(eval-print-last-sexp nil nil)</span><br><span class="line">  command-execute(eval-print-last-sexp)</span><br><span class="line">---------- Buffer: *Backtrace* ----------</span><br></pre></td></tr></table></figure>
+<p>As usual, the error message tries to be helpful and makes sense after you learn how to read it.<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-4" target="_blank" rel="noopener">4</a></p>
+<p>The first part of the error message is straightforward; it says ‘wrong type argument’. Next comes the mysterious jargon word ‘number-or-marker-p’. This word is trying to tell you what kind of argument the <code>+</code> expected.</p>
+<p>The symbol <code>number-or-marker-p</code> says that the Lisp interpreter is trying to determine whether the information presented it (the value of the argument) is a number or a marker (a special object representing a buffer position). What it does is test to see whether the <code>+</code> is being given numbers to add. It also tests to see whether the argument is something called a marker, which is a specific feature of Emacs Lisp. (In Emacs, locations in a buffer are recorded as markers. When the mark is set with the C-@ or C-<spc> command, its position is kept as a marker. The mark can be considered a number—the number of characters the location is from the beginning of the buffer.) In Emacs Lisp, <code>+</code> can be used to add the numeric value of marker positions as numbers.</spc></p>
+<p>The ‘p’ of <code>number-or-marker-p</code> is the embodiment of a practice started in the early days of Lisp programming. The ‘p’ stands for “predicate”. In the jargon used by the early Lisp researchers, a predicate refers to a function to determine whether some property is true or false. So the ‘p’ tells us that <code>number-or-marker-p</code> is the name of a function that determines whether it is true or false that the argument supplied is a number or a marker. Other Lisp symbols that end in ‘p’ include <code>zerop</code>, a function that tests whether its argument has the value of zero, and <code>listp</code>, a function that tests whether its argument is a list.</p>
+<p>Finally, the last part of the error message is the symbol <code>hello</code>. This is the value of the argument that was passed to <code>+</code>. If the addition had been passed the correct type of object, the value passed would have been a number, such as 37, rather than a symbol like <code>hello</code>. But then you would not have got the error message.</p>
+<h4 id="1-8-5-The-message-Function"><a href="#1-8-5-The-message-Function" class="headerlink" title="1.8.5 The message Function"></a>1.8.5 The <code>message</code> Function</h4><p>Like <code>+</code>, the <code>message</code> function takes a variable number of arguments. It is used to send messages to the user and is so useful that we will describe it here.</p>
+<p>A message is printed in the echo area. For example, you can print a message in your echo area by evaluating the following list:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(message &quot;This message appears in the echo area!&quot;)</span><br></pre></td></tr></table></figure>
+<p>The whole string between double quotation marks is a single argument and is printed <em>in toto</em>. (Note that in this example, the message itself will appear in the echo area within double quotes; that is because you see the value returned by the <code>message</code> function. In most uses of <code>message</code> in programs that you write, the text will be printed in the echo area as a side-effect, without the quotes. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#multiply_002dby_002dseven-in-detail" target="_blank" rel="noopener"><code>multiply-by-seven</code> in detail</a>, for an example of this.)</p>
+<p>However, if there is a ‘%s’ in the quoted string of characters, the <code>message</code> function does not print the ‘%s’ as such, but looks to the argument that follows the string. It evaluates the second argument and prints the value at the location in the string where the ‘%s’ is.</p>
+<p>You can see this by positioning the cursor after the following expression and typing C-x C-e:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(message &quot;The name of this buffer is: %s.&quot; (buffer-name))</span><br></pre></td></tr></table></figure>
+<p>In Info, <code>&quot;The name of this buffer is: *info*.&quot;</code> will appear in the echo area. The function <code>buffer-name</code> returns the name of the buffer as a string, which the <code>message</code> function inserts in place of <code>%s</code>.</p>
+<p>To print a value as an integer, use ‘%d’ in the same way as ‘%s’. For example, to print a message in the echo area that states the value of the <code>fill-column</code>, evaluate the following:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(message &quot;The value of fill-column is %d.&quot; fill-column)</span><br></pre></td></tr></table></figure>
+<p>On my system, when I evaluate this list, <code>&quot;The value of fill-column is 72.&quot;</code> appears in my echo area<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-5" target="_blank" rel="noopener">5</a>.</p>
+<p>If there is more than one ‘%s’ in the quoted string, the value of the first argument following the quoted string is printed at the location of the first ‘%s’ and the value of the second argument is printed at the location of the second ‘%s’, and so on.</p>
+<p>For example, if you evaluate the following,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(message &quot;There are %d %s in the office!&quot;</span><br><span class="line">         (- fill-column 14) &quot;pink elephants&quot;)</span><br></pre></td></tr></table></figure>
+<p>a rather whimsical message will appear in your echo area. On my system it says, <code>&quot;There are 58 pink elephants in the office!&quot;</code>.</p>
+<p>The expression <code>(- fill-column 14)</code> is evaluated and the resulting number is inserted in place of the ‘%d’; and the string in double quotes, <code>&quot;pink elephants&quot;</code>, is treated as a single argument and inserted in place of the ‘%s’. (That is to say, a string between double quotes evaluates to itself, like a number.)</p>
+<p>Finally, here is a somewhat complex example that not only illustrates the computation of a number, but also shows how you can use an expression within an expression to generate the text that is substituted for ‘%s’:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(message &quot;He saw %d %s&quot;</span><br><span class="line">         (- fill-column 32)</span><br><span class="line">         (concat &quot;red &quot;</span><br><span class="line">                 (substring</span><br><span class="line">                  &quot;The quick brown foxes jumped.&quot; 16 21)</span><br><span class="line">                 &quot; leaping.&quot;))</span><br></pre></td></tr></table></figure>
+<p>In this example, <code>message</code> has three arguments: the string, <code>&quot;He saw %d %s&quot;</code>, the expression, <code>(- fill-column 32)</code>, and the expression beginning with the function <code>concat</code>. The value resulting from the evaluation of <code>(- fill-column 32)</code> is inserted in place of the ‘%d’; and the value returned by the expression beginning with <code>concat</code> is inserted in place of the ‘%s’.</p>
+<p>When your fill column is 70 and you evaluate the expression, the message <code>&quot;He saw 38 red foxes leaping.&quot;</code> appears in your echo area.</p>
+<h3 id="1-9-Setting-the-Value-of-a-Variable"><a href="#1-9-Setting-the-Value-of-a-Variable" class="headerlink" title="1.9 Setting the Value of a Variable"></a>1.9 Setting the Value of a Variable</h3><p>There are several ways by which a variable can be given a value. One of the ways is to use either the function <code>set</code> or the function <code>setq</code>. Another way is to use <code>let</code> (see <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#let" target="_blank" rel="noopener">let</a>). (The jargon for this process is to bind a variable to a value.)</p>
+<p>The following sections not only describe how <code>set</code> and <code>setq</code> work but also illustrate how arguments are passed.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Using-set" target="_blank" rel="noopener">Using set</a>: Setting values.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Using-setq" target="_blank" rel="noopener">Using setq</a>: Setting a quoted value.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Counting" target="_blank" rel="noopener">Counting</a>: Using <code>setq</code> to count.</li>
+</ul>
+<h4 id="1-9-1-Using-set"><a href="#1-9-1-Using-set" class="headerlink" title="1.9.1 Using set"></a>1.9.1 Using <code>set</code></h4><p>To set the value of the symbol <code>flowers</code> to the list <code>&#39;(rose violet daisy buttercup)</code>, evaluate the following expression by positioning the cursor after the expression and typing C-x C-e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(set &apos;flowers &apos;(rose violet daisy buttercup))</span><br></pre></td></tr></table></figure>
+<p>The list <code>(rose violet daisy buttercup)</code> will appear in the echo area. This is what is <em>returned</em> by the <code>set</code> function. As a side effect, the symbol <code>flowers</code> is bound to the list; that is, the symbol <code>flowers</code>, which can be viewed as a variable, is given the list as its value. (This process, by the way, illustrates how a side effect to the Lisp interpreter, setting the value, can be the primary effect that we humans are interested in. This is because every Lisp function must return a value if it does not get an error, but it will only have a side effect if it is designed to have one.)</p>
+<p>After evaluating the <code>set</code> expression, you can evaluate the symbol <code>flowers</code> and it will return the value you just set. Here is the symbol. Place your cursor after it and type C-x C-e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">flowers</span><br></pre></td></tr></table></figure>
+<p>When you evaluate <code>flowers</code>, the list <code>(rose violet daisy buttercup)</code> appears in the echo area.</p>
+<p>Incidentally, if you evaluate <code>&#39;flowers</code>, the variable with a quote in front of it, what you will see in the echo area is the symbol itself, <code>flowers</code>. Here is the quoted symbol, so you can try this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;flowers</span><br></pre></td></tr></table></figure>
+<p>Note also, that when you use <code>set</code>, you need to quote both arguments to <code>set</code>, unless you want them evaluated. Since we do not want either argument evaluated, neither the variable<code>flowers</code> nor the list <code>(rose violet daisy buttercup)</code>, both are quoted. (When you use <code>set</code> without quoting its first argument, the first argument is evaluated before anything else is done. If you did this and <code>flowers</code> did not have a value already, you would get an error message that the ‘Symbol’s value as variable is void’; on the other hand, if <code>flowers</code>did return a value after it was evaluated, the <code>set</code> would attempt to set the value that was returned. There are situations where this is the right thing for the function to do; but such situations are rare.)</p>
+<h4 id="1-9-3-Counting"><a href="#1-9-3-Counting" class="headerlink" title="1.9.3 Counting"></a>1.9.3 Counting</h4><p>Here is an example that shows how to use <code>setq</code> in a counter. You might use this to count how many times a part of your program repeats itself. First set a variable to zero; then add one to the number each time the program repeats itself. To do this, you need a variable that serves as a counter, and two expressions: an initial <code>setq</code> expression that sets the counter variable to zero; and a second <code>setq</code> expression that increments the counter each time it is evaluated.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(setq counter 0)                ; Let&apos;s call this the initializer.</span><br><span class="line"></span><br><span class="line">(setq counter (+ counter 1))    ; This is the incrementer.</span><br><span class="line"></span><br><span class="line">counter                         ; This is the counter.</span><br></pre></td></tr></table></figure>
+<p>(The text following the ‘;’ are comments. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Change-a-defun" target="_blank" rel="noopener">Change a Function Definition</a>.)</p>
+<p>If you evaluate the first of these expressions, the initializer, <code>(setq counter 0)</code>, and then evaluate the third expression, <code>counter</code>, the number <code>0</code> will appear in the echo area. If you then evaluate the second expression, the incrementer, <code>(setq counter (+ counter 1))</code>, the counter will get the value 1. So if you again evaluate <code>counter</code>, the number <code>1</code> will appear in the echo area. Each time you evaluate the second expression, the value of the counter will be incremented.</p>
+<p>When you evaluate the incrementer, <code>(setq counter (+ counter 1))</code>, the Lisp interpreter first evaluates the innermost list; this is the addition. In order to evaluate this list, it must evaluate the variable <code>counter</code> and the number <code>1</code>. When it evaluates the variable <code>counter</code>, it receives its current value. It passes this value and the number <code>1</code> to the <code>+</code> which adds them together. The sum is then returned as the value of the inner list and passed to the <code>setq</code> which sets the variable <code>counter</code> to this new value. Thus, the value of the variable, <code>counter</code>, is changed.</p>
+<h3 id="1-10-Summary"><a href="#1-10-Summary" class="headerlink" title="1.10 Summary"></a>1.10 Summary</h3><p>Learning Lisp is like climbing a hill in which the first part is the steepest. You have now climbed the most difficult part; what remains becomes easier as you progress onwards.</p>
+<p>In summary,</p>
+<ul>
+<li>Lisp programs are made up of expressions, which are lists or single atoms.</li>
+<li>Lists are made up of zero or more atoms or inner lists, separated by whitespace and surrounded by parentheses. A list can be empty.</li>
+<li>Atoms are multi-character symbols, like <code>forward-paragraph</code>, single character symbols like <code>+</code>, strings of characters between double quotation marks, or numbers.</li>
+<li>A number evaluates to itself.</li>
+<li>A string between double quotes also evaluates to itself.</li>
+<li>When you evaluate a symbol by itself, its value is returned.</li>
+<li>When you evaluate a list, the Lisp interpreter looks at the first symbol in the list and then at the function definition bound to that symbol. Then the instructions in the function definition are carried out.</li>
+<li>A single-quote ‘’’ tells the Lisp interpreter that it should return the following expression as written, and not evaluate it as it would if the quote were not there.</li>
+<li>Arguments are the information passed to a function. The arguments to a function are computed by evaluating the rest of the elements of the list of which the function is the first element.</li>
+<li>A function always returns a value when it is evaluated (unless it gets an error); in addition, it may also carry out some action that is a side effect. In many cases, a function’s primary purpose is to create a side effect.</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/elisp/" rel="tag"># elisp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/elisp-intro-preface/" rel="next" title="Intro to elisp  0. preface">
+                <i class="fa fa-chevron-left"></i> Intro to elisp  0. preface
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/11/elisp-list-practise/" rel="prev" title="Intro to Elisp 2. Practicing Evaluation">
+                Intro to Elisp 2. Practicing Evaluation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-Lisp-Lists"><span class="nav-text">1.1 Lisp Lists</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Numbers-Lists-inside-of-Lists"><span class="nav-text">Numbers, Lists inside of Lists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-Lisp-Atoms"><span class="nav-text">1.1.1 Lisp Atoms</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Whitespace-in-Lists"><span class="nav-text">1.1.2 Whitespace in Lists</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-3-GNU-Emacs-Helps-You-Type-Lists"><span class="nav-text">1.1.3 GNU Emacs Helps You Type Lists</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-Run-a-Program"><span class="nav-text">1.2 Run a Program</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-Generate-an-Error-Message"><span class="nav-text">1.3 Generate an Error Message</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-Symbol-Names-and-Function-Definitions"><span class="nav-text">1.4 Symbol Names and Function Definitions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-5-The-Lisp-Interpreter"><span class="nav-text">1.5 The Lisp Interpreter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Complications"><span class="nav-text">Complications</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-1-Byte-Compiling"><span class="nav-text">1.5.1 Byte Compiling</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-6-Evaluation"><span class="nav-text">1.6 Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#How-the-Lisp-Interpreter-Acts"><span class="nav-text">How the Lisp Interpreter Acts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#How-the-Lisp-Interpreter-Acts-1"><span class="nav-text">How the Lisp Interpreter Acts</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-6-1-Evaluating-Inner-Lists"><span class="nav-text">1.6.1 Evaluating Inner Lists</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-7-Variables"><span class="nav-text">1.7 Variables</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-1-Error-Message-for-a-Symbol-Without-a-Function"><span class="nav-text">1.7.1 Error Message for a Symbol Without a Function</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-7-2-Error-Message-for-a-Symbol-Without-a-Value"><span class="nav-text">1.7.2 Error Message for a Symbol Without a Value</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-8-Arguments"><span class="nav-text">1.8 Arguments</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-1-Arguments’-Data-Types"><span class="nav-text">1.8.1 Arguments’ Data Types</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-3-Variable-Number-of-Arguments"><span class="nav-text">1.8.3 Variable Number of Arguments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-4-Using-the-Wrong-Type-Object-as-an-Argument"><span class="nav-text">1.8.4 Using the Wrong Type Object as an Argument</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-8-5-The-message-Function"><span class="nav-text">1.8.5 The message Function</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-9-Setting-the-Value-of-a-Variable"><span class="nav-text">1.9 Setting the Value of a Variable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-9-1-Using-set"><span class="nav-text">1.9.1 Using set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-9-3-Counting"><span class="nav-text">1.9.3 Counting</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-10-Summary"><span class="nav-text">1.10 Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/06/11/elisp-list/";
+    this.page.identifier = "2019/06/11/elisp-list/";
+    this.page.title = 'Intro to elisp 1. List Processing';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

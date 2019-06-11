@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Before learning how to write a function definition in Emacs Lisp, it is useful to spend a little time evaluating various expressions that have already been written. These expressions will be lists wit">
+<meta name="keywords" content="elisp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro to Elisp 2. Practicing Evaluation">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/06/11/elisp-list-practise/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="Before learning how to write a function definition in Emacs Lisp, it is useful to spend a little time evaluating various expressions that have already been written. These expressions will be lists wit">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-11T01:30:13.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intro to Elisp 2. Practicing Evaluation">
+<meta name="twitter:description" content="Before learning how to write a function definition in Emacs Lisp, it is useful to spend a little time evaluating various expressions that have already been written. These expressions will be lists wit">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/06/11/elisp-list-practise/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Intro to Elisp 2. Practicing Evaluation | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">27</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/11/elisp-list-practise/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Intro to Elisp 2. Practicing Evaluation
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-11 09:13:32 / Modified: 09:30:13" itemprop="dateCreated datePublished" datetime="2019-06-11T09:13:32+08:00">2019-06-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/11/elisp-list-practise/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/11/elisp-list-practise/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Before learning how to write a function definition in Emacs Lisp, it is useful to spend a little time evaluating various expressions that have already been written. These expressions will be lists with the functions as their first (and often only) element. Since some of the functions associated with buffers are both simple and interesting, we will start with those. In this section, we will evaluate a few of these. In another section, we will study the code of several other buffer-related functions, to see how they were written.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#How-to-Evaluate" target="_blank" rel="noopener">How to Evaluate</a>: Typing editing commands or C-x C-e causes evaluation.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Buffer-Names" target="_blank" rel="noopener">Buffer Names</a>: Buffers and files are different.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Getting-Buffers" target="_blank" rel="noopener">Getting Buffers</a>: Getting a buffer itself, not merely its name.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Switching-Buffers" target="_blank" rel="noopener">Switching Buffers</a>: How to change to another buffer.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Buffer-Size-_0026-Locations" target="_blank" rel="noopener">Buffer Size &amp; Locations</a>: Where point is located and the size of the buffer.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Evaluation-Exercise" target="_blank" rel="noopener">Evaluation Exercise</a></li>
+</ul>
+<h3 id="How-to-Evaluate"><a href="#How-to-Evaluate" class="headerlink" title="How to Evaluate"></a>How to Evaluate</h3><p><em>Whenever you give an editing command</em> to Emacs Lisp, such as the command to move the cursor or to scroll the screen, <em>you are evaluating an expression,</em> the first element of which is a function. <em>This is how Emacs works.</em></p>
+<p>When you type keys, you cause the Lisp interpreter to evaluate an expression and that is how you get your results. Even typing plain text involves evaluating an Emacs Lisp function, in this case, one that uses <code>self-insert-command</code>, which simply inserts the character you typed. The functions you evaluate by typing keystrokes are called interactivefunctions, or commands; how you make a function interactive will be illustrated in the chapter on how to write function definitions. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Interactive" target="_blank" rel="noopener">Making a Function Interactive</a>.</p>
+<p>In addition to typing keyboard commands, we have seen a second way to evaluate an expression: by positioning the cursor after a list and typing C-x C-e. This is what we will do in the rest of this section. There are other ways to evaluate an expression as well; these will be described as we come to them.</p>
+<p>Besides being used for practicing evaluation, the functions shown in the next few sections are important in their own right. A study of these functions makes clear the distinction between buffers and files, how to switch to a buffer, and how to determine a location within it.</p>
+<h3 id="2-1-Buffer-Names"><a href="#2-1-Buffer-Names" class="headerlink" title="2.1 Buffer Names"></a>2.1 Buffer Names</h3><p>The two functions, <code>buffer-name</code> and <code>buffer-file-name</code>, show the difference between a file and a buffer. When you evaluate the following expression, <code>(buffer-name)</code>, the name of the buffer appears in the echo area. When you evaluate <code>(buffer-file-name)</code>, the name of the file to which the buffer refers appears in the echo area. Usually, the name returned by <code>(buffer-name)</code> is the same as the name of the file to which it refers, and the name returned by <code>(buffer-file-name)</code> is the full path-name of the file.</p>
+<p>A file and a buffer are two different entities. A file is information recorded permanently in the computer (unless you delete it). A buffer, on the other hand, is information inside of Emacs that will vanish at the end of the editing session (or when you kill the buffer). Usually, a buffer contains information that you have copied from a file; we say the buffer is visiting that file. This copy is what you work on and modify. Changes to the buffer do not change the file, until you save the buffer. When you save the buffer, the buffer is copied to the file and is thus saved permanently.</p>
+<p>If you are reading this in Info inside of GNU Emacs, you can evaluate each of the following expressions by positioning the cursor after it and typing C-x C-e.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(buffer-name)</span><br><span class="line"></span><br><span class="line">(buffer-file-name)</span><br></pre></td></tr></table></figure>
+<p>When I do this in Info, the value returned by evaluating <code>(buffer-name)</code> is “<em>info</em>“, and the value returned by evaluating <code>(buffer-file-name)</code> is nil.</p>
+<p>On the other hand, while I am writing this document, the value returned by evaluating <code>(buffer-name)</code> is “introduction.texinfo”, and the value returned by evaluating <code>(buffer-file-name)</code> is “/gnu/work/intro/introduction.texinfo”.</p>
+<p>The former is the name of the buffer and the latter is the name of the file. In Info, the buffer name is “<em>info</em>“. Info does not point to any file, so the result of evaluating <code>(buffer-file-name)</code> is nil. The symbol <code>nil</code> is from the Latin word for “nothing”; in this case, it means that the buffer is not associated with any file. (In Lisp, <code>nil</code> is also used to mean “false” and is a synonym for the empty list, <code>()</code>.)</p>
+<p>When I am writing, the name of my buffer is “introduction.texinfo”. The name of the file to which it points is “/gnu/work/intro/introduction.texinfo”.</p>
+<p>(In the expressions, the parentheses tell the Lisp interpreter to treat <code>buffer-name</code> and <code>buffer-file-name</code> as functions; without the parentheses, the interpreter would attempt to evaluate the symbols as variables. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Variables" target="_blank" rel="noopener">Variables</a>.)</p>
+<p>In spite of the distinction between files and buffers, you will often find that people refer to a file when they mean a buffer and vice versa. Indeed, most people say, “I am editing a file,” rather than saying, “I am editing a buffer which I will soon save to a file.” It is almost always clear from context what people mean. When dealing with computer programs, however, it is important to keep the distinction in mind, since the computer is not as smart as a person.</p>
+<p>The word “buffer”, by the way, comes from the meaning of the word as a cushion that deadens the force of a collision. In early computers, a buffer cushioned the interaction between files and the computer’s central processing unit. The drums or tapes that held a file and the central processing unit were pieces of equipment that were very different from each other, working at their own speeds, in spurts. The buffer made it possible for them to work together effectively. Eventually, the buffer grew from being an intermediary, a temporary holding place, to being the place where work is done. This transformation is rather like that of a small seaport that grew into a great city: once it was merely the place where cargo was warehoused temporarily before being loaded onto ships; then it became a business and cultural center in its own right.</p>
+<p>Not all buffers are associated with files. For example, a <em>scratch</em> buffer does not visit any file. Similarly, a <em>Help</em> buffer is not associated with any file.</p>
+<p>In the old days, when you lacked a ~/.emacs file and started an Emacs session by typing the command <code>emacs</code> alone, without naming any files, Emacs started with the <em>scratch</em>buffer visible. Nowadays, you will see a splash screen. You can follow one of the commands suggested on the splash screen, visit a file, or press q to quit the splash screen and reach the <em>scratch</em> buffer.</p>
+<p>If you switch to the <em>scratch</em> buffer, type <code>(buffer-name)</code>, position the cursor after it, and then type C-x C-e to evaluate the expression. The name <code>&quot;*scratch*&quot;</code> will be returned and will appear in the echo area. <code>&quot;*scratch*&quot;</code> is the name of the buffer. When you type <code>(buffer-file-name)</code> in the <em>scratch</em> buffer and evaluate that, <code>nil</code> will appear in the echo area, just as it does when you evaluate <code>(buffer-file-name)</code> in Info.</p>
+<p>Incidentally, if you are in the <em>scratch</em> buffer and want the value returned by an expression to appear in the <em>scratch</em> buffer itself rather than in the echo area, type C-u C-x C-e instead of C-x C-e. This causes the value returned to appear after the expression. The buffer will look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(buffer-name)&quot;*scratch*&quot;</span><br></pre></td></tr></table></figure>
+<p>You cannot do this in Info since Info is read-only and it will not allow you to change the contents of the buffer. But you can do this in any buffer you can edit; and when you write code or documentation (such as this book), this feature is very useful.</p>
+<h3 id="2-2-Getting-Buffers"><a href="#2-2-Getting-Buffers" class="headerlink" title="2.2 Getting Buffers"></a>2.2 Getting Buffers</h3><p>The <code>buffer-name</code> function returns the <em>name</em> of the buffer; to get the buffer <em>itself</em>, a different function is needed: the <code>current-buffer</code> function. If you use this function in code, what you get is the buffer itself.</p>
+<p>A name and the object or entity to which the name refers are different from each other. You are not your name. You are a person to whom others refer by name. If you ask to speak to George and someone hands you a card with the letters ‘G’, ‘e’, ‘o’, ‘r’, ‘g’, and ‘e’ written on it, you might be amused, but you would not be satisfied. You do not want to speak to the name, but to the person to whom the name refers. A buffer is similar: the name of the scratch buffer is <em>scratch</em>, but the name is not the buffer. To get a buffer itself, you need to use a function such as <code>current-buffer</code>.</p>
+<p>However, there is a slight complication: if you evaluate <code>current-buffer</code> in an expression on its own, as we will do here, what you see is a printed representation of the name of the buffer without the contents of the buffer. Emacs works this way for two reasons: the buffer may be thousands of lines long—too long to be conveniently displayed; and, another buffer may have the same contents but a different name, and it is important to distinguish between them.</p>
+<p>Here is an expression containing the function:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(current-buffer)</span><br></pre></td></tr></table></figure>
+<p>If you evaluate this expression in Info in Emacs in the usual way, #<buffer *info*> will appear in the echo area. The special format indicates that the buffer itself is being returned, rather than just its name.</buffer></p>
+<p>Incidentally, while you can type a number or symbol into a program, you cannot do that with the printed representation of a buffer: the only way to get a buffer itself is with a function such as <code>current-buffer</code>.</p>
+<p>A related function is <code>other-buffer</code>. This returns the most recently selected buffer other than the one you are in currently, not a printed representation of its name. If you have recently switched back and forth from the <em>scratch</em> buffer, <code>other-buffer</code> will return that buffer.</p>
+<p>You can see this by evaluating the expression:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(other-buffer)</span><br></pre></td></tr></table></figure>
+<p>You should see #<buffer *scratch*> appear in the echo area, or the name of whatever other buffer you switched back from most recently<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-6" target="_blank" rel="noopener">6</a>.</buffer></p>
+<h3 id="2-3-Switching-Buffers"><a href="#2-3-Switching-Buffers" class="headerlink" title="2.3 Switching Buffers"></a>2.3 Switching Buffers</h3><p>The <code>other-buffer</code> function actually provides a buffer when it is used as an argument to a function that requires one. We can see this by using <code>other-buffer</code> and <code>switch-to-buffer</code> to switch to a different buffer.</p>
+<p>But first, a brief introduction to the <code>switch-to-buffer</code> function. When you switched back and forth from Info to the <em>scratch</em> buffer to evaluate <code>(buffer-name)</code>, you most likely typed C-x b and then typed <em>scratch</em><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-7" target="_blank" rel="noopener">7</a> when prompted in the minibuffer for the name of the buffer to which you wanted to switch. The keystrokes, C-x b, cause the Lisp interpreter to evaluate the interactive function <code>switch-to-buffer</code>. As we said before, this is how Emacs works: different keystrokes call or run different functions. For example, C-f calls <code>forward-char</code>, M-e calls <code>forward-sentence</code>, and so on.</p>
+<p>By writing <code>switch-to-buffer</code> in an expression, and giving it a buffer to switch to, we can switch buffers just the way C-x b does:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(switch-to-buffer (other-buffer))</span><br></pre></td></tr></table></figure>
+<p>The symbol <code>switch-to-buffer</code> is the first element of the list, so the Lisp interpreter will treat it as a function and carry out the instructions that are attached to it. But before doing that, the interpreter will note that <code>other-buffer</code> is inside parentheses and work on that symbol first. <code>other-buffer</code> is the first (and in this case, the only) element of this list, so the Lisp interpreter calls or runs the function. It returns another buffer. Next, the interpreter runs <code>switch-to-buffer</code>, passing to it, as an argument, the other buffer, which is what Emacs will switch to. If you are reading this in Info, try this now. Evaluate the expression. (To get back, type C-x b <ret>.)<a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-8" target="_blank" rel="noopener">8</a></ret></p>
+<p>In the programming examples in later sections of this document, you will see the function <code>set-buffer</code> more often than <code>switch-to-buffer</code>. This is because of a difference between computer programs and humans: humans have eyes and expect to see the buffer on which they are working on their computer terminals. This is so obvious, it almost goes without saying. However, programs do not have eyes. When a computer program works on a buffer, that buffer does not need to be visible on the screen.</p>
+<p><code>switch-to-buffer</code> is designed for humans and does two different things: it switches the buffer to which Emacs’s attention is directed; and it switches the buffer displayed in the window to the new buffer. <code>set-buffer</code>, on the other hand, does only one thing: it switches the attention of the computer program to a different buffer. The buffer on the screen remains unchanged (of course, normally nothing happens there until the command finishes running).</p>
+<p>Also, we have just introduced another jargon term, the word call. When you evaluate a list in which the first symbol is a function, you are calling that function. The use of the term comes from the notion of the function as an entity that can do something for you if you call it—just as a plumber is an entity who can fix a leak if you call him or her.</p>
+<h3 id="2-4-Buffer-Size-and-the-Location-of-Point"><a href="#2-4-Buffer-Size-and-the-Location-of-Point" class="headerlink" title="2.4 Buffer Size and the Location of Point"></a>2.4 Buffer Size and the Location of Point</h3><p>Finally, let’s look at several rather simple functions, <code>buffer-size</code>, <code>point</code>, <code>point-min</code>, and <code>point-max</code>. These give information about the size of a buffer and the location of point within it.</p>
+<p>The function <code>buffer-size</code> tells you the size of the current buffer; that is, the function returns a count of the number of characters in the buffer.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(buffer-size)</span><br></pre></td></tr></table></figure>
+<p>You can evaluate this in the usual way, by positioning the cursor after the expression and typing C-x C-e.</p>
+<p>In Emacs, the current position of the cursor is called point. The expression <code>(point)</code> returns a number that tells you where the cursor is located as a count of the number of characters from the beginning of the buffer up to point.</p>
+<p>You can see the character count for point in this buffer by evaluating the following expression in the usual way:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(point)</span><br></pre></td></tr></table></figure>
+<p>As I write this, the value of point is 65724. The <code>point</code> function is frequently used in some of the examples later in this book.</p>
+<p>The value of point depends, of course, on its location within the buffer. If you evaluate point in this spot, the number will be larger:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(point)</span><br></pre></td></tr></table></figure>
+<p>For me, the value of point in this location is 66043, which means that there are 319 characters (including spaces) between the two expressions. (Doubtless, you will see different numbers, since I will have edited this since I first evaluated point.)</p>
+<p>The function <code>point-min</code> is somewhat similar to <code>point</code>, but it returns the value of the minimum permissible value of point in the current buffer. This is the number 1 unless narrowing is in effect. (Narrowing is a mechanism whereby you can restrict yourself, or a program, to operations on just a part of a buffer. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Narrowing-_0026-Widening" target="_blank" rel="noopener">Narrowing and Widening</a>.) Likewise, the function <code>point-max</code> returns the value of the maximum permissible value of point in the current buffer.</p>
+<h3 id="2-5-Exercise"><a href="#2-5-Exercise" class="headerlink" title="2.5 Exercise"></a>2.5 Exercise</h3><p>Find a file with which you are working and move towards its middle. Find its buffer name, file name, length, and your position in the file.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/elisp/" rel="tag"># elisp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/elisp-list/" rel="next" title="Intro to elisp 1. List Processing">
+                <i class="fa fa-chevron-left"></i> Intro to elisp 1. List Processing
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/11/elisp-function/" rel="prev" title="Intro to elisp 3 How To Write Function Definitions">
+                Intro to elisp 3 How To Write Function Definitions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-Evaluate"><span class="nav-text">How to Evaluate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Buffer-Names"><span class="nav-text">2.1 Buffer Names</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Getting-Buffers"><span class="nav-text">2.2 Getting Buffers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-Switching-Buffers"><span class="nav-text">2.3 Switching Buffers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Buffer-Size-and-the-Location-of-Point"><span class="nav-text">2.4 Buffer Size and the Location of Point</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Exercise"><span class="nav-text">2.5 Exercise</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/06/11/elisp-list-practise/";
+    this.page.identifier = "2019/06/11/elisp-list-practise/";
+    this.page.title = 'Intro to Elisp 2. Practicing Evaluation';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

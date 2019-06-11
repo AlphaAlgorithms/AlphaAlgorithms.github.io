@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="When the Lisp interpreter evaluates a list, it looks to see whether the first symbol on the list has a function definition attached to it; or, put another way, whether the symbol points to a function">
+<meta name="keywords" content="elisp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intro to elisp 3 How To Write Function Definitions">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/06/11/elisp-function/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="When the Lisp interpreter evaluates a list, it looks to see whether the first symbol on the list has a function definition attached to it; or, put another way, whether the symbol points to a function">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-11T01:29:40.811Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intro to elisp 3 How To Write Function Definitions">
+<meta name="twitter:description" content="When the Lisp interpreter evaluates a list, it looks to see whether the first symbol on the list has a function definition attached to it; or, put another way, whether the symbol points to a function">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/06/11/elisp-function/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Intro to elisp 3 How To Write Function Definitions | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">27</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/11/elisp-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Intro to elisp 3 How To Write Function Definitions
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-11 09:15:41 / Modified: 09:29:40" itemprop="dateCreated datePublished" datetime="2019-06-11T09:15:41+08:00">2019-06-11</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/11/elisp-function/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/11/elisp-function/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>When the Lisp interpreter evaluates a list, it looks to see whether the first symbol on the list has a function definition attached to it; or, put another way, whether the symbol points to a function definition. If it does, the computer carries out the instructions in the definition. A symbol that has a function definition is called, simply, a function (although, properly speaking, the definition is the function and the symbol refers to it.)</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Primitive-Functions" target="_blank" rel="noopener">Primitive Functions</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#defun" target="_blank" rel="noopener">defun</a>: The <code>defun</code> macro.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Install" target="_blank" rel="noopener">Install</a>: Install a function definition.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Interactive" target="_blank" rel="noopener">Interactive</a>: Making a function interactive.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Interactive-Options" target="_blank" rel="noopener">Interactive Options</a>: Different options for <code>interactive</code>.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Permanent-Installation" target="_blank" rel="noopener">Permanent Installation</a>: Installing code permanently.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#let" target="_blank" rel="noopener">let</a>: Creating and initializing local variables.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#if" target="_blank" rel="noopener">if</a>: What if?</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#else" target="_blank" rel="noopener">else</a>: If–then–else expressions.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Truth-_0026-Falsehood" target="_blank" rel="noopener">Truth &amp; Falsehood</a>: What Lisp considers false and true.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#save_002dexcursion" target="_blank" rel="noopener">save-excursion</a>: Keeping track of point and buffer.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Review" target="_blank" rel="noopener">Review</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#defun-Exercises" target="_blank" rel="noopener">defun Exercises</a></li>
+</ul>
+<h3 id="An-Aside-about-Primitive-Functions"><a href="#An-Aside-about-Primitive-Functions" class="headerlink" title="An Aside about Primitive Functions"></a>An Aside about Primitive Functions</h3><p>All functions are defined in terms of other functions, except for a few primitive functions that are written in the C programming language. When you write functions’ definitions, you will write them in Emacs Lisp and use other functions as your building blocks. Some of the functions you will use will themselves be written in Emacs Lisp (perhaps by you) and some will be primitives written in C. The primitive functions are used exactly like those written in Emacs Lisp and behave like them. They are written in C so we can easily run GNU Emacs on any computer that has sufficient power and can run C.</p>
+<p>Let me re-emphasize this: when you write code in Emacs Lisp, you do not distinguish between the use of functions written in C and the use of functions written in Emacs Lisp. The difference is irrelevant. I mention the distinction only because it is interesting to know. Indeed, unless you investigate, you won’t know whether an already-written function is written in Emacs Lisp or C.</p>
+<h3 id="3-1-The-defun-Macro"><a href="#3-1-The-defun-Macro" class="headerlink" title="3.1 The defun Macro"></a>3.1 The <code>defun</code> Macro</h3><p>In Lisp, a symbol such as <code>mark-whole-buffer</code> has code attached to it that tells the computer what to do when the function is called. This code is called the function definition and is created by evaluating a Lisp expression that starts with the symbol <code>defun</code> (which is an abbreviation for <em>define function</em>).</p>
+<p>In subsequent sections, we will look at function definitions from the Emacs source code, such as <code>mark-whole-buffer</code>. In this section, we will describe a simple function definition so you can see how it looks. This function definition uses arithmetic because it makes for a simple example. Some people dislike examples using arithmetic; however, if you are such a person, do not despair. Hardly any of the code we will study in the remainder of this introduction involves arithmetic or mathematics. The examples mostly involve text in one way or another.</p>
+<p>A function definition has up to five parts following the word <code>defun</code>:</p>
+<ol>
+<li><p>The name of the symbol to which the function definition should be attached.</p>
+</li>
+<li><p>A list of the arguments that will be passed to the function. If no arguments will be passed to the function, this is an empty list, <code>()</code>.</p>
+</li>
+<li><p>Documentation describing the function. (Technically optional, but strongly recommended.)</p>
+</li>
+<li><p>Optionally, an expression to make the function interactive so you can use it by typing</p>
+<p><code>M-x</code></p>
+<p>and then the name of the function; or by typing an appropriate key or keychord.</p>
+</li>
+<li><p>The code that instructs the computer what to do: the body of the function definition.</p>
+</li>
+</ol>
+<p>It is helpful to think of the five parts of a function definition as being organized in a template, with slots for each part:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun function-name (arguments...)</span><br><span class="line">  &quot;optional-documentation...&quot;</span><br><span class="line">  (interactive argument-passing-info)     ; optional</span><br><span class="line">  body...)</span><br></pre></td></tr></table></figure>
+<p>As an example, here is the code for a function that multiplies its argument by 7. (This example is not interactive. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Interactive" target="_blank" rel="noopener">Making a Function Interactive</a>, for that information.)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven (number)</span><br><span class="line">  &quot;Multiply NUMBER by seven.&quot;</span><br><span class="line">  (* 7 number))</span><br></pre></td></tr></table></figure>
+<p>This definition begins with a parenthesis and the symbol <code>defun</code>, followed by the name of the function.</p>
+<p>The name of the function is followed by a list that contains the arguments that will be passed to the function. This list is called the argument list. In this example, the list has only one element, the symbol, <code>number</code>. When the function is used, the symbol will be bound to the value that is used as the argument to the function.</p>
+<p>Instead of choosing the word <code>number</code> for the name of the argument, I could have picked any other name. For example, I could have chosen the word <code>multiplicand</code>. I picked the word “number” because it tells what kind of value is intended for this slot; but I could just as well have chosen the word “multiplicand” to indicate the role that the value placed in this slot will play in the workings of the function. I could have called it <code>foogle</code>, but that would have been a bad choice because it would not tell humans what it means. The choice of name is up to the programmer and should be chosen to make the meaning of the function clear.</p>
+<p>Indeed, you can choose any name you wish for a symbol in an argument list, even the name of a symbol used in some other function: the name you use in an argument list is private to that particular definition. In that definition, the name refers to a different entity than any use of the same name outside the function definition. Suppose you have a nick-name “Shorty” in your family; when your family members refer to “Shorty”, they mean you. But outside your family, in a movie, for example, the name “Shorty” refers to someone else. Because a name in an argument list is private to the function definition, you can change the value of such a symbol inside the body of a function without changing its value outside the function. The effect is similar to that produced by a <code>let</code> expression. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#let" target="_blank" rel="noopener"><code>let</code></a>.)</p>
+<p>The argument list is followed by the documentation string that describes the function. This is what you see when you type C-h f and the name of a function. Incidentally, when you write a documentation string like this, you should make the first line a complete sentence since some commands, such as <code>apropos</code>, print only the first line of a multi-line documentation string. Also, you should not indent the second line of a documentation string, if you have one, because that looks odd when you use C-h f (<code>describe-function</code>). The documentation string is optional, but it is so useful, it should be included in almost every function you write.</p>
+<p>The third line of the example consists of the body of the function definition. (Most functions’ definitions, of course, are longer than this.) In this function, the body is the list, <code>(* 7 number)</code>, which says to multiply the value of number by 7. (In Emacs Lisp, <code>*</code> is the function for multiplication, just as <code>+</code> is the function for addition.)</p>
+<p>When you use the <code>multiply-by-seven</code> function, the argument <code>number</code> evaluates to the actual number you want used. Here is an example that shows how <code>multiply-by-seven</code> is used; but don’t try to evaluate this yet!</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(multiply-by-seven 3)</span><br></pre></td></tr></table></figure>
+<p>The symbol <code>number</code>, specified in the function definition in the next section, is bound to the value 3 in the actual use of the function. Note that although <code>number</code> was inside parentheses in the function definition, the argument passed to the <code>multiply-by-seven</code> function is not in parentheses. The parentheses are written in the function definition so the computer can figure out where the argument list ends and the rest of the function definition begins.</p>
+<p>If you evaluate this example, you are likely to get an error message. (Go ahead, try it!) This is because we have written the function definition, but not yet told the computer about the definition—we have not yet loaded the function definition in Emacs. Installing a function is the process that tells the Lisp interpreter the definition of the function. Installation is described in the next section.</p>
+<h3 id="3-2-Install-a-Function-Definition"><a href="#3-2-Install-a-Function-Definition" class="headerlink" title="3.2 Install a Function Definition"></a>3.2 Install a Function Definition</h3><p>If you are reading this inside of Info in Emacs, you can try out the <code>multiply-by-seven</code> function by first evaluating the function definition and then evaluating <code>(multiply-by-seven 3)</code>. A copy of the function definition follows. Place the cursor after the last parenthesis of the function definition and type C-x C-e. When you do this, <code>multiply-by-seven</code>will appear in the echo area. (What this means is that when a function definition is evaluated, the value it returns is the name of the defined function.) At the same time, this action installs the function definition.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven (number)</span><br><span class="line">  &quot;Multiply NUMBER by seven.&quot;</span><br><span class="line">  (* 7 number))</span><br></pre></td></tr></table></figure>
+<p>By evaluating this <code>defun</code>, you have just installed <code>multiply-by-seven</code> in Emacs. The function is now just as much a part of Emacs as <code>forward-word</code> or any other editing function you use. (<code>multiply-by-seven</code> will stay installed until you quit Emacs. To reload code automatically whenever you start Emacs, see <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Permanent-Installation" target="_blank" rel="noopener">Installing Code Permanently</a>.)</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Effect-of-installation" target="_blank" rel="noopener">Effect of installation</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Change-a-defun" target="_blank" rel="noopener">Change a defun</a>: How to change a function definition.</li>
+</ul>
+<h4 id="The-effect-of-installation"><a href="#The-effect-of-installation" class="headerlink" title="The effect of installation"></a>The effect of installation</h4><p>You can see the effect of installing <code>multiply-by-seven</code> by evaluating the following sample. Place the cursor after the following expression and type C-x C-e. The number 21 will appear in the echo area.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(multiply-by-seven 3)</span><br></pre></td></tr></table></figure>
+<p>If you wish, you can read the documentation for the function by typing C-h f (<code>describe-function</code>) and then the name of the function, <code>multiply-by-seven</code>. When you do this, a<em>Help</em> window will appear on your screen that says:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">multiply-by-seven is a Lisp function.</span><br><span class="line"></span><br><span class="line">(multiply-by-seven NUMBER)</span><br><span class="line"></span><br><span class="line">Multiply NUMBER by seven.</span><br></pre></td></tr></table></figure>
+<p>(To return to a single window on your screen, type C-x 1.)</p>
+<h4 id="3-2-1-Change-a-Function-Definition"><a href="#3-2-1-Change-a-Function-Definition" class="headerlink" title="3.2.1 Change a Function Definition"></a>3.2.1 Change a Function Definition</h4><p>If you want to change the code in <code>multiply-by-seven</code>, just rewrite it. To install the new version in place of the old one, evaluate the function definition again. This is how you modify code in Emacs. It is very simple.</p>
+<p>As an example, you can change the <code>multiply-by-seven</code> function to add the number to itself seven times instead of multiplying the number by seven. It produces the same answer, but by a different path. At the same time, we will add a comment to the code; a comment is text that the Lisp interpreter ignores, but that a human reader may find useful or enlightening. The comment is that this is the second version.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven (number)       ; Second version.</span><br><span class="line">  &quot;Multiply NUMBER by seven.&quot;</span><br><span class="line">  (+ number number number number number number number))</span><br></pre></td></tr></table></figure>
+<p>The comment follows a semicolon, ‘;’. In Lisp, everything on a line that follows a semicolon is a comment. The end of the line is the end of the comment. To stretch a comment over two or more lines, begin each line with a semicolon.</p>
+<p>See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Beginning-init-File" target="_blank" rel="noopener">Beginning a .emacs File</a>, and <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Comments" target="_blank" rel="noopener">Comments</a>, for more about comments.</p>
+<p>You can install this version of the <code>multiply-by-seven</code> function by evaluating it in the same way you evaluated the first function: place the cursor after the last parenthesis and type C-x C-e.</p>
+<p>In summary, this is how you write code in Emacs Lisp: you write a function; install it; test it; and then make fixes or enhancements and install it again.</p>
+<h3 id="3-3-Make-a-Function-Interactive"><a href="#3-3-Make-a-Function-Interactive" class="headerlink" title="3.3 Make a Function Interactive"></a>3.3 Make a Function Interactive</h3><p>You make a function interactive by placing a list that begins with the special form <code>interactive</code> immediately after the documentation. A user can invoke an interactive function by typing M-x and then the name of the function; or by typing the keys to which it is bound, for example, by typing C-n for <code>next-line</code> or C-x h for <code>mark-whole-buffer</code>.</p>
+<p>Interestingly, when you call an interactive function interactively, the value returned is not automatically displayed in the echo area. This is because you often call an interactive function for its side effects, such as moving forward by a word or line, and not for the value returned. If the returned value were displayed in the echo area each time you typed a key, it would be very distracting.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Interactive-multiply_002dby_002dseven" target="_blank" rel="noopener">Interactive multiply-by-seven</a>: An overview.</li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#multiply_002dby_002dseven-in-detail" target="_blank" rel="noopener">multiply-by-seven in detail</a>: The interactive version.</li>
+</ul>
+<h4 id="An-Interactive-multiply-by-seven-An-Overview"><a href="#An-Interactive-multiply-by-seven-An-Overview" class="headerlink" title="An Interactive multiply-by-seven, An Overview"></a>An Interactive <code>multiply-by-seven</code>, An Overview</h4><p>Both the use of the special form <code>interactive</code> and one way to display a value in the echo area can be illustrated by creating an interactive version of <code>multiply-by-seven</code>.</p>
+<p>Here is the code:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun multiply-by-seven (number)       ; Interactive version.</span><br><span class="line">  &quot;Multiply NUMBER by seven.&quot;</span><br><span class="line">  (interactive &quot;p&quot;)</span><br><span class="line">  (message &quot;The result is %d&quot; (* 7 number)))</span><br></pre></td></tr></table></figure>
+<p>You can install this code by placing your cursor after it and typing C-x C-e. The name of the function will appear in your echo area. Then, you can use this code by typing C-u and a number and then typing M-x multiply-by-seven and pressing <ret>. The phrase ‘The result is …’ followed by the product will appear in the echo area.</ret></p>
+<p>Speaking more generally, you invoke a function like this in either of two ways:</p>
+<ol>
+<li>By typing a prefix argument that contains the number to be passed, and then typing M-x and the name of the function, as with C-u 3 M-x forward-sentence; or,</li>
+<li>By typing whatever key or keychord the function is bound to, as with C-u 3 M-e.</li>
+</ol>
+<p>Both the examples just mentioned work identically to move point forward three sentences. (Since <code>multiply-by-seven</code> is not bound to a key, it could not be used as an example of key binding.)</p>
+<p>(See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Keybindings" target="_blank" rel="noopener">Some Keybindings</a>, to learn how to bind a command to a key.)</p>
+<p>A prefix argument is passed to an interactive function by typing the <meta> key followed by a number, for example, M-3 M-e, or by typing C-u and then a number, for example, C-u 3 M-e (if you type C-u without a number, it defaults to 4).</p>
+<h3 id="3-4-Different-Options-for-interactive"><a href="#3-4-Different-Options-for-interactive" class="headerlink" title="3.4 Different Options for interactive"></a>3.4 Different Options for <code>interactive</code></h3><p>In the example, <code>multiply-by-seven</code> used <code>&quot;p&quot;</code> as the argument to <code>interactive</code>. This argument told Emacs to interpret your typing either C-u followed by a number or <meta> followed by a number as a command to pass that number to the function as its argument. Emacs has more than twenty characters predefined for use with <code>interactive</code>. In almost every case, one of these options will enable you to pass the right information interactively to a function. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Interactive-Codes" target="_blank" rel="noopener">Code Characters for <code>interactive</code></a>.)</p>
+<p>Consider the function <code>zap-to-char</code>. Its interactive expression is</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(interactive &quot;p\ncZap to char: &quot;)</span><br></pre></td></tr></table></figure>
+<p>The first part of the argument to <code>interactive</code> is ‘p’, with which you are already familiar. This argument tells Emacs to interpret a prefix, as a number to be passed to the function. You can specify a prefix either by typing C-u followed by a number or by typing <meta> followed by a number. The prefix is the number of specified characters. Thus, if your prefix is three and the specified character is ‘x’, then you will delete all the text up to and including the third next ‘x’. If you do not set a prefix, then you delete all the text up to and including the specified character, but no more.</p>
+<p>The ‘c’ tells the function the name of the character to which to delete.</p>
+<p>More formally, a function with two or more arguments can have information passed to each argument by adding parts to the string that follows <code>interactive</code>. When you do this, the information is passed to each argument in the same order it is specified in the <code>interactive</code> list. In the string, each part is separated from the next part by a ‘\n’, which is a newline. For example, you can follow ‘p’ with a ‘\n’ and an ‘cZap to char: ’. This causes Emacs to pass the value of the prefix argument (if there is one) and the character.</p>
+<p>In this case, the function definition looks like the following, where <code>arg</code> and <code>char</code> are the symbols to which <code>interactive</code> binds the prefix argument and the specified character:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(defun name-of-function (arg char)</span><br><span class="line">  &quot;documentation...&quot;</span><br><span class="line">  (interactive &quot;p\ncZap to char: &quot;)</span><br><span class="line">  body-of-function...)</span><br></pre></td></tr></table></figure>
+<p>(The space after the colon in the prompt makes it look better when you are prompted. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#copy_002dto_002dbuffer" target="_blank" rel="noopener">The Definition of <code>copy-to-buffer</code></a>, for an example.)</p>
+<p>When a function does not take arguments, <code>interactive</code> does not require any. Such a function contains the simple expression <code>(interactive)</code>. The <code>mark-whole-buffer</code> function is like this.</p>
+<p>Alternatively, if the special letter-codes are not right for your application, you can pass your own arguments to <code>interactive</code> as a list.</p>
+<p>See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#append_002dto_002dbuffer" target="_blank" rel="noopener">The Definition of <code>append-to-buffer</code></a>, for an example. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Using-Interactive" target="_blank" rel="noopener">Using <code>Interactive</code></a>, for a more complete explanation about this technique.</p>
+<h3 id="3-5-Install-Code-Permanently"><a href="#3-5-Install-Code-Permanently" class="headerlink" title="3.5 Install Code Permanently"></a>3.5 Install Code Permanently</h3><p>When you install a function definition by evaluating it, it will stay installed until you quit Emacs. The next time you start a new session of Emacs, the function will not be installed unless you evaluate the function definition again.</p>
+<p>At some point, you may want to have code installed automatically whenever you start a new session of Emacs. There are several ways of doing this:</p>
+<ul>
+<li>If you have code that is just for yourself, you can put the code for the function definition in your .emacs initialization file. When you start Emacs, your .emacs file is automatically evaluated and all the function definitions within it are installed. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Emacs-Initialization" target="_blank" rel="noopener">Your .emacs File</a>.</li>
+<li>Alternatively, you can put the function definitions that you want installed in one or more files of their own and use the <code>load</code> function to cause Emacs to evaluate and thereby install each of the functions in the files. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Loading-Files" target="_blank" rel="noopener">Loading Files</a>.</li>
+<li>Thirdly, if you have code that your whole site will use, it is usual to put it in a file called site-init.el that is loaded when Emacs is built. This makes the code available to everyone who uses your machine. (See the INSTALL file that is part of the Emacs distribution.)</li>
+</ul>
+<p>Finally, if you have code that everyone who uses Emacs may want, you can post it on a computer network or send a copy to the Free Software Foundation. (When you do this, please license the code and its documentation under a license that permits other people to run, copy, study, modify, and redistribute the code and which protects you from having your work taken from you.) If you send a copy of your code to the Free Software Foundation, and properly protect yourself and others, it may be included in the next release of Emacs. In large part, this is how Emacs has grown over the past years, by donations.</p>
+<h3 id="3-6-let"><a href="#3-6-let" class="headerlink" title="3.6 let"></a>3.6 <code>let</code></h3><p>The <code>let</code> expression is a special form in Lisp that you will need to use in most function definitions.</p>
+<p><code>let</code> is used to attach or bind a symbol to a value in such a way that the Lisp interpreter will not confuse the variable with a variable of the same name that is not part of the function.</p>
+<p>To understand why the <code>let</code> special form is necessary, consider the situation in which you own a home that you generally refer to as “the house”, as in the sentence, “The house needs painting.” If you are visiting a friend and your host refers to “the house”, he is likely to be referring to <em>his</em> house, not yours, that is, to a different house.</p>
+<p>If your friend is referring to his house and you think he is referring to your house, you may be in for some confusion. The same thing could happen in Lisp if a variable that is used inside of one function has the same name as a variable that is used inside of another function, and the two are not intended to refer to the same value. The <code>let</code> special form prevents this kind of confusion.</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Prevent-confusion" target="_blank" rel="noopener">Prevent confusion</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Parts-of-let-Expression" target="_blank" rel="noopener">Parts of let Expression</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Sample-let-Expression" target="_blank" rel="noopener">Sample let Expression</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Uninitialized-let-Variables" target="_blank" rel="noopener">Uninitialized let Variables</a></li>
+</ul>
+<h4 id="let-Prevents-Confusion"><a href="#let-Prevents-Confusion" class="headerlink" title="let Prevents Confusion"></a><code>let</code> Prevents Confusion</h4><p>The <code>let</code> special form prevents confusion. <code>let</code> creates a name for a local variable that overshadows any use of the same name outside the <code>let</code> expression. This is like understanding that whenever your host refers to “the house”, he means his house, not yours. (Symbols used in argument lists work the same way. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#defun" target="_blank" rel="noopener">The <code>defun</code> Macro</a>.)</p>
+<p>Local variables created by a <code>let</code> expression retain their value <em>only</em> within the <code>let</code> expression itself (and within expressions called within the <code>let</code> expression); the local variables have no effect outside the <code>let</code> expression.</p>
+<p>Another way to think about <code>let</code> is that it is like a <code>setq</code> that is temporary and local. The values set by <code>let</code> are automatically undone when the <code>let</code> is finished. The setting only affects expressions that are inside the bounds of the <code>let</code> expression. In computer science jargon, we would say the binding of a symbol is visible only in functions called in the <code>let</code> form; in Emacs Lisp, scoping is dynamic, not lexical.</p>
+<p><code>let</code> can create more than one variable at once. Also, <code>let</code> gives each variable it creates an initial value, either a value specified by you, or <code>nil</code>. (In the jargon, this is binding the variable to the value.) After <code>let</code> has created and bound the variables, it executes the code in the body of the <code>let</code>, and returns the value of the last expression in the body, as the value of the whole <code>let</code> expression. (“Execute” is a jargon term that means to evaluate a list; it comes from the use of the word meaning “to give practical effect to” (Oxford English Dictionary). Since you evaluate an expression to perform an action, “execute” has evolved as a synonym to “evaluate”.)</p>
+<h4 id="3-6-2-Sample-let-Expression"><a href="#3-6-2-Sample-let-Expression" class="headerlink" title="3.6.2 Sample let Expression"></a>3.6.2 Sample <code>let</code> Expression</h4><p>The following expression creates and gives initial values to the two variables <code>zebra</code> and <code>tiger</code>. The body of the <code>let</code> expression is a list which calls the <code>message</code> function.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(let ((zebra &quot;stripes&quot;)</span><br><span class="line">      (tiger &quot;fierce&quot;))</span><br><span class="line">  (message &quot;One kind of animal has %s and another is %s.&quot;</span><br><span class="line">           zebra tiger))</span><br></pre></td></tr></table></figure>
+<p>Here, the varlist is <code>((zebra &quot;stripes&quot;) (tiger &quot;fierce&quot;))</code>.</p>
+<p>The two variables are <code>zebra</code> and <code>tiger</code>. Each variable is the first element of a two-element list and each value is the second element of its two-element list. In the varlist, Emacs binds the variable <code>zebra</code> to the value <code>&quot;stripes&quot;</code><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#fn-9" target="_blank" rel="noopener">9</a>, and binds the variable <code>tiger</code> to the value <code>&quot;fierce&quot;</code>. In this example, both values are strings. The values could just as well have been another list or a symbol. The body of the <code>let</code> follows after the list holding the variables. In this example, the body is a list that uses the <code>message</code> function to print a string in the echo area.</p>
+<p>You may evaluate the example in the usual fashion, by placing the cursor after the last parenthesis and typing C-x C-e. When you do this, the following will appear in the echo area:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;One kind of animal has stripes and another is fierce.&quot;</span><br></pre></td></tr></table></figure>
+<p>As we have seen before, the <code>message</code> function prints its first argument, except for ‘%s’. In this example, the value of the variable <code>zebra</code> is printed at the location of the first ‘%s’ and the value of the variable <code>tiger</code> is printed at the location of the second ‘%s’.</p>
+<h4 id="3-6-3-Uninitialized-Variables-in-a-let-Statement"><a href="#3-6-3-Uninitialized-Variables-in-a-let-Statement" class="headerlink" title="3.6.3 Uninitialized Variables in a let Statement"></a>3.6.3 Uninitialized Variables in a <code>let</code> Statement</h4><p>If you do not bind the variables in a <code>let</code> statement to specific initial values, they will automatically be bound to an initial value of <code>nil</code>, as in the following expression:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(let ((birch 3)</span><br><span class="line">      pine</span><br><span class="line">      fir</span><br><span class="line">      (oak &apos;some))</span><br><span class="line">  (message</span><br><span class="line">   &quot;Here are %d variables with %s, %s, and %s value.&quot;</span><br><span class="line">   birch pine fir oak))</span><br></pre></td></tr></table></figure>
+<p>Here, the varlist is <code>((birch 3) pine fir (oak &#39;some))</code>.</p>
+<p>If you evaluate this expression in the usual way, the following will appear in your echo area:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;Here are 3 variables with nil, nil, and some value.&quot;</span><br></pre></td></tr></table></figure>
+<p>In this example, Emacs binds the symbol <code>birch</code> to the number 3, binds the symbols <code>pine</code> and <code>fir</code> to <code>nil</code>, and binds the symbol <code>oak</code> to the value <code>some</code>.</p>
+<p>Note that in the first part of the <code>let</code>, the variables <code>pine</code> and <code>fir</code> stand alone as atoms that are not surrounded by parentheses; this is because they are being bound to <code>nil</code>, the empty list. But <code>oak</code> is bound to <code>some</code> and so is a part of the list <code>(oak &#39;some)</code>. Similarly, <code>birch</code> is bound to the number 3 and so is in a list with that number. (Since a number evaluates to itself, the number does not need to be quoted. Also, the number is printed in the message using a ‘%d’ rather than a ‘%s’.) The four variables as a group are put into a list to delimit them from the body of the <code>let</code>.</p>
+<h3 id="3-7-The-if-Special-Form"><a href="#3-7-The-if-Special-Form" class="headerlink" title="3.7 The if Special Form"></a>3.7 The <code>if</code> Special Form</h3><p>A third special form, in addition to <code>defun</code> and <code>let</code>, is the conditional <code>if</code>. This form is used to instruct the computer to make decisions. You can write function definitions without using <code>if</code>, but it is used often enough, and is important enough, to be included here. It is used, for example, in the code for the function <code>beginning-of-buffer</code>.</p>
+<p>The basic idea behind an <code>if</code>, is that <em>if</em> a test is true, <em>then</em> an expression is evaluated. If the test is not true, the expression is not evaluated. For example, you might make a decision such as, “if it is warm and sunny, then go to the beach!”</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#if-in-more-detail" target="_blank" rel="noopener">if in more detail</a></li>
+</ul>
+<h4 id="if-in-more-detail"><a href="#if-in-more-detail" class="headerlink" title="if in more detail"></a><code>if</code> in more detail</h4><p>An <code>if</code> expression written in Lisp does not use the word “then”; the test and the action are the second and third elements of the list whose first element is <code>if</code>. Nonetheless, the test part of an <code>if</code> expression is often called the if-part and the second argument is often called the then-part.</p>
+<p>Also, when an <code>if</code> expression is written, the true-or-false-test is usually written on the same line as the symbol <code>if</code>, but the action to carry out if the test is true, the then-part, is written on the second and subsequent lines. This makes the <code>if</code> expression easier to read.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if true-or-false-test</span><br><span class="line">    action-to-carry-out-if-test-is-true)</span><br></pre></td></tr></table></figure>
+<p>The true-or-false-test will be an expression that is evaluated by the Lisp interpreter.</p>
+<p>Here is an example that you can evaluate in the usual manner. The test is whether the number 5 is greater than the number 4. Since it is, the message ‘5 is greater than 4!’ will be printed.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if (&gt; 5 4)                             ; if-part</span><br><span class="line">    (message &quot;5 is greater than 4!&quot;))   ; then-part</span><br></pre></td></tr></table></figure>
+<p>(The function <code>&gt;</code> tests whether its first argument is greater than its second argument and returns true if it is.) Of course, in actual use, the test in an <code>if</code> expression will not be fixed for all time as it is by the expression <code>(&gt; 5 4)</code>. Instead, at least one of the variables used in the test will be bound to a value that is not known ahead of time. (If the value were known ahead of time, we would not need to run the test!)</p>
+<p>For example, the value may be bound to an argument of a function definition. In the following function definition, the character of the animal is a value that is passed to the function. If the value bound to <code>characteristic</code> is <code>&quot;fierce&quot;</code>, then the message, ‘It is a tiger!’ will be printed; otherwise, <code>nil</code> will be returned.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(defun type-of-animal (characteristic)</span><br><span class="line">  &quot;Print message in echo area depending on CHARACTERISTIC.</span><br><span class="line">If the CHARACTERISTIC is the string \&quot;fierce\&quot;,</span><br><span class="line">then warn of a tiger.&quot;</span><br><span class="line">  (if (equal characteristic &quot;fierce&quot;)</span><br><span class="line">      (message &quot;It is a tiger!&quot;)))</span><br></pre></td></tr></table></figure>
+<p>If you are reading this inside of GNU Emacs, you can evaluate the function definition in the usual way to install it in Emacs, and then you can evaluate the following two expressions to see the results:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(type-of-animal &quot;fierce&quot;)</span><br><span class="line"></span><br><span class="line">(type-of-animal &quot;striped&quot;)</span><br></pre></td></tr></table></figure>
+<p>When you evaluate <code>(type-of-animal &quot;fierce&quot;)</code>, you will see the following message printed in the echo area: <code>&quot;It is a tiger!&quot;</code>; and when you evaluate <code>(type-of-animal &quot;striped&quot;)</code> you will see <code>nil</code> printed in the echo area.</p>
+<h4 id="if-in-more-detail-1"><a href="#if-in-more-detail-1" class="headerlink" title="if in more detail"></a><code>if</code> in more detail</h4><p>An <code>if</code> expression written in Lisp does not use the word “then”; the test and the action are the second and third elements of the list whose first element is <code>if</code>. Nonetheless, the test part of an <code>if</code> expression is often called the if-part and the second argument is often called the then-part.</p>
+<p>Also, when an <code>if</code> expression is written, the true-or-false-test is usually written on the same line as the symbol <code>if</code>, but the action to carry out if the test is true, the then-part, is written on the second and subsequent lines. This makes the <code>if</code> expression easier to read.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if true-or-false-test</span><br><span class="line">    action-to-carry-out-if-test-is-true)</span><br></pre></td></tr></table></figure>
+<p>The true-or-false-test will be an expression that is evaluated by the Lisp interpreter.</p>
+<p>Here is an example that you can evaluate in the usual manner. The test is whether the number 5 is greater than the number 4. Since it is, the message ‘5 is greater than 4!’ will be printed.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if (&gt; 5 4)                             ; if-part</span><br><span class="line">    (message &quot;5 is greater than 4!&quot;))   ; then-part</span><br></pre></td></tr></table></figure>
+<p>(The function <code>&gt;</code> tests whether its first argument is greater than its second argument and returns true if it is.) Of course, in actual use, the test in an <code>if</code> expression will not be fixed for all time as it is by the expression <code>(&gt; 5 4)</code>. Instead, at least one of the variables used in the test will be bound to a value that is not known ahead of time. (If the value were known ahead of time, we would not need to run the test!)</p>
+<p>For example, the value may be bound to an argument of a function definition. In the following function definition, the character of the animal is a value that is passed to the function. If the value bound to <code>characteristic</code> is <code>&quot;fierce&quot;</code>, then the message, ‘It is a tiger!’ will be printed; otherwise, <code>nil</code> will be returned.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(defun type-of-animal (characteristic)</span><br><span class="line">  &quot;Print message in echo area depending on CHARACTERISTIC.</span><br><span class="line">If the CHARACTERISTIC is the string \&quot;fierce\&quot;,</span><br><span class="line">then warn of a tiger.&quot;</span><br><span class="line">  (if (equal characteristic &quot;fierce&quot;)</span><br><span class="line">      (message &quot;It is a tiger!&quot;)))</span><br></pre></td></tr></table></figure>
+<p>If you are reading this inside of GNU Emacs, you can evaluate the function definition in the usual way to install it in Emacs, and then you can evaluate the following two expressions to see the results:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(type-of-animal &quot;fierce&quot;)</span><br><span class="line"></span><br><span class="line">(type-of-animal &quot;striped&quot;)</span><br></pre></td></tr></table></figure>
+<p>When you evaluate <code>(type-of-animal &quot;fierce&quot;)</code>, you will see the following message printed in the echo area: <code>&quot;It is a tiger!&quot;</code>; and when you evaluate <code>(type-of-animal &quot;striped&quot;)</code> you will see <code>nil</code> printed in the echo area.</p>
+<h4 id="3-7-1-The-type-of-animal-Function-in-Detail"><a href="#3-7-1-The-type-of-animal-Function-in-Detail" class="headerlink" title="3.7.1 The type-of-animal Function in Detail"></a>3.7.1 The <code>type-of-animal</code> Function in Detail</h4><p>Let’s look at the <code>type-of-animal</code> function in detail.</p>
+<p>The function definition for <code>type-of-animal</code> was written by filling the slots of two templates, one for a function definition as a whole, and a second for an <code>if</code> expression.</p>
+<p>The template for every function that is not interactive is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(defun name-of-function (argument-list)</span><br><span class="line">  &quot;documentation...&quot;</span><br><span class="line">  body...)</span><br></pre></td></tr></table></figure>
+<p>The parts of the function that match this template look like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(defun type-of-animal (characteristic)</span><br><span class="line">  &quot;Print message in echo area depending on CHARACTERISTIC.</span><br><span class="line">If the CHARACTERISTIC is the string \&quot;fierce\&quot;,</span><br><span class="line">then warn of a tiger.&quot;</span><br><span class="line">  body: the if expression)</span><br></pre></td></tr></table></figure>
+<p>The name of function is <code>type-of-animal</code>; it is passed the value of one argument. The argument list is followed by a multi-line documentation string. The documentation string is included in the example because it is a good habit to write documentation string for every function definition. The body of the function definition consists of the <code>if</code> expression.</p>
+<p>The template for an <code>if</code> expression looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if true-or-false-test</span><br><span class="line">    action-to-carry-out-if-the-test-returns-true)</span><br></pre></td></tr></table></figure>
+<p>In the <code>type-of-animal</code> function, the code for the <code>if</code> looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(if (equal characteristic &quot;fierce&quot;)</span><br><span class="line">    (message &quot;It is a tiger!&quot;)))</span><br></pre></td></tr></table></figure>
+<p>Here, the true-or-false-test is the expression:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(equal characteristic &quot;fierce&quot;)</span><br></pre></td></tr></table></figure>
+<p>In Lisp, <code>equal</code> is a function that determines whether its first argument is equal to its second argument. The second argument is the string <code>&quot;fierce&quot;</code> and the first argument is the value of the symbol <code>characteristic</code>—in other words, the argument passed to this function.</p>
+<p>In the first exercise of <code>type-of-animal</code>, the argument <code>&quot;fierce&quot;</code> is passed to <code>type-of-animal</code>. Since <code>&quot;fierce&quot;</code> is equal to <code>&quot;fierce&quot;</code>, the expression, <code>(equal characteristic &quot;fierce&quot;)</code>, returns a value of true. When this happens, the <code>if</code> evaluates the second argument or then-part of the <code>if</code>: <code>(message &quot;It is a tiger!&quot;)</code>.</p>
+<p>On the other hand, in the second exercise of <code>type-of-animal</code>, the argument <code>&quot;striped&quot;</code> is passed to <code>type-of-animal</code>. <code>&quot;striped&quot;</code> is not equal to <code>&quot;fierce&quot;</code>, so the then-part is not evaluated and <code>nil</code> is returned by the <code>if</code> expression.</p>
+<h3 id="3-8-If–then–else-Expressions"><a href="#3-8-If–then–else-Expressions" class="headerlink" title="3.8 If–then–else Expressions"></a>3.8 If–then–else Expressions</h3><p>An <code>if</code> expression may have an optional third argument, called the else-part, for the case when the true-or-false-test returns false. When this happens, the second argument or then-part of the overall <code>if</code> expression is <em>not</em> evaluated, but the third or else-part <em>is</em> evaluated. You might think of this as the cloudy day alternative for the decision “if it is warm and sunny, then go to the beach, else read a book!”.</p>
+<p>The word “else” is not written in the Lisp code; the else-part of an <code>if</code> expression comes after the then-part. In the written Lisp, the else-part is usually written to start on a line of its own and is indented less than the then-part:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(if true-or-false-test</span><br><span class="line">    action-to-carry-out-if-the-test-returns-true</span><br><span class="line">  action-to-carry-out-if-the-test-returns-false)</span><br></pre></td></tr></table></figure>
+<p>For example, the following <code>if</code> expression prints the message ‘4 is not greater than 5!’ when you evaluate it in the usual way:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(if (&gt; 4 5)                               ; if-part</span><br><span class="line">    (message &quot;4 falsely greater than 5!&quot;) ; then-part</span><br><span class="line">  (message &quot;4 is not greater than 5!&quot;))   ; else-part</span><br></pre></td></tr></table></figure>
+<p>Note that the different levels of indentation make it easy to distinguish the then-part from the else-part. (GNU Emacs has several commands that automatically indent <code>if</code> expressions correctly. See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#Typing-Lists" target="_blank" rel="noopener">GNU Emacs Helps You Type Lists</a>.)</p>
+<p>We can extend the <code>type-of-animal</code> function to include an else-part by simply incorporating an additional part to the <code>if</code> expression.</p>
+<p>You can see the consequences of doing this if you evaluate the following version of the <code>type-of-animal</code> function definition to install it and then evaluate the two subsequent expressions to pass different arguments to the function.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(defun type-of-animal (characteristic)  ; Second version.</span><br><span class="line">  &quot;Print message in echo area depending on CHARACTERISTIC.</span><br><span class="line">If the CHARACTERISTIC is the string \&quot;fierce\&quot;,</span><br><span class="line">then warn of a tiger; else say it is not fierce.&quot;</span><br><span class="line">  (if (equal characteristic &quot;fierce&quot;)</span><br><span class="line">      (message &quot;It is a tiger!&quot;)</span><br><span class="line">    (message &quot;It is not fierce!&quot;)))</span><br><span class="line"></span><br><span class="line">(type-of-animal &quot;fierce&quot;)</span><br><span class="line"></span><br><span class="line">(type-of-animal &quot;striped&quot;)</span><br></pre></td></tr></table></figure>
+<p>When you evaluate <code>(type-of-animal &quot;fierce&quot;)</code>, you will see the following message printed in the echo area: <code>&quot;It is a tiger!&quot;</code>; but when you evaluate <code>(type-of-animal &quot;striped&quot;)</code>, you will see <code>&quot;It is not fierce!&quot;</code>.</p>
+<p>(Of course, if the characteristic were <code>&quot;ferocious&quot;</code>, the message <code>&quot;It is not fierce!&quot;</code> would be printed; and it would be misleading! When you write code, you need to take into account the possibility that some such argument will be tested by the <code>if</code> and write your program accordingly.)</p>
+<h3 id="3-9-Truth-and-Falsehood-in-Emacs-Lisp"><a href="#3-9-Truth-and-Falsehood-in-Emacs-Lisp" class="headerlink" title="3.9 Truth and Falsehood in Emacs Lisp"></a>3.9 Truth and Falsehood in Emacs Lisp</h3><p>There is an important aspect to the truth test in an <code>if</code> expression. So far, we have spoken of “true” and “false” as values of predicates as if they were new kinds of Emacs Lisp objects. In fact, “false” is just our old friend <code>nil</code>. Anything else—anything at all—is “true”.</p>
+<p>The expression that tests for truth is interpreted as true if the result of evaluating it is a value that is not <code>nil</code>. In other words, the result of the test is considered true if the value returned is a number such as 47, a string such as <code>&quot;hello&quot;</code>, or a symbol (other than <code>nil</code>) such as <code>flowers</code>, or a list (so long as it is not empty), or even a buffer!</p>
+<ul>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#nil-explained" target="_blank" rel="noopener">nil explained</a>: <code>nil</code> has two meanings.</li>
+</ul>
+<h4 id="An-explanation-of-nil"><a href="#An-explanation-of-nil" class="headerlink" title="An explanation of nil"></a>An explanation of <code>nil</code></h4><p>Before illustrating a test for truth, we need an explanation of <code>nil</code>.</p>
+<p>In Emacs Lisp, the symbol <code>nil</code> has two meanings. First, it means the empty list. Second, it means false and is the value returned when a true-or-false-test tests false. <code>nil</code> can be written as an empty list, <code>()</code>, or as <code>nil</code>. As far as the Lisp interpreter is concerned, <code>()</code> and <code>nil</code> are the same. Humans, however, tend to use <code>nil</code> for false and <code>()</code> for the empty list.</p>
+<p>In Emacs Lisp, any value that is not <code>nil</code>—is not the empty list—is considered true. This means that if an evaluation returns something that is not an empty list, an <code>if</code> expression will test true. For example, if a number is put in the slot for the test, it will be evaluated and will return itself, since that is what numbers do when evaluated. In this conditional, the <code>if</code>expression will test true. The expression tests false only when <code>nil</code>, an empty list, is returned by evaluating the expression.</p>
+<p>You can see this by evaluating the two expressions in the following examples.</p>
+<p>In the first example, the number 4 is evaluated as the test in the <code>if</code> expression and returns itself; consequently, the then-part of the expression is evaluated and returned: ‘true’ appears in the echo area. In the second example, the <code>nil</code> indicates false; consequently, the else-part of the expression is evaluated and returned: ‘false’ appears in the echo area.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(if 4</span><br><span class="line">    &apos;true</span><br><span class="line">  &apos;false)</span><br><span class="line"></span><br><span class="line">(if nil</span><br><span class="line">    &apos;true</span><br><span class="line">  &apos;false)</span><br></pre></td></tr></table></figure>
+<p>Incidentally, if some other useful value is not available for a test that returns true, then the Lisp interpreter will return the symbol <code>t</code> for true. For example, the expression <code>(&gt; 5 4)</code>returns <code>t</code> when evaluated, as you can see by evaluating it in the usual way:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&gt; 5 4)</span><br></pre></td></tr></table></figure>
+<p>On the other hand, this function returns <code>nil</code> if the test is false.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&gt; 4 5)</span><br></pre></td></tr></table></figure>
+<h4 id="An-explanation-of-nil-1"><a href="#An-explanation-of-nil-1" class="headerlink" title="An explanation of nil"></a>An explanation of <code>nil</code></h4><p>Before illustrating a test for truth, we need an explanation of <code>nil</code>.</p>
+<p>In Emacs Lisp, the symbol <code>nil</code> has two meanings. First, it means the empty list. Second, it means false and is the value returned when a true-or-false-test tests false. <code>nil</code> can be written as an empty list, <code>()</code>, or as <code>nil</code>. As far as the Lisp interpreter is concerned, <code>()</code> and <code>nil</code> are the same. Humans, however, tend to use <code>nil</code> for false and <code>()</code> for the empty list.</p>
+<p>In Emacs Lisp, any value that is not <code>nil</code>—is not the empty list—is considered true. This means that if an evaluation returns something that is not an empty list, an <code>if</code> expression will test true. For example, if a number is put in the slot for the test, it will be evaluated and will return itself, since that is what numbers do when evaluated. In this conditional, the <code>if</code>expression will test true. The expression tests false only when <code>nil</code>, an empty list, is returned by evaluating the expression.</p>
+<p>You can see this by evaluating the two expressions in the following examples.</p>
+<p>In the first example, the number 4 is evaluated as the test in the <code>if</code> expression and returns itself; consequently, the then-part of the expression is evaluated and returned: ‘true’ appears in the echo area. In the second example, the <code>nil</code> indicates false; consequently, the else-part of the expression is evaluated and returned: ‘false’ appears in the echo area.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(if 4</span><br><span class="line">    &apos;true</span><br><span class="line">  &apos;false)</span><br><span class="line"></span><br><span class="line">(if nil</span><br><span class="line">    &apos;true</span><br><span class="line">  &apos;false)</span><br></pre></td></tr></table></figure>
+<p>Incidentally, if some other useful value is not available for a test that returns true, then the Lisp interpreter will return the symbol <code>t</code> for true. For example, the expression <code>(&gt; 5 4)</code>returns <code>t</code> when evaluated, as you can see by evaluating it in the usual way:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&gt; 5 4)</span><br></pre></td></tr></table></figure>
+<p>On the other hand, this function returns <code>nil</code> if the test is false.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(&gt; 4 5)</span><br></pre></td></tr></table></figure>
+<h4 id="Point-and-Mark"><a href="#Point-and-Mark" class="headerlink" title="Point and Mark"></a>Point and Mark</h4><p>Before discussing <code>save-excursion</code>, however, it may be useful first to review what point and mark are in GNU Emacs. Point is the current location of the cursor. Wherever the cursor is, that is point. More precisely, on terminals where the cursor appears to be on top of a character, point is immediately before the character. In Emacs Lisp, point is an integer. The first character in a buffer is number one, the second is number two, and so on. The function <code>point</code> returns the current position of the cursor as a number. Each buffer has its own value for point.</p>
+<p>The mark is another position in the buffer; its value can be set with a command such as C-<spc> (<code>set-mark-command</code>). If a mark has been set, you can use the command C-x C-x(<code>exchange-point-and-mark</code>) to cause the cursor to jump to the mark and set the mark to be the previous position of point. In addition, if you set another mark, the position of the previous mark is saved in the mark ring. Many mark positions can be saved this way. You can jump the cursor to a saved mark by typing C-u C-<spc> one or more times.</spc></spc></p>
+<p>The part of the buffer between point and mark is called the region. Numerous commands work on the region, including <code>center-region</code>, <code>count-lines-region</code>, <code>kill-region</code>, and<code>print-region</code>.</p>
+<p>The <code>save-excursion</code> special form saves the location of point and restores this position after the code within the body of the special form is evaluated by the Lisp interpreter. Thus, if point were in the beginning of a piece of text and some code moved point to the end of the buffer, the <code>save-excursion</code> would put point back to where it was before, after the expressions in the body of the function were evaluated.</p>
+<p>In Emacs, a function frequently moves point as part of its internal workings even though a user would not expect this. For example, <code>count-lines-region</code> moves point. To prevent the user from being bothered by jumps that are both unexpected and (from the user’s point of view) unnecessary, <code>save-excursion</code> is often used to keep point in the location expected by the user. The use of <code>save-excursion</code> is good housekeeping.</p>
+<p>To make sure the house stays clean, <code>save-excursion</code> restores the value of point even if something goes wrong in the code inside of it (or, to be more precise and to use the proper jargon, “in case of abnormal exit”). This feature is very helpful.</p>
+<p>In addition to recording the value of point, <code>save-excursion</code> keeps track of the current buffer, and restores it, too. This means you can write code that will change the buffer and have <code>save-excursion</code> switch you back to the original buffer. This is how <code>save-excursion</code> is used in <code>append-to-buffer</code>. (See <a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html#append_002dto_002dbuffer" target="_blank" rel="noopener">The Definition of <code>append-to-buffer</code></a>.)</p>
+<h4 id="3-10-1-Template-for-a-save-excursion-Expression"><a href="#3-10-1-Template-for-a-save-excursion-Expression" class="headerlink" title="3.10.1 Template for a save-excursion Expression"></a>3.10.1 Template for a <code>save-excursion</code> Expression</h4><p>The template for code using <code>save-excursion</code> is simple:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(save-excursion</span><br><span class="line">  body...)</span><br></pre></td></tr></table></figure>
+<p>The body of the function is one or more expressions that will be evaluated in sequence by the Lisp interpreter. If there is more than one expression in the body, the value of the last one will be returned as the value of the <code>save-excursion</code> function. The other expressions in the body are evaluated only for their side effects; and <code>save-excursion</code> itself is used only for its side effect (which is restoring the position of point).</p>
+<p>In more detail, the template for a <code>save-excursion</code> expression looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(save-excursion</span><br><span class="line">  first-expression-in-body</span><br><span class="line">  second-expression-in-body</span><br><span class="line">  third-expression-in-body</span><br><span class="line">   ...</span><br><span class="line">  last-expression-in-body)</span><br></pre></td></tr></table></figure>
+<p>An expression, of course, may be a symbol on its own or a list.</p>
+<p>In Emacs Lisp code, a <code>save-excursion</code> expression often occurs within the body of a <code>let</code> expression. It looks like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(let varlist</span><br><span class="line">  (save-excursion</span><br><span class="line">    body...))</span><br></pre></td></tr></table></figure>
+<h3 id="3-11-Review"><a href="#3-11-Review" class="headerlink" title="3.11 Review"></a>3.11 Review</h3><p>In the last few chapters we have introduced a macro and a fair number of functions and special forms. Here they are described in brief, along with a few similar functions that have not been mentioned yet.</p>
+<ul>
+<li><p><code>eval-last-sexp</code></p>
+<p>Evaluate the last symbolic expression before the current location of point. The value is printed in the echo area unless the function is invoked with an argument; in that case, the output is printed in the current buffer. This command is normally bound to C-x C-e.  </p>
+</li>
+<li><p><code>defun</code></p>
+<p>Define function. This macro has up to five parts: the name, a template for the arguments that will be passed to the function, documentation, an optional interactive declaration, and the body of the definition.For example, in Emacs the function definition of <code>dired-unmark-all-marks</code> is as follows.<code>(defun dired-unmark-all-marks ()             &quot;Remove all marks from all files in the Dired buffer.&quot;             (interactive)             (dired-unmark-all-files ?\r))</code> </p>
+</li>
+<li><p><code>interactive</code></p>
+<p>Declare to the interpreter that the function can be used interactively. This special form may be followed by a string with one or more parts that pass the information to the arguments of the function, in sequence. These parts may also tell the interpreter to prompt for information. Parts of the string are separated by newlines, ‘\n’.Common code characters are:<code>b</code>The name of an existing buffer.  <code>f</code>The name of an existing file.  <code>p</code>The numeric prefix argument. (Note that this <code>p</code> is lower case.)  <code>r</code>Point and the mark, as two numeric arguments, smallest first. This is the only code letter that specifies two successive arguments rather than one.See <a href="https://www.gnu.org/software/emacs/manual/html_mono/elisp.html#Interactive-Codes" target="_blank" rel="noopener">Code Characters for ‘interactive’</a>, for a complete list of code characters.  </p>
+</li>
+<li><p><code>let</code></p>
+<p>Declare that a list of variables is for use within the body of the <code>let</code> and give them an initial value, either <code>nil</code> or a specified value; then evaluate the rest of the expressions in the body of the <code>let</code> and return the value of the last one. Inside the body of the <code>let</code>, the Lisp interpreter does not see the values of the variables of the same names that are bound outside of the <code>let</code>.For example,<code>(let ((foo (buffer-name))                 (bar (buffer-size)))             (message              &quot;This buffer is %s and has %d characters.&quot;              foo bar))</code> </p>
+</li>
+<li><p><code>save-excursion</code></p>
+<p>Record the values of point and the current buffer before evaluating the body of this special form. Restore the value of point and buffer afterward.For example,<code>(message &quot;We are %d characters into this buffer.&quot;                    (- (point)                       (save-excursion                         (goto-char (point-min)) (point))))</code> </p>
+</li>
+<li><p><code>if</code></p>
+<p>Evaluate the first argument to the function; if it is true, evaluate the second argument; else evaluate the third argument, if there is one.The <code>if</code> special form is called a conditional. There are other conditionals in Emacs Lisp, but <code>if</code> is perhaps the most commonly used.For example,<code>(if (= 22 emacs-major-version)               (message &quot;This is version 22 Emacs&quot;)             (message &quot;This is not version 22 Emacs&quot;))</code> </p>
+</li>
+<li><p><code>&lt;</code></p>
+</li>
+<li><p><code>&gt;</code></p>
+</li>
+<li><p><code>&lt;=</code></p>
+</li>
+<li><p><code>&gt;=</code></p>
+<p>The <code>&lt;</code> function tests whether its first argument is smaller than its second argument. A corresponding function, <code>&gt;</code>, tests whether the first argument is greater than the second. Likewise, <code>&lt;=</code> tests whether the first argument is less than or equal to the second and <code>&gt;=</code> tests whether the first argument is greater than or equal to the second. In all cases, both arguments must be numbers or markers (markers indicate positions in buffers).  </p>
+</li>
+<li><p><code>=</code></p>
+<p>The <code>=</code> function tests whether two arguments, both numbers or markers, are equal.  </p>
+</li>
+<li><p><code>equal</code></p>
+</li>
+<li><p><code>eq</code></p>
+<p>Test whether two objects are the same. <code>equal</code> uses one meaning of the word “same” and <code>eq</code> uses another: <code>equal</code> returns true if the two objects have a similar structure and contents, such as two copies of the same book. On the other hand, <code>eq</code>, returns true if both arguments are actually the same object.  </p>
+</li>
+<li><p><code>string&lt;</code></p>
+</li>
+<li><p><code>string-lessp</code></p>
+</li>
+<li><p><code>string=</code></p>
+</li>
+<li><p><code>string-equal</code></p>
+<p>The <code>string-lessp</code> function tests whether its first argument is smaller than the second argument. A shorter, alternative name for the same function (a <code>defalias</code>) is <code>string&lt;</code>.The arguments to <code>string-lessp</code> must be strings or symbols; the ordering is lexicographic, so case is significant. The print names of symbols are used instead of the symbols themselves.An empty string, ‘“”’, a string with no characters in it, is smaller than any string of characters.<code>string-equal</code> provides the corresponding test for equality. Its shorter, alternative name is <code>string=</code>. There are no string test functions that correspond to &gt;, <code>&gt;=</code>, or <code>&lt;=</code>.  </p>
+</li>
+<li><p><code>message</code></p>
+<p>Print a message in the echo area. The first argument is a string that can contain ‘%s’, ‘%d’, or ‘%c’ to print the value of arguments that follow the string. The argument used by ‘%s’ must be a string or a symbol; the argument used by ‘%d’ must be a number. The argument used by ‘%c’ must be an ascii code number; it will be printed as the character with that ascii code. (Various other %-sequences have not been mentioned.)  </p>
+</li>
+<li><p><code>setq</code></p>
+</li>
+<li><p><code>set</code></p>
+<p>The <code>setq</code> function sets the value of its first argument to the value of the second argument. The first argument is automatically quoted by <code>setq</code>. It does the same for succeeding pairs of arguments. Another function, <code>set</code>, takes only two arguments and evaluates both of them before setting the value returned by its first argument to the value returned by its second argument.  </p>
+</li>
+<li><p><code>buffer-name</code></p>
+<p>Without an argument, return the name of the buffer, as a string.  </p>
+</li>
+<li><p><code>buffer-file-name</code></p>
+<p>Without an argument, return the name of the file the buffer is visiting.  </p>
+</li>
+<li><p><code>current-buffer</code></p>
+<p>Return the buffer in which Emacs is active; it may not be the buffer that is visible on the screen.  </p>
+</li>
+<li><p><code>other-buffer</code></p>
+<p>Return the most recently selected buffer (other than the buffer passed to <code>other-buffer</code> as an argument and other than the current buffer).  </p>
+</li>
+<li><p><code>switch-to-buffer</code></p>
+<p>Select a buffer for Emacs to be active in and display it in the current window so users can look at it. Usually bound to C-x b.  </p>
+</li>
+<li><p><code>set-buffer</code></p>
+<p>Switch Emacs’s attention to a buffer on which programs will run. Don’t alter what the window is showing.  </p>
+</li>
+<li><p><code>buffer-size</code></p>
+<p>Return the number of characters in the current buffer.  </p>
+</li>
+<li><p><code>point</code></p>
+<p>Return the value of the current position of the cursor, as an integer counting the number of characters from the beginning of the buffer.  </p>
+</li>
+<li><p><code>point-min</code></p>
+<p>Return the minimum permissible value of point in the current buffer. This is 1, unless narrowing is in effect.  </p>
+</li>
+<li><p><code>point-max</code></p>
+<p>Return the value of the maximum permissible value of point in the current buffer. This is the end of the buffer, unless narrowing is in effect.</p>
+</li>
+</ul>
+<h3 id="3-12-Exercises"><a href="#3-12-Exercises" class="headerlink" title="3.12 Exercises"></a>3.12 Exercises</h3><ul>
+<li>Write a non-interactive function that doubles the value of its argument, a number. Make that function interactive.</li>
+<li>Write a function that tests whether the current value of <code>fill-column</code> is greater than the argument passed to the function, and if so, prints an appropriate message.</li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/elisp/" rel="tag"># elisp</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/elisp-list-practise/" rel="next" title="Intro to Elisp 2. Practicing Evaluation">
+                <i class="fa fa-chevron-left"></i> Intro to Elisp 2. Practicing Evaluation
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/11/elisp-buffer-functions/" rel="prev" title="Intro elisp 4. A Few Buffer-Related Functions">
+                Intro elisp 4. A Few Buffer-Related Functions <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#An-Aside-about-Primitive-Functions"><span class="nav-text">An Aside about Primitive Functions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-The-defun-Macro"><span class="nav-text">3.1 The defun Macro</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Install-a-Function-Definition"><span class="nav-text">3.2 Install a Function Definition</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#The-effect-of-installation"><span class="nav-text">The effect of installation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-Change-a-Function-Definition"><span class="nav-text">3.2.1 Change a Function Definition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Make-a-Function-Interactive"><span class="nav-text">3.3 Make a Function Interactive</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#An-Interactive-multiply-by-seven-An-Overview"><span class="nav-text">An Interactive multiply-by-seven, An Overview</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-Different-Options-for-interactive"><span class="nav-text">3.4 Different Options for interactive</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-Install-Code-Permanently"><span class="nav-text">3.5 Install Code Permanently</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-let"><span class="nav-text">3.6 let</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#let-Prevents-Confusion"><span class="nav-text">let Prevents Confusion</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-2-Sample-let-Expression"><span class="nav-text">3.6.2 Sample let Expression</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-3-Uninitialized-Variables-in-a-let-Statement"><span class="nav-text">3.6.3 Uninitialized Variables in a let Statement</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-The-if-Special-Form"><span class="nav-text">3.7 The if Special Form</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if-in-more-detail"><span class="nav-text">if in more detail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#if-in-more-detail-1"><span class="nav-text">if in more detail</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-The-type-of-animal-Function-in-Detail"><span class="nav-text">3.7.1 The type-of-animal Function in Detail</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-8-If–then–else-Expressions"><span class="nav-text">3.8 If–then–else Expressions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-9-Truth-and-Falsehood-in-Emacs-Lisp"><span class="nav-text">3.9 Truth and Falsehood in Emacs Lisp</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#An-explanation-of-nil"><span class="nav-text">An explanation of nil</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#An-explanation-of-nil-1"><span class="nav-text">An explanation of nil</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Point-and-Mark"><span class="nav-text">Point and Mark</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-10-1-Template-for-a-save-excursion-Expression"><span class="nav-text">3.10.1 Template for a save-excursion Expression</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-11-Review"><span class="nav-text">3.11 Review</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-12-Exercises"><span class="nav-text">3.12 Exercises</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/06/11/elisp-function/";
+    this.page.identifier = "2019/06/11/elisp-function/";
+    this.page.title = 'Intro to elisp 3 How To Write Function Definitions';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
