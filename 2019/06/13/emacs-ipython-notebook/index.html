@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="The Emacs IPython Notebook (EIN) package provides a Jupyter Notebook client and integrated REPL (like SLIME) in Emacs. EIN improves notebook editing by allowing you to use Emacs. It also expose IPytho">
+<meta name="keywords" content="emacs,jupyter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emacs Ipython Notebook">
+<meta property="og:url" content="https://alphaalgorithms.github.io/2019/06/13/emacs-ipython-notebook/index.html">
+<meta property="og:site_name" content="DummyHead">
+<meta property="og:description" content="The Emacs IPython Notebook (EIN) package provides a Jupyter Notebook client and integrated REPL (like SLIME) in Emacs. EIN improves notebook editing by allowing you to use Emacs. It also expose IPytho">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-13T00:45:24.623Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Emacs Ipython Notebook">
+<meta name="twitter:description" content="The Emacs IPython Notebook (EIN) package provides a Jupyter Notebook client and integrated REPL (like SLIME) in Emacs. EIN improves notebook editing by allowing you to use Emacs. It also expose IPytho">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="https://alphaalgorithms.github.io/2019/06/13/emacs-ipython-notebook/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Emacs Ipython Notebook | DummyHead</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DummyHead</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">28</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories<span class="badge">16</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">29</span></a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/13/emacs-ipython-notebook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">Emacs Ipython Notebook
+
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-13 08:43:39 / Modified: 08:45:24" itemprop="dateCreated datePublished" datetime="2019-06-13T08:43:39+08:00">2019-06-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/13/emacs-ipython-notebook/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/13/emacs-ipython-notebook/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>The <a href="https://github.com/millejoh/emacs-ipython-notebook" target="_blank" rel="noopener">Emacs IPython Notebook (EIN)</a> package provides a <a href="https://jupyter-notebook.readthedocs.io/en/stable/" target="_blank" rel="noopener">Jupyter Notebook</a> client and integrated REPL (like <a href="http://common-lisp.net/project/slime/" target="_blank" rel="noopener">SLIME</a>) in Emacs. EIN improves notebook editing by allowing you to use Emacs. It also expose IPython features such as code evaluation, object inspection and code completion. These features can be accessed anywhere in Emacs and improve Python code editing and reading in general in Emacs.</p>
+<p>Highlighted features:</p>
+<ul>
+<li>Copy/paste cells in and between notebooks.</li>
+<li>Console integration: You can easily connect to a kernel via a console application. This enables you to start debugging in the same kernel. It is even possible to connect a console over ssh <a href="https://millejoh.github.io/emacs-ipython-notebook/#id3" target="_blank" rel="noopener">1</a>.</li>
+<li>An IPython kernel can be “connected” to a buffer. This enables you to evaluate buffer/region using same kernel as notebook. Notebook goodies such as tooltip help, help browser and code completion are available in these buffers. <a href="https://millejoh.github.io/emacs-ipython-notebook/#id4" target="_blank" rel="noopener">2</a></li>
+<li>Jump to definition (go to the definition by executing <code>M-.</code> over an object).</li>
+<li>Execute code from an org-mode source block in a running kernel.</li>
+</ul>
+<p>Other notebook features:</p>
+<ul>
+<li>Inline images</li>
+<li>Auto/manual-completion </li>
+<li>Popup (tooltip) help</li>
+<li>Syntax highlighting in each cell type (Python/Markdown/ReST/HTML)</li>
+<li>Help browser (opens when executing <code>function?</code>)</li>
+<li>Traceback viewer</li>
+<li>Integration with the emacs debugger</li>
+</ul>
+<p>Links:</p>
+<ul>
+<li><a href="http://millejoh.github.io/emacs-ipython-notebook/" target="_blank" rel="noopener">Online Documentation</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/wiki" target="_blank" rel="noopener">Wiki</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/wiki/Screenshots" target="_blank" rel="noopener">Screenshots</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/wiki/Tips" target="_blank" rel="noopener">Tips</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/tags" target="_blank" rel="noopener">Downloads</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook" target="_blank" rel="noopener">Repository at GitHub</a></li>
+<li><p><a href="https://github.com/millejoh/emacs-ipython-notebook/issues" target="_blank" rel="noopener">Issue Tracker at GitHub</a></p>
+</li>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id1" target="_blank" rel="noopener">1</a> You need to setup <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-args" target="_blank" rel="noopener"><code>ein:console-args</code></a> properly</p>
+</li>
+<li><a href="https://millejoh.github.io/emacs-ipython-notebook/#id2" target="_blank" rel="noopener">2</a> Use the command <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-to-notebook-command" target="_blank" rel="noopener"><code>ein:connect-to-notebook-command</code></a>.</li>
+</ul>
+<h2 id="Quick-try"><a href="#Quick-try" class="headerlink" title="Quick try"></a>Quick try</h2><p>The fastest way to get EIN running in this modern age is to download from <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> or, if you are a <a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a> user, through installing the <a href="http://spacemacs.org/layers/+lang/ipython-notebook/README.html" target="_blank" rel="noopener">ipython-notebook</a> layer. Using <a href="http://tkf.github.io/emacs-ipython-notebook/#quick-try" target="_blank" rel="noopener">zeroein</a> is no longer supported, though in theory it should still work.</p>
+<p>If you are installing from <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> and have issues with some functions not being available after emacs starts, try adding the following to your emacs init file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(package-initialize)</span><br><span class="line">(require &apos;ein)</span><br><span class="line">(require &apos;ein-notebook)</span><br><span class="line">(require &apos;ein-subpackages)</span><br></pre></td></tr></table></figure>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li><p>EMACS 25.3, 26.x, or 27</p>
+</li>
+<li><p><a href="https://jupyter-notebook.readthedocs.io/en/stable/" target="_blank" rel="noopener">Jupyter Notebook</a> 4.x or higher</p>
+</li>
+<li><p><a href="http://ipython.readthedocs.io/en/stable/" target="_blank" rel="noopener">IPython</a> 5.8 or higher.</p>
+</li>
+<li><p><a href="http://www.tornadoweb.org/en/stable/" target="_blank" rel="noopener">Tornado</a> 4.0.2 or higher.</p>
+</li>
+<li><p><a href="https://github.com/ahyatt/emacs-websocket" target="_blank" rel="noopener">websocket.el</a> &gt;= 1.7</p>
+</li>
+<li><p><a href="https://github.com/tkf/emacs-request" target="_blank" rel="noopener">request.el</a> &gt;= 0.3</p>
+</li>
+<li><p><a href="https://github.com/tkf/emacs-request/blob/master/request-deferred.el" target="_blank" rel="noopener">request-deferred.el</a> &gt;= 0.2</p>
+</li>
+<li><p><a href="https://github.com/magnars/dash.el" target="_blank" rel="noopener">dash</a> &gt;= 2.13</p>
+</li>
+<li><p><a href="https://github.com/magnars/s.el" target="_blank" rel="noopener">s</a> &gt;= 1.11</p>
+</li>
+<li><p><a href="http://cx4a.org/software/auto-complete/" target="_blank" rel="noopener">auto-complete.el</a> &gt;= 1.4: You need to configure subpackage <code>ein-ac</code> to enable this feature.</p>
+</li>
+<li><p><a href="https://github.com/skeeto/skewer-mode" target="_blank" rel="noopener">skewer-mode</a> &gt;= 1.6.2: Skewer mode gives EIN the ability to execute dynamic javascript in the note book.</p>
+</li>
+<li><p>(optional) <a href="https://millejoh.github.io/emacs-ipython-notebook/#id28" target="_blank" rel="noopener">Jupyterhub_</a> 0.8 or higher: EIN supports logging in to Jupyterhub servers using PAM authentication, though this only works with v0.8, which currently is the development version of Jupyterhub.</p>
+</li>
+<li><p>(optional) markdown-mode</p>
+</li>
+<li><p>(optional) python-mode: It should work with either python.el or python-mode.el. <a href="https://github.com/fgallina/python.el" target="_blank" rel="noopener">python.el</a> is required to use the <code>ein:console-open</code> command.</p>
+</li>
+<li><p>(optional) <a href="https://github.com/myuhe/smartrep.el" target="_blank" rel="noopener">smartrep.el</a>: This package enables you to omit typing prefix keys (e.g., <code>C-c C-n C-n C-n ...</code> instead of <code>C-cC-n C-c C-n C-c C-n ...</code>). You need to configure subpackage <code>ein-smartrep</code> to enable this feature.</p>
+</li>
+<li><p>(optional) <a href="https://github.com/tkf/emacs-jedi" target="_blank" rel="noopener">jedi.el</a>: Python auto-completion for emacs using <a href="https://github.com/davidhalter/jedi" target="_blank" rel="noopener">jedi</a>. In your emacs initialization file add</p>
+<p><code>(setq ein:completion-backend &#39;ein:use-ac-jedi-backend)</code></p>
+</li>
+</ul>
+<p>Also, EIN heavily relies on standard Emacs libraries including EWOC, EIEIO and json.el.</p>
+<ul>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id6" target="_blank" rel="noopener">3</a></p>
+<p>See <a href="https://millejoh.github.io/emacs-ipython-notebook/#gotchas-python-mode-el" target="_blank" rel="noopener">Gotchas and caveats &gt; python-mode.el</a>.</p>
+</li>
+</ul>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>Warning</p>
+<p>As EIN relies on many packages and it will not work properly with outdated versions, installing it using el-get or MELPA is highly recommended.</p>
+<h3 id="Using-el-get"><a href="#Using-el-get" class="headerlink" title="Using el-get"></a>Using el-get</h3><p>If you use developmental version of <a href="https://github.com/dimitri/el-get" target="_blank" rel="noopener">el-get</a> installation is simple. Emacs IPython Notebook is registered as package <code>ein</code>. See the <a href="https://github.com/dimitri/el-get" target="_blank" rel="noopener">el-get</a> website for more information.</p>
+<p>Note</p>
+<p>If you get error “Cannot open load file: request” that means you have an older version of el-get. You can fix this problem by either (1) installing request.el manually, (2) using the latest recipe, or (3) updating el-get to its master.</p>
+<p>You can get the latest recipe here:</p>
+<ul>
+<li><a href="https://github.com/dimitri/el-get/blob/master/recipes/ein.rcp" target="_blank" rel="noopener">https://github.com/dimitri/el-get/blob/master/recipes/ein.rcp</a></li>
+<li><a href="https://github.com/dimitri/el-get/blob/master/recipes/request.rcp" target="_blank" rel="noopener">https://github.com/dimitri/el-get/blob/master/recipes/request.rcp</a></li>
+</ul>
+<p>See <a href="https://github.com/tkf/emacs-ipython-notebook/issues/98" target="_blank" rel="noopener">issue 98</a> for more information.</p>
+<h3 id="Using-package-el-MELPA"><a href="#Using-package-el-MELPA" class="headerlink" title="Using package.el (MELPA)"></a>Using package.el (MELPA)</h3><p>You can install EIN using <a href="http://emacswiki.org/emacs/ELPA" target="_blank" rel="noopener">package.el</a> when the <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> package repository is added to its setting. See <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> website for more information.</p>
+<h3 id="Manual-install"><a href="#Manual-install" class="headerlink" title="Manual install"></a>Manual install</h3><p>Put Emacs lisp <code>ein*.el</code> files and the Python file <code>ein_remote_safe.py</code> in a directory defined in your <code>load-path</code>.</p>
+<p>You should byte compile EIN, especially when using MuMaMo, otherwise editing large notebook will be very slow. You can use the following command to compile EIN. If you don’t specify all the optional packages, there will be compiler warning but that is OK as long as you don’t use that optional package.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">emacs -Q -batch -L .          \  # don&apos;t forget the dot!</span><br><span class="line">    -L PATH/TO/websocket/     \</span><br><span class="line">    -L PATH/TO/requests/      \</span><br><span class="line">    -L PATH/TO/nxhtml/util/   \  # optional (for MuMaMo)</span><br><span class="line">    -L PATH/TO/auto-complete/ \  # optional</span><br><span class="line">    -L PATH/TO/popup/         \  # optional (for auto-complete)</span><br><span class="line">    -L PATH/TO/fuzzy/         \  # optional (for auto-complete)</span><br><span class="line">    -L PATH/TO/smartrep/      \  # optional</span><br><span class="line">    -L PATH/TO/rst-mode/      \  # optional</span><br><span class="line">    -f batch-byte-compile *.el</span><br></pre></td></tr></table></figure>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>Here is the minimal configuration. See <a href="https://millejoh.github.io/emacs-ipython-notebook/#id30" target="_blank" rel="noopener">customization_</a> for more details.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(require &apos;ein)</span><br><span class="line">(require &apos;ein-notebook)</span><br><span class="line">(require &apos;ein-subpackages)</span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ol>
+<li>Start the <a href="https://jupyter.readthedocs.io/en/latest/running.html" target="_blank" rel="noopener">Jupyter notebook server</a> from the terminal or call <code>M-x ein:run</code> or <code>M-x ein:jupyter-server-start</code> from emacs. Note starting the notebook server from emacs will automatically call <code>ein:jupyter-server-login-and-open</code>, making steps 2 and 3 below unnecessary!</li>
+<li>If you have token or password authentication enabled then you will need to call <code>M-x ein:login</code> and enter the appropriate password. Assuming authentication works the <a href="https://millejoh.github.io/emacs-ipython-notebook/#notebook-list-commands" target="_blank" rel="noopener">notebooklist</a> buffer will automatically open.</li>
+<li>In the notebook list buffer, you can open notebooks by selecting the <code>[Open]</code> buttons. See the <a href="https://millejoh.github.io/emacs-ipython-notebook/#notebook-commands" target="_blank" rel="noopener">notebook</a> section for operations and commands available in the notebook buffer.</li>
+</ol>
+<h2 id="Commands-Keybinds"><a href="#Commands-Keybinds" class="headerlink" title="Commands/Keybinds"></a>Commands/Keybinds</h2><h3 id="Running-a-Jupyter-Notebook-Server-from-Emacs"><a href="#Running-a-Jupyter-Notebook-Server-from-Emacs" class="headerlink" title="Running a Jupyter Notebook Server from Emacs"></a>Running a Jupyter Notebook Server from Emacs</h3><p>Using the commands below you start a jupyter notebook session from within emacs (i.e. no need to drop to the terminal shell and call <code>jupyter notebook</code>). EIN will also try to determine the access url and token authentication for the running server and automatically log you in.</p>
+<p>Note that the below work best with current (&gt; v4.3.1) versions of jupyter.</p>
+<ul>
+<li><p><em>function</em> (<code>ein:jupyter-server-start</code><em>server-cmd-path</em> <em>notebook-directory</em> <em>&amp;optional</em> <em>no-login-p</em> <em>login-callback**port</em>)</p>
+<p>Start SERVER-CMD_PATH with ‘–notebook-dir’ NOTEBOOK-DIRECTORY. Login after connection established unless NO-LOGIN-P is set. LOGIN-CALLBACK takes two arguments, the buffer created by ein:notebooklist-open–finish, and the url-or-port argument of ein:notebooklist-open<em>.This command opens an asynchronous process running the jupyter notebook server and then tries to detect the url and password to generate automatic calls to ‘ein:notebooklist-login’ and ‘ein:notebooklist-open’.With C-u prefix arg, it will prompt the user for the path to the jupyter executable first. Else, it will try to use the value of ‘</em>ein:last-jupyter-command*’ or the value of the customizable variable ‘ein:jupyter-default-server-command’.Then it prompts the user for the path of the root directory containing the notebooks the user wants to access.The buffer named by ‘ein:jupyter-server-buffer-name’ will contain the log of the running jupyter server.</p>
+</li>
+<li><p><em>function</em> (<code>ein:run</code><em>server-cmd-path</em> <em>notebook-directory</em> <em>&amp;optional</em> <em>no-login-p</em> <em>login-callback</em> <em>port</em>)</p>
+<p>Start SERVER-CMD_PATH with ‘–notebook-dir’ NOTEBOOK-DIRECTORY. Login after connection established unless NO-LOGIN-P is set. LOGIN-CALLBACK takes two arguments, the buffer created by ein:notebooklist-open–finish, and the url-or-port argument of ein:notebooklist-open<em>.This command opens an asynchronous process running the jupyter notebook server and then tries to detect the url and password to generate automatic calls to ‘ein:notebooklist-login’ and ‘ein:notebooklist-open’.With C-u prefix arg, it will prompt the user for the path to the jupyter executable first. Else, it will try to use the value of ‘</em>ein:last-jupyter-command*’ or the value of the customizable variable ‘ein:jupyter-default-server-command’.Then it prompts the user for the path of the root directory containing the notebooks the user wants to access.The buffer named by ‘ein:jupyter-server-buffer-name’ will contain the log of the running jupyter server.</p>
+</li>
+<li><p><em>function</em> (<code>ein:jupyter-server-stop</code><em>&amp;optional</em> <em>force</em> <em>log</em>)</p>
+</li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:jupyter-server-login-and-open</code><em>&amp;optional</em> <em>callback</em>)</p>
+<p>Log in and open a notebooklist buffer for a running jupyter notebook server.Determine if there is a running jupyter server (started via a call to ‘ein:jupyter-server-start’) and then try to guess if token authentication is enabled. If a token is found use it to generate a call to ‘ein:notebooklist-login’ and once authenticated open the notebooklist buffer via a call to ‘ein:notebooklist-open’.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-default-server-command</code></p>
+<p>The default command to start a jupyter notebook server.Changing this to <code>jupyter-notebook</code> requires customizing <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:jupyter-server-use-subcommand" target="_blank" rel="noopener"><code>ein:jupyter-server-use-subcommand</code></a> to nil.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-server-use-subcommand</code></p>
+<p>Users of “jupyter-notebook” (as opposed to “jupyter notebook”) need to <code>Omit</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-default-notebook-directory</code></p>
+<p>If you are tired of always being queried for the location of the notebook directory, you can set it here for future calls to<a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:jupyter-server-start" target="_blank" rel="noopener"><code>ein:jupyter-server-start</code></a></p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-server-args</code></p>
+<p>Add any additional command line options you wish to include with the call to the jupyter notebook.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-server-buffer-name</code></p>
+<p>The name of the buffer for the jupyter notebook server session.</p>
+</li>
+</ul>
+<h3 id="Notebook-list"><a href="#Notebook-list" class="headerlink" title="Notebook list"></a>Notebook list</h3><p>You can start notebook by <code>M-x ein:notebooklist-open</code> and enter the port or URL of the IPython notebook server.</p>
+<ul>
+<li><p><em>function</em> (<code>ein:notebooklist-open</code><em>url-or-port</em> <em>callback</em>)</p>
+<p>This is now an alias for ein:notebooklist-login</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebooklist-new-notebook</code><em>url-or-port</em> <em>kernelspec</em> <em>&amp;optional</em> <em>callback</em> <em>no-pop</em> <em>retry</em>)</p>
+</li>
+</ul>
+<ul>
+<li><em>function</em> <code>ein:notebooklist-open-notebook-global</code></li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:notebooklist-login</code><em>url-or-port</em> <em>callback</em> <em>&amp;optional</em> <em>cookie-plist</em>)</p>
+<p>Deal with security before main entry of ein:notebooklist-open<em>.CALLBACK takes two arguments, the buffer created by ein:notebooklist-open–success and the url-or-port argument of ein:notebooklist-open</em>.</p>
+</li>
+<li><p><em>function</em> <code>ein:junk-new</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:notebooklist-enable-keepalive</code><em>&amp;optional</em> <em>url-or-port</em>)</p>
+<p>Enable periodic calls to the notebook server to keep long running sessions from expiring. By long running we mean sessions to last days, or weeks. The frequency of the refresh (which is very similar to a call to ‘ein:notebooklist-open‘) is controlled by ‘ein:notebooklist-keepalive-refresh-time‘, and is measured in terms of hours. If ‘ein:enable-keepalive’ is non-nil this will automatically be called during calls to ‘ein:notebooklist-open‘.</p>
+</li>
+<li><p><em>function</em> <code>ein:notebooklist-disable-keepalive</code></p>
+<p>Disable the notebooklist keepalive calls to the jupyter notebook server.</p>
+</li>
+</ul>
+<p>Keymap for ein:notebooklist-mode.</p>
+<ul>
+<li><p><code>&lt;remap&gt; &lt;self-insert-command&gt;`</code> undefined`</p>
+</li>
+<li><p><code>-`</code> negative-argument`</p>
+</li>
+<li><p><code>0`</code> digit-argument`</p>
+</li>
+<li><p><code>1`</code> digit-argument`</p>
+</li>
+<li><p><code>2`</code> digit-argument`</p>
+</li>
+<li><p><code>3`</code> digit-argument`</p>
+</li>
+<li><p><code>4`</code> digit-argument`</p>
+</li>
+<li><p><code>5`</code> digit-argument`</p>
+</li>
+<li><p><code>6`</code> digit-argument`</p>
+</li>
+<li><p><code>7`</code> digit-argument`</p>
+</li>
+<li><p><code>8`</code> digit-argument`</p>
+</li>
+<li><p><code>9`</code> digit-argument`</p>
+</li>
+<li><p><code>q`</code> quit-window`</p>
+</li>
+<li><p><code>SPC`</code> scroll-up-command`</p>
+</li>
+<li><p><code>S-SPC`</code> scroll-down-command`</p>
+</li>
+<li><p><code>DEL`</code> scroll-down-command`</p>
+</li>
+<li><p><code>?`</code> describe-mode`</p>
+</li>
+<li><p><code>h`</code> describe-mode`</p>
+</li>
+<li><p><code>&gt;`</code> end-of-buffer`</p>
+</li>
+<li><p><code>&lt;`</code> beginning-of-buffer`</p>
+</li>
+<li><p><code>g`</code> revert-buffer`</p>
+</li>
+<li><p><code>TAB`</code> widget-forward`</p>
+</li>
+<li><p><code>C-M-i`</code> widget-backward`</p>
+</li>
+<li><p><code>&lt;S-tab&gt;`</code> widget-backward`</p>
+</li>
+<li><p><code>&lt;backtab&gt;`</code> widget-backward`</p>
+</li>
+<li><p><code>C-c C-r`</code> ein:notebooklist-reload`</p>
+</li>
+</ul>
+<p>  Reload current Notebook list.</p>
+<ul>
+<li><p><code>C-c C-f`</code> ein:file-open`</p>
+</li>
+<li><p><code>C-c C-o`</code> ein:notebook-open`</p>
+</li>
+<li><p><code>p`</code> ein:notebooklist-prev-item`</p>
+</li>
+<li><p><code>n`</code> ein:notebooklist-next-item`</p>
+</li>
+</ul>
+<h3 id="Notebook"><a href="#Notebook" class="headerlink" title="Notebook"></a>Notebook</h3><p>The following keybindings are available in notebook buffers. Modified notebooks are saved automatically with a frequency dependenant on the setting of ein:notebook-autosave-frequency. If ein:notebook-create-checkpoint-on-save is True than a checkpoint will also be generated in the Jupyter server every time the notebook is saved. A notebook can be returned to a previous checkpoint via ein:notebook-restore-to-checkpoint. Checkpoints can also be manually created via ein:notebook-create-checkpoint.</p>
+<ul>
+<li><p><code>C-c i`</code> ein:inspect-object`</p>
+</li>
+<li><p><code>C-c &#39;`</code> ein:edit-cell-contents`</p>
+</li>
+<li><p><code>C-c C-c`</code> ein:worksheet-execute-cell`</p>
+</li>
+<li><p><code>C-c C-&#39;`</code> ein:worksheet-turn-on-autoexec`</p>
+</li>
+<li><p><code>C-c C-e`</code> ein:worksheet-toggle-output`</p>
+</li>
+<li><p><code>C-c C-v`</code> ein:worksheet-set-output-visibility-all`</p>
+</li>
+<li><p><code>C-c C-l`</code> ein:worksheet-clear-output`</p>
+</li>
+<li><p><code>C-c C-S-l`</code> ein:worksheet-clear-all-output`</p>
+</li>
+<li><p><code>C-c C-;`</code> ein:shared-output-show-code-cell-at-point`</p>
+</li>
+<li><p><code>C-c C-k`</code> ein:worksheet-kill-cell`</p>
+</li>
+<li><p><code>C-c M-w`</code> ein:worksheet-copy-cell`</p>
+</li>
+<li><p><code>C-c M-{`</code> ein:notebook-worksheet-move-prev`</p>
+</li>
+<li><p><code>C-c M-}`</code> ein:notebook-worksheet-move-next`</p>
+</li>
+<li><p><code>C-c M-+`</code> ein:notebook-worksheet-insert-prev`</p>
+</li>
+<li><p><code>C-c C-w`</code> ein:worksheet-copy-cell`</p>
+</li>
+<li><p><code>C-c C-y`</code> ein:worksheet-yank-cell`</p>
+</li>
+<li><p><code>C-c C-a`</code> ein:worksheet-insert-cell-above`</p>
+<ul>
+<li><code>C-c C-b`</code> ein:worksheet-insert-cell-below`</li>
+</ul>
+</li>
+<li><p><code>C-c C-t`</code> ein:worksheet-toggle-cell-type`</p>
+</li>
+<li><p><code>C-c S`</code> ein:worksheet-toggle-slide-type`</p>
+</li>
+<li><p><code>C-c C-u`</code> ein:worksheet-change-cell-type`</p>
+</li>
+<li><p><code>C-c C-s`</code> ein:worksheet-split-cell-at-point`</p>
+</li>
+<li><p><code>C-c C-m`</code> ein:worksheet-merge-cell`</p>
+</li>
+<li><p><code>C-c C-n`</code> ein:worksheet-goto-next-input`</p>
+</li>
+<li><p><code>C-c C-p`</code> ein:worksheet-goto-prev-input`</p>
+</li>
+<li><p><code>C-c &lt;up&gt;`</code> ein:worksheet-move-cell-up`</p>
+</li>
+<li><p><code>C-c &lt;down&gt;`</code> ein:worksheet-move-cell-down`</p>
+</li>
+<li><p><code>C-c C-h`</code> ein:pytools-request-tooltip-or-help`</p>
+</li>
+<li><p><code>C-c C-i`</code> ein:completer-complete`</p>
+</li>
+<li><p><code>C-c C-$`</code> ein:tb-show`</p>
+</li>
+<li><p><code>C-c C-x C-l`</code> ein:notebook-toggle-latex-fragment`</p>
+</li>
+<li><p><code>C-c C-x C-r`</code> ein:notebook-restart-session-command`</p>
+</li>
+<li><p><code>C-c C-r`</code> ein:notebook-reconnect-session-command`</p>
+</li>
+<li><p><code>C-c C-z`</code> ein:notebook-kernel-interrupt-command`</p>
+</li>
+<li><p><code>C-c C-q`</code> ein:notebook-kill-kernel-then-close-command`</p>
+</li>
+<li><p><code>C-c C-#`</code> ein:notebook-close`</p>
+</li>
+<li><p><code>C-c C-f`</code> ein:file-open`</p>
+</li>
+<li><p><code>C-c C-o`</code> ein:notebook-open`</p>
+</li>
+<li><p><code>C-c C-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>C-c C-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<ul>
+<li><p><code>C-c C-/`</code> ein:notebook-scratchsheet-open`</p>
+</li>
+<li><p><code>C-c !`</code> ein:worksheet-rename-sheet`</p>
+</li>
+<li><p><code>C-c {`</code> ein:notebook-worksheet-open-prev-or-last`</p>
+</li>
+<li><p><code>C-c }`</code> ein:notebook-worksheet-open-next-or-first`</p>
+</li>
+<li><p><code>C-c +`</code> ein:notebook-worksheet-insert-next`</p>
+</li>
+<li><p><code>C-c -`</code> ein:notebook-worksheet-delete`</p>
+</li>
+<li><p><code>C-c 1`</code> ein:notebook-worksheet-open-1th`</p>
+</li>
+<li><p><code>C-c 2`</code> ein:notebook-worksheet-open-2th`</p>
+</li>
+<li><p><code>C-c 3`</code> ein:notebook-worksheet-open-3th`</p>
+</li>
+<li><p><code>C-c 4`</code> ein:notebook-worksheet-open-4th`</p>
+</li>
+<li><p><code>C-c 5`</code> ein:notebook-worksheet-open-5th`</p>
+</li>
+<li><p><code>C-c 6`</code> ein:notebook-worksheet-open-6th`</p>
+</li>
+<li><p><code>C-c 7`</code> ein:notebook-worksheet-open-7th`</p>
+</li>
+<li><p><code>C-c 8`</code> ein:notebook-worksheet-open-8th`</p>
+</li>
+<li><p><code>C-c 9`</code> ein:notebook-worksheet-open-last`</p>
+</li>
+<li><p><code>M-RET`</code> ein:worksheet-execute-cell-and-goto-next`</p>
+</li>
+<li><p><code>M-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>M-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<ul>
+<li><p><code>M-p`</code> ein:worksheet-previous-input-history`</p>
+</li>
+<li><p><code>M-n`</code> ein:worksheet-next-input-history`</p>
+</li>
+<li><p><code>&lt;M-S-return&gt;`</code> ein:worksheet-execute-cell-and-insert-below`</p>
+</li>
+<li><p><code>&lt;C-up&gt;`</code> ein:worksheet-goto-prev-input`</p>
+</li>
+<li><p><code>&lt;C-down&gt;`</code> ein:worksheet-goto-next-input`</p>
+</li>
+<li><p><code>&lt;M-up&gt;`</code> ein:worksheet-move-cell-up`</p>
+</li>
+<li><p><code>&lt;M-down&gt;`</code> ein:worksheet-move-cell-down`</p>
+</li>
+<li><p><code>C-:`</code> ein:shared-output-eval-string`</p>
+</li>
+<li><p><code>C-x C-s`</code> ein:notebook-save-notebook-command`</p>
+</li>
+<li><p><code>C-x C-w`</code> ein:notebook-rename-command`</p>
+</li>
+<li><p><em>function</em> (<code>ein:worksheet-execute-all-cell</code><em>ws</em>)</p>
+<p>Execute all cells in the current worksheet buffer.</p>
+</li>
+<li><p><em>function</em> (<code>ein:worksheet-delete-cell</code><em>ws</em> <em>cell</em> <em>&amp;optional</em> <em>focus</em>)</p>
+<p>Delete a cell. (WARNING: no undo!) This command has no key binding because there is no way to undo deletion. Use kill to play on the safe side.If you really want use this command, you can do something like this (but be careful when using it!):<code>(define-key ein:notebook-mode-map &quot;\C-c\C-d&quot;             ’ein:worksheet-delete-cell)</code></p>
+</li>
+<li><p><em>function</em> <code>ein:junk-rename</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:iexec-mode</code><em>&amp;optional</em> <em>arg</em>)</p>
+<p>Instant cell execution minor mode. Code cell at point will be automatically executed after any change in its input area.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-create-checkpoint</code><em>notebook</em>)</p>
+<p>Create checkpoint for current notebook based on most recent save.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-restore-to-checkpoint</code><em>notebook</em> <em>checkpoint</em>)</p>
+<p>Restore notebook to previous checkpoint saved on the Jupyter server. Note that if there are multiple checkpoints the user will be prompted on which one to use.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-enable-autosaves</code><em>notebook</em>)</p>
+<p>Enable automatic, periodic saving for notebook.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-disable-autosaves</code><em>notebook</em>)</p>
+<p>Disable automatic, periodic saving for current notebook.</p>
+</li>
+</ul>
+<h3 id="Polymode-in-the-Notebook"><a href="#Polymode-in-the-Notebook" class="headerlink" title="Polymode in the Notebook"></a>Polymode in the Notebook</h3><p>EIN now provides proper multi-major mode support in notebook buffers using <a href="https://millejoh.github.io/emacs-ipython-notebook/#id32" target="_blank" rel="noopener">polymode_</a>. To use simply set <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:polymode" target="_blank" rel="noopener"><code>ein:polymode</code></a>to <code>t</code> and restart emacs.</p>
+<ul>
+<li><p><em>variable</em> <code>ein:polymode</code></p>
+<p>When enabled ein will use polymode to provide multi-major mode support in a notebook buffer, otherwise ein’s custom and outdated multi-major mode support will be used. Emacs must be restarted after changing this setting!</p>
+</li>
+</ul>
+<h3 id="Advanced-Editing"><a href="#Advanced-Editing" class="headerlink" title="Advanced Editing"></a>Advanced Editing</h3><p>Worksheet cells can be edited in a manner similar to <a href="http://orgmode.org/manual/Editing-source-code.html#Editing-source-code" target="_blank" rel="noopener">source blocks</a> in Org buffers. Use <code>C-c &#39;</code> to edit the contents of the current cell. You can execute the contents of the buffer and the results will be sent to the output of the cell being edited.</p>
+<ul>
+<li><code>C-c &#39;`</code> ein:edit-cell-exit`</li>
+</ul>
+<p>  Close the EIN source edit buffer, saving contents back to the original notebook cell, unless being called via ‘ein:edit-cell-abort’.</p>
+<ul>
+<li><code>C-c C-k`</code> ein:edit-cell-abort`</li>
+</ul>
+<p>  Abort editing the current cell, contents will revert to previous value.</p>
+<ul>
+<li><code>C-c C-c`</code> ein:edit-cell-save-and-execute`</li>
+</ul>
+<p>  Save, then execute the countents of the EIN source edit buffer and place results (if any) in output of original notebook cell.</p>
+<ul>
+<li><code>C-c C-x`</code> ein:edit-cell-view-traceback`</li>
+</ul>
+<p>  Jump to traceback, if there is one, for current edit.</p>
+<ul>
+<li><code>C-x C-s`</code> ein:edit-cell-save`</li>
+</ul>
+<p>  Save contents of EIN source edit buffer back to original notebook cell.</p>
+<ul>
+<li><em>function</em> <code>ein:edit-cell-contents</code></li>
+</ul>
+<ul>
+<li><p><em>function</em> <code>ein:edit-cell-exit</code></p>
+<p>Close the EIN source edit buffer, saving contents back to the original notebook cell, unless being called via ‘ein:edit-cell-abort’.</p>
+</li>
+<li><p><em>function</em> <code>ein:edit-cell-abort</code></p>
+<p>Abort editing the current cell, contents will revert to previous value.</p>
+</li>
+<li><p><em>function</em> <code>ein:edit-cell-save</code></p>
+<p>Save contents of EIN source edit buffer back to original notebook cell.</p>
+</li>
+<li><p><em>function</em> <code>ein:edit-cell-save-and-execute</code></p>
+<p>Save, then execute the countents of the EIN source edit buffer and place results (if any) in output of original notebook cell.</p>
+</li>
+</ul>
+<h3 id="Connected-buffer"><a href="#Connected-buffer" class="headerlink" title="Connected buffer"></a>Connected buffer</h3><p>You can connect any buffer (though typically a buffer that contains a Python file) to an opened notebook and use the kernel of that notebook to execute code, inspect objects, auto-complete code, jump to the other source, etc. Once the buffer is connected to the notebook, minor mode <code>ein:connect-mode</code> is enabled and the following keybinds are available.</p>
+<ul>
+<li><code>C-c C-c`</code> ein:connect-run-or-eval-buffer`</li>
+</ul>
+<p>  Run buffer using the ‘‘%run‘‘ magic command or eval whole buffer if the prefix ‘‘C-u‘‘ is given. Variable ‘ein:connect-run-command’ sets the command to run. You can change the command and/or set the options. See also: ‘ein:connect-run-buffer’, ‘ein:connect-eval-buffer’.</p>
+<ul>
+<li><code>C-c C-l`</code> ein:connect-reload-buffer`</li>
+</ul>
+<p>  Reload buffer using the command set by ‘ein:connect-reload-command’.</p>
+<ul>
+<li><p><code>C-c C-r`</code> ein:connect-eval-region`</p>
+</li>
+<li><p><code>C-c C-h`</code> ein:pytools-request-tooltip-or-help`</p>
+</li>
+<li><p><code>C-c C-i`</code> ein:completer-complete`</p>
+</li>
+<li><p><code>C-c C-z`</code> ein:connect-pop-to-notebook`</p>
+</li>
+<li><p><code>C-c C-a`</code> ein:connect-toggle-autoexec`</p>
+</li>
+</ul>
+<p>  Toggle auto-execution mode of the current connected buffer.When auto-execution mode is on, cells in connected notebook will be automatically executed whenever run, eval or reload command <a href="https://millejoh.github.io/emacs-ipython-notebook/#id5" target="_blank" rel="noopener">3</a> is called in this buffer.4Namely, one of‘ein:connect-run-buffer’‘ein:connect-eval-buffer’‘ein:connect-run-or-eval-buffer’‘ein:connect-reload-buffer’Note that you need to set cells to run in the connecting buffer or no cell will be executed. Use the ‘ein:worksheet-turn-on-autoexec’ command in notebook to change the cells to run.</p>
+<ul>
+<li><code>C-c C-o`</code> ein:console-open`</li>
+</ul>
+<p>  Open IPython console. To use this function, ‘ein:console-security-dir’ and ‘ein:console-args’ must be set properly. This function works best with the new <a href="https://github.com/fgallina/python.el" target="_blank" rel="noopener">python.el</a> which is shipped with Emacs 24.2 or later. If you don’t have it, this function opens a “plain” command line interpreter (comint) buffer where you cannot use fancy stuff such as TAB completion. It should be possible to support python-mode.el. Patches are welcome!</p>
+<ul>
+<li><p><code>C-c C-x`</code> ein:tb-show`</p>
+</li>
+<li><p><code>C-c C-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>C-c C-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<ul>
+<li><p><code>C-c C-/`</code> ein:notebook-scratchsheet-open`</p>
+</li>
+<li><p><code>C-:`</code> ein:shared-output-eval-string`</p>
+</li>
+<li><p><code>M-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>M-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<p>Other useful commands:</p>
+<ul>
+<li><p><em>function</em> (<code>ein:connect-to-notebook-command</code><em>&amp;optional</em> <em>not-yet-opened</em>)</p>
+<p>Connect to notebook. When the prefix argument is given, you can choose any notebook on your server including the ones not yet opened. Otherwise, already chose from already opened notebooks.</p>
+</li>
+<li><p><em>function</em> <code>ein:connect-eval-buffer</code></p>
+<p>Evaluate the whole buffer. Note that this will run the code inside the ‘‘if <strong>name</strong> == “<strong>main</strong>”:‘‘ block.</p>
+</li>
+<li><p><em>function</em> (<code>ein:connect-run-buffer</code><em>&amp;optional</em> <em>ask-command</em>)</p>
+<p>Run buffer using ‘‘%run‘‘. Ask for command if the prefix ‘‘C-u‘‘ is given. Variable ‘ein:connect-run-command’ sets the default command.</p>
+</li>
+</ul>
+<h3 id="Shared-output-buffer"><a href="#Shared-output-buffer" class="headerlink" title="Shared output buffer"></a>Shared output buffer</h3><ul>
+<li><p><em>function</em> <code>ein:shared-output-pop-to-buffer</code></p>
+<p>Open shared output buffer.</p>
+</li>
+</ul>
+<p>The map for ein:shared-output-mode-map.</p>
+<ul>
+<li><p><code>C-c C-x`</code> ein:tb-show`</p>
+</li>
+<li><p><code>C-c C-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>M-.`</code> ein:pytools-jump-to-source-command`</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<h3 id="Traceback-viewer"><a href="#Traceback-viewer" class="headerlink" title="Traceback viewer"></a>Traceback viewer</h3><p>Tracebacks from the notebook buffer can be difficult to understand. You can open a Traceback viewer by calling <code>ein:notebook-view-traceback</code>.</p>
+<p>In the Traceback viewer, following keybinds are available.</p>
+<p>Keymap for ein:traceback-mode.</p>
+<ul>
+<li><p><code>RET`</code> ein:tb-jump-to-source-at-point-command`</p>
+</li>
+<li><p><code>p`</code> ein:tb-prev-item`</p>
+</li>
+<li><p><code>n`</code> ein:tb-next-item`</p>
+</li>
+</ul>
+<h3 id="PyTools"><a href="#PyTools" class="headerlink" title="PyTools"></a>PyTools</h3><p>These commands can be used in the notebook buffer and the connected buffer.</p>
+<ul>
+<li><p><em>function</em> <code>ein:pytools-doctest</code></p>
+<p>Do the doctest of the object at point.</p>
+</li>
+<li><p><em>function</em> <code>ein:pytools-whos</code></p>
+<p>Execute ‘‘%whos‘‘ magic command and popup the result.</p>
+</li>
+<li><p><em>function</em> (<code>ein:pytools-hierarchy</code><em>&amp;optional</em> <em>ask</em>)</p>
+<p>Draw inheritance graph of the class at point. <a href="https://github.com/tkf/ipython-hierarchymagic" target="_blank" rel="noopener">hierarchymagic</a> extension is needed to be installed. You can explicitly specify the object by selecting it.</p>
+</li>
+<li><p><em>function</em> (<code>ein:pytools-pandas-to-ses</code><em>dataframe</em>)</p>
+<p>View <a href="http://pandas.pydata.org/" target="_blank" rel="noopener">pandas</a> DataFrame in <a href="http://www.gnu.org/software/emacs/manual/html_node/ses/index.html" target="_blank" rel="noopener">SES</a> (Simple Emacs Spreadsheet). Open a ‘ses-mode’ buffer and import DataFrame object into it.<a href="http://www.gnu.org/software/emacs/manual/html_node/ses/index.html" target="_blank" rel="noopener">SES</a> is distributed with Emacs since Emacs 22, so you don’t need to install it if you are using newer Emacs.</p>
+</li>
+<li><p><em>function</em> (<code>ein:pytools-export-buffer</code><em>buffer</em> <em>format</em>)</p>
+<p>Export contents of notebook using <a href="http://ipython.org/ipython-doc/stable/notebook/nbconvert.html" target="_blank" rel="noopener">nbconvert</a> to user-specified format (options will depend on the version of nbconvert available) to a new buffer.Currently EIN/IPython supports exporting to the following formats:HTMLJSON (this is basically the same as opening the ipynb file in a buffer).LatexMarkdownPythonRSTSlides</p>
+</li>
+</ul>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><ul>
+<li><p><em>function</em> <code>helm-ein-kernel-history</code></p>
+<p>Search kernel execution history then insert the selected one.</p>
+</li>
+<li><p><em>function</em> <code>helm-ein-notebook-buffers</code></p>
+<p>Choose opened notebook using helm interface.</p>
+</li>
+<li><p><em>function</em> <code>anything-ein-kernel-history</code></p>
+<p>Search kernel execution history then insert the selected one.</p>
+</li>
+<li><p><em>function</em> <code>anything-ein-notebook-buffers</code></p>
+<p>Choose opened notebook using anything.el interface.</p>
+</li>
+</ul>
+<h2 id="Org-mode-Integration-ob-ein"><a href="#Org-mode-Integration-ob-ein" class="headerlink" title="Org-mode Integration (ob-ein)"></a>Org-mode Integration (ob-ein)</h2><p>Configuration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">M-x customize-group RET org-babel</span><br><span class="line">Org Babel Load Languages:</span><br><span class="line">  Insert (ein . t)</span><br><span class="line">  For example, &apos;((emacs-lisp . t) (ein . t))</span><br></pre></td></tr></table></figure>
+<p>Snippet:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#BEGIN_SRC *language* :session localhost :results raw drawer</span><br><span class="line">  import numpy, math, matplotlib.pyplot as plt</span><br><span class="line">  %matplotlib inline</span><br><span class="line">  x = numpy.linspace(0, 2*math.pi)</span><br><span class="line">  plt.plot(x, numpy.sin(x))</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><em>Language</em> can be <code>ein-python</code>, <code>ein-r</code>, or <code>ein-julia</code>. <strong>The relevant</strong> <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" target="_blank" rel="noopener">jupyter kernel</a> <strong>must be installed before use</strong>. Additional languages can be</p>
+<p>configured via:<code>M-x customize-group RET ein Ob Ein Languages</code></p>
+</li>
+</ul>
+<p>The format for the :session header argument is {url-or-port}/{path-to-notebook}. Just specifying {url-or-port}executes your source block in a single anonymous notebook (this effects an ipython repl in org). You should also specify :results raw drawer for proper rendering inside the org buffer. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN_SRC ein-python :session localhost :results raw drawer</span><br><span class="line">  import sys</span><br><span class="line"></span><br><span class="line">  a = 14500</span><br><span class="line">  b = a+1000</span><br><span class="line">  sys.version</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<p>If your code block generates an image, like from an matplotlib plot, ein will automatically save to a file in the directory specified by <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:org-inline-image-directory" target="_blank" rel="noopener"><code>ein:org-inline-image-directory</code></a> and generate an appropriate inline link. You can also specify the file to save the image to using by the :image argument as in the example below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#BEGIN_SRC ein :session localhost :results raw drawer :image output.png</span><br><span class="line">  import matplotlib.pyplot as plt</span><br><span class="line">  import numpy as np</span><br><span class="line"></span><br><span class="line">  %matplotlib inline</span><br><span class="line">  x = np.linspace(0, 1, 100)</span><br><span class="line">  y = np.random.rand(100,1)</span><br><span class="line">  plt.plot(x,y)</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<p>To get proper syntax highlighting for non-Python kernels, use the function <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:org-register-lang-mode" target="_blank" rel="noopener"><code>ein:org-register-lang-mode</code></a> to define a new ein-based org source language. For example, to get proper syntax highlighting for an R kernel, first call</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ein:org-register-lang-mode &quot;ein-R&quot; &apos;R)</span><br></pre></td></tr></table></figure>
+<p>Then org SRC blocks with language “ein-R” will use R syntax highlighting:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#BEGIN_SRC ein-R :session localhost :results raw drawer :image output.png</span><br><span class="line">  plot(1:10, 1:10)</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<p>You can also link to an IPython notebook from <a href="http://orgmode.org/" target="_blank" rel="noopener">org-mode</a> files.</p>
+<ol>
+<li>Call org-mode function <code>org-store-link</code> <a href="https://millejoh.github.io/emacs-ipython-notebook/#org-store-link" target="_blank" rel="noopener">5</a> in notebook buffer. You can select a region to specify a position in the notebook.</li>
+<li>Go to org-mode file and type <code>C-c C-l</code> (<code>org-insert-link</code>). This will insert a link to the notebook.</li>
+<li>Type <code>C-c C-o</code> (<code>org-open-at-point</code>) to open the link at the point of cursor.</li>
+</ol>
+<ul>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id9" target="_blank" rel="noopener">5</a></p>
+<p>See <a href="http://orgmode.org/manual/Activation.html" target="_blank" rel="noopener">1.3 Activation</a> in org-mode manual.</p>
+</li>
+</ul>
+<h3 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h3><ul>
+<li><em>variable</em> <code>ein:org-async-p</code></li>
+</ul>
+<ul>
+<li><em>variable</em> <code>ein:org-inline-image-directory</code></li>
+</ul>
+<ul>
+<li><em>function</em> <code>ein:org-register-lang-mode</code></li>
+</ul>
+<h2 id="Support-for-The-Hy-Language-EXPERIMENTAL"><a href="#Support-for-The-Hy-Language-EXPERIMENTAL" class="headerlink" title="Support for The Hy Language (EXPERIMENTAL)"></a>Support for The Hy Language (EXPERIMENTAL)</h2><p>New in v0.14, ein has limited support for executing <a href="http://docs.hylang.org/en/stable/" target="_blank" rel="noopener">hy</a> code in a notebook running an ipython kernel. Before trying this feature you will need to install hy per the <a href="http://docs.hylang.org/en/stable/quickstart.html" target="_blank" rel="noopener">quickstart</a> instructions.</p>
+<p>Once you have set up <a href="http://docs.hylang.org/en/stable/" target="_blank" rel="noopener">hy</a> in your ipython kernel, open or create a notebook running this kernel and create or go to an empty cell. You will need to change the cell type to hy using <code>ein:worksheet-change-cell-type</code>. Once that is done you can enter hy expressions and they will be correctly evaluated by the kernel!</p>
+<p>If you are running a <a href="https://github.com/Calysto/calysto_hy" target="_blank" rel="noopener">hy kernel</a> you can, of course, write hy expressions in code cells and have the expected results.</p>
+<h2 id="Customization-1"><a href="#Customization-1" class="headerlink" title="Customization"></a>Customization</h2><p>You can customize EIN by typing <code>M-x customize-group RET ein RET</code>. All the configurable variables are listed below.</p>
+<h3 id="Subpackages"><a href="#Subpackages" class="headerlink" title="Subpackages"></a>Subpackages</h3><ul>
+<li><p><em>variable</em> <code>ein:completion-backend</code></p>
+<p>EIN defaults to your individual company-mode or auto-complete-mode configuration. Change this setting to gather completions from the jupyter server:<code>* ein:use-none-backend: local completions only (configured outside EIN) * ein:use-company-backend: company-style remote completions (elpy takes precedence) * ein:use-ac-backend: deprecated auto-complete remote completions</code></p>
+</li>
+<li><p><em>variable</em> <code>ein:use-smartrep</code></p>
+<p>Set to <code>t</code> to use preset smartrep configuration.WarningWhen used with MuMaMo (see <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebook-modes" target="_blank" rel="noopener"><code>ein:notebook-modes</code></a>), keyboard macro which manipulates cell (add, remove, move, etc.) may start infinite loop (you need to stop it with <code>C-g</code>). Please be careful using this option if you are a heavy keyboard macro user. Using keyboard macro for other commands is fine.</p>
+</li>
+<li><p><em>variable</em> <code>ein:load-dev</code></p>
+</li>
+</ul>
+<h3 id="Notebook-list-1"><a href="#Notebook-list-1" class="headerlink" title="Notebook list"></a>Notebook list</h3><ul>
+<li><p><em>variable</em> <code>ein:url-or-port</code></p>
+<p>List of default url-or-port values. This will be used for completion. So put your IPython servers. You can connect to servers not in this list (but you will need to type every time).</p>
+</li>
+<li><p><em>variable</em> <code>ein:default-url-or-port</code></p>
+<p>Default URL or port. This should be your main IPython Notebook server.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebooklist-load</code><em>&amp;optional</em> <em>url-or-port</em>)</p>
+<p>Load notebook list but do not pop-up the notebook list buffer.For example, if you want to load notebook list when Emacs starts, add this in the Emacs initialization file:<code>(add-to-hook ’after-init-hook ’ein:notebooklist-load)</code>or even this (if you want fast Emacs start-up):<code>;; load notebook list if Emacs is idle for 3 sec after start-up (run-with-idle-timer 3 nil #’ein:notebooklist-load)</code>You should setup ‘ein:url-or-port’ or ‘ein:default-url-or-port’ in order to make this code work.See also: ‘ein:connect-to-default-notebook’, ‘ein:connect-default-notebook’.</p>
+</li>
+</ul>
+<h3 id="Notebook-1"><a href="#Notebook-1" class="headerlink" title="Notebook"></a>Notebook</h3><ul>
+<li><p><em>variable</em> <code>ein:worksheet-enable-undo</code></p>
+<p>When non-<code>nil</code>, allow undo of cell inputs only (as opposed towhole-cell operations such as killing, moving, executing cells).Changes to this variable only take effect for newly opened worksheets.</p>
+</li>
+<li><p><em>variable</em> <code>ein:polymode</code></p>
+<p>When enabled ein will use polymode to provide multi-major mode support in a notebook buffer, otherwise ein’s custom and outdated multi-major mode support will be used. Emacs must be restarted after changing this setting!</p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-modes</code></p>
+<p>Notebook modes to use (in order of preference).When the notebook is opened, mode in this value is checked one by one and the first usable mode is used.Available modes:<code>ein:notebook-multilang-mode`</code>ein:notebook-mumamo-mode<code>ein:notebook-python-mode</code>ein:notebook-plain-mode<code>Examples:Use MuMaMo if it is installed. Otherwise, use plain mode. This is the old default setting:</code>(setq ein:notebook-modes ‘(ein:notebook-mumamo-mode ein:notebook-plain-mode)) <code>Avoid using MuMaMo even when it is installed:</code>(setq ein:notebook-modes ‘(ein:notebook-plain-mode)) <code>Use simple</code>python-mode<code>based notebook mode when MuMaMo is not installed:</code>(setq ein:notebook-modes ‘(ein:notebook-mumamo-mode ein:notebook-python-mode)) `</p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-querty-timeout-open</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>variable</em> <code>ein:notebook-querty-timeout-save</code></p>
+<p>Query timeout for saving notebook. Similar to <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebook-querty-timeout-open" target="_blank" rel="noopener"><code>ein:notebook-querty-timeout-open</code></a>, but for saving notebook. For global setting and more information, see <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:query-timeout" target="_blank" rel="noopener"><code>ein:query-timeout</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:cell-traceback-level</code></p>
+<p>Number of traceback stack to show. Hidden tracebacks are not discarded. You can view them using [ein:tb-show].</p>
+</li>
+<li><p><em>variable</em> <code>ein:cell-autoexec-prompt</code></p>
+<p>String shown in the cell prompt when the auto-execution flag is on. See also <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-aotoexec-lighter" target="_blank" rel="noopener"><code>ein:connect-aotoexec-lighter</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:junk-notebook-name-template</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>variable</em> <code>ein:iexec-delay</code></p>
+<p>Delay before executing cell after change in second.</p>
+</li>
+<li><p><em>variable</em> <code>ein:complete-on-dot</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>variable</em> <code>ein:helm-kernel-history-search-key</code></p>
+<p>Bind <a href="https://millejoh.github.io/emacs-ipython-notebook/#helm-ein-kernel-history" target="_blank" rel="noopener"><code>helm-ein-kernel-history</code></a> to this key in notebook mode.Example:<code>(setq ein:helm-kernel-history-search-key &quot;\M-r&quot;)</code>This key will be installed in the <code>ein:notebook-mode-map</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:anything-kernel-history-search-key</code></p>
+<p>Bind <a href="https://millejoh.github.io/emacs-ipython-notebook/#anything-ein-kernel-history" target="_blank" rel="noopener"><code>anything-ein-kernel-history</code></a> to this key in notebook mode.Example:<code>(setq ein:anything-kernel-history-search-key &quot;\M-r&quot;)</code>This key will be installed in the <code>ein:notebook-mode-map</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:helm-kernel-history-search-auto-pattern</code></p>
+<p>Automatically construct search pattern when non-<code>nil</code>.Single space is converted to “<em>”.A backslash followed by a space is converted to a single space.A “</em>” is added at the beginning and end of the pattern.This variable applies to both <a href="https://millejoh.github.io/emacs-ipython-notebook/#helm-ein-kernel-history" target="_blank" rel="noopener"><code>helm-ein-kernel-history</code></a> and <a href="https://millejoh.github.io/emacs-ipython-notebook/#anything-ein-kernel-history" target="_blank" rel="noopener"><code>anything-ein-kernel-history</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:output-type-preference</code></p>
+<p>Output types to be used in notebook. First output-type found in this list will be used. This variable can be a list or a function returning a list given DATA plist. See also <code>ein:output-type-prefer-pretty-text-over-html</code>.<strong>Example</strong>: If you prefer HTML type over text type, you can set it as:<code>(setq ein:output-type-preference       &#39;(emacs-lisp svg png jpeg html text latex javascript))</code>Note that <code>html</code> comes before <code>text</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:shr-env</code></p>
+<p>Variables let-bound while calling <code>shr-insert-document</code>.To use default shr setting:<code>(setq ein:shr-env nil)</code>Draw boundaries for table (default):<code>(setq ein:shr-env       &#39;((shr-table-horizontal-line ?-)         (shr-table-vertical-line ?|)         (shr-table-corner ?+)))</code></p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-autosave-frequency</code></p>
+<p>Sets the frequency (in seconds) at which the notebook is automatically saved, per IPEP15. Set to 0 to disable this feature.Autosaves are automatically enabled when a notebook is opened, but can be controlled manually via <code>ein:notebook-enable-autosave</code> and <code>ein:notebook-disable-autosave</code>.If you wish to change the autosave frequency for the current notebook call <code>ein:notebook-update-autosave-freqency</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-create-checkpoint-on-save</code></p>
+<p>If non-nil a checkpoint will be created every time the notebook is saved. Otherwise checkpoints must be created manually via <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebook-create-checkpoint" target="_blank" rel="noopener"><code>ein:notebook-create-checkpoint</code></a>.</p>
+</li>
+</ul>
+<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><ul>
+<li><p><em>variable</em> <code>ein:console-security-dir</code></p>
+<p>Security directory setting.Following types are valid:stringUse this value as a path to security directory. Handy when you have only one IPython server.alistAn alist whose element is “(URL-OR-PORT . DIR)”. Key (URL-OR-PORT) can be string (URL), integer (port), or<code>default</code> (symbol). The value of <code>default</code> is used when other key does not much. Normally you should have this entry.functionCalled with an argument URL-OR-PORT (integer or string). You can have complex setting using this.</p>
+</li>
+<li><p><em>variable</em> <code>ein:console-executable</code></p>
+<p>IPython executable used for console.Example: <code>&quot;/user/bin/ipython&quot;</code>. Types same as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a> are valid.</p>
+</li>
+<li><p><em>variable</em> <code>ein:console-args</code></p>
+<p>Additional argument when using console.WarningSpace-separated string is obsolete now. Use a list of string as value now.Setting to use IPython profile named “YOUR-IPYTHON-PROFILE”:<code>(setq ein:console-args &#39;(&quot;--profile&quot; &quot;YOUR-IPYTHON-PROFILE&quot;))</code>Together with <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a>, you can open IPython console connecting to a remote kernel.:<code>(setq ein:console-args &#39;(&quot;--ssh&quot; &quot;HOSTNAME&quot;)) (setq ein:console-security-dir &quot;PATH/TO/SECURITY/DIR&quot;)</code>You can setup <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-args" target="_blank" rel="noopener"><code>ein:console-args</code></a> per server basis using alist form:<code>(setq ein:console-args       &#39;((8888 . &#39;(&quot;--profile&quot; &quot;PROFILE&quot;))         (8889 . &#39;(&quot;--ssh&quot; &quot;HOSTNAME&quot;))         (default . &#39;(&quot;--profile&quot; &quot;default&quot;))))</code>If you want to use more complex setting, you can set a function to it:<code>(setq ein:console-args       (lambda (url-or-port) &#39;(&quot;--ssh&quot; &quot;HOSTNAME&quot;)))</code>See also: <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a>.</p>
+</li>
+</ul>
+<h3 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h3><ul>
+<li><p><em>variable</em> <code>ein:connect-run-command</code></p>
+<p><code>%run</code> magic command used for <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-run-buffer" target="_blank" rel="noopener"><code>ein:connect-run-buffer</code></a>. Types same as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a> are valid.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-reload-command</code></p>
+<p>Setting for <code>ein:connect-reload-buffer</code>. Same as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-run-command" target="_blank" rel="noopener"><code>ein:connect-run-command</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-save-before-run</code></p>
+<p>Whether the buffer should be saved before <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-run-buffer" target="_blank" rel="noopener"><code>ein:connect-run-buffer</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:propagate-connect</code></p>
+<p>Set to <code>t</code> to connect to the notebook after jumping to a buffer.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-aotoexec-lighter</code></p>
+<p>String appended to the lighter of <code>ein:connect-mode</code> (<code>ein:c</code>) when auto-execution mode is on. When <code>nil</code>, use the same string as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:cell-autoexec-prompt" target="_blank" rel="noopener"><code>ein:cell-autoexec-prompt</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-default-notebook</code></p>
+<p>Notebook to be connect when <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-to-default-notebook" target="_blank" rel="noopener"><code>ein:connect-to-default-notebook</code></a> is called.Example setting to connect to “My_Notebook” in the server at port 8888 when opening any buffer in <code>python-mode</code>:<code>(setq ein:connect-default-notebook &quot;8888/My_Notebook&quot;) (add-hook &#39;python-mode-hook &#39;ein:connect-to-default-notebook)</code><a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-default-notebook" target="_blank" rel="noopener"><code>ein:connect-default-notebook</code></a> can also be a function without any argument. This function must return a string (notebook path of the form “URL-OR-PORT/NOTEBOOK-NAME”).As <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-to-default-notebook" target="_blank" rel="noopener"><code>ein:connect-to-default-notebook</code></a> requires notebook list to be loaded, consider using <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebooklist-load" target="_blank" rel="noopener"><code>ein:notebooklist-load</code></a>to load notebook list if you want to connect to notebook without manually opening notebook list.</p>
+</li>
+<li><p><em>function</em> <code>ein:connect-to-default-notebook</code></p>
+<p>Connect to the default notebook specified by ‘ein:connect-default-notebook’. Set this to ‘python-mode-hook’ to automatically connect any python-mode buffer to the notebook.</p>
+</li>
+</ul>
+<h3 id="Misc-1"><a href="#Misc-1" class="headerlink" title="Misc"></a>Misc</h3><ul>
+<li><p><em>variable</em> <code>ein:filename-translations</code></p>
+<p>Convert file paths between Emacs and Python process.This value can take these form:alistIts key specifies URL-OR-PORT and value must be a list of two functions: (TO-PYTHON FROM-PYTHON). Key (URL-OR-PORT) can be string (URL), integer (port), or <code>default</code> (symbol). The value of <code>default</code> is used when other key does not much.functionCalled with an argument URL-OR-PORT (integer or string). This function must return a list of two functions: (TO-PYTHON FROM-PYTHON).Here, the functions TO-PYTHON and FROM-PYTHON are defined as:TO-PYTHONA function which converts a file name (returned by <code>buffer-file-name</code>) to the one Python understands.FROM-PYTHONA function which converts a file path returned by Python process to the one Emacs understands.Use <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:tramp-create-filename-translator" target="_blank" rel="noopener"><code>ein:tramp-create-filename-translator</code></a> to easily generate the pair of TO-PYTHON and FROM-PYTHON.</p>
+</li>
+<li><p><em>function</em> (<code>ein:tramp-create-filename-translator</code><em>remote-host</em> <em>&amp;optional</em> <em>username</em>)</p>
+<p>Generate a pair of TO-PYTHON and FROM-PYTHON for ‘ein:filename-translations’.Usage:<code>(setq ein:filename-translations       ‘((8888          . ,(ein:tramp-create-filename-translator &quot;MY-HOSTNAME&quot;)))) ;; Equivalently: (setq ein:filename-translations       (lambda (url-or-port)         (when (equal url-or-port 8888)           (ein:tramp-create-filename-translator &quot;MY-HOSTNAME&quot;))))</code>This setting assumes that the IPython server which can be connected using the port 8888 in localhost is actually running in the host named MY-HOSTNAME.Adapted from ‘slime-create-filename-translator’.</p>
+</li>
+<li><p><em>variable</em> <code>ein:query-timeout</code></p>
+<p>Default query timeout for HTTP access in millisecond.Setting this to <code>nil</code> means no timeout. If you have <code>curl</code> command line program, it is automatically set to <code>nil</code> as <code>curl</code> is reliable than <code>url-retrieve</code> therefore no need for a workaround (see below).If you do the same operation before the timeout, old operation will NO LONGER be canceled (as it the cookie jar gets clobbered when curl aborts). Instead you will see Race! in debug messages.NoteThis value exists because it looks like <code>url-retrieve</code> occasionally fails to finish (start?) querying. Timeout is used to let user notice that their operation is not finished. It also prevent opening a lot of useless process buffers. You will see them when closing Emacs if there is no timeout.If you know how to fix the problem with <code>url-retrieve</code>, please let me know or send pull request at github! (Related bug report in Emacs bug tracker: <a href="http://debbugs.gnu.org/cgi/bugreport.cgi?bug=11469" target="_blank" rel="noopener">http://debbugs.gnu.org/cgi/bugreport.cgi?bug=11469</a>)</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-jump-to-opened-notebook</code><em>notebook</em>)</p>
+<p>List all opened notebook buffers and switch to one that the user selects.</p>
+</li>
+</ul>
+<h2 id="Gotchas-and-caveats"><a href="#Gotchas-and-caveats" class="headerlink" title="Gotchas and caveats"></a>Gotchas and caveats</h2><p>Although EIN mostly works fine, there are some deficits I noticed but have not fixed yet. It seems that they originate from some upstream bugs so there is little I can do in EIN (but I’m not sure – it’s possible that I am misusing the libraries!).</p>
+<p>If you know how to fix/workaround them, patches are very welcome.</p>
+<h3 id="url-retrieve"><a href="#url-retrieve" class="headerlink" title="url-retrieve"></a><code>url-retrieve</code></h3><p>While using EIN, probably most of the error messages are about server connections. It looks like the problem is in <code>url-retrieve</code>. But in those cases you don’t lose any notebook data and your IPython kernel is fine. You can just type the command again and it will go fine most of the time. For saving notebook, I implemented code to retry when there is an error comes from <code>url-retrieve</code> to make it even safer.</p>
+<h3 id="MuMaMo"><a href="#MuMaMo" class="headerlink" title="MuMaMo"></a>MuMaMo</h3><p>When using MuMaMo based notebook mode, you will notice that highlighting outside of the cell input is turned off while you are in the input area. It seems there is a bug in MuMaMo <a href="https://millejoh.github.io/emacs-ipython-notebook/#m3bug" target="_blank" rel="noopener">6</a>.</p>
+<p>If you are using smartrep and MuMaMo together, see also the warning in <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:use-smartrep" target="_blank" rel="noopener"><code>ein:use-smartrep</code></a> document.</p>
+<ul>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id15" target="_blank" rel="noopener">6</a></p>
+<p>See the relevant bug report I posted: <a href="https://bugs.launchpad.net/nxhtml/+bug/1013794" target="_blank" rel="noopener">https://bugs.launchpad.net/nxhtml/+bug/1013794</a></p>
+</li>
+</ul>
+<h3 id="python-mode-el"><a href="#python-mode-el" class="headerlink" title="python-mode.el"></a>python-mode.el</h3><p>Using <a href="https://millejoh.github.io/emacs-ipython-notebook/#python-mode-el" target="_blank" rel="noopener">python-mode.el</a> without fisrt byte-compiling can cause a segfault with the MuMaMo based notebook mode.</p>
+<p>Also, <code>mumamo-idle-set-major-mode</code> generates the error message <code>(wrong-type-argument listp python-saved-check-command)</code> time to time, making minibuffer bit noisy while editing notebook. See <a href="https://github.com/millejoh/emacs-ipython-notebook/wiki/Tips" target="_blank" rel="noopener">Tips</a> to fix this problem.</p>
+<h2 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h2><p>By telling IPython a little bit about Emacs Lisp, you can execute Emacs Lisp from IPython, just like you can execute Javascript in the web client. See <a href="https://github.com/millejoh/emacs-ipython-notebook/blob/master/tools/emacslisp.py" target="_blank" rel="noopener">emacslisp.py</a> for more details.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [1]:</span><br><span class="line">%run PATH/TO/emacslisp.py</span><br><span class="line"></span><br><span class="line">In [2]:</span><br><span class="line">EmacsLisp(&apos;(+ 1 2 3)&apos;)</span><br><span class="line">Out [2]:</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<h2 id="Reporting-issues"><a href="#Reporting-issues" class="headerlink" title="Reporting issues"></a>Reporting issues</h2><p>Please use <code>M-x ein:dev-bug-report-template</code> to write a bug report. It pops up a buffer containing some system information and instruction for bug report.</p>
+<h3 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h3><p>Sometime more information than provided in the <code>*Message*</code> buffer is needed to debug.</p>
+<ol>
+<li><p>Execute <code>(ein:log-set-level &#39;debug)</code> (e.g., <code>M-: (ein:log-set-level &#39;debug) RET</code>).</p>
+</li>
+<li><p>Then do some operation which cause the problem.</p>
+</li>
+<li><p>Go to the log buffer <code>_*ein:log-all*</code> (it starts with a space) and paste the whole buffer to the issue tracker.</p>
+<p>Please enclose the log with three backquotes to make the snippet as a code block, like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>[verbose] Start logging. @#&lt;buffer <em>ein: 8888/NAME</em>&gt;<br>[info] Notebook NAME is ready @#&lt;buffer <em>ein: 8888/NAME</em>&gt;<br>[info] Kernel started: 5e4f74d1-ce91-4e7e-9575-9646adea5172 @#<buffer *scratch*></buffer></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>See also: <a href="http://github.github.com/github-flavored-markdown/" target="_blank" rel="noopener">GitHub Flavored Markdown - Introduction</a></p>
+<p>If it is too long, you can use paste bin service such as <a href="https://gist.github.com/" target="_blank" rel="noopener">gist</a>.</p>
+</li>
+</ol>
+<h4 id="websocket-el"><a href="#websocket-el" class="headerlink" title="websocket.el"></a>websocket.el</h4><p>websocket.el has its own logging buffer. Sometime it is useful to see this log. To do this:</p>
+<ol>
+<li><code>(require &#39;ein-dev)</code></li>
+<li><code>(setq websocket-debug t)</code> or call <code>ein:dev-start-debug</code>.</li>
+<li>Then do the operation which causes the problem.</li>
+<li>Go to log buffer using <code>ein:dev-pop-to-debug-shell</code> and <code>ein:dev-pop-to-debug-iopub</code>. These command must be called in the notebook buffer.</li>
+</ol>
+<h3 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h3><p>If you are interested in debugging EIN, you should start by calling the command <code>ein:dev-start-debug</code>. If the bug is websocket related, you may need to run it with a prefix key like this: <code>C-u M-x ein:dev-start-debug RET</code> to get a backtrace. This command sets <code>debug-on-error</code> to <code>t</code> and does some patching to the debugger. This patching is required because printing EWOC objects freezes Emacs otherwise. It also changes log level to report everything the log buffer. You can reset the patch and log level with <code>ein:dev-stop-debug</code>.</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/emacs/" rel="tag"># emacs</a>
+          
+            <a href="/tags/jupyter/" rel="tag"># jupyter</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/11/elisp-more-complex-functions/" rel="next" title="Intro to elisp 5. A Few More Complex Functions">
+                <i class="fa fa-chevron-left"></i> Intro to elisp 5. A Few More Complex Functions
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Gabriel</p>
+              <div class="site-description motion-element" itemprop="description"></div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/AlphaAlgorithms" title="GitHub &rarr; https://github.com/AlphaAlgorithms" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-try"><span class="nav-text">Quick try</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Requirements"><span class="nav-text">Requirements</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install"><span class="nav-text">Install</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-el-get"><span class="nav-text">Using el-get</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using-package-el-MELPA"><span class="nav-text">Using package.el (MELPA)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Manual-install"><span class="nav-text">Manual install</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setup"><span class="nav-text">Setup</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Usage"><span class="nav-text">Usage</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Commands-Keybinds"><span class="nav-text">Commands/Keybinds</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Running-a-Jupyter-Notebook-Server-from-Emacs"><span class="nav-text">Running a Jupyter Notebook Server from Emacs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notebook-list"><span class="nav-text">Notebook list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notebook"><span class="nav-text">Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Polymode-in-the-Notebook"><span class="nav-text">Polymode in the Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Advanced-Editing"><span class="nav-text">Advanced Editing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connected-buffer"><span class="nav-text">Connected buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Shared-output-buffer"><span class="nav-text">Shared output buffer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Traceback-viewer"><span class="nav-text">Traceback viewer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PyTools"><span class="nav-text">PyTools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc"><span class="nav-text">Misc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Org-mode-Integration-ob-ein"><span class="nav-text">Org-mode Integration (ob-ein)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Customization"><span class="nav-text">Customization</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Support-for-The-Hy-Language-EXPERIMENTAL"><span class="nav-text">Support for The Hy Language (EXPERIMENTAL)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Customization-1"><span class="nav-text">Customization</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Subpackages"><span class="nav-text">Subpackages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notebook-list-1"><span class="nav-text">Notebook list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Notebook-1"><span class="nav-text">Notebook</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Console"><span class="nav-text">Console</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Connect"><span class="nav-text">Connect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Misc-1"><span class="nav-text">Misc</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gotchas-and-caveats"><span class="nav-text">Gotchas and caveats</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#url-retrieve"><span class="nav-text">url-retrieve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MuMaMo"><span class="nav-text">MuMaMo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python-mode-el"><span class="nav-text">python-mode.el</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Advanced"><span class="nav-text">Advanced</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reporting-issues"><span class="nav-text">Reporting issues</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Logging"><span class="nav-text">Logging</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#websocket-el"><span class="nav-text">websocket.el</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Debugging"><span class="nav-text">Debugging</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Gabriel</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/schemes/muse.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  <script id="dsq-count-scr" src="https://alphaalgorithms.disqus.com/count.js" async></script>
+
+
+<script>
+  var disqus_config = function() {
+    this.page.url = "https://alphaalgorithms.github.io/2019/06/13/emacs-ipython-notebook/";
+    this.page.identifier = "2019/06/13/emacs-ipython-notebook/";
+    this.page.title = 'Emacs Ipython Notebook';
+    };
+  function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://alphaalgorithms.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', '' + +new Date());
+    (d.head || d.body).appendChild(s);
+  }
+  
+    loadComments();
+  
+</script>
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

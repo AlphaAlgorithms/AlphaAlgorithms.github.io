@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">28</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">29</span></a>
 
   </li>
 
@@ -312,6 +312,795 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/25/git-magit/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/25/git-magit/" class="post-title-link" itemprop="url">Magit Documentation</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-25 08:05:59 / Modified: 11:06:41" itemprop="dateCreated datePublished" datetime="2019-05-25T08:05:59+08:00">2019-05-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-magit/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - magit</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/25/git-magit/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/25/git-magit/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="A-Git-Porcelain-inside-Emacs"><a href="#A-Git-Porcelain-inside-Emacs" class="headerlink" title="A Git Porcelain inside Emacs"></a>A Git Porcelain inside Emacs</h2><p><a href="https://magit.vc/" target="_blank" rel="noopener">It’s Magit! A Git Porcelain inside Emacs</a></p>
+<p>Magit is an interface to the version control system <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>, implemented as an <a href="https://www.gnu.org/software/emacs" target="_blank" rel="noopener">Emacs</a> package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. <a href="https://magit.vc/" target="_blank" rel="noopener">(less)</a></p>
+<p>Staging and otherwise applying changes is one of the most important features in a Git porcelain and here Magit outshines anything else, including Git itself. Git’s own staging interface (<code>git add --patch</code>) is so cumbersome that many users only use it in exceptional cases. In Magit staging a hunk or even just part of a hunk is as trivial as staging all changes made to a file.</p>
+<p>The most visible part of Magit’s interface is the status buffer, which displays information about the current repository. Its content is created by running several Git commands and making their output actionable. Among other things, it displays information about the current branch, lists unpulled and unpushed changes and contains sections displaying the staged and unstaged changes. That might sound noisy, but, since sections are collapsible, it’s not.</p>
+<p>To stage or unstage a change one places the cursor on the change and then types <code>s</code> or <code>u</code>. The change can be a file or a hunk, or when the region is active (i.e. when there is a selection) several files or hunks, or even just part of a hunk. The change or changes that these commands - and many others - would act on are highlighted.</p>
+<p>Magit also implements several other “apply variants” in addition to staging and unstaging. One can discard or reverse a change, or apply it to the working tree. Git’s own porcelain only supports this for staging and unstaging and you would have to do something like <code>git diff ... | ??? | git apply ...</code> to discard, revert, or apply a single hunk on the command line. In fact that’s exactly what Magit does internally (which is what lead to the term “apply variants”).</p>
+<p>Magit isn’t just for Git experts, but it does assume some prior experience with Git as well as Emacs. That being said, many users have reported that using Magit was what finally taught them what Git it is capable off and how to use it to its fullest. Other users wished they had switched to Emacs sooner so that they would have gotten their hands on Magit earlier.</p>
+<p>While one has to know the basic features of Emacs to be able to make full use of Magit, acquiring just enough Emacs skills doesn’t take long and is worth it, even for users who prefer other editors. Vim users are advised to give <a href="https://bitbucket.org/lyro/evil/wiki/Home" target="_blank" rel="noopener">Evil</a> the “Extensible VI Layer for Emacs”, and <a href="https://github.com/syl20bnr/spacemacs" target="_blank" rel="noopener">Spacemacs</a> an “Emacs starter-kit focused on Evil” a try.</p>
+<p>Magit provides a consistent and efficient Git porcelain. After a short learning period, you will be able to perform most of your daily version control tasks faster than you would on the command line. You will likely also start using features that seemed too daunting in the past.</p>
+<p>Magit fully embraces Git. It exposes many advanced features using a simple but flexible interface instead of only wrapping the trivial ones like many GUI clients do. Of course Magit supports logging, cloning, pushing, and other commands that usually don’t fail in spectacular ways; but it also supports tasks that often cannot be completed in a single step. Magit fully supports tasks such as merging, rebasing, cherry-picking, reverting, and blaming by not only providing a command to initiate these tasks but also by displaying context sensitive information along the way and providing commands that are useful for resolving conflicts and resuming the sequence after doing so.</p>
+<p>Magit wraps and in many cases improves upon at least the following Git porcelain commands: add, am, bisect, blame, branch, checkout, cherry, cherry-pick, clean, clone, commit, config, describe, diff, fetch, format-patch, init, log, merge, merge-tree, mv, notes, pull, rebase, reflog, remote, request-pull, reset, revert, rm, show, stash, submodule, and tag. Many more Magit porcelain commands are implemented on top of Git plumbing commands.</p>
+<blockquote>
+<p>两点：staging and status buffer. </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><a href="https://magit.vc/manual/magit/Introduction.html#Introduction" target="_blank" rel="noopener">Introduction</a>:</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Installation.html#Installation" target="_blank" rel="noopener">Installation</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Getting-Started.html#Getting-Started" target="_blank" rel="noopener">Getting Started</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Interface-Concepts.html#Interface-Concepts" target="_blank" rel="noopener">Interface Concepts</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Inspecting.html#Inspecting" target="_blank" rel="noopener">Inspecting</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Manipulating.html#Manipulating" target="_blank" rel="noopener">Manipulating</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Transferring.html#Transferring" target="_blank" rel="noopener">Transferring</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Miscellaneous.html#Miscellaneous" target="_blank" rel="noopener">Miscellaneous</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Customizing.html#Customizing" target="_blank" rel="noopener">Customizing</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Plumbing.html#Plumbing" target="_blank" rel="noopener">Plumbing</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/FAQ.html#FAQ" target="_blank" rel="noopener">FAQ</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Debugging-Tools.html#Debugging-Tools" target="_blank" rel="noopener">Debugging Tools</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Keystroke-Index.html#Keystroke-Index" target="_blank" rel="noopener">Keystroke Index</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Command-Index.html#Command-Index" target="_blank" rel="noopener">Command Index</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Function-Index.html#Function-Index" target="_blank" rel="noopener">Function Index</a>:</td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Variable-Index.html#Variable-Index" target="_blank" rel="noopener">Variable Index</a>:</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-Getting-Started"><a href="#3-Getting-Started" class="headerlink" title="3 Getting Started"></a>3 Getting Started</h2><p>This short tutorial describes the most essential features that many Magitians use on a daily basis. It only scratches the surface but should be enough to get you started.</p>
+<p>IMPORTANT: It is safest if you clone some repository just for this tutorial. Alternatively you can use an existing local repository, but if you do that, then you should commit all uncommitted changes before proceeding.</p>
+<p>To display information about the current Git repository, type <code>M-x magit-status RET</code>. You will be using this command a lot, and should therefore give it a global key binding. This is what we recommend:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x g&quot;) &apos;magit-status)</span><br></pre></td></tr></table></figure>
+<p>Most Magit commands are commonly invoked from the status buffer. It can be considered the primary interface for interacting with Git using Magit. Many other Magit buffers may exist at a given time, but they are often created from this buffer.</p>
+<p>Depending on what state your repository is in, this buffer may contain sections titled “Staged changes”, “Unstaged changes”, “Unmerged into origin/master”, “Unpushed to origin/master”, and many others.</p>
+<p>Since we are starting from a safe state, which you can easily return to (by doing a <code>git reset --hard PRE-MAGIT-STATE</code>), there currently are not staged or unstaged changes. Edit some files and save the changes. Then go back to the status buffer, while at the same time refreshing it, by typing <code>C-x g</code>. (When the status buffer, or any Magit buffer for that matter, is the current buffer, then you can also use just <code>g</code> to refresh it).</p>
+<p>Move between sections using <code>p</code> and <code>n</code>. Note that the bodies of some sections are hidden. Type <code>TAB</code> to expand or collapse the section at point. You can also use <code>C-tab</code> to cycle the visibility of the current section and its children. Move to a file section inside the section named “Unstaged changes” and type <code>s</code> to stage the changes you have made to that file. That file now appears under “Staged changes”.</p>
+<p>Magit can stage and unstage individual hunks, not just complete files. Move to the file you have just staged, expand it using <code>TAB</code>, move to one of the hunks using <code>n</code>, and unstage just that by typing <code>u</code>. Note how the staging (<code>s</code>) and unstaging (<code>u</code>) commands operate on the change at point. Many other commands behave the same way.</p>
+<p>You can also un-/stage just part of a hunk. Inside the body of a hunk section (move there using <code>C-n</code>), set the mark using <code>C-SPC</code> and move down until some added and/or removed lines fall inside the region but not all of them. Again type <code>s</code> to stage.</p>
+<p>It is also possible to un-/stage multiple files at once. Move to a file section, type <code>C-SPC</code>, move to the next file using <code>n</code>, and then <code>s</code> to stage both files. Note that both the mark and point have to be on the headings of sibling sections for this to work. If the region looks like it does in other buffers, then it doesn’t select Magit sections that can be acted on as a unit.</p>
+<p>And then of course you want to commit your changes. Type <code>c</code>. This shows the available commit commands and arguments in a buffer at the bottom of the frame. Each command and argument is prefixed with the key that invokes/sets it. Do not worry about this for now. We want to create a “normal” commit, which is done by typing <code>c</code> again.</p>
+<p>Now two new buffers appear. One is for writing the commit message, the other shows a diff with the changes that you are about to committed. Write a message and then type <code>C-c C-c</code> to actually create the commit.</p>
+<p>You probably don’t want to push the commit you just created because you just committed some random changes, but if that is not the case you could push it by typing <code>P</code> to show all the available push commands and arguments and then <code>p</code> to push to a branch with the same name as the local branch onto the remote configured as the push-remote. (If the push-remote is not configured yet, then you would first be prompted for the remote to push to.)</p>
+<p>So far we have mentioned the commit, push, and log transient prefix commands. These are probably among the transients you will be using the most, but many others exist. To show a transient that lists all other transients (as well as the various apply commands and some other essential commands), type <code>h</code>. Try a few.</p>
+<p>The key bindings in that transient correspond to the bindings in Magit buffers, including but not limited to the status buffer. So you could type <code>h d</code> to bring up the diff transient, but once you remember that “d” stands for “diff”, you would usually do so by just typing <code>d</code>. But this “prefix of prefixes” is useful even once you have memorized all the bindings, as it can provide easy access to Magit commands from non-Magit buffers. You should create a global key binding for this command too:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x M-g&quot;) &apos;magit-dispatch)</span><br></pre></td></tr></table></figure>
+<p>In the same vein, you might also want to enable <code>global-magit-file-mode</code> to get some more Magit key bindings in regular file-visiting buffers (see <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Files.html#Minor-Mode-for-Buffers-Visiting-Files" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Files</a>).</p>
+<p>It is not necessary that you do so now, but if you stick with Magit, then it is highly recommended that you read the next section too.</p>
+<hr>
+<p>Next: <a href="https://magit.vc/manual/magit/Interface-Concepts.html#Interface-Concepts" target="_blank" rel="noopener">Interface Concepts</a>, Previous: <a href="https://magit.vc/manual/magit/Installation.html#Installation" target="_blank" rel="noopener">Installation</a>, Up: <a href="https://magit.vc/manual/magit/index.html#Top" target="_blank" rel="noopener">Top</a>   [<a href="https://magit.vc/manual/magit/index.html#SEC_Contents" target="_blank" rel="noopener">Contents</a>][<a href="https://magit.vc/manual/magit/Keystroke-Index.html#Keystroke-Index" target="_blank" rel="noopener">Index</a>]</p>
+<h2 id="4-Interface-Concepts"><a href="#4-Interface-Concepts" class="headerlink" title="4 Interface Concepts"></a>4 Interface Concepts</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Modes-and-Buffers.html#Modes-and-Buffers" target="_blank" rel="noopener">Modes and Buffers</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Sections.html#Sections" target="_blank" rel="noopener">Sections</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Transient-Commands.html#Transient-Commands" target="_blank" rel="noopener">Transient Commands</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Completion-Confirmation-and-the-Selection.html#Completion-Confirmation-and-the-Selection" target="_blank" rel="noopener">Completion, Confirmation and the Selection</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Running-Git.html#Running-Git" target="_blank" rel="noopener">Running Git</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-1-Modes-and-Buffers"><a href="#4-1-Modes-and-Buffers" class="headerlink" title="4.1 Modes and Buffers"></a>4.1 Modes and Buffers</h3><p>Magit provides several major-modes. For each of these modes there usually exists only one buffer per repository. Separate modes and thus buffers exist for commits, diffs, logs, and some other things.</p>
+<p>Besides these special purpose buffers, there also exists an overview buffer, called the <strong>status buffer</strong>. It’s usually from this buffer that the user invokes Git commands, or creates or visits other buffers.</p>
+<p>In this manual we often speak about “Magit buffers”. By that we mean buffers whose major-modes derive from <code>magit-mode</code>.</p>
+<ul>
+<li><p>M-x magit-toggle-buffer-lock     (<code>magit-toggle-buffer-lock</code>)</p>
+<p>This command locks the current buffer to its value or if the buffer is already locked, then it unlocks it.Locking a buffer to its value prevents it from being reused to display another value. The name of a locked buffer contains its value, which allows telling it apart from other locked buffers and the unlocked buffer.Not all Magit buffers can be locked to their values; for example, it wouldn’t make sense to lock a status buffer.There can only be a single unlocked buffer using a certain major-mode per repository. So when a buffer is being unlocked and another unlocked buffer already exists for that mode and repository, then the former buffer is instead deleted and the latter is displayed in its place.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Switching-Buffers.html#Switching-Buffers" target="_blank" rel="noopener">Switching Buffers</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Naming-Buffers.html#Naming-Buffers" target="_blank" rel="noopener">Naming Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Quitting-Windows.html#Quitting-Windows" target="_blank" rel="noopener">Quitting Windows</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Automatic-Refreshing-of-Magit-Buffers.html#Automatic-Refreshing-of-Magit-Buffers" target="_blank" rel="noopener">Automatic Refreshing of Magit Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" target="_blank" rel="noopener">Automatic Saving of File-Visiting Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Automatic-Reverting-of-File_002dVisiting-Buffers.html#Automatic-Reverting-of-File_002dVisiting-Buffers" target="_blank" rel="noopener">Automatic Reverting of File-Visiting Buffers</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-2-Sections"><a href="#4-2-Sections" class="headerlink" title="4.2 Sections"></a>4.2 Sections</h3><p>Magit buffers are organized into nested sections, which can be collapsed and expanded, similar to how sections are handled in Org mode. Each section also has a type, and some sections also have a value. For each section type there can also be a local keymap, shared by all sections of that type.</p>
+<p>Taking advantage of the section value and type, many commands operate on the current section, or when the region is active and selects sections of the same type, all of the selected sections. Commands that only make sense for a particular section type (as opposed to just behaving differently depending on the type) are usually bound in section type keymaps.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Section-Movement.html#Section-Movement" target="_blank" rel="noopener">Section Movement</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Visibility.html#Section-Visibility" target="_blank" rel="noopener">Section Visibility</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Hooks.html#Section-Hooks" target="_blank" rel="noopener">Section Hooks</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Types-and-Values.html#Section-Types-and-Values" target="_blank" rel="noopener">Section Types and Values</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Options.html#Section-Options" target="_blank" rel="noopener">Section Options</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-Transient-Commands"><a href="#4-3-Transient-Commands" class="headerlink" title="4.3 Transient Commands"></a>4.3 Transient Commands</h3><p>Many Magit commands are implemented as <strong>transient</strong> commands. First the user invokes a <strong>prefix</strong> command, which causes its <strong>infix</strong> arguments and <strong>suffix</strong> commands to be displayed in the echo area. The user then optionally sets some infix arguments and finally invokes one of the suffix commands.</p>
+<p>This is implemented in the library <code>transient</code>. Earlier Magit releases used the package <code>magit-popup</code> and even earlier versions library <code>magit-key-mode</code>.</p>
+<p>Transient is documented in <a href="https://magit.vc/manual/transient/index.html#Top" target="_blank" rel="noopener">(transient)Top</a>.</p>
+<ul>
+<li><p>C-c C-c     (<code>magit-dispatch</code>)</p>
+<p>This transient prefix command binds most of Magit’s other prefix commands as suffix commands and displays them in a temporary buffer until one of them is invoked. Invoking such a sub-prefix causes the suffixes of that command to be bound and displayed instead of those of <code>magit-dispatch</code>.</p>
+</li>
+</ul>
+<p>This command is also, or especially, useful outside Magit buffers, so you should setup a global binding:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x M-g&quot;) &apos;magit-dispatch)</span><br></pre></td></tr></table></figure>
+<p>Transient commands remember the used arguments for subsequent invocations. Two transients, the log and diff transients (see <a href="https://magit.vc/manual/magit/Logging.html#Logging" target="_blank" rel="noopener">Logging</a> and <a href="https://magit.vc/manual/magit/Diffing.html#Diffing" target="_blank" rel="noopener">Diffing</a>), may behave a bit differently, depending on the value of <code>magit-use-sticky-arguments</code>.</p>
+<ul>
+<li><p>User Option: <strong>magit-use-sticky-arguments</strong></p>
+<p>This option controls how the diff and log transients reuse arguments from existing buffers.When <code>t</code> (the default value), then the log or diff transients reuses the arguments from the current repository’s log or diff buffer, respectively. When no log or diff buffer exists for the current repository, these transients use the default value of <code>magit-log-arguments</code> or <code>magit-diff-arguments</code>.When <code>current</code>, log and diff transients will only reuse the arguments if the current buffer is derived from <code>magit-log-mode</code> or <code>magit-diff-mode</code>, respectively.When <code>nil</code>, the default value of <code>magit-log-arguments</code> or <code>magit-diff-arguments</code> is always used.</p>
+</li>
+</ul>
+<hr>
+<h3 id="4-4-Completion-Confirmation-and-the-Selection"><a href="#4-4-Completion-Confirmation-and-the-Selection" class="headerlink" title="4.4 Completion, Confirmation and the Selection"></a>4.4 Completion, Confirmation and the Selection</h3><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Action-Confirmation.html#Action-Confirmation" target="_blank" rel="noopener">Action Confirmation</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Completion-and-Confirmation.html#Completion-and-Confirmation" target="_blank" rel="noopener">Completion and Confirmation</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/The-Selection.html#The-Selection" target="_blank" rel="noopener">The Selection</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/The-hunk_002dinternal-region.html#The-hunk_002dinternal-region" target="_blank" rel="noopener">The hunk-internal region</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Support-for-Completion-Frameworks.html#Support-for-Completion-Frameworks" target="_blank" rel="noopener">Support for Completion Frameworks</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Additional-Completion-Options.html#Additional-Completion-Options" target="_blank" rel="noopener">Additional Completion Options</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-5-Running-Git"><a href="#4-5-Running-Git" class="headerlink" title="4.5 Running Git"></a>4.5 Running Git</h3><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Viewing-Git-Output.html#Viewing-Git-Output" target="_blank" rel="noopener">Viewing Git Output</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Git-Process-Status.html#Git-Process-Status" target="_blank" rel="noopener">Git Process Status</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Running-Git-Manually.html#Running-Git-Manually" target="_blank" rel="noopener">Running Git Manually</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Git-Executable.html#Git-Executable" target="_blank" rel="noopener">Git Executable</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Global-Git-Arguments.html#Global-Git-Arguments" target="_blank" rel="noopener">Global Git Arguments</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="4-5-1-Viewing-Git-Output"><a href="#4-5-1-Viewing-Git-Output" class="headerlink" title="4.5.1 Viewing Git Output"></a>4.5.1 Viewing Git Output</h4><p>Magit runs Git either for side-effects (e.g. when pushing) or to get some value (e.g. the name of the current branch).</p>
+<p>When Git is run for side-effects, the process output is logged in a per-repository log buffer, which can be consulted using the <code>magit-process</code> command when things don’t go as expected.</p>
+<p>The output/errors for up to ‘magit-process-log-max’ Git commands are retained.</p>
+<ul>
+<li><p>$     (<code>magit-process</code>)</p>
+<p>This commands displays the process buffer for the current repository.</p>
+</li>
+</ul>
+<p>Inside that buffer, the usual key bindings for navigating and showing sections are available. There is one additional command.</p>
+<ul>
+<li><p>k     (<code>magit-process-kill</code>)</p>
+<p>This command kills the process represented by the section at point.</p>
+</li>
+<li><p>User Option: <strong>magit-git-debug</strong></p>
+<p>When this is non-nil then the output of all calls to git are logged in the process buffer. This is useful when debugging, otherwise it just negatively affects performance.</p>
+</li>
+</ul>
+<h2 id="5-Inspecting"><a href="#5-Inspecting" class="headerlink" title="5 Inspecting"></a>5 Inspecting</h2><p>The functionality provided by Magit can be roughly divided into three groups: </p>
+<p>inspecting existing data,<br>manipulating existing data or adding new data,<br> transferring data. (划分的好.)</p>
+<p>Of course that is a rather crude distinction that often falls short, but it’s more useful than no distinction at all. This section is concerned with inspecting data, the next two with manipulating and transferring it. Then follows a section about miscellaneous functionality, which cannot easily be fit into this distinction.</p>
+<p>Of course other distinctions make sense too, e.g. Git’s distinction between porcelain and plumbing commands, which for the most part is equivalent to Emacs’ distinction between interactive commands and non-interactive functions. All of the sections mentioned before are mainly concerned with the porcelain – Magit’s plumbing layer is described later.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Status-Buffer.html#Status-Buffer" target="_blank" rel="noopener">Status Buffer</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Repository-List.html#Repository-List" target="_blank" rel="noopener">Repository List</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Logging.html#Logging" target="_blank" rel="noopener">Logging</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Diffing.html#Diffing" target="_blank" rel="noopener">Diffing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Ediffing.html#Ediffing" target="_blank" rel="noopener">Ediffing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/References-Buffer.html#References-Buffer" target="_blank" rel="noopener">References Buffer</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Bisecting.html#Bisecting" target="_blank" rel="noopener">Bisecting</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Visiting-Blobs.html#Visiting-Blobs" target="_blank" rel="noopener">Visiting Blobs</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Blaming.html#Blaming" target="_blank" rel="noopener">Blaming</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-1-Status-Buffer"><a href="#5-1-Status-Buffer" class="headerlink" title="5.1 Status Buffer"></a>5.1 Status Buffer</h3><p>While other Magit buffers contain e.g. one particular diff or one particular log, the status buffer contains the diffs for staged and unstaged changes, logs for unpushed and unpulled commits, lists of stashes and untracked files, and information related to the current branch.</p>
+<p>During certain incomplete operations – for example when a merge resulted in a conflict – additional information is displayed that helps proceeding with or aborting the operation.</p>
+<p>The command <code>magit-status</code> displays the status buffer belonging to the current repository in another window. This command is used so often that it should be bound globally. We recommend using <code>C-x g</code>:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x g&quot;) &apos;magit-status)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>C-x g     (<code>magit-status</code>)</p>
+<p>When invoked from within an existing Git repository, then this command shows the status of that repository in a buffer.If the current directory isn’t located within a Git repository, then this command prompts for an existing repository or an arbitrary directory, depending on the option <code>magit-repository-directories</code>, and the status for the selected repository is shown instead.If that option specifies any existing repositories, then the user is asked to select one of them.Otherwise the user is asked to select an arbitrary directory using regular file-name completion. If the selected directory is the top-level directory of an existing working tree, then the status buffer for that is shown.Otherwise the user is offered to initialize the selected directory as a new repository. After creating the repository its status buffer is shown.These fallback behaviors can also be forced using one or more prefix arguments:With two prefix arguments (or more precisely a numeric prefix value of 16 or greater) an arbitrary directory is read, which is then acted on as described above. The same could be accomplished using the command <code>magit-init</code>.With a single prefix argument an existing repository is read from the user, or if no repository can be found based on the value of <code>magit-repository-directories</code>, then the behavior is the same as with two prefix arguments.</p>
+</li>
+<li><p>User Option: <strong>magit-repository-directories</strong></p>
+<p>List of directories that are Git repositories or contain Git repositories.Each element has the form <code>(DIRECTORY . DEPTH)</code>. DIRECTORY has to be a directory or a directory file-name, a string. DEPTH, an integer, specifies the maximum depth to look for Git repositories. If it is 0, then only add DIRECTORY itself.This option controls which repositories are being listed by <code>magit-list-repositories</code>. It also affects <code>magit-status</code> (which see) in potentially surprising ways (see above).</p>
+</li>
+<li><p>Command: <strong>ido-enter-magit-status</strong></p>
+<p>From an Ido prompt used to open a file, instead drop into <code>magit-status</code>. This is similar to <code>ido-magic-delete-char</code>, which, despite its name, usually causes a Dired buffer to be created.To make this command available, use something like:<code>(add-hook &#39;ido-setup-hook           (lambda ()             (define-key ido-completion-map               (kbd \&quot;C-x g\&quot;) &#39;ido-enter-magit-status)))</code>Starting with Emacs 25.1 the Ido keymaps are defined just once instead of every time Ido is invoked, so now you can modify it like pretty much every other keymap:<code>(define-key ido-common-completion-map   (kbd \&quot;C-x g\&quot;) &#39;ido-enter-magit-status)</code></p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Status-Sections.html#Status-Sections" target="_blank" rel="noopener">Status Sections</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Status-Header-Sections.html#Status-Header-Sections" target="_blank" rel="noopener">Status Header Sections</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Status-Module-Sections.html#Status-Module-Sections" target="_blank" rel="noopener">Status Module Sections</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Status-Options.html#Status-Options" target="_blank" rel="noopener">Status Options</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="6-Manipulating"><a href="#6-Manipulating" class="headerlink" title="6 Manipulating"></a>6 Manipulating</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Repository-Setup.html#Repository-Setup" target="_blank" rel="noopener">Repository Setup</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Staging-and-Unstaging.html#Staging-and-Unstaging" target="_blank" rel="noopener">Staging and Unstaging</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Applying.html#Applying" target="_blank" rel="noopener">Applying</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Committing.html#Committing" target="_blank" rel="noopener">Committing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Branching.html#Branching" target="_blank" rel="noopener">Branching</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Merging.html#Merging" target="_blank" rel="noopener">Merging</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Resolving-Conflicts.html#Resolving-Conflicts" target="_blank" rel="noopener">Resolving Conflicts</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Rebasing.html#Rebasing" target="_blank" rel="noopener">Rebasing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Cherry-Picking.html#Cherry-Picking" target="_blank" rel="noopener">Cherry Picking</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Resetting.html#Resetting" target="_blank" rel="noopener">Resetting</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Stashing.html#Stashing" target="_blank" rel="noopener">Stashing</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-Transferring"><a href="#7-Transferring" class="headerlink" title="7 Transferring"></a>7 Transferring</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Remotes.html#Remotes" target="_blank" rel="noopener">Remotes</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Fetching.html#Fetching" target="_blank" rel="noopener">Fetching</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Pulling.html#Pulling" target="_blank" rel="noopener">Pulling</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Pushing.html#Pushing" target="_blank" rel="noopener">Pushing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Plain-Patches.html#Plain-Patches" target="_blank" rel="noopener">Plain Patches</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Maildir-Patches.html#Maildir-Patches" target="_blank" rel="noopener">Maildir Patches</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-Miscellaneous"><a href="#8-Miscellaneous" class="headerlink" title="8 Miscellaneous"></a>8 Miscellaneous</h2><table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Tagging.html#Tagging" target="_blank" rel="noopener">Tagging</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Notes.html#Notes" target="_blank" rel="noopener">Notes</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Submodules.html#Submodules" target="_blank" rel="noopener">Submodules</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Subtree.html#Subtree" target="_blank" rel="noopener">Subtree</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Worktree.html#Worktree" target="_blank" rel="noopener">Worktree</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Common-Commands.html#Common-Commands" target="_blank" rel="noopener">Common Commands</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes" target="_blank" rel="noopener">Wip Modes</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Files.html#Minor-Mode-for-Buffers-Visiting-Files" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Files</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Blobs.html#Minor-Mode-for-Buffers-Visiting-Blobs" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Blobs</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="9-Customizing"><a href="#9-Customizing" class="headerlink" title="9 Customizing"></a>9 Customizing</h2><p>Both Git and Emacs are highly customizable. Magit is both a Git porcelain as well as an Emacs package, so it makes sense to customize it using both Git variables as well as Emacs options. However this flexibility doesn’t come without problems, including but not limited to the following.</p>
+<ul>
+<li><p>Some Git variables automatically have an effect in Magit without requiring any explicit support. Sometimes that is desirable - in other cases, it breaks Magit.</p>
+<p>When a certain Git setting breaks Magit but you want to keep using that setting on the command line, then that can be accomplished by overriding the value for Magit only by appending something like <code>(&quot;-c&quot; &quot;some.variable=compatible-value&quot;)</code> to <code>magit-git-global-arguments</code>.</p>
+</li>
+<li><p>Certain settings like <code>fetch.prune=true</code> are respected by Magit commands (because they simply call the respective Git command) but their value is not reflected in the respective transient buffers. In this case the <code>--prune</code> argument in <code>magit-fetch</code> might be active or inactive, but that doesn’t keep the Git variable from being honored by the suffix commands anyway. So pruning might happen despite the <code>--prune</code> arguments being displayed in a way that seems to indicate that no pruning will happen.</p>
+</li>
+</ul>
+<p>I intend to address these and similar issues in a future release.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Per_002dRepository-Configuration.html#Per_002dRepository-Configuration" target="_blank" rel="noopener">Per-Repository Configuration</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Essential-Settings.html#Essential-Settings" target="_blank" rel="noopener">Essential Settings</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="10-Plumbing"><a href="#10-Plumbing" class="headerlink" title="10 Plumbing"></a>10 Plumbing</h2><p>The following sections describe how to use several of Magit’s core abstractions to extend Magit itself or implement a separate extension.</p>
+<p>A few of the low-level features used by Magit have been factored out into separate libraries/packages, so that they can be used by other packages, without having to depend on Magit. See <a href="https://magit.vc/manual/with-editor/index.html#Top" target="_blank" rel="noopener">(with-editor)Top</a> for information about <code>with-editor</code>. <code>transient</code> doesn’t have a manual yet.</p>
+<p>If you are trying to find an unused key that you can bind to a command provided by your own Magit extension, then checkout <a href="https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry" target="_blank" rel="noopener">https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry</a>.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/Calling-Git.html#Calling-Git" target="_blank" rel="noopener">Calling Git</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Section-Plumbing.html#Section-Plumbing" target="_blank" rel="noopener">Section Plumbing</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Refreshing-Buffers.html#Refreshing-Buffers" target="_blank" rel="noopener">Refreshing Buffers</a>:</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/Conventions.html#Conventions" target="_blank" rel="noopener">Conventions</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Appendix-A-FAQ"><a href="#Appendix-A-FAQ" class="headerlink" title="Appendix A FAQ"></a>Appendix A FAQ</h2><p>The next two nodes lists frequently asked questions. For a list of frequently <strong>and recently</strong>asked questions, i.e. questions that haven’t made it into the manual yet, see<a href="https://github.com/magit/magit/wiki/FAQ" target="_blank" rel="noopener">https://github.com/magit/magit/wiki/FAQ</a>.</p>
+<p>Please also use the <a href="https://magit.vc/manual/magit/Debugging-Tools.html#Debugging-Tools" target="_blank" rel="noopener">Debugging Tools</a>.</p>
+<table>
+<thead>
+<tr>
+<th>• <a href="https://magit.vc/manual/magit/FAQ-_002d-How-to-_2026_003f.html#FAQ-_002d-How-to-_2026_003f" target="_blank" rel="noopener">FAQ - How to …?</a>:</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>• <a href="https://magit.vc/manual/magit/FAQ-_002d-Issues-and-Errors.html#FAQ-_002d-Issues-and-Errors" target="_blank" rel="noopener">FAQ - Issues and Errors</a>:</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -4338,526 +5127,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/18/date-and-time-in-emacs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gabriel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DummyHead">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/18/date-and-time-in-emacs/" class="post-title-link" itemprop="url">Date and Time in Emacs</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-18 09:07:05" itemprop="dateCreated datePublished" datetime="2019-05-18T09:07:05+08:00">2019-05-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-02 16:03:40" itemprop="dateModified" datetime="2019-06-02T16:03:40+08:00">2019-06-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-orgmode/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - orgmode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/18/date-and-time-in-emacs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/18/date-and-time-in-emacs/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="8-1-Timestamps-Deadlines-and-Scheduling"><a href="#8-1-Timestamps-Deadlines-and-Scheduling" class="headerlink" title="8.1 Timestamps, Deadlines and Scheduling"></a>8.1 Timestamps, Deadlines and Scheduling</h2><p>A timestamp is a specification of a date (possibly with a time or a range of times) in a special format, either ‘<2003-09-16 tue>’ or ‘<2003-09-16 tue 09:39>’ or ‘<2003-09-16 tue 12:00-12:30>’[^1]  A timestamp can appear anywhere in the headline or body of an Org tree entry. Its presence causes entries to be shown on specific dates in the agenda (see <a href="https://orgmode.org/manual/Weekly_002fdaily-agenda.html#Weekly_002fdaily-agenda" target="_blank" rel="noopener">Weekly/daily agenda</a>). We distinguish:</2003-09-16></2003-09-16></2003-09-16></p>
-<blockquote>
-<p>timestamp, 几个基本概念与变量，<br>时间戳的顺序，appointment(schedule), 　repeater, 还有time range.<br>所以此处是时间戳, appointment(scheduel)</p>
-</blockquote>
-<ol>
-<li><p>Plain timestamp; Event; Appointment</p>
-<p>A simple timestamp just assigns a date/time to an item. This is just like writing down an appointment or event in a paper agenda. In the agenda display, the headline of an entry associated with a plain timestamp is shown exactly on that date.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="number">2006</span><span class="number">-11</span><span class="number">-01</span> Wed <span class="number">19</span>:<span class="number">15</span>&gt; </span><br><span class="line">* Discussion on climate change   </span><br><span class="line">&lt;<span class="number">2006</span><span class="number">-11</span><span class="number">-02</span> Thu <span class="number">20</span>:<span class="number">00</span><span class="number">-22</span>:<span class="number">00</span>&gt; `</span><br></pre></td></tr></table></figure>
-<ol start="2">
-<li>Tmestamp with repeater interval(repeater)</li>
-</ol>
-<p>A timestamp may contain a <em>repeater interval</em>, indicating that it applies not only on the given date, but again and again after a certain interval of N days (d), weeks (w), months (m), or years (y). The following shows up in the agenda every Wednesday:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Pick up Sam at school   </span><br><span class="line">&lt;<span class="number">2007</span><span class="number">-05</span><span class="number">-16</span> Wed <span class="number">12</span>:<span class="number">30</span> +<span class="number">1</span>w&gt;q</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Diary-style sexp entries (这一项可以去掉)</p>
-<p>For more complex date specifications, Org mode supports using the special sexp diary entries implemented in the Emacs calendar/diary package. For example, with optional time:</p>
-</li>
-</ol>
-<p>​          &lt;%%(diary-float t 4 2)&gt;</p>
-<ol start="4">
-<li><p>Time/Date range</p>
-<p>Two timestamps connected by ‘–’ denote a range. The headline is shown on the first and last day of the range, and on any dates that are displayed and fall in the range. Here is an example:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">** Meeting <span class="keyword">in</span> Amsterdam</span><br><span class="line">   &lt;<span class="number">2004</span><span class="number">-08</span><span class="number">-23</span> Mon&gt;--&lt;<span class="number">2004</span><span class="number">-08</span><span class="number">-26</span> Thu&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Inactive timestamp</p>
-<p>Just like a plain timestamp, but with square brackets instead of angular ones. These timestamps are inactive in the sense that they do <em>not</em> trigger an entry to show up in the agenda.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Gillian comes late <span class="keyword">for</span> the fifth time   </span><br><span class="line">[<span class="number">2006</span><span class="number">-11</span><span class="number">-01</span> Wed]</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<blockquote>
-<p>interval(range), repeater, </p>
-</blockquote>
-<h2 id="8-2-Creating-Timestamps"><a href="#8-2-Creating-Timestamps" class="headerlink" title="8.2 Creating Timestamps"></a>8.2 Creating Timestamps</h2><p>For Org mode to recognize timestamps, they need to be in the specific format. All commands listed below produce timestamps in the correct format.</p>
-<ul>
-<li><p>C-c . (<code>org-time-stamp</code>)</p>
-<p>Prompt for a date and insert a corresponding timestamp. When point is at an existing timestamp in the buffer, the command is used to modify this timestamp instead of inserting a new one. When this command is used twice in succession, a time range is inserted.When called with a prefix argument, use the alternative format which contains date and time. The default time can be rounded to multiples of 5 minutes. See the option <code>org-time-stamp-rounding-minutes</code>.With two prefix arguments, insert an active timestamp with the current time without prompting.</p>
-</li>
-<li><p>C-c &gt; (<code>org-goto-calendar</code>)</p>
-<p>Access the Emacs calendar for the current date. If there is a timestamp in the current line, go to the corresponding date instead.</p>
-</li>
-</ul>
-<blockquote>
-<p>只有以上两个常用的快捷键,</p>
-<p><2019-05-16 thu> C-c C-.</2019-05-16></p>
-<p><2019-05-16 thu 15:45> #C-u C-c C-.</2019-05-16></p>
-<p><2019-05-16 thu 15:46>–<2019-05-16 thu 15:46> #Consecutive </2019-05-16></2019-05-16></p>
-</blockquote>
-<p>另外还有两节无关紧要的内容.</p>
-<h4 id="8-2-1-The-Org-Manual-The-date-time-prompt"><a href="#8-2-1-The-Org-Manual-The-date-time-prompt" class="headerlink" title="8.2.1 The Org Manual: The date/time prompt"></a>8.2.1 <a href="https://orgmode.org/manual/The-date_002ftime-prompt.html#The-date_002ftime-prompt" target="_blank" rel="noopener">The Org Manual: The date/time prompt</a></h4><h4 id="8-2-2-The-Org-Manual-Custom-time-format"><a href="#8-2-2-The-Org-Manual-Custom-time-format" class="headerlink" title="8.2.2 The Org Manual: Custom time format"></a>8.2.2 <a href="https://orgmode.org/manual/Custom-time-format.html#Custom-time-format" target="_blank" rel="noopener">The Org Manual: Custom time format</a></h4><p>q</p>
-<h2 id="8-3-Deadlines-and-Scheduling"><a href="#8-3-Deadlines-and-Scheduling" class="headerlink" title="8.3 Deadlines and Scheduling"></a>8.3 Deadlines and Scheduling</h2><p>A timestamp may be preceded by special keywords to facilitate planning. Both the timestamp and the keyword have to be positioned immediately after the task they refer to.</p>
-<ul>
-<li><p>‘DEADLINE’</p>
-<p>Meaning: the task (most likely a TODO item, though not necessarily) is supposed to be finished on that date.</p>
-<p>On the deadline date, the task is listed in the agenda. In addition, the agenda for <em>today</em> carries a warning about the approaching or missed deadline, starting <code>org-deadline-warning-days</code>before the due date, and continuing until the entry is marked DONE. An example:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*** TODO write article about the Earth <span class="keyword">for</span> the Guide</span><br><span class="line">    DEADLINE: &lt;<span class="number">2004</span><span class="number">-02</span><span class="number">-29</span> Sun&gt;</span><br><span class="line">    The editor <span class="keyword">in</span> charge <span class="keyword">is</span> [[bbdb:Ford Prefect]]</span><br></pre></td></tr></table></figure>
-<p>You can specify a different lead time for warnings for a specific deadlines using the following syntax. Here is an example with a warning period of 5 days </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEADLINE: &lt;2004-02-29 Sun -5d&gt;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>宕开一笔, 这里的-5d与find中处理时间的思路是一致的.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;      +n     <span class="keyword">for</span> greater than n,</span><br><span class="line">&gt;      - n     <span class="keyword">for</span> less than n,</span><br><span class="line">&gt;        n      <span class="keyword">for</span> exactly n.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>This warning is deactivated if the task gets scheduled and you set <code>org-agenda-skip-deadline-prewarning-if-scheduled</code> to <code>t</code>.</p>
-</li>
-<li><p>‘SCHEDULED’</p>
-<p>Meaning: you are planning to start working on that task on the given date.</p>
-<p>The headline is listed under the given date<a href="https://orgmode.org/manual/Deadlines-and-Scheduling.html#FOOT66" target="_blank" rel="noopener">66</a>. In addition, a reminder that the scheduled date has passed is present in the compilation for <em>today</em>, until the entry is marked DONE, i.e., the task is automatically forwarded until completed.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*** TODO Call Trillian <span class="keyword">for</span> a date on New Years Eve.</span><br><span class="line">    SCHEDULED: &lt;<span class="number">2004</span><span class="number">-12</span><span class="number">-25</span> Sat&gt;</span><br></pre></td></tr></table></figure>
-<p>If you want to <em>delay</em> the display of this task in the agenda, use <code>SCHEDULED: &lt;2004-12-25 Sat -2d&gt;</code>: the task is still scheduled on the 25th but will appear two days later. In case the task contains a repeater, the delay is considered to affect all occurrences; if you want the delay to only affect the first scheduled occurrence of the task, use ‘–2d’ instead. See <code>org-scheduled-delay-days</code> and <code>org-agenda-skip-scheduled-delay-if-deadline</code> for details on how to control this globally or per agenda.</p>
-<blockquote>
-<p><strong>Important:</strong> </p>
-<p>Setting a date for a meeting is just <strong>a simple appointment</strong>, you should mark this entry with a simple plain timestamp, to get this item shown on the date where it applies. This is a frequent misunderstanding by Org users. In Org mode, <em>scheduling</em> means setting a date when you want to start working on an action item.</p>
-<p>区别schedule and appointments.</p>
-</blockquote>
-</li>
-</ul>
-<p>You may use timestamps with repeaters in scheduling and deadline entries. Org mode issues early and late warnings based on the assumption that the timestamp represents the <em>nearest instance</em> of the repeater. However, the use of diary S-exp entries like</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%%(diary-float t 42)&gt;</span><br></pre></td></tr></table></figure>
-<p>in scheduling and deadline timestamps is limited. Org mode does not know enough about the internals of each S-exp function to issue early and late warnings. However, it shows the item on each day where the S-exp entry matches.</p>
-<blockquote>
-<p>总结<br>核心收获一是区别appointment and schedule, 二是对deadline和schedule的准确定义.</p>
-</blockquote>
-<h3 id="8-3-1-Inserting-deadlines-or-schedules"><a href="#8-3-1-Inserting-deadlines-or-schedules" class="headerlink" title="8.3.1 Inserting deadlines or schedules"></a>8.3.1 Inserting deadlines or schedules</h3><p>The following commands allow you to quickly insert a deadline or to schedule an item:<a href="https://orgmode.org/manual/Inserting-deadline_002fschedule.html#FOOT67" target="_blank" rel="noopener">67</a></p>
-<ul>
-<li><p>C-c C-d (<code>org-deadline</code>)</p>
-<p>Insert ‘DEADLINE’ keyword along with a stamp. The insertion happens in the line directly following the headline. Remove any ‘CLOSED’ timestamp . When called with a prefix argument, also remove any existing deadline from the entry. Depending on the variable <code>org-log-redeadline</code>, take a note when changing an existing deadline<a href="https://orgmode.org/manual/Inserting-deadline_002fschedule.html#FOOT68" target="_blank" rel="noopener">68</a>.</p>
-</li>
-<li><p>C-c C-s (<code>org-schedule</code>)</p>
-<p>Insert ‘SCHEDULED’ keyword along with a stamp. The insertion happens in the line directly following the headline. Remove any ‘CLOSED’ timestamp. When called with a prefix argument, also remove the scheduling date from the entry. Depending on the variable <code>org-log-reschedule</code>, take a note when changing an existing scheduling time<a href="https://orgmode.org/manual/Inserting-deadline_002fschedule.html#FOOT69" target="_blank" rel="noopener">69</a>.</p>
-</li>
-<li><p>C-c C-x C-k (<code>org-mark-entry-for-agenda-action</code>)</p>
-<p>Mark the current entry for agenda action. After you have marked the entry like this, you can open the agenda or the calendar to find an appropriate date. With point on the selected date, pressk s or k d to schedule the marked item.</p>
-</li>
-<li><p>C-c / d (<code>org-check-deadlines</code>)</p>
-<p>Create a sparse tree with all deadlines that are either past-due, or which will become due within <code>org-deadline-warning-days</code>. With C-u prefix, show all deadlines in the file. With a numeric prefix, check that many days. For example, C-1 C-c / d shows all deadlines due tomorrow.</p>
-</li>
-<li><p>C-c / b (<code>org-check-before-date</code>)</p>
-<p>Sparse tree for deadlines and scheduled items before a given date.</p>
-</li>
-<li><p>C-c / a (<code>org-check-after-date</code>)</p>
-<p>Sparse tree for deadlines and scheduled items after a given date.</p>
-</li>
-</ul>
-<p>Note that <code>org-schedule</code> and <code>org-deadline</code> supports setting the date by indicating a relative time e.g., ‘+1d’ sets the date to the next day after today, and ‘–1w’ sets the date to the previous week before any current timestamp.</p>
-<blockquote>
-<p>注意事项, 在headline与schedule, deadline之间不要插入任何内容.Do not put any text between this line and the headline.</p>
-</blockquote>
-<h3 id="8-3-2-Repeated-tasks"><a href="#8-3-2-Repeated-tasks" class="headerlink" title="8.3.2 Repeated tasks"></a>8.3.2 Repeated tasks</h3><p>Some tasks need to be repeated again and again. Org mode helps to organize such tasks using a so-called repeater in a ‘DEADLINE’, ‘SCHEDULED’, or plain timestamps<a href="https://orgmode.org/manual/Repeated-tasks.html#FOOT70" target="_blank" rel="noopener">70</a>. In the following example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">** TODO Pay the rent</span><br><span class="line">   DEADLINE: &lt;2005-10-01 Sat +1m&gt;</span><br></pre></td></tr></table></figure>
-<p>the ‘+1m’ is a repeater; the intended interpretation is that the task has a deadline on ‘<2005-10-01>’ and repeats itself every (one) month starting from that time. You can use yearly, monthly, weekly, daily and hourly repeat cookies by using the ‘y’, ‘w’, ‘m’, ‘d’ and ‘h’ letters. If you need both a repeater and a special warning period in a deadline entry, the repeater should come first and the warning period last</2005-10-01></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEADLINE: &lt;2005-10-01 Sat +1m -3d&gt;</span><br></pre></td></tr></table></figure>
-<p>Deadlines and scheduled items produce entries in the agenda when they are over-due, so it is important to be able to mark such an entry as DONE once you have done so. When you mark a ‘DEADLINE’ or a ‘SCHEDULED’ with the TODO keyword ‘DONE’, it no longer produces entries in the agenda. The problem with this is, however, is that then also the <em>next</em> instance of the repeated entry will not be active. Org mode deals with this in the following way: when you try to mark such an entry DONE, using C-c C-t, it shifts the base date of the repeating timestamp by the repeater interval, and immediately sets the entry state back to TODO<a href="https://orgmode.org/manual/Repeated-tasks.html#FOOT71" target="_blank" rel="noopener">71</a>. In the example above, setting the state to DONE would actually switch the date like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">** TODO Pay the rent</span><br><span class="line">   DEADLINE: &lt;2005-11-01 Tue +1m&gt;</span><br></pre></td></tr></table></figure>
-<p>To mark a task with a repeater as DONE, use C– 1 C-c C-t, i.e., <code>org-todo</code> with a numeric prefix argument of ‘-1’ </p>
-<blockquote>
-<p>prefix argument是终极的done</p>
-</blockquote>
-<p>A timestamp<a href="https://orgmode.org/manual/Repeated-tasks.html#FOOT72" target="_blank" rel="noopener">72</a> is added under the deadline, to keep a record that you actually acted on the previous instance of this deadline.</p>
-<p>As a consequence of shifting the base date, this entry is no longer visible in the agenda when checking past dates, but all future instances will be visible.</p>
-<p>With the ‘+1m’ cookie, the date shift is always exactly one month. So if you have not paid the rent for three months, marking this entry DONE still keeps it as an overdue deadline. Depending on the task, this may not be the best way to handle it. For example, if you forgot to call your father for 3 weeks, it does not make sense to call him 3 times in a single day to make up for it. Finally, there are tasks like changing batteries which should always repeat a certain time <em>after</em> the last time you did it. For these tasks, Org mode has special repeaters ‘++’ and ‘.+’. For example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">** TODO Call Father</span><br><span class="line">   DEADLINE: &lt;2008-02-10 Sun ++1w&gt;</span><br><span class="line">   Marking this DONE shifts the date by at least one week, but also</span><br><span class="line">   by as many weeks as it takes to get this date into the future.</span><br><span class="line">   However, it stays on a Sunday, even if you called and marked it</span><br><span class="line">   done on Saturday.</span><br><span class="line"></span><br><span class="line">** TODO Empty kitchen trash</span><br><span class="line">   DEADLINE: &lt;2008-02-08 Fri 20:00 ++1d&gt;</span><br><span class="line">   Marking this DONE shifts the date by at least one day, and also</span><br><span class="line">   by as many days as it takes to get the timestamp into the future.</span><br><span class="line">   Since there is a time in the timestamp, the next deadline in the</span><br><span class="line">   future will be on today&apos;s date if you complete the task before</span><br><span class="line">   20:00.</span><br><span class="line"></span><br><span class="line">** TODO Check the batteries in the smoke detectors</span><br><span class="line">   DEADLINE: &lt;2005-11-01 Tue .+1m&gt;</span><br><span class="line">   Marking this DONE will shift the date to one month after today.</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>这里的两个选项好有意思呀.<br>还有一点只有appointment的meeting使用plain.</p>
-</blockquote>
-<p>You may have both scheduling and deadline information for a specific task. If the repeater is set for the scheduling information only, you probably want the repeater to be ignored after the deadline. If so, set the variable <code>org-agenda-skip-scheduled-if-deadline-is-shown</code> to <code>repeated-after-deadline</code>. However, any scheduling information without a repeater is no longer relevant once the task is done, and thus, removed upon repeating the task. If you want both scheduling and deadline information to repeat after the same interval, set the same repeater for both timestamps.</p>
-<p>An alternative to using a repeater is to create a number of copies of a task subtree, with dates shifted in each copy. The command C-c C-x c was created for this purpose; it is described in<a href="https://orgmode.org/manual/Structure-Editing.html#Structure-Editing" target="_blank" rel="noopener">Structure Editing</a>.</p>
-<h2 id="8-4-Clocking-Work-Time"><a href="#8-4-Clocking-Work-Time" class="headerlink" title="8.4 Clocking Work Time"></a>8.4 Clocking Work Time</h2><p>Org mode allows you to clock the time you spend on specific tasks in a project. When you start working on an item, you can start the clock. When you stop working on that task, or when you mark the task done, the clock is stopped and the corresponding time interval is recorded. It also computes the total time spent on each subtree<a href="https://orgmode.org/manual/Clocking-Work-Time.html#FOOT73" target="_blank" rel="noopener">73</a> of a project. And it remembers a history or tasks recently clocked, to that you can jump quickly between a number of tasks absorbing your time.</p>
-<p>To save the clock history across Emacs sessions, use:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(setq org-clock-persist &apos;history)</span><br><span class="line">(org-clock-persistence-insinuate)</span><br></pre></td></tr></table></figure>
-<p>When you clock into a new task after resuming Emacs, the incomplete clock<a href="https://orgmode.org/manual/Clocking-Work-Time.html#FOOT74" target="_blank" rel="noopener">74</a> is retrieved (see <a href="https://orgmode.org/manual/Resolving-idle-time.html#Resolving-idle-time-_00281_0029" target="_blank" rel="noopener">Resolving idle time (1)</a>) and you are prompted about what to do with it.</p>
-<h3 id="8-4-1-Clocking-commands"><a href="#8-4-1-Clocking-commands" class="headerlink" title="8.4.1 Clocking commands"></a>8.4.1 Clocking commands</h3><ul>
-<li><p>C-c C-x C-i (<code>org-clock-in</code>)</p>
-<p>Start the clock on the current item (clock-in). This inserts the CLOCK keyword together with a timestamp. If this is not the first clocking of this item, the multiple CLOCK lines are wrapped into a ‘LOGBOOK’ drawer (see also the variable <code>org-clock-into-drawer</code>). You can also overrule the setting of this variable for a subtree by setting a ‘CLOCK_INTO_DRAWER’ or ‘LOG_INTO_DRAWER’ property. When called with a C-u prefix argument, select the task from a list of recently clocked tasks. With two C-u C-u prefixes, clock into the task at point and mark it as the default task; the default task is always be available with letter d when selecting a clocking task. With three C-u C-u C-u prefixes, force continuous clocking by starting the clock when the last clock stopped.While the clock is running, Org shows the current clocking time in the mode line, along with the title of the task. The clock time shown is all time ever clocked for this task and its children. If the task has an effort estimate (see <a href="https://orgmode.org/manual/Effort-Estimates.html#Effort-Estimates" target="_blank" rel="noopener">Effort Estimates</a>), the mode line displays the current clocking time against it<a href="https://orgmode.org/manual/Clocking-commands.html#FOOT75" target="_blank" rel="noopener">75</a>. If the task is a repeating one (see <a href="https://orgmode.org/manual/Repeated-tasks.html#Repeated-tasks" target="_blank" rel="noopener">Repeated tasks</a>), show only the time since the last reset of the task<a href="https://orgmode.org/manual/Clocking-commands.html#FOOT76" target="_blank" rel="noopener">76</a>. You can exercise more control over show time with the ‘CLOCK_MODELINE_TOTAL’ property. It may have the values ‘current’ to show only the current clocking instance, ‘today’ to show all time clocked on this tasks today—see also the variable <code>org-extend-today-until</code>, <code>all</code> to include all time, or <code>auto</code> which is the default<a href="https://orgmode.org/manual/Clocking-commands.html#FOOT77" target="_blank" rel="noopener">77</a>. Clicking with mouse-1 onto the mode line entry pops up a menu with clocking options.</p>
-</li>
-<li><p>C-c C-x C-o (<code>org-clock-out</code>)</p>
-<p>Stop the clock (clock-out). This inserts another timestamp at the same location where the clock was last started. It also directly computes the resulting time in inserts it after the time range as ‘=&gt;HH:MM’. See the variable <code>org-log-note-clock-out</code> for the possibility to record an additional note together with the clock-out timestamp<a href="https://orgmode.org/manual/Clocking-commands.html#FOOT78" target="_blank" rel="noopener">78</a>.</p>
-</li>
-<li><p>C-c C-x C-x (<code>org-clock-in-last</code>)</p>
-<p>Re-clock the last clocked task. With one C-u prefix argument, select the task from the clock history. With two C-u prefixes, force continuous clocking by starting the clock when the last clock stopped.</p>
-</li>
-<li><p>C-c C-x C-e (<code>org-clock-modify-effort-estimate</code>)</p>
-<p>Update the effort estimate for the current clock task.</p>
-</li>
-<li><p>C-c C-c or C-c C-y (<code>org-evaluate-time-range</code>)</p>
-<p>Recompute the time interval after changing one of the timestamps. This is only necessary if you edit the timestamps directly. If you change them with S-<cursor> keys, the update is automatic.</cursor></p>
-</li>
-<li><p>C-S-UP (<code>org-clock-timestamps-up</code>)</p>
-</li>
-<li><p>C-S-DOWN (<code>org-clock-timestamps-down</code>)</p>
-<p>On CLOCK log lines, increase/decrease both timestamps so that the clock duration keeps the same value.</p>
-</li>
-<li><p>S-M-UP (<code>org-timestamp-up</code>)</p>
-</li>
-<li><p>S-M-DOWN (<code>org-timestamp-down</code>)</p>
-<p>On ‘CLOCK’ log lines, increase/decrease the timestamp at point and the one of the previous, or the next, clock timestamp by the same duration. For example, if you hit S-M-UP to increase a clocked-out timestamp by five minutes, then the clocked-in timestamp of the next clock is increased by five minutes.</p>
-</li>
-<li><p>C-c C-t (<code>org-todo</code>)</p>
-<p>Changing the TODO state of an item to DONE automatically stops the clock if it is running in this same item.</p>
-</li>
-<li><p>C-c C-x C-q (<code>org-clock-cancel</code>)</p>
-<p>Cancel the current clock. This is useful if a clock was started by mistake, or if you ended up working on something else.</p>
-</li>
-<li><p>C-c C-x C-j (<code>org-clock-goto</code>)</p>
-<p>Jump to the headline of the currently clocked in task. With a C-u prefix argument, select the target task from a list of recently clocked tasks.</p>
-</li>
-<li><p>C-c C-x C-d (<code>org-clock-display</code>)</p>
-<p>Display time summaries for each subtree in the current buffer. This puts overlays at the end of each headline, showing the total time recorded under that heading, including the time of any subheadings. You can use visibility cycling to study the tree, but the overlays disappear when you change the buffer (see variable <code>org-remove-highlights-with-change</code>) or press C-c C-c.</p>
-</li>
-</ul>
-<p>The l key may be used in the agenda (see <a href="https://orgmode.org/manual/Weekly_002fdaily-agenda.html#Weekly_002fdaily-agenda" target="_blank" rel="noopener">Weekly/daily agenda</a>) to show which tasks have been worked on or closed during a day.</p>
-<p><strong>Important:</strong> note that both <code>org-clock-out</code> and <code>org-clock-in-last</code> can have a global keybinding and do not modify the window disposition.</p>
-<blockquote>
-<p>这里的命令有点多, 只要先看clock-in和clock-out便可.</p>
-</blockquote>
-<h3 id="8-4-2-The-clock-table"><a href="#8-4-2-The-clock-table" class="headerlink" title="8.4.2 The clock table"></a>8.4.2 The clock table</h3><blockquote>
-<p>这一章全部都是没用的，只有前面的三个命令有用．<br>org-clock-report, org-dbclok-update, C-u C-c C-x C-u全部更新．</p>
-</blockquote>
-<p>Org mode can produce quite complex reports based on the time clocking information. Such a report is called a <em>clock table</em>, because it is formatted as one or several Org tables.</p>
-<ul>
-<li><p>C-c C-x C-r (<code>org-clock-report</code>)<br>Insert a dynamic block (see <a href="https://orgmode.org/manual/Dynamic-Blocks.html#Dynamic-Blocks" target="_blank" rel="noopener">Dynamic Blocks</a>) containing a clock report as an Org mode table into the current file. When point is at an existing clock table, just update it. When called with a prefix argument, jump to the first clock report in the current document and update it. The clock table includes archived trees.</p>
-</li>
-<li><p>C-c C-c or C-c C-x C-u (<code>org-dblock-update</code>)<br>Update dynamic block at point. Point needs to be in the ‘BEGIN’ line of the dynamic block.</p>
-</li>
-<li><p>C-u C-c C-x C-u</p>
-<p>Update all dynamic blocks (see <a href="https://orgmode.org/manual/Dynamic-Blocks.html#Dynamic-Blocks" target="_blank" rel="noopener">Dynamic Blocks</a>). This is useful if you have several clock table blocks in a buffer.</p>
-</li>
-<li><p>S-LEFT</p>
-</li>
-<li><p>S-RIGHT (<code>org-clocktable-try-shift</code>)</p>
-<p>Shift the current ‘:block’ interval and update the table. Point needs to be in the ‘#+BEGIN: clocktable’ line for this command. If ‘:block’ is ‘today’, it is shifted to ‘today-1’, etc.</p>
-</li>
-</ul>
-<p>Here is an example of the frame for a clock table as it is inserted into the buffer with the C-c C-x C-r command:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN: clocktable :maxlevel 2 :emphasize nil :scope file</span><br><span class="line">#+END: clocktable</span><br></pre></td></tr></table></figure>
-<p>The ‘#+BEGIN’ line and specify a number of options to define the scope, structure, and formatting of the report. Defaults for all these options can be configured in the variable <code>org-clocktable-defaults</code>.</p>
-<p>First there are options that determine which clock entries are to be selected:</p>
-<ul>
-<li><p>‘:maxlevel’</p>
-<p>Maximum level depth to which times are listed in the table. Clocks at deeper levels are summed into the upper level.</p>
-</li>
-<li><p>‘:scope’</p>
-<p>The scope to consider. This can be any of the following:‘nil’the current buffer or narrowed region‘file’the full current buffer‘subtree’the subtree where the clocktable is located‘treeN’the surrounding level N tree, for example ‘tree3’‘tree’the surrounding level 1 tree‘agenda’all agenda files‘(“file” …)’scan these files‘FUNCTION’scan files returned by calling FUNCTION with no argument‘file-with-archives’current file and its archives‘agenda-with-archives’all agenda files, including archives</p>
-</li>
-<li><p>‘:block’</p>
-<p>The time block to consider. This block is specified either absolutely, or relative to the current time and may be any of these formats:‘2007-12-31’New year eve 2007‘2007-12’December 2007‘2007-W50’ISO-week 50 in 2007‘2007-Q2’2nd quarter in 2007‘2007’the year 2007‘today’, ‘yesterday’, ‘today-N’a relative day‘thisweek’, ‘lastweek’, ‘thisweek-N’a relative week‘thismonth’, ‘lastmonth’, ‘thismonth-N’a relative month‘thisyear’, ‘lastyear’, ‘thisyear-N’a relative year‘untilnow’<a href="https://orgmode.org/manual/The-clock-table.html#FOOT79" target="_blank" rel="noopener">79</a>all clocked time everWhen this option is not set, Org falls back to the value in <code>org-clock-display-default-range</code>, which defaults to the current year.Use S-LEFT or S-RIGHT to shift the time interval.</p>
-</li>
-<li><p>‘:tstart’</p>
-<p>A time string specifying when to start considering times. Relative times like ‘“<-2w>“’ can also be used. See <a href="https://orgmode.org/manual/Matching-tags-and-properties.html#Matching-tags-and-properties" target="_blank" rel="noopener">Matching tags and properties</a> for relative time syntax.</-2w></p>
-</li>
-<li><p>‘:tend’</p>
-<p>A time string specifying when to stop considering times. Relative times like ‘“<now>“’ can also be used. See <a href="https://orgmode.org/manual/Matching-tags-and-properties.html#Matching-tags-and-properties" target="_blank" rel="noopener">Matching tags and properties</a> for relative time syntax.</now></p>
-</li>
-<li><p>‘:wstart’</p>
-<p>The starting day of the week. The default is 1 for Monday.</p>
-</li>
-<li><p>‘:mstart’</p>
-<p>The starting day of the month. The default is 1 for the first.</p>
-</li>
-<li><p>‘:step’</p>
-<p>Set to <code>week</code> or <code>day</code> to split the table into chunks. To use this, <code>:block</code> or <code>:tstart</code>, <code>:tend</code> are needed.</p>
-</li>
-<li><p>‘:stepskip0’</p>
-<p>When non-<code>nil</code>, do not show steps that have zero time.</p>
-</li>
-<li><p>‘:fileskip0’</p>
-<p>When non-<code>nil</code>, do not show table sections from files which did not contribute.</p>
-</li>
-<li><p>‘:match’</p>
-<p>A tags match to select entries that should contribute. See <a href="https://orgmode.org/manual/Matching-tags-and-properties.html#Matching-tags-and-properties" target="_blank" rel="noopener">Matching tags and properties</a> for the match syntax.</p>
-</li>
-</ul>
-<p>Then there are options that determine the formatting of the table. There options are interpreted by the function <code>org-clocktable-write-default</code>, but you can specify your own function using the ‘:formatter’ parameter.</p>
-<ul>
-<li><p>‘:emphasize’</p>
-<p>When non-<code>nil</code>, emphasize level one and level two items.</p>
-</li>
-<li><p>‘:lang’</p>
-<p>Language<a href="https://orgmode.org/manual/The-clock-table.html#FOOT80" target="_blank" rel="noopener">80</a> to use for descriptive cells like “Task”.</p>
-</li>
-<li><p>‘:link’</p>
-<p>Link the item headlines in the table to their origins.</p>
-</li>
-<li><p>‘:narrow’</p>
-<p>An integer to limit the width of the headline column in the Org table. If you write it like ‘50!’, then the headline is also shortened in export.</p>
-</li>
-<li><p>‘:indent’</p>
-<p>Indent each headline field according to its level.</p>
-</li>
-<li><p>‘:tcolumns’</p>
-<p>Number of columns to be used for times. If this is smaller than ‘:maxlevel’, lower levels are lumped into one column.</p>
-</li>
-<li><p>‘:level’</p>
-<p>Should a level number column be included?</p>
-</li>
-<li><p>‘:sort’</p>
-<p>A cons cell containing the column to sort and a sorting type. E.g., ‘:sort (1 . ?a)’ sorts the first column alphabetically.</p>
-</li>
-<li><p>‘:compact’</p>
-<p>Abbreviation for ‘:level nil :indent t :narrow 40! :tcolumns 1’. All are overwritten except if there is an explicit ‘:narrow’.</p>
-</li>
-<li><p>‘:timestamp’</p>
-<p>A timestamp for the entry, when available. Look for ‘SCHEDULED’, ‘DEADLINE’, ‘TIMESTAMP’ and ‘TIMESTAMP_IA’ special properties (see <a href="https://orgmode.org/manual/Special-Properties.html#Special-Properties" target="_blank" rel="noopener">Special Properties</a>), in this order.</p>
-</li>
-<li><p>‘:tags’</p>
-<p>When this flag is non-<code>nil</code>, show the headline’s tags.</p>
-</li>
-<li><p>‘:properties’</p>
-<p>List of properties shown in the table. Each property gets its own column.</p>
-</li>
-<li><p>‘:inherit-props’</p>
-<p>When this flag is non-<code>nil</code>, the values for ‘:properties’ are inherited.</p>
-</li>
-<li><p>‘:formula’</p>
-<p>Content of a ‘TBLFM’ keyword to be added and evaluated. As a special case, ‘:formula %’ adds a column with % time. If you do not specify a formula here, any existing formula below the clock table survives updates and is evaluated.</p>
-</li>
-<li><p>‘:formatter’</p>
-<p>A function to format clock data and insert it into the buffer.</p>
-</li>
-</ul>
-<p>To get a clock summary of the current level 1 tree, for the current day, you could write:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN: clocktable :maxlevel 2 :block today :scope tree1 :link t</span><br><span class="line">#+END: clocktable</span><br></pre></td></tr></table></figure>
-<p>To use a specific time range you could write<a href="https://orgmode.org/manual/The-clock-table.html#FOOT81" target="_blank" rel="noopener">81</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN: clocktable :tstart &quot;&lt;2006-08-10 Thu 10:00&gt;&quot;</span><br><span class="line">                    :tend &quot;&lt;2006-08-10 Thu 12:00&gt;&quot;</span><br><span class="line">#+END: clocktable</span><br></pre></td></tr></table></figure>
-<p>A range starting a week ago and ending right now could be written as</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN: clocktable :tstart &quot;&lt;-1w&gt;&quot; :tend &quot;&lt;now&gt;&quot;</span><br><span class="line">#+END: clocktable</span><br></pre></td></tr></table></figure>
-<p>A summary of the current subtree with % times would be</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN: clocktable :scope subtree :link t :formula %</span><br><span class="line">#+END: clocktable</span><br></pre></td></tr></table></figure>
-<p>A horizontally compact representation of everything clocked during last week would be</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN: clocktable :scope agenda :block lastweek :compact t</span><br><span class="line">#+END: clocktable</span><br></pre></td></tr></table></figure>
-<h3 id="8-4-3-Resolving-idle-time-and-continuous-clocking"><a href="#8-4-3-Resolving-idle-time-and-continuous-clocking" class="headerlink" title="8.4.3 Resolving idle time and continuous clocking"></a>8.4.3 Resolving idle time and continuous clocking</h3><h4 id="Resolving-idle-time"><a href="#Resolving-idle-time" class="headerlink" title="Resolving idle time"></a>Resolving idle time</h4><blockquote>
-<p>本章中的有用信息是可以通过 M-x org-resolve-clocks调出来时间调整的页面.</p>
-</blockquote>
-<p>If you clock in on a work item, and then walk away from your computer—perhaps to take a phone call—you often need to “resolve” the time you were away by either subtracting it from the current clock, or applying it to another one.</p>
-<p>By customizing the variable <code>org-clock-idle-time</code> to some integer, such as 10 or 15, Emacs can alert you when you get back to your computer after being idle for that many minutes<a href="https://orgmode.org/manual/Resolving-idle-time.html#FOOT82" target="_blank" rel="noopener">82</a>, and ask what you want to do with the idle time. There will be a question waiting for you when you get back, indicating how much idle time has passed constantly updated with the current amount, as well as a set of choices to correct the discrepancy:</p>
-<ul>
-<li><p>k</p>
-<p>To keep some or all of the minutes and stay clocked in, press k. Org asks how many of the minutes to keep. Press RET to keep them all, effectively changing nothing, or enter a number to keep that many minutes.</p>
-</li>
-<li><p>K</p>
-<p>If you use the shift key and press K, it keeps however many minutes you request and then immediately clock out of that task. If you keep all of the minutes, this is the same as just clocking out of the current task.</p>
-</li>
-<li><p>s</p>
-<p>To keep none of the minutes, use s to subtract all the away time from the clock, and then check back in from the moment you returned.</p>
-</li>
-<li><p>S</p>
-<p>To keep none of the minutes and just clock out at the start of the away time, use the shift key and press S. Remember that using shift always leave you clocked out, no matter which option you choose.</p>
-</li>
-<li><p>C</p>
-<p>To cancel the clock altogether, use C. Note that if instead of canceling you subtract the away time, and the resulting clock amount is less than a minute, the clock is still canceled rather than cluttering up the log with an empty entry.</p>
-</li>
-</ul>
-<p>What if you subtracted those away minutes from the current clock, and now want to apply them to a new clock? Simply clock in to any task immediately after the subtraction. Org will notice that you have subtracted time “on the books”, so to speak, and will ask if you want to apply those minutes to the next task you clock in on.</p>
-<p>There is one other instance when this clock resolution magic occurs. Say you were clocked in and hacking away, and suddenly your cat chased a mouse who scared a hamster that crashed into your UPS’s power button! You suddenly lose all your buffers, but thanks to auto-save you still have your recent Org mode changes, including your last clock in.</p>
-<p>If you restart Emacs and clock into any task, Org will notice that you have a dangling clock which was never clocked out from your last session. Using that clock’s starting time as the beginning of the unaccounted-for period, Org will ask how you want to resolve that time. The logic and behavior is identical to dealing with away time due to idleness; it is just happening due to a recovery event rather than a set amount of idle time.</p>
-<p>You can also check all the files visited by your Org agenda for dangling clocks at any time using M-x org-resolve-clocks RET (or C-c C-x C-z).</p>
-<h4 id="Continuous-clocking"><a href="#Continuous-clocking" class="headerlink" title="Continuous clocking"></a>Continuous clocking</h4><p>You may want to start clocking from the time when you clocked out the previous task. To enable this systematically, set <code>org-clock-continuously</code> to non-<code>nil</code>. Each time you clock in, Org retrieves the clock-out time of the last clocked entry for this session, and start the new clock from there.</p>
-<p>If you only want this from time to time, use three universal prefix arguments with <code>org-clock-in</code> and two C-u C-u with <code>org-clock-in-last</code>.</p>
-<h2 id="8-5-Effort-Estimates"><a href="#8-5-Effort-Estimates" class="headerlink" title="8.5 Effort Estimates"></a>8.5 Effort Estimates</h2><p>If you want to plan your work in a very detailed way, or if you need to produce offers with quotations of the estimated work effort, you may want to assign effort estimates to entries. If you are also clocking your work, you may later want to compare the planned effort with the actual working time, a great way to improve planning estimates. Effort estimates are stored in a special property ‘EFFORT’. You can set the effort for an entry with the following commands:</p>
-<ul>
-<li><p>C-c C-x e (<code>org-set-effort</code>)</p>
-<p>Set the effort estimate for the current entry. With a prefix argument, set it to the next allowed value—see below. This command is also accessible from the agenda with the e key.</p>
-</li>
-<li><p>C-c C-x C-e (<code>org-clock-modify-effort-estimate</code>)</p>
-<p>Modify the effort estimate of the item currently being clocked.</p>
-</li>
-</ul>
-<p>Clearly the best way to work with effort estimates is through column view (see <a href="https://orgmode.org/manual/Column-View.html#Column-View" target="_blank" rel="noopener">Column View</a>). You should start by setting up discrete values for effort estimates, and a ‘COLUMNS’ format that displays these values together with clock sums—if you want to clock your time. For a specific buffer you can use:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#+PROPERTY: Effort_ALL 0 0:10 0:30 1:00 2:00 3:00 4:00 5:00 6:00 7:00</span><br><span class="line">#+COLUMNS: %40ITEM(Task) %17Effort(Estimated Effort)&#123;:&#125; %CLOCKSUM</span><br></pre></td></tr></table></figure>
-<p>or, even better, you can set up these values globally by customizing the variables <code>org-global-properties</code> and <code>org-columns-default-format</code>. In particular if you want to use this setup also in the agenda, a global setup may be advised.</p>
-<p>The way to assign estimates to individual items is then to switch to column mode, and to use S-RIGHT and S-LEFT to change the value. The values you enter are immediately summed up in the hierarchy. In the column next to it, any clocked time is displayed.</p>
-<p>If you switch to column view in the daily/weekly agenda, the effort column summarizes the estimated work effort for each day<a href="https://orgmode.org/manual/Effort-Estimates.html#FOOT83" target="_blank" rel="noopener">83</a>, and you can use this to find space in your schedule. To get an overview of the entire part of the day that is committed, you can set the option <code>org-agenda-columns-add-appointments-to-effort-sum</code>. The appointments on a day that take place over a specified time interval are then also added to the load estimate of the day.</p>
-<p>Effort estimates can be used in secondary agenda filtering that is triggered with the / key in the agenda (see <a href="https://orgmode.org/manual/Agenda-Commands.html#Agenda-Commands" target="_blank" rel="noopener">Agenda Commands</a>). If you have these estimates defined consistently, two or three key presses narrow down the list to stuff that fits into an available time slot.</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li><a href="https://support.sas.com/documentation/cdl/en/lrdict/64316/HTML/default/viewer.htm#a003169814.htm" target="_blank" rel="noopener">Formats: Working with Dates and Times Using the ISO 8601 Basic and Extended Notations - 9.2</a></li>
-</ul>
-<p>find中的时间, atime, ctime, mtime  (-n * 24hours)<br>amin, cmin, min (n minutes)</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4904,7 +5173,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -5024,7 +5293,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">27</span>
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>

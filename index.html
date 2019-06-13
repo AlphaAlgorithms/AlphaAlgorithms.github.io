@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">28</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">28</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">29</span></a>
 
   </li>
 
@@ -312,6 +312,929 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/13/emacs-ipython-notebook/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/13/emacs-ipython-notebook/" class="post-title-link" itemprop="url">Emacs Ipython Notebook</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-13 08:43:39 / Modified: 08:45:24" itemprop="dateCreated datePublished" datetime="2019-06-13T08:43:39+08:00">2019-06-13</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/13/emacs-ipython-notebook/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/13/emacs-ipython-notebook/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>The <a href="https://github.com/millejoh/emacs-ipython-notebook" target="_blank" rel="noopener">Emacs IPython Notebook (EIN)</a> package provides a <a href="https://jupyter-notebook.readthedocs.io/en/stable/" target="_blank" rel="noopener">Jupyter Notebook</a> client and integrated REPL (like <a href="http://common-lisp.net/project/slime/" target="_blank" rel="noopener">SLIME</a>) in Emacs. EIN improves notebook editing by allowing you to use Emacs. It also expose IPython features such as code evaluation, object inspection and code completion. These features can be accessed anywhere in Emacs and improve Python code editing and reading in general in Emacs.</p>
+<p>Highlighted features:</p>
+<ul>
+<li>Copy/paste cells in and between notebooks.</li>
+<li>Console integration: You can easily connect to a kernel via a console application. This enables you to start debugging in the same kernel. It is even possible to connect a console over ssh <a href="https://millejoh.github.io/emacs-ipython-notebook/#id3" target="_blank" rel="noopener">1</a>.</li>
+<li>An IPython kernel can be “connected” to a buffer. This enables you to evaluate buffer/region using same kernel as notebook. Notebook goodies such as tooltip help, help browser and code completion are available in these buffers. <a href="https://millejoh.github.io/emacs-ipython-notebook/#id4" target="_blank" rel="noopener">2</a></li>
+<li>Jump to definition (go to the definition by executing <code>M-.</code> over an object).</li>
+<li>Execute code from an org-mode source block in a running kernel.</li>
+</ul>
+<p>Other notebook features:</p>
+<ul>
+<li>Inline images</li>
+<li>Auto/manual-completion </li>
+<li>Popup (tooltip) help</li>
+<li>Syntax highlighting in each cell type (Python/Markdown/ReST/HTML)</li>
+<li>Help browser (opens when executing <code>function?</code>)</li>
+<li>Traceback viewer</li>
+<li>Integration with the emacs debugger</li>
+</ul>
+<p>Links:</p>
+<ul>
+<li><a href="http://millejoh.github.io/emacs-ipython-notebook/" target="_blank" rel="noopener">Online Documentation</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/wiki" target="_blank" rel="noopener">Wiki</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/wiki/Screenshots" target="_blank" rel="noopener">Screenshots</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/wiki/Tips" target="_blank" rel="noopener">Tips</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook/tags" target="_blank" rel="noopener">Downloads</a></li>
+<li><a href="https://github.com/millejoh/emacs-ipython-notebook" target="_blank" rel="noopener">Repository at GitHub</a></li>
+<li><p><a href="https://github.com/millejoh/emacs-ipython-notebook/issues" target="_blank" rel="noopener">Issue Tracker at GitHub</a></p>
+</li>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id1" target="_blank" rel="noopener">1</a> You need to setup <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-args" target="_blank" rel="noopener"><code>ein:console-args</code></a> properly</p>
+</li>
+<li><a href="https://millejoh.github.io/emacs-ipython-notebook/#id2" target="_blank" rel="noopener">2</a> Use the command <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-to-notebook-command" target="_blank" rel="noopener"><code>ein:connect-to-notebook-command</code></a>.</li>
+</ul>
+<h2 id="Quick-try"><a href="#Quick-try" class="headerlink" title="Quick try"></a>Quick try</h2><p>The fastest way to get EIN running in this modern age is to download from <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> or, if you are a <a href="http://spacemacs.org/" target="_blank" rel="noopener">spacemacs</a> user, through installing the <a href="http://spacemacs.org/layers/+lang/ipython-notebook/README.html" target="_blank" rel="noopener">ipython-notebook</a> layer. Using <a href="http://tkf.github.io/emacs-ipython-notebook/#quick-try" target="_blank" rel="noopener">zeroein</a> is no longer supported, though in theory it should still work.</p>
+<p>If you are installing from <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> and have issues with some functions not being available after emacs starts, try adding the following to your emacs init file:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(package-initialize)</span><br><span class="line">(require &apos;ein)</span><br><span class="line">(require &apos;ein-notebook)</span><br><span class="line">(require &apos;ein-subpackages)</span><br></pre></td></tr></table></figure>
+<h2 id="Requirements"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements</h2><ul>
+<li><p>EMACS 25.3, 26.x, or 27</p>
+</li>
+<li><p><a href="https://jupyter-notebook.readthedocs.io/en/stable/" target="_blank" rel="noopener">Jupyter Notebook</a> 4.x or higher</p>
+</li>
+<li><p><a href="http://ipython.readthedocs.io/en/stable/" target="_blank" rel="noopener">IPython</a> 5.8 or higher.</p>
+</li>
+<li><p><a href="http://www.tornadoweb.org/en/stable/" target="_blank" rel="noopener">Tornado</a> 4.0.2 or higher.</p>
+</li>
+<li><p><a href="https://github.com/ahyatt/emacs-websocket" target="_blank" rel="noopener">websocket.el</a> &gt;= 1.7</p>
+</li>
+<li><p><a href="https://github.com/tkf/emacs-request" target="_blank" rel="noopener">request.el</a> &gt;= 0.3</p>
+</li>
+<li><p><a href="https://github.com/tkf/emacs-request/blob/master/request-deferred.el" target="_blank" rel="noopener">request-deferred.el</a> &gt;= 0.2</p>
+</li>
+<li><p><a href="https://github.com/magnars/dash.el" target="_blank" rel="noopener">dash</a> &gt;= 2.13</p>
+</li>
+<li><p><a href="https://github.com/magnars/s.el" target="_blank" rel="noopener">s</a> &gt;= 1.11</p>
+</li>
+<li><p><a href="http://cx4a.org/software/auto-complete/" target="_blank" rel="noopener">auto-complete.el</a> &gt;= 1.4: You need to configure subpackage <code>ein-ac</code> to enable this feature.</p>
+</li>
+<li><p><a href="https://github.com/skeeto/skewer-mode" target="_blank" rel="noopener">skewer-mode</a> &gt;= 1.6.2: Skewer mode gives EIN the ability to execute dynamic javascript in the note book.</p>
+</li>
+<li><p>(optional) <a href="https://millejoh.github.io/emacs-ipython-notebook/#id28" target="_blank" rel="noopener">Jupyterhub_</a> 0.8 or higher: EIN supports logging in to Jupyterhub servers using PAM authentication, though this only works with v0.8, which currently is the development version of Jupyterhub.</p>
+</li>
+<li><p>(optional) markdown-mode</p>
+</li>
+<li><p>(optional) python-mode: It should work with either python.el or python-mode.el. <a href="https://github.com/fgallina/python.el" target="_blank" rel="noopener">python.el</a> is required to use the <code>ein:console-open</code> command.</p>
+</li>
+<li><p>(optional) <a href="https://github.com/myuhe/smartrep.el" target="_blank" rel="noopener">smartrep.el</a>: This package enables you to omit typing prefix keys (e.g., <code>C-c C-n C-n C-n ...</code> instead of <code>C-cC-n C-c C-n C-c C-n ...</code>). You need to configure subpackage <code>ein-smartrep</code> to enable this feature.</p>
+</li>
+<li><p>(optional) <a href="https://github.com/tkf/emacs-jedi" target="_blank" rel="noopener">jedi.el</a>: Python auto-completion for emacs using <a href="https://github.com/davidhalter/jedi" target="_blank" rel="noopener">jedi</a>. In your emacs initialization file add</p>
+<p><code>(setq ein:completion-backend &#39;ein:use-ac-jedi-backend)</code></p>
+</li>
+</ul>
+<p>Also, EIN heavily relies on standard Emacs libraries including EWOC, EIEIO and json.el.</p>
+<ul>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id6" target="_blank" rel="noopener">3</a></p>
+<p>See <a href="https://millejoh.github.io/emacs-ipython-notebook/#gotchas-python-mode-el" target="_blank" rel="noopener">Gotchas and caveats &gt; python-mode.el</a>.</p>
+</li>
+</ul>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h2><p>Warning</p>
+<p>As EIN relies on many packages and it will not work properly with outdated versions, installing it using el-get or MELPA is highly recommended.</p>
+<h3 id="Using-el-get"><a href="#Using-el-get" class="headerlink" title="Using el-get"></a>Using el-get</h3><p>If you use developmental version of <a href="https://github.com/dimitri/el-get" target="_blank" rel="noopener">el-get</a> installation is simple. Emacs IPython Notebook is registered as package <code>ein</code>. See the <a href="https://github.com/dimitri/el-get" target="_blank" rel="noopener">el-get</a> website for more information.</p>
+<p>Note</p>
+<p>If you get error “Cannot open load file: request” that means you have an older version of el-get. You can fix this problem by either (1) installing request.el manually, (2) using the latest recipe, or (3) updating el-get to its master.</p>
+<p>You can get the latest recipe here:</p>
+<ul>
+<li><a href="https://github.com/dimitri/el-get/blob/master/recipes/ein.rcp" target="_blank" rel="noopener">https://github.com/dimitri/el-get/blob/master/recipes/ein.rcp</a></li>
+<li><a href="https://github.com/dimitri/el-get/blob/master/recipes/request.rcp" target="_blank" rel="noopener">https://github.com/dimitri/el-get/blob/master/recipes/request.rcp</a></li>
+</ul>
+<p>See <a href="https://github.com/tkf/emacs-ipython-notebook/issues/98" target="_blank" rel="noopener">issue 98</a> for more information.</p>
+<h3 id="Using-package-el-MELPA"><a href="#Using-package-el-MELPA" class="headerlink" title="Using package.el (MELPA)"></a>Using package.el (MELPA)</h3><p>You can install EIN using <a href="http://emacswiki.org/emacs/ELPA" target="_blank" rel="noopener">package.el</a> when the <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> package repository is added to its setting. See <a href="https://github.com/milkypostman/melpa" target="_blank" rel="noopener">MELPA</a> website for more information.</p>
+<h3 id="Manual-install"><a href="#Manual-install" class="headerlink" title="Manual install"></a>Manual install</h3><p>Put Emacs lisp <code>ein*.el</code> files and the Python file <code>ein_remote_safe.py</code> in a directory defined in your <code>load-path</code>.</p>
+<p>You should byte compile EIN, especially when using MuMaMo, otherwise editing large notebook will be very slow. You can use the following command to compile EIN. If you don’t specify all the optional packages, there will be compiler warning but that is OK as long as you don’t use that optional package.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">emacs -Q -batch -L .          \  # don&apos;t forget the dot!</span><br><span class="line">    -L PATH/TO/websocket/     \</span><br><span class="line">    -L PATH/TO/requests/      \</span><br><span class="line">    -L PATH/TO/nxhtml/util/   \  # optional (for MuMaMo)</span><br><span class="line">    -L PATH/TO/auto-complete/ \  # optional</span><br><span class="line">    -L PATH/TO/popup/         \  # optional (for auto-complete)</span><br><span class="line">    -L PATH/TO/fuzzy/         \  # optional (for auto-complete)</span><br><span class="line">    -L PATH/TO/smartrep/      \  # optional</span><br><span class="line">    -L PATH/TO/rst-mode/      \  # optional</span><br><span class="line">    -f batch-byte-compile *.el</span><br></pre></td></tr></table></figure>
+<h3 id="Setup"><a href="#Setup" class="headerlink" title="Setup"></a>Setup</h3><p>Here is the minimal configuration. See <a href="https://millejoh.github.io/emacs-ipython-notebook/#id30" target="_blank" rel="noopener">customization_</a> for more details.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(require &apos;ein)</span><br><span class="line">(require &apos;ein-notebook)</span><br><span class="line">(require &apos;ein-subpackages)</span><br></pre></td></tr></table></figure>
+<h2 id="Usage"><a href="#Usage" class="headerlink" title="Usage"></a>Usage</h2><ol>
+<li>Start the <a href="https://jupyter.readthedocs.io/en/latest/running.html" target="_blank" rel="noopener">Jupyter notebook server</a> from the terminal or call <code>M-x ein:run</code> or <code>M-x ein:jupyter-server-start</code> from emacs. Note starting the notebook server from emacs will automatically call <code>ein:jupyter-server-login-and-open</code>, making steps 2 and 3 below unnecessary!</li>
+<li>If you have token or password authentication enabled then you will need to call <code>M-x ein:login</code> and enter the appropriate password. Assuming authentication works the <a href="https://millejoh.github.io/emacs-ipython-notebook/#notebook-list-commands" target="_blank" rel="noopener">notebooklist</a> buffer will automatically open.</li>
+<li>In the notebook list buffer, you can open notebooks by selecting the <code>[Open]</code> buttons. See the <a href="https://millejoh.github.io/emacs-ipython-notebook/#notebook-commands" target="_blank" rel="noopener">notebook</a> section for operations and commands available in the notebook buffer.</li>
+</ol>
+<h2 id="Commands-Keybinds"><a href="#Commands-Keybinds" class="headerlink" title="Commands/Keybinds"></a>Commands/Keybinds</h2><h3 id="Running-a-Jupyter-Notebook-Server-from-Emacs"><a href="#Running-a-Jupyter-Notebook-Server-from-Emacs" class="headerlink" title="Running a Jupyter Notebook Server from Emacs"></a>Running a Jupyter Notebook Server from Emacs</h3><p>Using the commands below you start a jupyter notebook session from within emacs (i.e. no need to drop to the terminal shell and call <code>jupyter notebook</code>). EIN will also try to determine the access url and token authentication for the running server and automatically log you in.</p>
+<p>Note that the below work best with current (&gt; v4.3.1) versions of jupyter.</p>
+<ul>
+<li><p><em>function</em> (<code>ein:jupyter-server-start</code><em>server-cmd-path</em> <em>notebook-directory</em> <em>&amp;optional</em> <em>no-login-p</em> <em>login-callback**port</em>)</p>
+<p>Start SERVER-CMD_PATH with ‘–notebook-dir’ NOTEBOOK-DIRECTORY. Login after connection established unless NO-LOGIN-P is set. LOGIN-CALLBACK takes two arguments, the buffer created by ein:notebooklist-open–finish, and the url-or-port argument of ein:notebooklist-open<em>.This command opens an asynchronous process running the jupyter notebook server and then tries to detect the url and password to generate automatic calls to ‘ein:notebooklist-login’ and ‘ein:notebooklist-open’.With C-u prefix arg, it will prompt the user for the path to the jupyter executable first. Else, it will try to use the value of ‘</em>ein:last-jupyter-command*’ or the value of the customizable variable ‘ein:jupyter-default-server-command’.Then it prompts the user for the path of the root directory containing the notebooks the user wants to access.The buffer named by ‘ein:jupyter-server-buffer-name’ will contain the log of the running jupyter server.</p>
+</li>
+<li><p><em>function</em> (<code>ein:run</code><em>server-cmd-path</em> <em>notebook-directory</em> <em>&amp;optional</em> <em>no-login-p</em> <em>login-callback</em> <em>port</em>)</p>
+<p>Start SERVER-CMD_PATH with ‘–notebook-dir’ NOTEBOOK-DIRECTORY. Login after connection established unless NO-LOGIN-P is set. LOGIN-CALLBACK takes two arguments, the buffer created by ein:notebooklist-open–finish, and the url-or-port argument of ein:notebooklist-open<em>.This command opens an asynchronous process running the jupyter notebook server and then tries to detect the url and password to generate automatic calls to ‘ein:notebooklist-login’ and ‘ein:notebooklist-open’.With C-u prefix arg, it will prompt the user for the path to the jupyter executable first. Else, it will try to use the value of ‘</em>ein:last-jupyter-command*’ or the value of the customizable variable ‘ein:jupyter-default-server-command’.Then it prompts the user for the path of the root directory containing the notebooks the user wants to access.The buffer named by ‘ein:jupyter-server-buffer-name’ will contain the log of the running jupyter server.</p>
+</li>
+<li><p><em>function</em> (<code>ein:jupyter-server-stop</code><em>&amp;optional</em> <em>force</em> <em>log</em>)</p>
+</li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:jupyter-server-login-and-open</code><em>&amp;optional</em> <em>callback</em>)</p>
+<p>Log in and open a notebooklist buffer for a running jupyter notebook server.Determine if there is a running jupyter server (started via a call to ‘ein:jupyter-server-start’) and then try to guess if token authentication is enabled. If a token is found use it to generate a call to ‘ein:notebooklist-login’ and once authenticated open the notebooklist buffer via a call to ‘ein:notebooklist-open’.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-default-server-command</code></p>
+<p>The default command to start a jupyter notebook server.Changing this to <code>jupyter-notebook</code> requires customizing <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:jupyter-server-use-subcommand" target="_blank" rel="noopener"><code>ein:jupyter-server-use-subcommand</code></a> to nil.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-server-use-subcommand</code></p>
+<p>Users of “jupyter-notebook” (as opposed to “jupyter notebook”) need to <code>Omit</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-default-notebook-directory</code></p>
+<p>If you are tired of always being queried for the location of the notebook directory, you can set it here for future calls to<a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:jupyter-server-start" target="_blank" rel="noopener"><code>ein:jupyter-server-start</code></a></p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-server-args</code></p>
+<p>Add any additional command line options you wish to include with the call to the jupyter notebook.</p>
+</li>
+<li><p><em>variable</em> <code>ein:jupyter-server-buffer-name</code></p>
+<p>The name of the buffer for the jupyter notebook server session.</p>
+</li>
+</ul>
+<h3 id="Notebook-list"><a href="#Notebook-list" class="headerlink" title="Notebook list"></a>Notebook list</h3><p>You can start notebook by <code>M-x ein:notebooklist-open</code> and enter the port or URL of the IPython notebook server.</p>
+<ul>
+<li><p><em>function</em> (<code>ein:notebooklist-open</code><em>url-or-port</em> <em>callback</em>)</p>
+<p>This is now an alias for ein:notebooklist-login</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebooklist-new-notebook</code><em>url-or-port</em> <em>kernelspec</em> <em>&amp;optional</em> <em>callback</em> <em>no-pop</em> <em>retry</em>)</p>
+</li>
+</ul>
+<ul>
+<li><em>function</em> <code>ein:notebooklist-open-notebook-global</code></li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:notebooklist-login</code><em>url-or-port</em> <em>callback</em> <em>&amp;optional</em> <em>cookie-plist</em>)</p>
+<p>Deal with security before main entry of ein:notebooklist-open<em>.CALLBACK takes two arguments, the buffer created by ein:notebooklist-open–success and the url-or-port argument of ein:notebooklist-open</em>.</p>
+</li>
+<li><p><em>function</em> <code>ein:junk-new</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:notebooklist-enable-keepalive</code><em>&amp;optional</em> <em>url-or-port</em>)</p>
+<p>Enable periodic calls to the notebook server to keep long running sessions from expiring. By long running we mean sessions to last days, or weeks. The frequency of the refresh (which is very similar to a call to ‘ein:notebooklist-open‘) is controlled by ‘ein:notebooklist-keepalive-refresh-time‘, and is measured in terms of hours. If ‘ein:enable-keepalive’ is non-nil this will automatically be called during calls to ‘ein:notebooklist-open‘.</p>
+</li>
+<li><p><em>function</em> <code>ein:notebooklist-disable-keepalive</code></p>
+<p>Disable the notebooklist keepalive calls to the jupyter notebook server.</p>
+</li>
+</ul>
+<p>Keymap for ein:notebooklist-mode.</p>
+<ul>
+<li><p><code>&lt;remap&gt; &lt;self-insert-command&gt;`</code> undefined`</p>
+</li>
+<li><p><code>-`</code> negative-argument`</p>
+</li>
+<li><p><code>0`</code> digit-argument`</p>
+</li>
+<li><p><code>1`</code> digit-argument`</p>
+</li>
+<li><p><code>2`</code> digit-argument`</p>
+</li>
+<li><p><code>3`</code> digit-argument`</p>
+</li>
+<li><p><code>4`</code> digit-argument`</p>
+</li>
+<li><p><code>5`</code> digit-argument`</p>
+</li>
+<li><p><code>6`</code> digit-argument`</p>
+</li>
+<li><p><code>7`</code> digit-argument`</p>
+</li>
+<li><p><code>8`</code> digit-argument`</p>
+</li>
+<li><p><code>9`</code> digit-argument`</p>
+</li>
+<li><p><code>q`</code> quit-window`</p>
+</li>
+<li><p><code>SPC`</code> scroll-up-command`</p>
+</li>
+<li><p><code>S-SPC`</code> scroll-down-command`</p>
+</li>
+<li><p><code>DEL`</code> scroll-down-command`</p>
+</li>
+<li><p><code>?`</code> describe-mode`</p>
+</li>
+<li><p><code>h`</code> describe-mode`</p>
+</li>
+<li><p><code>&gt;`</code> end-of-buffer`</p>
+</li>
+<li><p><code>&lt;`</code> beginning-of-buffer`</p>
+</li>
+<li><p><code>g`</code> revert-buffer`</p>
+</li>
+<li><p><code>TAB`</code> widget-forward`</p>
+</li>
+<li><p><code>C-M-i`</code> widget-backward`</p>
+</li>
+<li><p><code>&lt;S-tab&gt;`</code> widget-backward`</p>
+</li>
+<li><p><code>&lt;backtab&gt;`</code> widget-backward`</p>
+</li>
+<li><p><code>C-c C-r`</code> ein:notebooklist-reload`</p>
+</li>
+</ul>
+<p>  Reload current Notebook list.</p>
+<ul>
+<li><p><code>C-c C-f`</code> ein:file-open`</p>
+</li>
+<li><p><code>C-c C-o`</code> ein:notebook-open`</p>
+</li>
+<li><p><code>p`</code> ein:notebooklist-prev-item`</p>
+</li>
+<li><p><code>n`</code> ein:notebooklist-next-item`</p>
+</li>
+</ul>
+<h3 id="Notebook"><a href="#Notebook" class="headerlink" title="Notebook"></a>Notebook</h3><p>The following keybindings are available in notebook buffers. Modified notebooks are saved automatically with a frequency dependenant on the setting of ein:notebook-autosave-frequency. If ein:notebook-create-checkpoint-on-save is True than a checkpoint will also be generated in the Jupyter server every time the notebook is saved. A notebook can be returned to a previous checkpoint via ein:notebook-restore-to-checkpoint. Checkpoints can also be manually created via ein:notebook-create-checkpoint.</p>
+<ul>
+<li><p><code>C-c i`</code> ein:inspect-object`</p>
+</li>
+<li><p><code>C-c &#39;`</code> ein:edit-cell-contents`</p>
+</li>
+<li><p><code>C-c C-c`</code> ein:worksheet-execute-cell`</p>
+</li>
+<li><p><code>C-c C-&#39;`</code> ein:worksheet-turn-on-autoexec`</p>
+</li>
+<li><p><code>C-c C-e`</code> ein:worksheet-toggle-output`</p>
+</li>
+<li><p><code>C-c C-v`</code> ein:worksheet-set-output-visibility-all`</p>
+</li>
+<li><p><code>C-c C-l`</code> ein:worksheet-clear-output`</p>
+</li>
+<li><p><code>C-c C-S-l`</code> ein:worksheet-clear-all-output`</p>
+</li>
+<li><p><code>C-c C-;`</code> ein:shared-output-show-code-cell-at-point`</p>
+</li>
+<li><p><code>C-c C-k`</code> ein:worksheet-kill-cell`</p>
+</li>
+<li><p><code>C-c M-w`</code> ein:worksheet-copy-cell`</p>
+</li>
+<li><p><code>C-c M-{`</code> ein:notebook-worksheet-move-prev`</p>
+</li>
+<li><p><code>C-c M-}`</code> ein:notebook-worksheet-move-next`</p>
+</li>
+<li><p><code>C-c M-+`</code> ein:notebook-worksheet-insert-prev`</p>
+</li>
+<li><p><code>C-c C-w`</code> ein:worksheet-copy-cell`</p>
+</li>
+<li><p><code>C-c C-y`</code> ein:worksheet-yank-cell`</p>
+</li>
+<li><p><code>C-c C-a`</code> ein:worksheet-insert-cell-above`</p>
+<ul>
+<li><code>C-c C-b`</code> ein:worksheet-insert-cell-below`</li>
+</ul>
+</li>
+<li><p><code>C-c C-t`</code> ein:worksheet-toggle-cell-type`</p>
+</li>
+<li><p><code>C-c S`</code> ein:worksheet-toggle-slide-type`</p>
+</li>
+<li><p><code>C-c C-u`</code> ein:worksheet-change-cell-type`</p>
+</li>
+<li><p><code>C-c C-s`</code> ein:worksheet-split-cell-at-point`</p>
+</li>
+<li><p><code>C-c C-m`</code> ein:worksheet-merge-cell`</p>
+</li>
+<li><p><code>C-c C-n`</code> ein:worksheet-goto-next-input`</p>
+</li>
+<li><p><code>C-c C-p`</code> ein:worksheet-goto-prev-input`</p>
+</li>
+<li><p><code>C-c &lt;up&gt;`</code> ein:worksheet-move-cell-up`</p>
+</li>
+<li><p><code>C-c &lt;down&gt;`</code> ein:worksheet-move-cell-down`</p>
+</li>
+<li><p><code>C-c C-h`</code> ein:pytools-request-tooltip-or-help`</p>
+</li>
+<li><p><code>C-c C-i`</code> ein:completer-complete`</p>
+</li>
+<li><p><code>C-c C-$`</code> ein:tb-show`</p>
+</li>
+<li><p><code>C-c C-x C-l`</code> ein:notebook-toggle-latex-fragment`</p>
+</li>
+<li><p><code>C-c C-x C-r`</code> ein:notebook-restart-session-command`</p>
+</li>
+<li><p><code>C-c C-r`</code> ein:notebook-reconnect-session-command`</p>
+</li>
+<li><p><code>C-c C-z`</code> ein:notebook-kernel-interrupt-command`</p>
+</li>
+<li><p><code>C-c C-q`</code> ein:notebook-kill-kernel-then-close-command`</p>
+</li>
+<li><p><code>C-c C-#`</code> ein:notebook-close`</p>
+</li>
+<li><p><code>C-c C-f`</code> ein:file-open`</p>
+</li>
+<li><p><code>C-c C-o`</code> ein:notebook-open`</p>
+</li>
+<li><p><code>C-c C-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>C-c C-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<ul>
+<li><p><code>C-c C-/`</code> ein:notebook-scratchsheet-open`</p>
+</li>
+<li><p><code>C-c !`</code> ein:worksheet-rename-sheet`</p>
+</li>
+<li><p><code>C-c {`</code> ein:notebook-worksheet-open-prev-or-last`</p>
+</li>
+<li><p><code>C-c }`</code> ein:notebook-worksheet-open-next-or-first`</p>
+</li>
+<li><p><code>C-c +`</code> ein:notebook-worksheet-insert-next`</p>
+</li>
+<li><p><code>C-c -`</code> ein:notebook-worksheet-delete`</p>
+</li>
+<li><p><code>C-c 1`</code> ein:notebook-worksheet-open-1th`</p>
+</li>
+<li><p><code>C-c 2`</code> ein:notebook-worksheet-open-2th`</p>
+</li>
+<li><p><code>C-c 3`</code> ein:notebook-worksheet-open-3th`</p>
+</li>
+<li><p><code>C-c 4`</code> ein:notebook-worksheet-open-4th`</p>
+</li>
+<li><p><code>C-c 5`</code> ein:notebook-worksheet-open-5th`</p>
+</li>
+<li><p><code>C-c 6`</code> ein:notebook-worksheet-open-6th`</p>
+</li>
+<li><p><code>C-c 7`</code> ein:notebook-worksheet-open-7th`</p>
+</li>
+<li><p><code>C-c 8`</code> ein:notebook-worksheet-open-8th`</p>
+</li>
+<li><p><code>C-c 9`</code> ein:notebook-worksheet-open-last`</p>
+</li>
+<li><p><code>M-RET`</code> ein:worksheet-execute-cell-and-goto-next`</p>
+</li>
+<li><p><code>M-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>M-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<ul>
+<li><p><code>M-p`</code> ein:worksheet-previous-input-history`</p>
+</li>
+<li><p><code>M-n`</code> ein:worksheet-next-input-history`</p>
+</li>
+<li><p><code>&lt;M-S-return&gt;`</code> ein:worksheet-execute-cell-and-insert-below`</p>
+</li>
+<li><p><code>&lt;C-up&gt;`</code> ein:worksheet-goto-prev-input`</p>
+</li>
+<li><p><code>&lt;C-down&gt;`</code> ein:worksheet-goto-next-input`</p>
+</li>
+<li><p><code>&lt;M-up&gt;`</code> ein:worksheet-move-cell-up`</p>
+</li>
+<li><p><code>&lt;M-down&gt;`</code> ein:worksheet-move-cell-down`</p>
+</li>
+<li><p><code>C-:`</code> ein:shared-output-eval-string`</p>
+</li>
+<li><p><code>C-x C-s`</code> ein:notebook-save-notebook-command`</p>
+</li>
+<li><p><code>C-x C-w`</code> ein:notebook-rename-command`</p>
+</li>
+<li><p><em>function</em> (<code>ein:worksheet-execute-all-cell</code><em>ws</em>)</p>
+<p>Execute all cells in the current worksheet buffer.</p>
+</li>
+<li><p><em>function</em> (<code>ein:worksheet-delete-cell</code><em>ws</em> <em>cell</em> <em>&amp;optional</em> <em>focus</em>)</p>
+<p>Delete a cell. (WARNING: no undo!) This command has no key binding because there is no way to undo deletion. Use kill to play on the safe side.If you really want use this command, you can do something like this (but be careful when using it!):<code>(define-key ein:notebook-mode-map &quot;\C-c\C-d&quot;             ’ein:worksheet-delete-cell)</code></p>
+</li>
+<li><p><em>function</em> <code>ein:junk-rename</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>function</em> (<code>ein:iexec-mode</code><em>&amp;optional</em> <em>arg</em>)</p>
+<p>Instant cell execution minor mode. Code cell at point will be automatically executed after any change in its input area.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-create-checkpoint</code><em>notebook</em>)</p>
+<p>Create checkpoint for current notebook based on most recent save.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-restore-to-checkpoint</code><em>notebook</em> <em>checkpoint</em>)</p>
+<p>Restore notebook to previous checkpoint saved on the Jupyter server. Note that if there are multiple checkpoints the user will be prompted on which one to use.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-enable-autosaves</code><em>notebook</em>)</p>
+<p>Enable automatic, periodic saving for notebook.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-disable-autosaves</code><em>notebook</em>)</p>
+<p>Disable automatic, periodic saving for current notebook.</p>
+</li>
+</ul>
+<h3 id="Polymode-in-the-Notebook"><a href="#Polymode-in-the-Notebook" class="headerlink" title="Polymode in the Notebook"></a>Polymode in the Notebook</h3><p>EIN now provides proper multi-major mode support in notebook buffers using <a href="https://millejoh.github.io/emacs-ipython-notebook/#id32" target="_blank" rel="noopener">polymode_</a>. To use simply set <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:polymode" target="_blank" rel="noopener"><code>ein:polymode</code></a>to <code>t</code> and restart emacs.</p>
+<ul>
+<li><p><em>variable</em> <code>ein:polymode</code></p>
+<p>When enabled ein will use polymode to provide multi-major mode support in a notebook buffer, otherwise ein’s custom and outdated multi-major mode support will be used. Emacs must be restarted after changing this setting!</p>
+</li>
+</ul>
+<h3 id="Advanced-Editing"><a href="#Advanced-Editing" class="headerlink" title="Advanced Editing"></a>Advanced Editing</h3><p>Worksheet cells can be edited in a manner similar to <a href="http://orgmode.org/manual/Editing-source-code.html#Editing-source-code" target="_blank" rel="noopener">source blocks</a> in Org buffers. Use <code>C-c &#39;</code> to edit the contents of the current cell. You can execute the contents of the buffer and the results will be sent to the output of the cell being edited.</p>
+<ul>
+<li><code>C-c &#39;`</code> ein:edit-cell-exit`</li>
+</ul>
+<p>  Close the EIN source edit buffer, saving contents back to the original notebook cell, unless being called via ‘ein:edit-cell-abort’.</p>
+<ul>
+<li><code>C-c C-k`</code> ein:edit-cell-abort`</li>
+</ul>
+<p>  Abort editing the current cell, contents will revert to previous value.</p>
+<ul>
+<li><code>C-c C-c`</code> ein:edit-cell-save-and-execute`</li>
+</ul>
+<p>  Save, then execute the countents of the EIN source edit buffer and place results (if any) in output of original notebook cell.</p>
+<ul>
+<li><code>C-c C-x`</code> ein:edit-cell-view-traceback`</li>
+</ul>
+<p>  Jump to traceback, if there is one, for current edit.</p>
+<ul>
+<li><code>C-x C-s`</code> ein:edit-cell-save`</li>
+</ul>
+<p>  Save contents of EIN source edit buffer back to original notebook cell.</p>
+<ul>
+<li><em>function</em> <code>ein:edit-cell-contents</code></li>
+</ul>
+<ul>
+<li><p><em>function</em> <code>ein:edit-cell-exit</code></p>
+<p>Close the EIN source edit buffer, saving contents back to the original notebook cell, unless being called via ‘ein:edit-cell-abort’.</p>
+</li>
+<li><p><em>function</em> <code>ein:edit-cell-abort</code></p>
+<p>Abort editing the current cell, contents will revert to previous value.</p>
+</li>
+<li><p><em>function</em> <code>ein:edit-cell-save</code></p>
+<p>Save contents of EIN source edit buffer back to original notebook cell.</p>
+</li>
+<li><p><em>function</em> <code>ein:edit-cell-save-and-execute</code></p>
+<p>Save, then execute the countents of the EIN source edit buffer and place results (if any) in output of original notebook cell.</p>
+</li>
+</ul>
+<h3 id="Connected-buffer"><a href="#Connected-buffer" class="headerlink" title="Connected buffer"></a>Connected buffer</h3><p>You can connect any buffer (though typically a buffer that contains a Python file) to an opened notebook and use the kernel of that notebook to execute code, inspect objects, auto-complete code, jump to the other source, etc. Once the buffer is connected to the notebook, minor mode <code>ein:connect-mode</code> is enabled and the following keybinds are available.</p>
+<ul>
+<li><code>C-c C-c`</code> ein:connect-run-or-eval-buffer`</li>
+</ul>
+<p>  Run buffer using the ‘‘%run‘‘ magic command or eval whole buffer if the prefix ‘‘C-u‘‘ is given. Variable ‘ein:connect-run-command’ sets the command to run. You can change the command and/or set the options. See also: ‘ein:connect-run-buffer’, ‘ein:connect-eval-buffer’.</p>
+<ul>
+<li><code>C-c C-l`</code> ein:connect-reload-buffer`</li>
+</ul>
+<p>  Reload buffer using the command set by ‘ein:connect-reload-command’.</p>
+<ul>
+<li><p><code>C-c C-r`</code> ein:connect-eval-region`</p>
+</li>
+<li><p><code>C-c C-h`</code> ein:pytools-request-tooltip-or-help`</p>
+</li>
+<li><p><code>C-c C-i`</code> ein:completer-complete`</p>
+</li>
+<li><p><code>C-c C-z`</code> ein:connect-pop-to-notebook`</p>
+</li>
+<li><p><code>C-c C-a`</code> ein:connect-toggle-autoexec`</p>
+</li>
+</ul>
+<p>  Toggle auto-execution mode of the current connected buffer.When auto-execution mode is on, cells in connected notebook will be automatically executed whenever run, eval or reload command <a href="https://millejoh.github.io/emacs-ipython-notebook/#id5" target="_blank" rel="noopener">3</a> is called in this buffer.4Namely, one of‘ein:connect-run-buffer’‘ein:connect-eval-buffer’‘ein:connect-run-or-eval-buffer’‘ein:connect-reload-buffer’Note that you need to set cells to run in the connecting buffer or no cell will be executed. Use the ‘ein:worksheet-turn-on-autoexec’ command in notebook to change the cells to run.</p>
+<ul>
+<li><code>C-c C-o`</code> ein:console-open`</li>
+</ul>
+<p>  Open IPython console. To use this function, ‘ein:console-security-dir’ and ‘ein:console-args’ must be set properly. This function works best with the new <a href="https://github.com/fgallina/python.el" target="_blank" rel="noopener">python.el</a> which is shipped with Emacs 24.2 or later. If you don’t have it, this function opens a “plain” command line interpreter (comint) buffer where you cannot use fancy stuff such as TAB completion. It should be possible to support python-mode.el. Patches are welcome!</p>
+<ul>
+<li><p><code>C-c C-x`</code> ein:tb-show`</p>
+</li>
+<li><p><code>C-c C-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>C-c C-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<ul>
+<li><p><code>C-c C-/`</code> ein:notebook-scratchsheet-open`</p>
+</li>
+<li><p><code>C-:`</code> ein:shared-output-eval-string`</p>
+</li>
+<li><p><code>M-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>M-,`</code> ein:pytools-jump-back-command`</li>
+</ul>
+<p>  Go back to the point where ‘ein:pytools-jump-to-source-command’ is executed last time. When the prefix argument ‘‘C-u‘‘ is given, open the last point in the other window.</p>
+<p>Other useful commands:</p>
+<ul>
+<li><p><em>function</em> (<code>ein:connect-to-notebook-command</code><em>&amp;optional</em> <em>not-yet-opened</em>)</p>
+<p>Connect to notebook. When the prefix argument is given, you can choose any notebook on your server including the ones not yet opened. Otherwise, already chose from already opened notebooks.</p>
+</li>
+<li><p><em>function</em> <code>ein:connect-eval-buffer</code></p>
+<p>Evaluate the whole buffer. Note that this will run the code inside the ‘‘if <strong>name</strong> == “<strong>main</strong>”:‘‘ block.</p>
+</li>
+<li><p><em>function</em> (<code>ein:connect-run-buffer</code><em>&amp;optional</em> <em>ask-command</em>)</p>
+<p>Run buffer using ‘‘%run‘‘. Ask for command if the prefix ‘‘C-u‘‘ is given. Variable ‘ein:connect-run-command’ sets the default command.</p>
+</li>
+</ul>
+<h3 id="Shared-output-buffer"><a href="#Shared-output-buffer" class="headerlink" title="Shared output buffer"></a>Shared output buffer</h3><ul>
+<li><p><em>function</em> <code>ein:shared-output-pop-to-buffer</code></p>
+<p>Open shared output buffer.</p>
+</li>
+</ul>
+<p>The map for ein:shared-output-mode-map.</p>
+<ul>
+<li><p><code>C-c C-x`</code> ein:tb-show`</p>
+</li>
+<li><p><code>C-c C-.`</code> ein:pytools-jump-to-source-command`</p>
+</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<ul>
+<li><code>M-.`</code> ein:pytools-jump-to-source-command`</li>
+</ul>
+<p>  Jump to the source code of the object at point. When the prefix argument ‘‘C-u‘‘ is given, open the source code in the other window. You can explicitly specify the object by selecting it.</p>
+<h3 id="Traceback-viewer"><a href="#Traceback-viewer" class="headerlink" title="Traceback viewer"></a>Traceback viewer</h3><p>Tracebacks from the notebook buffer can be difficult to understand. You can open a Traceback viewer by calling <code>ein:notebook-view-traceback</code>.</p>
+<p>In the Traceback viewer, following keybinds are available.</p>
+<p>Keymap for ein:traceback-mode.</p>
+<ul>
+<li><p><code>RET`</code> ein:tb-jump-to-source-at-point-command`</p>
+</li>
+<li><p><code>p`</code> ein:tb-prev-item`</p>
+</li>
+<li><p><code>n`</code> ein:tb-next-item`</p>
+</li>
+</ul>
+<h3 id="PyTools"><a href="#PyTools" class="headerlink" title="PyTools"></a>PyTools</h3><p>These commands can be used in the notebook buffer and the connected buffer.</p>
+<ul>
+<li><p><em>function</em> <code>ein:pytools-doctest</code></p>
+<p>Do the doctest of the object at point.</p>
+</li>
+<li><p><em>function</em> <code>ein:pytools-whos</code></p>
+<p>Execute ‘‘%whos‘‘ magic command and popup the result.</p>
+</li>
+<li><p><em>function</em> (<code>ein:pytools-hierarchy</code><em>&amp;optional</em> <em>ask</em>)</p>
+<p>Draw inheritance graph of the class at point. <a href="https://github.com/tkf/ipython-hierarchymagic" target="_blank" rel="noopener">hierarchymagic</a> extension is needed to be installed. You can explicitly specify the object by selecting it.</p>
+</li>
+<li><p><em>function</em> (<code>ein:pytools-pandas-to-ses</code><em>dataframe</em>)</p>
+<p>View <a href="http://pandas.pydata.org/" target="_blank" rel="noopener">pandas</a> DataFrame in <a href="http://www.gnu.org/software/emacs/manual/html_node/ses/index.html" target="_blank" rel="noopener">SES</a> (Simple Emacs Spreadsheet). Open a ‘ses-mode’ buffer and import DataFrame object into it.<a href="http://www.gnu.org/software/emacs/manual/html_node/ses/index.html" target="_blank" rel="noopener">SES</a> is distributed with Emacs since Emacs 22, so you don’t need to install it if you are using newer Emacs.</p>
+</li>
+<li><p><em>function</em> (<code>ein:pytools-export-buffer</code><em>buffer</em> <em>format</em>)</p>
+<p>Export contents of notebook using <a href="http://ipython.org/ipython-doc/stable/notebook/nbconvert.html" target="_blank" rel="noopener">nbconvert</a> to user-specified format (options will depend on the version of nbconvert available) to a new buffer.Currently EIN/IPython supports exporting to the following formats:HTMLJSON (this is basically the same as opening the ipynb file in a buffer).LatexMarkdownPythonRSTSlides</p>
+</li>
+</ul>
+<h3 id="Misc"><a href="#Misc" class="headerlink" title="Misc"></a>Misc</h3><ul>
+<li><p><em>function</em> <code>helm-ein-kernel-history</code></p>
+<p>Search kernel execution history then insert the selected one.</p>
+</li>
+<li><p><em>function</em> <code>helm-ein-notebook-buffers</code></p>
+<p>Choose opened notebook using helm interface.</p>
+</li>
+<li><p><em>function</em> <code>anything-ein-kernel-history</code></p>
+<p>Search kernel execution history then insert the selected one.</p>
+</li>
+<li><p><em>function</em> <code>anything-ein-notebook-buffers</code></p>
+<p>Choose opened notebook using anything.el interface.</p>
+</li>
+</ul>
+<h2 id="Org-mode-Integration-ob-ein"><a href="#Org-mode-Integration-ob-ein" class="headerlink" title="Org-mode Integration (ob-ein)"></a>Org-mode Integration (ob-ein)</h2><p>Configuration:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">M-x customize-group RET org-babel</span><br><span class="line">Org Babel Load Languages:</span><br><span class="line">  Insert (ein . t)</span><br><span class="line">  For example, &apos;((emacs-lisp . t) (ein . t))</span><br></pre></td></tr></table></figure>
+<p>Snippet:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#BEGIN_SRC *language* :session localhost :results raw drawer</span><br><span class="line">  import numpy, math, matplotlib.pyplot as plt</span><br><span class="line">  %matplotlib inline</span><br><span class="line">  x = numpy.linspace(0, 2*math.pi)</span><br><span class="line">  plt.plot(x, numpy.sin(x))</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><em>Language</em> can be <code>ein-python</code>, <code>ein-r</code>, or <code>ein-julia</code>. <strong>The relevant</strong> <a href="https://github.com/jupyter/jupyter/wiki/Jupyter-kernels" target="_blank" rel="noopener">jupyter kernel</a> <strong>must be installed before use</strong>. Additional languages can be</p>
+<p>configured via:<code>M-x customize-group RET ein Ob Ein Languages</code></p>
+</li>
+</ul>
+<p>The format for the :session header argument is {url-or-port}/{path-to-notebook}. Just specifying {url-or-port}executes your source block in a single anonymous notebook (this effects an ipython repl in org). You should also specify :results raw drawer for proper rendering inside the org buffer. For example:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN_SRC ein-python :session localhost :results raw drawer</span><br><span class="line">  import sys</span><br><span class="line"></span><br><span class="line">  a = 14500</span><br><span class="line">  b = a+1000</span><br><span class="line">  sys.version</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<p>If your code block generates an image, like from an matplotlib plot, ein will automatically save to a file in the directory specified by <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:org-inline-image-directory" target="_blank" rel="noopener"><code>ein:org-inline-image-directory</code></a> and generate an appropriate inline link. You can also specify the file to save the image to using by the :image argument as in the example below:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#BEGIN_SRC ein :session localhost :results raw drawer :image output.png</span><br><span class="line">  import matplotlib.pyplot as plt</span><br><span class="line">  import numpy as np</span><br><span class="line"></span><br><span class="line">  %matplotlib inline</span><br><span class="line">  x = np.linspace(0, 1, 100)</span><br><span class="line">  y = np.random.rand(100,1)</span><br><span class="line">  plt.plot(x,y)</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<p>To get proper syntax highlighting for non-Python kernels, use the function <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:org-register-lang-mode" target="_blank" rel="noopener"><code>ein:org-register-lang-mode</code></a> to define a new ein-based org source language. For example, to get proper syntax highlighting for an R kernel, first call</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(ein:org-register-lang-mode &quot;ein-R&quot; &apos;R)</span><br></pre></td></tr></table></figure>
+<p>Then org SRC blocks with language “ein-R” will use R syntax highlighting:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#BEGIN_SRC ein-R :session localhost :results raw drawer :image output.png</span><br><span class="line">  plot(1:10, 1:10)</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
+<p>You can also link to an IPython notebook from <a href="http://orgmode.org/" target="_blank" rel="noopener">org-mode</a> files.</p>
+<ol>
+<li>Call org-mode function <code>org-store-link</code> <a href="https://millejoh.github.io/emacs-ipython-notebook/#org-store-link" target="_blank" rel="noopener">5</a> in notebook buffer. You can select a region to specify a position in the notebook.</li>
+<li>Go to org-mode file and type <code>C-c C-l</code> (<code>org-insert-link</code>). This will insert a link to the notebook.</li>
+<li>Type <code>C-c C-o</code> (<code>org-open-at-point</code>) to open the link at the point of cursor.</li>
+</ol>
+<ul>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id9" target="_blank" rel="noopener">5</a></p>
+<p>See <a href="http://orgmode.org/manual/Activation.html" target="_blank" rel="noopener">1.3 Activation</a> in org-mode manual.</p>
+</li>
+</ul>
+<h3 id="Customization"><a href="#Customization" class="headerlink" title="Customization"></a>Customization</h3><ul>
+<li><em>variable</em> <code>ein:org-async-p</code></li>
+</ul>
+<ul>
+<li><em>variable</em> <code>ein:org-inline-image-directory</code></li>
+</ul>
+<ul>
+<li><em>function</em> <code>ein:org-register-lang-mode</code></li>
+</ul>
+<h2 id="Support-for-The-Hy-Language-EXPERIMENTAL"><a href="#Support-for-The-Hy-Language-EXPERIMENTAL" class="headerlink" title="Support for The Hy Language (EXPERIMENTAL)"></a>Support for The Hy Language (EXPERIMENTAL)</h2><p>New in v0.14, ein has limited support for executing <a href="http://docs.hylang.org/en/stable/" target="_blank" rel="noopener">hy</a> code in a notebook running an ipython kernel. Before trying this feature you will need to install hy per the <a href="http://docs.hylang.org/en/stable/quickstart.html" target="_blank" rel="noopener">quickstart</a> instructions.</p>
+<p>Once you have set up <a href="http://docs.hylang.org/en/stable/" target="_blank" rel="noopener">hy</a> in your ipython kernel, open or create a notebook running this kernel and create or go to an empty cell. You will need to change the cell type to hy using <code>ein:worksheet-change-cell-type</code>. Once that is done you can enter hy expressions and they will be correctly evaluated by the kernel!</p>
+<p>If you are running a <a href="https://github.com/Calysto/calysto_hy" target="_blank" rel="noopener">hy kernel</a> you can, of course, write hy expressions in code cells and have the expected results.</p>
+<h2 id="Customization-1"><a href="#Customization-1" class="headerlink" title="Customization"></a>Customization</h2><p>You can customize EIN by typing <code>M-x customize-group RET ein RET</code>. All the configurable variables are listed below.</p>
+<h3 id="Subpackages"><a href="#Subpackages" class="headerlink" title="Subpackages"></a>Subpackages</h3><ul>
+<li><p><em>variable</em> <code>ein:completion-backend</code></p>
+<p>EIN defaults to your individual company-mode or auto-complete-mode configuration. Change this setting to gather completions from the jupyter server:<code>* ein:use-none-backend: local completions only (configured outside EIN) * ein:use-company-backend: company-style remote completions (elpy takes precedence) * ein:use-ac-backend: deprecated auto-complete remote completions</code></p>
+</li>
+<li><p><em>variable</em> <code>ein:use-smartrep</code></p>
+<p>Set to <code>t</code> to use preset smartrep configuration.WarningWhen used with MuMaMo (see <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebook-modes" target="_blank" rel="noopener"><code>ein:notebook-modes</code></a>), keyboard macro which manipulates cell (add, remove, move, etc.) may start infinite loop (you need to stop it with <code>C-g</code>). Please be careful using this option if you are a heavy keyboard macro user. Using keyboard macro for other commands is fine.</p>
+</li>
+<li><p><em>variable</em> <code>ein:load-dev</code></p>
+</li>
+</ul>
+<h3 id="Notebook-list-1"><a href="#Notebook-list-1" class="headerlink" title="Notebook list"></a>Notebook list</h3><ul>
+<li><p><em>variable</em> <code>ein:url-or-port</code></p>
+<p>List of default url-or-port values. This will be used for completion. So put your IPython servers. You can connect to servers not in this list (but you will need to type every time).</p>
+</li>
+<li><p><em>variable</em> <code>ein:default-url-or-port</code></p>
+<p>Default URL or port. This should be your main IPython Notebook server.</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebooklist-load</code><em>&amp;optional</em> <em>url-or-port</em>)</p>
+<p>Load notebook list but do not pop-up the notebook list buffer.For example, if you want to load notebook list when Emacs starts, add this in the Emacs initialization file:<code>(add-to-hook ’after-init-hook ’ein:notebooklist-load)</code>or even this (if you want fast Emacs start-up):<code>;; load notebook list if Emacs is idle for 3 sec after start-up (run-with-idle-timer 3 nil #’ein:notebooklist-load)</code>You should setup ‘ein:url-or-port’ or ‘ein:default-url-or-port’ in order to make this code work.See also: ‘ein:connect-to-default-notebook’, ‘ein:connect-default-notebook’.</p>
+</li>
+</ul>
+<h3 id="Notebook-1"><a href="#Notebook-1" class="headerlink" title="Notebook"></a>Notebook</h3><ul>
+<li><p><em>variable</em> <code>ein:worksheet-enable-undo</code></p>
+<p>When non-<code>nil</code>, allow undo of cell inputs only (as opposed towhole-cell operations such as killing, moving, executing cells).Changes to this variable only take effect for newly opened worksheets.</p>
+</li>
+<li><p><em>variable</em> <code>ein:polymode</code></p>
+<p>When enabled ein will use polymode to provide multi-major mode support in a notebook buffer, otherwise ein’s custom and outdated multi-major mode support will be used. Emacs must be restarted after changing this setting!</p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-modes</code></p>
+<p>Notebook modes to use (in order of preference).When the notebook is opened, mode in this value is checked one by one and the first usable mode is used.Available modes:<code>ein:notebook-multilang-mode`</code>ein:notebook-mumamo-mode<code>ein:notebook-python-mode</code>ein:notebook-plain-mode<code>Examples:Use MuMaMo if it is installed. Otherwise, use plain mode. This is the old default setting:</code>(setq ein:notebook-modes ‘(ein:notebook-mumamo-mode ein:notebook-plain-mode)) <code>Avoid using MuMaMo even when it is installed:</code>(setq ein:notebook-modes ‘(ein:notebook-plain-mode)) <code>Use simple</code>python-mode<code>based notebook mode when MuMaMo is not installed:</code>(setq ein:notebook-modes ‘(ein:notebook-mumamo-mode ein:notebook-python-mode)) `</p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-querty-timeout-open</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>variable</em> <code>ein:notebook-querty-timeout-save</code></p>
+<p>Query timeout for saving notebook. Similar to <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebook-querty-timeout-open" target="_blank" rel="noopener"><code>ein:notebook-querty-timeout-open</code></a>, but for saving notebook. For global setting and more information, see <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:query-timeout" target="_blank" rel="noopener"><code>ein:query-timeout</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:cell-traceback-level</code></p>
+<p>Number of traceback stack to show. Hidden tracebacks are not discarded. You can view them using [ein:tb-show].</p>
+</li>
+<li><p><em>variable</em> <code>ein:cell-autoexec-prompt</code></p>
+<p>String shown in the cell prompt when the auto-execution flag is on. See also <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-aotoexec-lighter" target="_blank" rel="noopener"><code>ein:connect-aotoexec-lighter</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:junk-notebook-name-template</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>variable</em> <code>ein:iexec-delay</code></p>
+<p>Delay before executing cell after change in second.</p>
+</li>
+<li><p><em>variable</em> <code>ein:complete-on-dot</code></p>
+</li>
+</ul>
+<ul>
+<li><p><em>variable</em> <code>ein:helm-kernel-history-search-key</code></p>
+<p>Bind <a href="https://millejoh.github.io/emacs-ipython-notebook/#helm-ein-kernel-history" target="_blank" rel="noopener"><code>helm-ein-kernel-history</code></a> to this key in notebook mode.Example:<code>(setq ein:helm-kernel-history-search-key &quot;\M-r&quot;)</code>This key will be installed in the <code>ein:notebook-mode-map</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:anything-kernel-history-search-key</code></p>
+<p>Bind <a href="https://millejoh.github.io/emacs-ipython-notebook/#anything-ein-kernel-history" target="_blank" rel="noopener"><code>anything-ein-kernel-history</code></a> to this key in notebook mode.Example:<code>(setq ein:anything-kernel-history-search-key &quot;\M-r&quot;)</code>This key will be installed in the <code>ein:notebook-mode-map</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:helm-kernel-history-search-auto-pattern</code></p>
+<p>Automatically construct search pattern when non-<code>nil</code>.Single space is converted to “<em>”.A backslash followed by a space is converted to a single space.A “</em>” is added at the beginning and end of the pattern.This variable applies to both <a href="https://millejoh.github.io/emacs-ipython-notebook/#helm-ein-kernel-history" target="_blank" rel="noopener"><code>helm-ein-kernel-history</code></a> and <a href="https://millejoh.github.io/emacs-ipython-notebook/#anything-ein-kernel-history" target="_blank" rel="noopener"><code>anything-ein-kernel-history</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:output-type-preference</code></p>
+<p>Output types to be used in notebook. First output-type found in this list will be used. This variable can be a list or a function returning a list given DATA plist. See also <code>ein:output-type-prefer-pretty-text-over-html</code>.<strong>Example</strong>: If you prefer HTML type over text type, you can set it as:<code>(setq ein:output-type-preference       &#39;(emacs-lisp svg png jpeg html text latex javascript))</code>Note that <code>html</code> comes before <code>text</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:shr-env</code></p>
+<p>Variables let-bound while calling <code>shr-insert-document</code>.To use default shr setting:<code>(setq ein:shr-env nil)</code>Draw boundaries for table (default):<code>(setq ein:shr-env       &#39;((shr-table-horizontal-line ?-)         (shr-table-vertical-line ?|)         (shr-table-corner ?+)))</code></p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-autosave-frequency</code></p>
+<p>Sets the frequency (in seconds) at which the notebook is automatically saved, per IPEP15. Set to 0 to disable this feature.Autosaves are automatically enabled when a notebook is opened, but can be controlled manually via <code>ein:notebook-enable-autosave</code> and <code>ein:notebook-disable-autosave</code>.If you wish to change the autosave frequency for the current notebook call <code>ein:notebook-update-autosave-freqency</code>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:notebook-create-checkpoint-on-save</code></p>
+<p>If non-nil a checkpoint will be created every time the notebook is saved. Otherwise checkpoints must be created manually via <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebook-create-checkpoint" target="_blank" rel="noopener"><code>ein:notebook-create-checkpoint</code></a>.</p>
+</li>
+</ul>
+<h3 id="Console"><a href="#Console" class="headerlink" title="Console"></a>Console</h3><ul>
+<li><p><em>variable</em> <code>ein:console-security-dir</code></p>
+<p>Security directory setting.Following types are valid:stringUse this value as a path to security directory. Handy when you have only one IPython server.alistAn alist whose element is “(URL-OR-PORT . DIR)”. Key (URL-OR-PORT) can be string (URL), integer (port), or<code>default</code> (symbol). The value of <code>default</code> is used when other key does not much. Normally you should have this entry.functionCalled with an argument URL-OR-PORT (integer or string). You can have complex setting using this.</p>
+</li>
+<li><p><em>variable</em> <code>ein:console-executable</code></p>
+<p>IPython executable used for console.Example: <code>&quot;/user/bin/ipython&quot;</code>. Types same as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a> are valid.</p>
+</li>
+<li><p><em>variable</em> <code>ein:console-args</code></p>
+<p>Additional argument when using console.WarningSpace-separated string is obsolete now. Use a list of string as value now.Setting to use IPython profile named “YOUR-IPYTHON-PROFILE”:<code>(setq ein:console-args &#39;(&quot;--profile&quot; &quot;YOUR-IPYTHON-PROFILE&quot;))</code>Together with <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a>, you can open IPython console connecting to a remote kernel.:<code>(setq ein:console-args &#39;(&quot;--ssh&quot; &quot;HOSTNAME&quot;)) (setq ein:console-security-dir &quot;PATH/TO/SECURITY/DIR&quot;)</code>You can setup <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-args" target="_blank" rel="noopener"><code>ein:console-args</code></a> per server basis using alist form:<code>(setq ein:console-args       &#39;((8888 . &#39;(&quot;--profile&quot; &quot;PROFILE&quot;))         (8889 . &#39;(&quot;--ssh&quot; &quot;HOSTNAME&quot;))         (default . &#39;(&quot;--profile&quot; &quot;default&quot;))))</code>If you want to use more complex setting, you can set a function to it:<code>(setq ein:console-args       (lambda (url-or-port) &#39;(&quot;--ssh&quot; &quot;HOSTNAME&quot;)))</code>See also: <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a>.</p>
+</li>
+</ul>
+<h3 id="Connect"><a href="#Connect" class="headerlink" title="Connect"></a>Connect</h3><ul>
+<li><p><em>variable</em> <code>ein:connect-run-command</code></p>
+<p><code>%run</code> magic command used for <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-run-buffer" target="_blank" rel="noopener"><code>ein:connect-run-buffer</code></a>. Types same as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:console-security-dir" target="_blank" rel="noopener"><code>ein:console-security-dir</code></a> are valid.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-reload-command</code></p>
+<p>Setting for <code>ein:connect-reload-buffer</code>. Same as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-run-command" target="_blank" rel="noopener"><code>ein:connect-run-command</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-save-before-run</code></p>
+<p>Whether the buffer should be saved before <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-run-buffer" target="_blank" rel="noopener"><code>ein:connect-run-buffer</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:propagate-connect</code></p>
+<p>Set to <code>t</code> to connect to the notebook after jumping to a buffer.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-aotoexec-lighter</code></p>
+<p>String appended to the lighter of <code>ein:connect-mode</code> (<code>ein:c</code>) when auto-execution mode is on. When <code>nil</code>, use the same string as <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:cell-autoexec-prompt" target="_blank" rel="noopener"><code>ein:cell-autoexec-prompt</code></a>.</p>
+</li>
+<li><p><em>variable</em> <code>ein:connect-default-notebook</code></p>
+<p>Notebook to be connect when <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-to-default-notebook" target="_blank" rel="noopener"><code>ein:connect-to-default-notebook</code></a> is called.Example setting to connect to “My_Notebook” in the server at port 8888 when opening any buffer in <code>python-mode</code>:<code>(setq ein:connect-default-notebook &quot;8888/My_Notebook&quot;) (add-hook &#39;python-mode-hook &#39;ein:connect-to-default-notebook)</code><a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-default-notebook" target="_blank" rel="noopener"><code>ein:connect-default-notebook</code></a> can also be a function without any argument. This function must return a string (notebook path of the form “URL-OR-PORT/NOTEBOOK-NAME”).As <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:connect-to-default-notebook" target="_blank" rel="noopener"><code>ein:connect-to-default-notebook</code></a> requires notebook list to be loaded, consider using <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:notebooklist-load" target="_blank" rel="noopener"><code>ein:notebooklist-load</code></a>to load notebook list if you want to connect to notebook without manually opening notebook list.</p>
+</li>
+<li><p><em>function</em> <code>ein:connect-to-default-notebook</code></p>
+<p>Connect to the default notebook specified by ‘ein:connect-default-notebook’. Set this to ‘python-mode-hook’ to automatically connect any python-mode buffer to the notebook.</p>
+</li>
+</ul>
+<h3 id="Misc-1"><a href="#Misc-1" class="headerlink" title="Misc"></a>Misc</h3><ul>
+<li><p><em>variable</em> <code>ein:filename-translations</code></p>
+<p>Convert file paths between Emacs and Python process.This value can take these form:alistIts key specifies URL-OR-PORT and value must be a list of two functions: (TO-PYTHON FROM-PYTHON). Key (URL-OR-PORT) can be string (URL), integer (port), or <code>default</code> (symbol). The value of <code>default</code> is used when other key does not much.functionCalled with an argument URL-OR-PORT (integer or string). This function must return a list of two functions: (TO-PYTHON FROM-PYTHON).Here, the functions TO-PYTHON and FROM-PYTHON are defined as:TO-PYTHONA function which converts a file name (returned by <code>buffer-file-name</code>) to the one Python understands.FROM-PYTHONA function which converts a file path returned by Python process to the one Emacs understands.Use <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:tramp-create-filename-translator" target="_blank" rel="noopener"><code>ein:tramp-create-filename-translator</code></a> to easily generate the pair of TO-PYTHON and FROM-PYTHON.</p>
+</li>
+<li><p><em>function</em> (<code>ein:tramp-create-filename-translator</code><em>remote-host</em> <em>&amp;optional</em> <em>username</em>)</p>
+<p>Generate a pair of TO-PYTHON and FROM-PYTHON for ‘ein:filename-translations’.Usage:<code>(setq ein:filename-translations       ‘((8888          . ,(ein:tramp-create-filename-translator &quot;MY-HOSTNAME&quot;)))) ;; Equivalently: (setq ein:filename-translations       (lambda (url-or-port)         (when (equal url-or-port 8888)           (ein:tramp-create-filename-translator &quot;MY-HOSTNAME&quot;))))</code>This setting assumes that the IPython server which can be connected using the port 8888 in localhost is actually running in the host named MY-HOSTNAME.Adapted from ‘slime-create-filename-translator’.</p>
+</li>
+<li><p><em>variable</em> <code>ein:query-timeout</code></p>
+<p>Default query timeout for HTTP access in millisecond.Setting this to <code>nil</code> means no timeout. If you have <code>curl</code> command line program, it is automatically set to <code>nil</code> as <code>curl</code> is reliable than <code>url-retrieve</code> therefore no need for a workaround (see below).If you do the same operation before the timeout, old operation will NO LONGER be canceled (as it the cookie jar gets clobbered when curl aborts). Instead you will see Race! in debug messages.NoteThis value exists because it looks like <code>url-retrieve</code> occasionally fails to finish (start?) querying. Timeout is used to let user notice that their operation is not finished. It also prevent opening a lot of useless process buffers. You will see them when closing Emacs if there is no timeout.If you know how to fix the problem with <code>url-retrieve</code>, please let me know or send pull request at github! (Related bug report in Emacs bug tracker: <a href="http://debbugs.gnu.org/cgi/bugreport.cgi?bug=11469" target="_blank" rel="noopener">http://debbugs.gnu.org/cgi/bugreport.cgi?bug=11469</a>)</p>
+</li>
+<li><p><em>function</em> (<code>ein:notebook-jump-to-opened-notebook</code><em>notebook</em>)</p>
+<p>List all opened notebook buffers and switch to one that the user selects.</p>
+</li>
+</ul>
+<h2 id="Gotchas-and-caveats"><a href="#Gotchas-and-caveats" class="headerlink" title="Gotchas and caveats"></a>Gotchas and caveats</h2><p>Although EIN mostly works fine, there are some deficits I noticed but have not fixed yet. It seems that they originate from some upstream bugs so there is little I can do in EIN (but I’m not sure – it’s possible that I am misusing the libraries!).</p>
+<p>If you know how to fix/workaround them, patches are very welcome.</p>
+<h3 id="url-retrieve"><a href="#url-retrieve" class="headerlink" title="url-retrieve"></a><code>url-retrieve</code></h3><p>While using EIN, probably most of the error messages are about server connections. It looks like the problem is in <code>url-retrieve</code>. But in those cases you don’t lose any notebook data and your IPython kernel is fine. You can just type the command again and it will go fine most of the time. For saving notebook, I implemented code to retry when there is an error comes from <code>url-retrieve</code> to make it even safer.</p>
+<h3 id="MuMaMo"><a href="#MuMaMo" class="headerlink" title="MuMaMo"></a>MuMaMo</h3><p>When using MuMaMo based notebook mode, you will notice that highlighting outside of the cell input is turned off while you are in the input area. It seems there is a bug in MuMaMo <a href="https://millejoh.github.io/emacs-ipython-notebook/#m3bug" target="_blank" rel="noopener">6</a>.</p>
+<p>If you are using smartrep and MuMaMo together, see also the warning in <a href="https://millejoh.github.io/emacs-ipython-notebook/#ein:use-smartrep" target="_blank" rel="noopener"><code>ein:use-smartrep</code></a> document.</p>
+<ul>
+<li><p><a href="https://millejoh.github.io/emacs-ipython-notebook/#id15" target="_blank" rel="noopener">6</a></p>
+<p>See the relevant bug report I posted: <a href="https://bugs.launchpad.net/nxhtml/+bug/1013794" target="_blank" rel="noopener">https://bugs.launchpad.net/nxhtml/+bug/1013794</a></p>
+</li>
+</ul>
+<h3 id="python-mode-el"><a href="#python-mode-el" class="headerlink" title="python-mode.el"></a>python-mode.el</h3><p>Using <a href="https://millejoh.github.io/emacs-ipython-notebook/#python-mode-el" target="_blank" rel="noopener">python-mode.el</a> without fisrt byte-compiling can cause a segfault with the MuMaMo based notebook mode.</p>
+<p>Also, <code>mumamo-idle-set-major-mode</code> generates the error message <code>(wrong-type-argument listp python-saved-check-command)</code> time to time, making minibuffer bit noisy while editing notebook. See <a href="https://github.com/millejoh/emacs-ipython-notebook/wiki/Tips" target="_blank" rel="noopener">Tips</a> to fix this problem.</p>
+<h2 id="Advanced"><a href="#Advanced" class="headerlink" title="Advanced"></a>Advanced</h2><p>By telling IPython a little bit about Emacs Lisp, you can execute Emacs Lisp from IPython, just like you can execute Javascript in the web client. See <a href="https://github.com/millejoh/emacs-ipython-notebook/blob/master/tools/emacslisp.py" target="_blank" rel="noopener">emacslisp.py</a> for more details.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">In [1]:</span><br><span class="line">%run PATH/TO/emacslisp.py</span><br><span class="line"></span><br><span class="line">In [2]:</span><br><span class="line">EmacsLisp(&apos;(+ 1 2 3)&apos;)</span><br><span class="line">Out [2]:</span><br><span class="line">6</span><br></pre></td></tr></table></figure>
+<h2 id="Reporting-issues"><a href="#Reporting-issues" class="headerlink" title="Reporting issues"></a>Reporting issues</h2><p>Please use <code>M-x ein:dev-bug-report-template</code> to write a bug report. It pops up a buffer containing some system information and instruction for bug report.</p>
+<h3 id="Logging"><a href="#Logging" class="headerlink" title="Logging"></a>Logging</h3><p>Sometime more information than provided in the <code>*Message*</code> buffer is needed to debug.</p>
+<ol>
+<li><p>Execute <code>(ein:log-set-level &#39;debug)</code> (e.g., <code>M-: (ein:log-set-level &#39;debug) RET</code>).</p>
+</li>
+<li><p>Then do some operation which cause the problem.</p>
+</li>
+<li><p>Go to the log buffer <code>_*ein:log-all*</code> (it starts with a space) and paste the whole buffer to the issue tracker.</p>
+<p>Please enclose the log with three backquotes to make the snippet as a code block, like this:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>[verbose] Start logging. @#&lt;buffer <em>ein: 8888/NAME</em>&gt;<br>[info] Notebook NAME is ready @#&lt;buffer <em>ein: 8888/NAME</em>&gt;<br>[info] Kernel started: 5e4f74d1-ce91-4e7e-9575-9646adea5172 @#<buffer *scratch*></buffer></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+<p>See also: <a href="http://github.github.com/github-flavored-markdown/" target="_blank" rel="noopener">GitHub Flavored Markdown - Introduction</a></p>
+<p>If it is too long, you can use paste bin service such as <a href="https://gist.github.com/" target="_blank" rel="noopener">gist</a>.</p>
+</li>
+</ol>
+<h4 id="websocket-el"><a href="#websocket-el" class="headerlink" title="websocket.el"></a>websocket.el</h4><p>websocket.el has its own logging buffer. Sometime it is useful to see this log. To do this:</p>
+<ol>
+<li><code>(require &#39;ein-dev)</code></li>
+<li><code>(setq websocket-debug t)</code> or call <code>ein:dev-start-debug</code>.</li>
+<li>Then do the operation which causes the problem.</li>
+<li>Go to log buffer using <code>ein:dev-pop-to-debug-shell</code> and <code>ein:dev-pop-to-debug-iopub</code>. These command must be called in the notebook buffer.</li>
+</ol>
+<h3 id="Debugging"><a href="#Debugging" class="headerlink" title="Debugging"></a>Debugging</h3><p>If you are interested in debugging EIN, you should start by calling the command <code>ein:dev-start-debug</code>. If the bug is websocket related, you may need to run it with a prefix key like this: <code>C-u M-x ein:dev-start-debug RET</code> to get a backtrace. This command sets <code>debug-on-error</code> to <code>t</code> and does some patching to the debugger. This patching is required because printing EWOC objects freezes Emacs otherwise. It also changes log level to report everything the log buffer. You can reset the patch and log level with <code>ein:dev-stop-debug</code>.</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -3205,795 +4128,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/25/git-magit/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gabriel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DummyHead">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/25/git-magit/" class="post-title-link" itemprop="url">Magit Documentation</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-25 08:05:59 / Modified: 11:06:41" itemprop="dateCreated datePublished" datetime="2019-05-25T08:05:59+08:00">2019-05-25</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-magit/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - magit</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/25/git-magit/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/25/git-magit/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="A-Git-Porcelain-inside-Emacs"><a href="#A-Git-Porcelain-inside-Emacs" class="headerlink" title="A Git Porcelain inside Emacs"></a>A Git Porcelain inside Emacs</h2><p><a href="https://magit.vc/" target="_blank" rel="noopener">It’s Magit! A Git Porcelain inside Emacs</a></p>
-<p>Magit is an interface to the version control system <a href="https://git-scm.com/" target="_blank" rel="noopener">Git</a>, implemented as an <a href="https://www.gnu.org/software/emacs" target="_blank" rel="noopener">Emacs</a> package. Magit aspires to be a complete Git porcelain. While we cannot (yet) claim that Magit wraps and improves upon each and every Git command, it is complete enough to allow even experienced Git users to perform almost all of their daily version control tasks directly from within Emacs. While many fine Git clients exist, only Magit and Git itself deserve to be called porcelains. <a href="https://magit.vc/" target="_blank" rel="noopener">(less)</a></p>
-<p>Staging and otherwise applying changes is one of the most important features in a Git porcelain and here Magit outshines anything else, including Git itself. Git’s own staging interface (<code>git add --patch</code>) is so cumbersome that many users only use it in exceptional cases. In Magit staging a hunk or even just part of a hunk is as trivial as staging all changes made to a file.</p>
-<p>The most visible part of Magit’s interface is the status buffer, which displays information about the current repository. Its content is created by running several Git commands and making their output actionable. Among other things, it displays information about the current branch, lists unpulled and unpushed changes and contains sections displaying the staged and unstaged changes. That might sound noisy, but, since sections are collapsible, it’s not.</p>
-<p>To stage or unstage a change one places the cursor on the change and then types <code>s</code> or <code>u</code>. The change can be a file or a hunk, or when the region is active (i.e. when there is a selection) several files or hunks, or even just part of a hunk. The change or changes that these commands - and many others - would act on are highlighted.</p>
-<p>Magit also implements several other “apply variants” in addition to staging and unstaging. One can discard or reverse a change, or apply it to the working tree. Git’s own porcelain only supports this for staging and unstaging and you would have to do something like <code>git diff ... | ??? | git apply ...</code> to discard, revert, or apply a single hunk on the command line. In fact that’s exactly what Magit does internally (which is what lead to the term “apply variants”).</p>
-<p>Magit isn’t just for Git experts, but it does assume some prior experience with Git as well as Emacs. That being said, many users have reported that using Magit was what finally taught them what Git it is capable off and how to use it to its fullest. Other users wished they had switched to Emacs sooner so that they would have gotten their hands on Magit earlier.</p>
-<p>While one has to know the basic features of Emacs to be able to make full use of Magit, acquiring just enough Emacs skills doesn’t take long and is worth it, even for users who prefer other editors. Vim users are advised to give <a href="https://bitbucket.org/lyro/evil/wiki/Home" target="_blank" rel="noopener">Evil</a> the “Extensible VI Layer for Emacs”, and <a href="https://github.com/syl20bnr/spacemacs" target="_blank" rel="noopener">Spacemacs</a> an “Emacs starter-kit focused on Evil” a try.</p>
-<p>Magit provides a consistent and efficient Git porcelain. After a short learning period, you will be able to perform most of your daily version control tasks faster than you would on the command line. You will likely also start using features that seemed too daunting in the past.</p>
-<p>Magit fully embraces Git. It exposes many advanced features using a simple but flexible interface instead of only wrapping the trivial ones like many GUI clients do. Of course Magit supports logging, cloning, pushing, and other commands that usually don’t fail in spectacular ways; but it also supports tasks that often cannot be completed in a single step. Magit fully supports tasks such as merging, rebasing, cherry-picking, reverting, and blaming by not only providing a command to initiate these tasks but also by displaying context sensitive information along the way and providing commands that are useful for resolving conflicts and resuming the sequence after doing so.</p>
-<p>Magit wraps and in many cases improves upon at least the following Git porcelain commands: add, am, bisect, blame, branch, checkout, cherry, cherry-pick, clean, clone, commit, config, describe, diff, fetch, format-patch, init, log, merge, merge-tree, mv, notes, pull, rebase, reflog, remote, request-pull, reset, revert, rm, show, stash, submodule, and tag. Many more Magit porcelain commands are implemented on top of Git plumbing commands.</p>
-<blockquote>
-<p>两点：staging and status buffer. </p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th><a href="https://magit.vc/manual/magit/Introduction.html#Introduction" target="_blank" rel="noopener">Introduction</a>:</th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Installation.html#Installation" target="_blank" rel="noopener">Installation</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Getting-Started.html#Getting-Started" target="_blank" rel="noopener">Getting Started</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Interface-Concepts.html#Interface-Concepts" target="_blank" rel="noopener">Interface Concepts</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Inspecting.html#Inspecting" target="_blank" rel="noopener">Inspecting</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Manipulating.html#Manipulating" target="_blank" rel="noopener">Manipulating</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Transferring.html#Transferring" target="_blank" rel="noopener">Transferring</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Miscellaneous.html#Miscellaneous" target="_blank" rel="noopener">Miscellaneous</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Customizing.html#Customizing" target="_blank" rel="noopener">Customizing</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Plumbing.html#Plumbing" target="_blank" rel="noopener">Plumbing</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/FAQ.html#FAQ" target="_blank" rel="noopener">FAQ</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Debugging-Tools.html#Debugging-Tools" target="_blank" rel="noopener">Debugging Tools</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Keystroke-Index.html#Keystroke-Index" target="_blank" rel="noopener">Keystroke Index</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Command-Index.html#Command-Index" target="_blank" rel="noopener">Command Index</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Function-Index.html#Function-Index" target="_blank" rel="noopener">Function Index</a>:</td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Variable-Index.html#Variable-Index" target="_blank" rel="noopener">Variable Index</a>:</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-Getting-Started"><a href="#3-Getting-Started" class="headerlink" title="3 Getting Started"></a>3 Getting Started</h2><p>This short tutorial describes the most essential features that many Magitians use on a daily basis. It only scratches the surface but should be enough to get you started.</p>
-<p>IMPORTANT: It is safest if you clone some repository just for this tutorial. Alternatively you can use an existing local repository, but if you do that, then you should commit all uncommitted changes before proceeding.</p>
-<p>To display information about the current Git repository, type <code>M-x magit-status RET</code>. You will be using this command a lot, and should therefore give it a global key binding. This is what we recommend:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x g&quot;) &apos;magit-status)</span><br></pre></td></tr></table></figure>
-<p>Most Magit commands are commonly invoked from the status buffer. It can be considered the primary interface for interacting with Git using Magit. Many other Magit buffers may exist at a given time, but they are often created from this buffer.</p>
-<p>Depending on what state your repository is in, this buffer may contain sections titled “Staged changes”, “Unstaged changes”, “Unmerged into origin/master”, “Unpushed to origin/master”, and many others.</p>
-<p>Since we are starting from a safe state, which you can easily return to (by doing a <code>git reset --hard PRE-MAGIT-STATE</code>), there currently are not staged or unstaged changes. Edit some files and save the changes. Then go back to the status buffer, while at the same time refreshing it, by typing <code>C-x g</code>. (When the status buffer, or any Magit buffer for that matter, is the current buffer, then you can also use just <code>g</code> to refresh it).</p>
-<p>Move between sections using <code>p</code> and <code>n</code>. Note that the bodies of some sections are hidden. Type <code>TAB</code> to expand or collapse the section at point. You can also use <code>C-tab</code> to cycle the visibility of the current section and its children. Move to a file section inside the section named “Unstaged changes” and type <code>s</code> to stage the changes you have made to that file. That file now appears under “Staged changes”.</p>
-<p>Magit can stage and unstage individual hunks, not just complete files. Move to the file you have just staged, expand it using <code>TAB</code>, move to one of the hunks using <code>n</code>, and unstage just that by typing <code>u</code>. Note how the staging (<code>s</code>) and unstaging (<code>u</code>) commands operate on the change at point. Many other commands behave the same way.</p>
-<p>You can also un-/stage just part of a hunk. Inside the body of a hunk section (move there using <code>C-n</code>), set the mark using <code>C-SPC</code> and move down until some added and/or removed lines fall inside the region but not all of them. Again type <code>s</code> to stage.</p>
-<p>It is also possible to un-/stage multiple files at once. Move to a file section, type <code>C-SPC</code>, move to the next file using <code>n</code>, and then <code>s</code> to stage both files. Note that both the mark and point have to be on the headings of sibling sections for this to work. If the region looks like it does in other buffers, then it doesn’t select Magit sections that can be acted on as a unit.</p>
-<p>And then of course you want to commit your changes. Type <code>c</code>. This shows the available commit commands and arguments in a buffer at the bottom of the frame. Each command and argument is prefixed with the key that invokes/sets it. Do not worry about this for now. We want to create a “normal” commit, which is done by typing <code>c</code> again.</p>
-<p>Now two new buffers appear. One is for writing the commit message, the other shows a diff with the changes that you are about to committed. Write a message and then type <code>C-c C-c</code> to actually create the commit.</p>
-<p>You probably don’t want to push the commit you just created because you just committed some random changes, but if that is not the case you could push it by typing <code>P</code> to show all the available push commands and arguments and then <code>p</code> to push to a branch with the same name as the local branch onto the remote configured as the push-remote. (If the push-remote is not configured yet, then you would first be prompted for the remote to push to.)</p>
-<p>So far we have mentioned the commit, push, and log transient prefix commands. These are probably among the transients you will be using the most, but many others exist. To show a transient that lists all other transients (as well as the various apply commands and some other essential commands), type <code>h</code>. Try a few.</p>
-<p>The key bindings in that transient correspond to the bindings in Magit buffers, including but not limited to the status buffer. So you could type <code>h d</code> to bring up the diff transient, but once you remember that “d” stands for “diff”, you would usually do so by just typing <code>d</code>. But this “prefix of prefixes” is useful even once you have memorized all the bindings, as it can provide easy access to Magit commands from non-Magit buffers. You should create a global key binding for this command too:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x M-g&quot;) &apos;magit-dispatch)</span><br></pre></td></tr></table></figure>
-<p>In the same vein, you might also want to enable <code>global-magit-file-mode</code> to get some more Magit key bindings in regular file-visiting buffers (see <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Files.html#Minor-Mode-for-Buffers-Visiting-Files" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Files</a>).</p>
-<p>It is not necessary that you do so now, but if you stick with Magit, then it is highly recommended that you read the next section too.</p>
-<hr>
-<p>Next: <a href="https://magit.vc/manual/magit/Interface-Concepts.html#Interface-Concepts" target="_blank" rel="noopener">Interface Concepts</a>, Previous: <a href="https://magit.vc/manual/magit/Installation.html#Installation" target="_blank" rel="noopener">Installation</a>, Up: <a href="https://magit.vc/manual/magit/index.html#Top" target="_blank" rel="noopener">Top</a>   [<a href="https://magit.vc/manual/magit/index.html#SEC_Contents" target="_blank" rel="noopener">Contents</a>][<a href="https://magit.vc/manual/magit/Keystroke-Index.html#Keystroke-Index" target="_blank" rel="noopener">Index</a>]</p>
-<h2 id="4-Interface-Concepts"><a href="#4-Interface-Concepts" class="headerlink" title="4 Interface Concepts"></a>4 Interface Concepts</h2><table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Modes-and-Buffers.html#Modes-and-Buffers" target="_blank" rel="noopener">Modes and Buffers</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Sections.html#Sections" target="_blank" rel="noopener">Sections</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Transient-Commands.html#Transient-Commands" target="_blank" rel="noopener">Transient Commands</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Completion-Confirmation-and-the-Selection.html#Completion-Confirmation-and-the-Selection" target="_blank" rel="noopener">Completion, Confirmation and the Selection</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Running-Git.html#Running-Git" target="_blank" rel="noopener">Running Git</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-1-Modes-and-Buffers"><a href="#4-1-Modes-and-Buffers" class="headerlink" title="4.1 Modes and Buffers"></a>4.1 Modes and Buffers</h3><p>Magit provides several major-modes. For each of these modes there usually exists only one buffer per repository. Separate modes and thus buffers exist for commits, diffs, logs, and some other things.</p>
-<p>Besides these special purpose buffers, there also exists an overview buffer, called the <strong>status buffer</strong>. It’s usually from this buffer that the user invokes Git commands, or creates or visits other buffers.</p>
-<p>In this manual we often speak about “Magit buffers”. By that we mean buffers whose major-modes derive from <code>magit-mode</code>.</p>
-<ul>
-<li><p>M-x magit-toggle-buffer-lock     (<code>magit-toggle-buffer-lock</code>)</p>
-<p>This command locks the current buffer to its value or if the buffer is already locked, then it unlocks it.Locking a buffer to its value prevents it from being reused to display another value. The name of a locked buffer contains its value, which allows telling it apart from other locked buffers and the unlocked buffer.Not all Magit buffers can be locked to their values; for example, it wouldn’t make sense to lock a status buffer.There can only be a single unlocked buffer using a certain major-mode per repository. So when a buffer is being unlocked and another unlocked buffer already exists for that mode and repository, then the former buffer is instead deleted and the latter is displayed in its place.</p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Switching-Buffers.html#Switching-Buffers" target="_blank" rel="noopener">Switching Buffers</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Naming-Buffers.html#Naming-Buffers" target="_blank" rel="noopener">Naming Buffers</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Quitting-Windows.html#Quitting-Windows" target="_blank" rel="noopener">Quitting Windows</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Automatic-Refreshing-of-Magit-Buffers.html#Automatic-Refreshing-of-Magit-Buffers" target="_blank" rel="noopener">Automatic Refreshing of Magit Buffers</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Automatic-Saving-of-File_002dVisiting-Buffers.html#Automatic-Saving-of-File_002dVisiting-Buffers" target="_blank" rel="noopener">Automatic Saving of File-Visiting Buffers</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Automatic-Reverting-of-File_002dVisiting-Buffers.html#Automatic-Reverting-of-File_002dVisiting-Buffers" target="_blank" rel="noopener">Automatic Reverting of File-Visiting Buffers</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-2-Sections"><a href="#4-2-Sections" class="headerlink" title="4.2 Sections"></a>4.2 Sections</h3><p>Magit buffers are organized into nested sections, which can be collapsed and expanded, similar to how sections are handled in Org mode. Each section also has a type, and some sections also have a value. For each section type there can also be a local keymap, shared by all sections of that type.</p>
-<p>Taking advantage of the section value and type, many commands operate on the current section, or when the region is active and selects sections of the same type, all of the selected sections. Commands that only make sense for a particular section type (as opposed to just behaving differently depending on the type) are usually bound in section type keymaps.</p>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Section-Movement.html#Section-Movement" target="_blank" rel="noopener">Section Movement</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Section-Visibility.html#Section-Visibility" target="_blank" rel="noopener">Section Visibility</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Section-Hooks.html#Section-Hooks" target="_blank" rel="noopener">Section Hooks</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Section-Types-and-Values.html#Section-Types-and-Values" target="_blank" rel="noopener">Section Types and Values</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Section-Options.html#Section-Options" target="_blank" rel="noopener">Section Options</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-3-Transient-Commands"><a href="#4-3-Transient-Commands" class="headerlink" title="4.3 Transient Commands"></a>4.3 Transient Commands</h3><p>Many Magit commands are implemented as <strong>transient</strong> commands. First the user invokes a <strong>prefix</strong> command, which causes its <strong>infix</strong> arguments and <strong>suffix</strong> commands to be displayed in the echo area. The user then optionally sets some infix arguments and finally invokes one of the suffix commands.</p>
-<p>This is implemented in the library <code>transient</code>. Earlier Magit releases used the package <code>magit-popup</code> and even earlier versions library <code>magit-key-mode</code>.</p>
-<p>Transient is documented in <a href="https://magit.vc/manual/transient/index.html#Top" target="_blank" rel="noopener">(transient)Top</a>.</p>
-<ul>
-<li><p>C-c C-c     (<code>magit-dispatch</code>)</p>
-<p>This transient prefix command binds most of Magit’s other prefix commands as suffix commands and displays them in a temporary buffer until one of them is invoked. Invoking such a sub-prefix causes the suffixes of that command to be bound and displayed instead of those of <code>magit-dispatch</code>.</p>
-</li>
-</ul>
-<p>This command is also, or especially, useful outside Magit buffers, so you should setup a global binding:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x M-g&quot;) &apos;magit-dispatch)</span><br></pre></td></tr></table></figure>
-<p>Transient commands remember the used arguments for subsequent invocations. Two transients, the log and diff transients (see <a href="https://magit.vc/manual/magit/Logging.html#Logging" target="_blank" rel="noopener">Logging</a> and <a href="https://magit.vc/manual/magit/Diffing.html#Diffing" target="_blank" rel="noopener">Diffing</a>), may behave a bit differently, depending on the value of <code>magit-use-sticky-arguments</code>.</p>
-<ul>
-<li><p>User Option: <strong>magit-use-sticky-arguments</strong></p>
-<p>This option controls how the diff and log transients reuse arguments from existing buffers.When <code>t</code> (the default value), then the log or diff transients reuses the arguments from the current repository’s log or diff buffer, respectively. When no log or diff buffer exists for the current repository, these transients use the default value of <code>magit-log-arguments</code> or <code>magit-diff-arguments</code>.When <code>current</code>, log and diff transients will only reuse the arguments if the current buffer is derived from <code>magit-log-mode</code> or <code>magit-diff-mode</code>, respectively.When <code>nil</code>, the default value of <code>magit-log-arguments</code> or <code>magit-diff-arguments</code> is always used.</p>
-</li>
-</ul>
-<hr>
-<h3 id="4-4-Completion-Confirmation-and-the-Selection"><a href="#4-4-Completion-Confirmation-and-the-Selection" class="headerlink" title="4.4 Completion, Confirmation and the Selection"></a>4.4 Completion, Confirmation and the Selection</h3><table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Action-Confirmation.html#Action-Confirmation" target="_blank" rel="noopener">Action Confirmation</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Completion-and-Confirmation.html#Completion-and-Confirmation" target="_blank" rel="noopener">Completion and Confirmation</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/The-Selection.html#The-Selection" target="_blank" rel="noopener">The Selection</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/The-hunk_002dinternal-region.html#The-hunk_002dinternal-region" target="_blank" rel="noopener">The hunk-internal region</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Support-for-Completion-Frameworks.html#Support-for-Completion-Frameworks" target="_blank" rel="noopener">Support for Completion Frameworks</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Additional-Completion-Options.html#Additional-Completion-Options" target="_blank" rel="noopener">Additional Completion Options</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="4-5-Running-Git"><a href="#4-5-Running-Git" class="headerlink" title="4.5 Running Git"></a>4.5 Running Git</h3><table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Viewing-Git-Output.html#Viewing-Git-Output" target="_blank" rel="noopener">Viewing Git Output</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Git-Process-Status.html#Git-Process-Status" target="_blank" rel="noopener">Git Process Status</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Running-Git-Manually.html#Running-Git-Manually" target="_blank" rel="noopener">Running Git Manually</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Git-Executable.html#Git-Executable" target="_blank" rel="noopener">Git Executable</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Global-Git-Arguments.html#Global-Git-Arguments" target="_blank" rel="noopener">Global Git Arguments</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="4-5-1-Viewing-Git-Output"><a href="#4-5-1-Viewing-Git-Output" class="headerlink" title="4.5.1 Viewing Git Output"></a>4.5.1 Viewing Git Output</h4><p>Magit runs Git either for side-effects (e.g. when pushing) or to get some value (e.g. the name of the current branch).</p>
-<p>When Git is run for side-effects, the process output is logged in a per-repository log buffer, which can be consulted using the <code>magit-process</code> command when things don’t go as expected.</p>
-<p>The output/errors for up to ‘magit-process-log-max’ Git commands are retained.</p>
-<ul>
-<li><p>$     (<code>magit-process</code>)</p>
-<p>This commands displays the process buffer for the current repository.</p>
-</li>
-</ul>
-<p>Inside that buffer, the usual key bindings for navigating and showing sections are available. There is one additional command.</p>
-<ul>
-<li><p>k     (<code>magit-process-kill</code>)</p>
-<p>This command kills the process represented by the section at point.</p>
-</li>
-<li><p>User Option: <strong>magit-git-debug</strong></p>
-<p>When this is non-nil then the output of all calls to git are logged in the process buffer. This is useful when debugging, otherwise it just negatively affects performance.</p>
-</li>
-</ul>
-<h2 id="5-Inspecting"><a href="#5-Inspecting" class="headerlink" title="5 Inspecting"></a>5 Inspecting</h2><p>The functionality provided by Magit can be roughly divided into three groups: </p>
-<p>inspecting existing data,<br>manipulating existing data or adding new data,<br> transferring data. (划分的好.)</p>
-<p>Of course that is a rather crude distinction that often falls short, but it’s more useful than no distinction at all. This section is concerned with inspecting data, the next two with manipulating and transferring it. Then follows a section about miscellaneous functionality, which cannot easily be fit into this distinction.</p>
-<p>Of course other distinctions make sense too, e.g. Git’s distinction between porcelain and plumbing commands, which for the most part is equivalent to Emacs’ distinction between interactive commands and non-interactive functions. All of the sections mentioned before are mainly concerned with the porcelain – Magit’s plumbing layer is described later.</p>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Status-Buffer.html#Status-Buffer" target="_blank" rel="noopener">Status Buffer</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Repository-List.html#Repository-List" target="_blank" rel="noopener">Repository List</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Logging.html#Logging" target="_blank" rel="noopener">Logging</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Diffing.html#Diffing" target="_blank" rel="noopener">Diffing</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Ediffing.html#Ediffing" target="_blank" rel="noopener">Ediffing</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/References-Buffer.html#References-Buffer" target="_blank" rel="noopener">References Buffer</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Bisecting.html#Bisecting" target="_blank" rel="noopener">Bisecting</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Visiting-Blobs.html#Visiting-Blobs" target="_blank" rel="noopener">Visiting Blobs</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Blaming.html#Blaming" target="_blank" rel="noopener">Blaming</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h3 id="5-1-Status-Buffer"><a href="#5-1-Status-Buffer" class="headerlink" title="5.1 Status Buffer"></a>5.1 Status Buffer</h3><p>While other Magit buffers contain e.g. one particular diff or one particular log, the status buffer contains the diffs for staged and unstaged changes, logs for unpushed and unpulled commits, lists of stashes and untracked files, and information related to the current branch.</p>
-<p>During certain incomplete operations – for example when a merge resulted in a conflict – additional information is displayed that helps proceeding with or aborting the operation.</p>
-<p>The command <code>magit-status</code> displays the status buffer belonging to the current repository in another window. This command is used so often that it should be bound globally. We recommend using <code>C-x g</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(global-set-key (kbd &quot;C-x g&quot;) &apos;magit-status)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>C-x g     (<code>magit-status</code>)</p>
-<p>When invoked from within an existing Git repository, then this command shows the status of that repository in a buffer.If the current directory isn’t located within a Git repository, then this command prompts for an existing repository or an arbitrary directory, depending on the option <code>magit-repository-directories</code>, and the status for the selected repository is shown instead.If that option specifies any existing repositories, then the user is asked to select one of them.Otherwise the user is asked to select an arbitrary directory using regular file-name completion. If the selected directory is the top-level directory of an existing working tree, then the status buffer for that is shown.Otherwise the user is offered to initialize the selected directory as a new repository. After creating the repository its status buffer is shown.These fallback behaviors can also be forced using one or more prefix arguments:With two prefix arguments (or more precisely a numeric prefix value of 16 or greater) an arbitrary directory is read, which is then acted on as described above. The same could be accomplished using the command <code>magit-init</code>.With a single prefix argument an existing repository is read from the user, or if no repository can be found based on the value of <code>magit-repository-directories</code>, then the behavior is the same as with two prefix arguments.</p>
-</li>
-<li><p>User Option: <strong>magit-repository-directories</strong></p>
-<p>List of directories that are Git repositories or contain Git repositories.Each element has the form <code>(DIRECTORY . DEPTH)</code>. DIRECTORY has to be a directory or a directory file-name, a string. DEPTH, an integer, specifies the maximum depth to look for Git repositories. If it is 0, then only add DIRECTORY itself.This option controls which repositories are being listed by <code>magit-list-repositories</code>. It also affects <code>magit-status</code> (which see) in potentially surprising ways (see above).</p>
-</li>
-<li><p>Command: <strong>ido-enter-magit-status</strong></p>
-<p>From an Ido prompt used to open a file, instead drop into <code>magit-status</code>. This is similar to <code>ido-magic-delete-char</code>, which, despite its name, usually causes a Dired buffer to be created.To make this command available, use something like:<code>(add-hook &#39;ido-setup-hook           (lambda ()             (define-key ido-completion-map               (kbd \&quot;C-x g\&quot;) &#39;ido-enter-magit-status)))</code>Starting with Emacs 25.1 the Ido keymaps are defined just once instead of every time Ido is invoked, so now you can modify it like pretty much every other keymap:<code>(define-key ido-common-completion-map   (kbd \&quot;C-x g\&quot;) &#39;ido-enter-magit-status)</code></p>
-</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Status-Sections.html#Status-Sections" target="_blank" rel="noopener">Status Sections</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Status-Header-Sections.html#Status-Header-Sections" target="_blank" rel="noopener">Status Header Sections</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Status-Module-Sections.html#Status-Module-Sections" target="_blank" rel="noopener">Status Module Sections</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Status-Options.html#Status-Options" target="_blank" rel="noopener">Status Options</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="6-Manipulating"><a href="#6-Manipulating" class="headerlink" title="6 Manipulating"></a>6 Manipulating</h2><table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Repository-Setup.html#Repository-Setup" target="_blank" rel="noopener">Repository Setup</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Staging-and-Unstaging.html#Staging-and-Unstaging" target="_blank" rel="noopener">Staging and Unstaging</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Applying.html#Applying" target="_blank" rel="noopener">Applying</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Committing.html#Committing" target="_blank" rel="noopener">Committing</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Branching.html#Branching" target="_blank" rel="noopener">Branching</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Merging.html#Merging" target="_blank" rel="noopener">Merging</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Resolving-Conflicts.html#Resolving-Conflicts" target="_blank" rel="noopener">Resolving Conflicts</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Rebasing.html#Rebasing" target="_blank" rel="noopener">Rebasing</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Cherry-Picking.html#Cherry-Picking" target="_blank" rel="noopener">Cherry Picking</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Resetting.html#Resetting" target="_blank" rel="noopener">Resetting</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Stashing.html#Stashing" target="_blank" rel="noopener">Stashing</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="7-Transferring"><a href="#7-Transferring" class="headerlink" title="7 Transferring"></a>7 Transferring</h2><table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Remotes.html#Remotes" target="_blank" rel="noopener">Remotes</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Fetching.html#Fetching" target="_blank" rel="noopener">Fetching</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Pulling.html#Pulling" target="_blank" rel="noopener">Pulling</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Pushing.html#Pushing" target="_blank" rel="noopener">Pushing</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Plain-Patches.html#Plain-Patches" target="_blank" rel="noopener">Plain Patches</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Maildir-Patches.html#Maildir-Patches" target="_blank" rel="noopener">Maildir Patches</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="8-Miscellaneous"><a href="#8-Miscellaneous" class="headerlink" title="8 Miscellaneous"></a>8 Miscellaneous</h2><table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Tagging.html#Tagging" target="_blank" rel="noopener">Tagging</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Notes.html#Notes" target="_blank" rel="noopener">Notes</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Submodules.html#Submodules" target="_blank" rel="noopener">Submodules</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Subtree.html#Subtree" target="_blank" rel="noopener">Subtree</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Worktree.html#Worktree" target="_blank" rel="noopener">Worktree</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Common-Commands.html#Common-Commands" target="_blank" rel="noopener">Common Commands</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Wip-Modes.html#Wip-Modes" target="_blank" rel="noopener">Wip Modes</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Files.html#Minor-Mode-for-Buffers-Visiting-Files" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Files</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Minor-Mode-for-Buffers-Visiting-Blobs.html#Minor-Mode-for-Buffers-Visiting-Blobs" target="_blank" rel="noopener">Minor Mode for Buffers Visiting Blobs</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="9-Customizing"><a href="#9-Customizing" class="headerlink" title="9 Customizing"></a>9 Customizing</h2><p>Both Git and Emacs are highly customizable. Magit is both a Git porcelain as well as an Emacs package, so it makes sense to customize it using both Git variables as well as Emacs options. However this flexibility doesn’t come without problems, including but not limited to the following.</p>
-<ul>
-<li><p>Some Git variables automatically have an effect in Magit without requiring any explicit support. Sometimes that is desirable - in other cases, it breaks Magit.</p>
-<p>When a certain Git setting breaks Magit but you want to keep using that setting on the command line, then that can be accomplished by overriding the value for Magit only by appending something like <code>(&quot;-c&quot; &quot;some.variable=compatible-value&quot;)</code> to <code>magit-git-global-arguments</code>.</p>
-</li>
-<li><p>Certain settings like <code>fetch.prune=true</code> are respected by Magit commands (because they simply call the respective Git command) but their value is not reflected in the respective transient buffers. In this case the <code>--prune</code> argument in <code>magit-fetch</code> might be active or inactive, but that doesn’t keep the Git variable from being honored by the suffix commands anyway. So pruning might happen despite the <code>--prune</code> arguments being displayed in a way that seems to indicate that no pruning will happen.</p>
-</li>
-</ul>
-<p>I intend to address these and similar issues in a future release.</p>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Per_002dRepository-Configuration.html#Per_002dRepository-Configuration" target="_blank" rel="noopener">Per-Repository Configuration</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Essential-Settings.html#Essential-Settings" target="_blank" rel="noopener">Essential Settings</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="10-Plumbing"><a href="#10-Plumbing" class="headerlink" title="10 Plumbing"></a>10 Plumbing</h2><p>The following sections describe how to use several of Magit’s core abstractions to extend Magit itself or implement a separate extension.</p>
-<p>A few of the low-level features used by Magit have been factored out into separate libraries/packages, so that they can be used by other packages, without having to depend on Magit. See <a href="https://magit.vc/manual/with-editor/index.html#Top" target="_blank" rel="noopener">(with-editor)Top</a> for information about <code>with-editor</code>. <code>transient</code> doesn’t have a manual yet.</p>
-<p>If you are trying to find an unused key that you can bind to a command provided by your own Magit extension, then checkout <a href="https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry" target="_blank" rel="noopener">https://github.com/magit/magit/wiki/Plugin-Dispatch-Key-Registry</a>.</p>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/Calling-Git.html#Calling-Git" target="_blank" rel="noopener">Calling Git</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Section-Plumbing.html#Section-Plumbing" target="_blank" rel="noopener">Section Plumbing</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Refreshing-Buffers.html#Refreshing-Buffers" target="_blank" rel="noopener">Refreshing Buffers</a>:</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/Conventions.html#Conventions" target="_blank" rel="noopener">Conventions</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="Appendix-A-FAQ"><a href="#Appendix-A-FAQ" class="headerlink" title="Appendix A FAQ"></a>Appendix A FAQ</h2><p>The next two nodes lists frequently asked questions. For a list of frequently <strong>and recently</strong>asked questions, i.e. questions that haven’t made it into the manual yet, see<a href="https://github.com/magit/magit/wiki/FAQ" target="_blank" rel="noopener">https://github.com/magit/magit/wiki/FAQ</a>.</p>
-<p>Please also use the <a href="https://magit.vc/manual/magit/Debugging-Tools.html#Debugging-Tools" target="_blank" rel="noopener">Debugging Tools</a>.</p>
-<table>
-<thead>
-<tr>
-<th>• <a href="https://magit.vc/manual/magit/FAQ-_002d-How-to-_2026_003f.html#FAQ-_002d-How-to-_2026_003f" target="_blank" rel="noopener">FAQ - How to …?</a>:</th>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>• <a href="https://magit.vc/manual/magit/FAQ-_002d-Issues-and-Errors.html#FAQ-_002d-Issues-and-Errors" target="_blank" rel="noopener">FAQ - Issues and Errors</a>:</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -4040,7 +4174,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -4160,7 +4294,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">27</span>
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
