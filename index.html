@@ -348,7 +348,7 @@
           <h2 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/06/13/work-with-source-code/" class="post-title-link" itemprop="url">work with source code</a>
+                <a href="/2019/06/13/work-with-source-code/" class="post-title-link" itemprop="url">14 Working with Source Code</a>
               
             
           </h2>
@@ -373,7 +373,7 @@
                 
               
 
-              <time title="Created: 2019-06-13 15:31:00 / Modified: 15:31:56" itemprop="dateCreated datePublished" datetime="2019-06-13T15:31:00+08:00">2019-06-13</time>
+              <time title="Created: 2019-06-13 15:31:00 / Modified: 15:34:05" itemprop="dateCreated datePublished" datetime="2019-06-13T15:31:00+08:00">2019-06-13</time>
             
 
             
@@ -427,7 +427,7 @@
       
         
           
-            <h2 id="14-Working-with-Source-Code"><a href="#14-Working-with-Source-Code" class="headerlink" title="14 Working with Source Code"></a>14 Working with Source Code</h2><p>Source code here refers to any plain text collection of computer instructions, possibly with comments, written using a human-readable programming language. Org can manage source code in an Org document when the source code is identified with begin and end markers. Working with source code begins with identifying source code blocks. A source code block can be placed almost anywhere in an Org document; it is not restricted to the preamble or the end of the document. However, Org cannot manage a source code block if it is placed inside an Org comment or within a fixed width section.</p>
+            <p>Source code here refers to any plain text collection of computer instructions, possibly with comments, written using a human-readable programming language. Org can manage source code in an Org document when the source code is identified with begin and end markers. Working with source code begins with identifying source code blocks. A source code block can be placed almost anywhere in an Org document; it is not restricted to the preamble or the end of the document. However, Org cannot manage a source code block if it is placed inside an Org comment or within a fixed width section.</p>
 <p>Here is an example source code block in the Emacs Lisp language:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#+BEGIN_SRC emacs-lisp</span><br><span class="line">  (defun org-xor (a b)</span><br><span class="line">     &quot;Exclusive or.&quot;</span><br><span class="line">     (if a (not b) b))</span><br><span class="line">#+END_SRC</span><br></pre></td></tr></table></figure>
 <p>Org can manage the source code in the block delimited by ‘#+BEGIN_SRC’ … ‘#+END_SRC’ in several ways that can simplify housekeeping tasks essential to modern source code maintenance. Org can edit, format, extract, export, and publish source code blocks. Org can also compile and execute a source code block, then capture the results. The Org mode literature sometimes refers to source code blocks as <em>live code</em> blocks because they can alter the content of the Org document or the material that it exports. Users can control how live they want each source code block by tweaking the header arguments (see <a href="https://orgmode.org/org.html#Using-Header-Arguments" target="_blank" rel="noopener">Using Header Arguments</a>) for compiling, execution, extraction, and exporting.</p>
