@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">28</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">29</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">29</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">30</span></a>
 
   </li>
 
@@ -312,6 +312,299 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/26/algorithms-10-kinds-of-classic-algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/05/26/algorithms-10-kinds-of-classic-algorithms/" class="post-title-link" itemprop="url">十种经典排序算法</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-05-26 22:01:47" itemprop="dateCreated datePublished" datetime="2019-05-26T22:01:47+08:00">2019-05-26</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-06-01 17:27:16" itemprop="dateModified" datetime="2019-06-01T17:27:16+08:00">2019-06-01</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithms-sort/" itemprop="url" rel="index"><span itemprop="name">algorithms - sort</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/05/26/algorithms-10-kinds-of-classic-algorithms/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/26/algorithms-10-kinds-of-classic-algorithms/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-冒泡排序（Bubble-Sort）"><a href="#1-冒泡排序（Bubble-Sort）" class="headerlink" title="1. 冒泡排序（Bubble Sort）"></a>1. 冒泡排序（Bubble Sort）</h2><p>这个算法的名字由来是因为越小的元素会经由交换慢慢“浮”到数列的顶端。 </p>
+<p><strong>Bubble sort</strong>, sometimes referred to as <strong>sinking sort</strong>, is a simple <a href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank" rel="noopener">sorting algorithm</a> that repeatedly steps through the list, compares adjacent pairs and <a href="https://en.wikipedia.org/wiki/Swap_(computer_science" target="_blank" rel="noopener">swaps</a>) them if they are in the wrong order. </p>
+<blockquote>
+<p>物理模拟的理论源头. </p>
+</blockquote>
+<h3 id="1-1-Pseudocodes-Implementation"><a href="#1-1-Pseudocodes-Implementation" class="headerlink" title="1.1 Pseudocodes Implementation"></a>1.1 Pseudocodes Implementation</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#basics </span></span><br><span class="line">procedure bubbleSort(A : list of sortable items )</span><br><span class="line">    n = length(A)</span><br><span class="line">    repeat</span><br><span class="line">        swapped = false</span><br><span class="line">        <span class="keyword">for</span> i = <span class="number">1</span> to n<span class="number">-1</span> inclusive do</span><br><span class="line">            /* <span class="keyword">if</span> this pair <span class="keyword">is</span> out of order */</span><br><span class="line">            <span class="keyword">if</span> A[i<span class="number">-1</span>] &gt; A[i] then</span><br><span class="line">                /* swap them <span class="keyword">and</span> remember something changed */</span><br><span class="line">                swap( A[i<span class="number">-1</span>], A[i] )</span><br><span class="line">                swapped = true</span><br><span class="line">            end <span class="keyword">if</span></span><br><span class="line">        end <span class="keyword">for</span></span><br><span class="line">    until <span class="keyword">not</span> swapped</span><br><span class="line">end procedure</span><br><span class="line"></span><br><span class="line"><span class="comment">#improved </span></span><br><span class="line">procedure bubbleSort( A : list of sortable items )</span><br><span class="line">    n = length(A)</span><br><span class="line">    repeat</span><br><span class="line">        swapped = false</span><br><span class="line">        <span class="keyword">for</span> i = <span class="number">1</span> to n<span class="number">-1</span> inclusive do</span><br><span class="line">            <span class="keyword">if</span> A[i<span class="number">-1</span>] &gt; A[i] then</span><br><span class="line">                swap(A[i<span class="number">-1</span>], A[i])</span><br><span class="line">                swapped = true</span><br><span class="line">            end <span class="keyword">if</span></span><br><span class="line">        end <span class="keyword">for</span></span><br><span class="line">        n = n - <span class="number">1</span></span><br><span class="line">    until <span class="keyword">not</span> swapped</span><br><span class="line">end procedure</span><br></pre></td></tr></table></figure>
+<h3 id="1-2-动图演示"><a href="#1-2-动图演示" class="headerlink" title="1.2 动图演示"></a>1.2 动图演示</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/044120.gif" alt="img"></td>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/849589-20171015223238449-2146169197.gif" alt></td>
+</tr>
+</tbody>
+</table>
+<h3 id="1-3-代码实现"><a href="#1-3-代码实现" class="headerlink" title="1.3 代码实现"></a>1.3 代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># compare to get the small and swap </span></span><br><span class="line"><span class="comment"># repeat</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort1</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> range(len(arr)): <span class="comment">#cumbersome loop</span></span><br><span class="line">        <span class="comment"># core logic </span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(arr)):</span><br><span class="line">            <span class="keyword">if</span> arr[i] &lt; arr[i<span class="number">-1</span>]:</span><br><span class="line">                temp = arr[i<span class="number">-1</span>] <span class="comment">#目标位置.</span></span><br><span class="line">                arr[i<span class="number">-1</span>] = arr[i]</span><br><span class="line">                arr[i] = temp <span class="comment">#swap的逻辑可以先写后面的两行。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubble_sort2</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="comment">#上浮和下沉</span></span><br><span class="line">    <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">        swap_counter = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(arr)):</span><br><span class="line">            <span class="keyword">if</span> arr[i] &lt; arr[i<span class="number">-1</span>]: <span class="comment">#move smaller up </span></span><br><span class="line">                arr[i<span class="number">-1</span>], arr[i] = arr[i], arr[i<span class="number">-1</span>]</span><br><span class="line">                swap_counter += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> swap_counter == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-插入排序-Insertion-Sort，"><a href="#2-插入排序-Insertion-Sort，" class="headerlink" title="2. 插入排序 Insertion Sort，　"></a>2. 插入排序 Insertion Sort，　</h2><p>关键点是将第一项作为sorted sequence的分析方法.</p>
+<h4 id="2-1-Psedocodes"><a href="#2-1-Psedocodes" class="headerlink" title="2.1 Psedocodes"></a>2.1 Psedocodes</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">i ← <span class="number">1</span></span><br><span class="line"><span class="keyword">while</span> i &lt; length(A)</span><br><span class="line">    j ← i</span><br><span class="line">    <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> A[j<span class="number">-1</span>] &gt; A[j]</span><br><span class="line">        swap A[j] <span class="keyword">and</span> A[j<span class="number">-1</span>]</span><br><span class="line">        j ← j - <span class="number">1</span></span><br><span class="line">    end <span class="keyword">while</span></span><br><span class="line">    i ← i + <span class="number">1</span></span><br><span class="line">end <span class="keyword">while</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-动态演示"><a href="#2-2-动态演示" class="headerlink" title="2.2 动态演示"></a>2.2 动态演示</h4><table>
+<thead>
+<tr>
+<th>Sorted</th>
+<th>Make room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/043843.gif" alt="Insertion sort.gif"></td>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/849589-20171015225645277-1151100000.gif" alt></td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-3-代码实现"><a href="#2-3-代码实现" class="headerlink" title="2.3 代码实现"></a>2.3 代码实现</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#psudocodes </span></span><br><span class="line">Move the pivot entry to a temporary location leaving a hole in List</span><br><span class="line"><span class="keyword">while</span> (there is a name above the hole <span class="keyword">and</span></span><br><span class="line">that name is greater than the pivot):</span><br><span class="line">move the name above the hole down into the hole</span><br><span class="line">leaving a hole above the name</span><br><span class="line">Move the pivot entry into the hole in List.</span><br><span class="line"></span><br><span class="line">#解决方案只保留一项, 越少越好. </span><br><span class="line"><span class="meta">#in-place的实现</span></span><br><span class="line">def insertion_sort(arr):#这个思路是最清晰的.</span><br><span class="line">    for i in range(1, len(arr)):</span><br><span class="line">        #将当前的pivot拿出 </span><br><span class="line">        pivot = arr[i] #Move the pivot to a temporay location,</span><br><span class="line">        hole = i # <span class="keyword">and</span> leave a hole</span><br><span class="line">        #找到比当前值大的,然后下沉. hole&gt;<span class="number">0</span>是因为第一项已经排好了.</span><br><span class="line">        <span class="keyword">while</span> hole &gt; <span class="number">0</span> <span class="keyword">and</span> arr[hole<span class="number">-1</span>] &gt; pivot:</span><br><span class="line">            #当上面有更大的,下沉, 因为是排序好的，所以想象lock整体下沉。</span><br><span class="line">            #</span><br><span class="line">            arr[hole] = arr[hole<span class="number">-1</span>] #下沉填充hole</span><br><span class="line">            hole  = hole- <span class="number">1</span> #leave the hole,两步操作.</span><br><span class="line">        arr[hole] = pivot #insert sort就是这么来的.</span><br><span class="line">    <span class="keyword">return</span> arr</span><br></pre></td></tr></table></figure>
+<h2 id="3-选择排序-Selection-Sort"><a href="#3-选择排序-Selection-Sort" class="headerlink" title="3. 选择排序 Selection Sort"></a>3. 选择排序 Selection Sort</h2><p>Psuedocodes: 从剩下的序列中选择最小值， 逐个浮上来。</p>
+<h3 id="3-1-算法描述"><a href="#3-1-算法描述" class="headerlink" title="3.1 算法描述"></a>3.1 算法描述</h3><p>There are many different ways to sort the cards. Here’s a simple one, called <strong>selection sort</strong>, possibly similar to how you sorted the cards above:</p>
+<ol>
+<li>Find the smallest card. Swap it with the first card.</li>
+<li>Find the second-smallest card. Swap it with the second card.</li>
+<li>Find the third-smallest card. Swap it with the third card.</li>
+<li>Repeat finding the next-smallest card, and swapping it into the correct position until the array is sorted.</li>
+</ol>
+<h3 id="3-2-动图演示"><a href="#3-2-动图演示" class="headerlink" title="3.2 动图演示"></a>3.2 动图演示</h3><table>
+<thead>
+<tr>
+<th>Effects</th>
+<th>Demonstration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/044356.gif" alt="Selection sort animation.gif"></td>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/849589-20171015224719590-1433219824.gif" alt></td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-3-代码实现"><a href="#3-3-代码实现" class="headerlink" title="3.3 代码实现"></a>3.3 代码实现</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#要输出的是new_arr</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sort3</span><span class="params">(arr)</span>:</span>　＃基本思路．</span><br><span class="line">    arr = list(arr)</span><br><span class="line">    new_arr = []</span><br><span class="line">    <span class="keyword">while</span> arr:</span><br><span class="line">        minimum = min(arr)</span><br><span class="line">        new_arr.append(arr.pop(minimum))</span><br><span class="line">    <span class="keyword">return</span> new_arr</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selection_sortA</span><span class="params">(nums)</span>:</span> <span class="comment">#selection排序的核心是从subarray中找打最小值.</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)<span class="number">-1</span>): <span class="comment">#从subarray的第一项开始</span></span><br><span class="line">        min_idx = i <span class="comment">#设置min_idx的初始值．</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, len(nums)):<span class="comment">#从subarray中选出最小值</span></span><br><span class="line">            <span class="keyword">if</span> nums[j] &lt; nums[min_idx]: <span class="comment">#不断更新</span></span><br><span class="line">                min_idx = j <span class="comment">#找到最小值的index,只进行index操作.</span></span><br><span class="line">        <span class="comment">#循环终止后, i是当前值, </span></span><br><span class="line">        <span class="comment">#swap the current value and the minial value</span></span><br><span class="line">        temp = nums[i]</span><br><span class="line">        nums[i] = nums[min_idx]</span><br><span class="line">        nums[min_idx] = temp</span><br></pre></td></tr></table></figure>
+<h3 id="3-4-希尔排序-Shell-Sort"><a href="#3-4-希尔排序-Shell-Sort" class="headerlink" title="3.4 希尔排序(Shell Sort)"></a>3.4 希尔排序(Shell Sort)</h3><p>希尔排序是希尔（Donald Shell）于1959年提出的一种排序算法。希尔排序也是一种插入排序，它是简单插入排序经过改进之后的一个更高效的版本，也称为缩小增量排序，同时该算法是冲破O(n2）的第一批算法之一。本文会以图解的方式详细介绍希尔排序的基本思想及其代码实现。</p>
+<blockquote>
+<p>等闲来无事再来了解．</p>
+</blockquote>
+<h2 id="4-归并排序-Merge-Sort"><a href="#4-归并排序-Merge-Sort" class="headerlink" title="4. 归并排序 (Merge Sort)"></a>4. 归并排序 (Merge Sort)</h2><p>In <a href="https://en.wikipedia.org/wiki/Computer_science" target="_blank" rel="noopener">computer science</a>, <strong>merge sort</strong> (also commonly spelled <strong>mergesort</strong>) is an efficient, general-purpose, <a href="https://en.wikipedia.org/wiki/Comparison_sort" target="_blank" rel="noopener">comparison-based</a> <a href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank" rel="noopener">sorting algorithm</a>. Most implementations produce a <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability" target="_blank" rel="noopener">stable sort</a>, which means that the order of equal elements is the same in the input and output. Merge sort is a <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm" target="_blank" rel="noopener">divide and conquer algorithm</a> that was invented by <a href="https://en.wikipedia.org/wiki/John_von_Neumann" target="_blank" rel="noopener">John von Neumann</a>in 1945.<a href="https://en.wikipedia.org/wiki/Merge_sort#cite_note-2" target="_blank" rel="noopener">[2]</a> A detailed description and analysis of bottom-up mergesort appeared in a report by <a href="https://en.wikipedia.org/wiki/Herman_Goldstine" target="_blank" rel="noopener">Goldstine</a> and <a href="https://en.wikipedia.org/wiki/John_von_Neumann" target="_blank" rel="noopener">von Neumann</a> as early as 1948.<a href="https://en.wikipedia.org/wiki/Merge_sort#cite_note-3" target="_blank" rel="noopener">[3]</a></p>
+<h3 id="4-1-Pseudocodes"><a href="#4-1-Pseudocodes" class="headerlink" title="4.1 Pseudocodes"></a>4.1 Pseudocodes</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Top-down implementation </span></span><br><span class="line">function merge_sort(list m)</span><br><span class="line">    // Base case. A list of zero <span class="keyword">or</span> one elements <span class="keyword">is</span> sorted, by definition.</span><br><span class="line">    <span class="keyword">if</span> length of m ≤ <span class="number">1</span> then</span><br><span class="line">        <span class="keyword">return</span> m</span><br><span class="line"></span><br><span class="line">    // Recursive case. First, divide the list into equal-sized sublists</span><br><span class="line">    // consisting of the first half <span class="keyword">and</span> second half of the list.</span><br><span class="line">    // This assumes lists start at index <span class="number">0.</span></span><br><span class="line">    var left := empty list</span><br><span class="line">    var right := empty list</span><br><span class="line">    <span class="keyword">for</span> each x <span class="keyword">with</span> index i <span class="keyword">in</span> m do</span><br><span class="line">        <span class="keyword">if</span> i &lt; (length of m)/<span class="number">2</span> then</span><br><span class="line">            add x to left</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            add x to right</span><br><span class="line"></span><br><span class="line">    // Recursively sort both sublists.</span><br><span class="line">    left := merge_sort(left)</span><br><span class="line">    right := merge_sort(right)</span><br><span class="line"></span><br><span class="line">    // Then merge the now-sorted sublists.</span><br><span class="line">    <span class="keyword">return</span> merge(left, right)</span><br><span class="line"></span><br><span class="line"><span class="comment">#Bottom-up Implementation </span></span><br><span class="line">function merge_sort(node head)</span><br><span class="line">    // <span class="keyword">return</span> <span class="keyword">if</span> empty list</span><br><span class="line">    <span class="keyword">if</span> (head == nil)</span><br><span class="line">        <span class="keyword">return</span> nil</span><br><span class="line">    var node array[<span class="number">32</span>]; initially all nil</span><br><span class="line">    var node result</span><br><span class="line">    var node next</span><br><span class="line">    var int  i</span><br><span class="line">    result = head</span><br><span class="line">    // merge nodes into array</span><br><span class="line">    <span class="keyword">while</span> (result != nil)</span><br><span class="line">         next = result.next;</span><br><span class="line">         result.next = nil</span><br><span class="line">         <span class="keyword">for</span>(i = <span class="number">0</span>; (i &lt; <span class="number">32</span>) &amp;&amp; (array[i] != nil); i += <span class="number">1</span>)</span><br><span class="line">              result = merge(array[i], result)</span><br><span class="line">              array[i] = nil</span><br><span class="line">         // do <span class="keyword">not</span> go past end of array</span><br><span class="line">         <span class="keyword">if</span> (i == <span class="number">32</span>)</span><br><span class="line">               i -= <span class="number">1</span></span><br><span class="line">         array[i] = result</span><br><span class="line">         result = next</span><br><span class="line">    // merge array into single list</span><br><span class="line">    result = nil</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; <span class="number">32</span>; i += <span class="number">1</span>)</span><br><span class="line">         result = merge(array[i], result)</span><br><span class="line">    <span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+<h3 id="4-2-动图演示"><a href="#4-2-动图演示" class="headerlink" title="4.2 动图演示"></a>4.2 动图演示</h3><table>
+<thead>
+<tr>
+<th><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/014112.gif" alt="File:Merge sort animation2.gif"></th>
+<th><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/849589-20171015230557043-37375010.gif" alt></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/040854.jpg" alt="enter image description here"></td>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/1280px-Merge_sort_algorithm_diagram.svg.png" alt></td>
+</tr>
+</tbody>
+</table>
+<h3 id="4-3-Implementation"><a href="#4-3-Implementation" class="headerlink" title="4.3 Implementation"></a>4.3 Implementation</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#psuedocodes方案</span></span><br><span class="line"><span class="keyword">from</span> heapq <span class="keyword">import</span> merge</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_sort1</span><span class="params">(m)</span>:</span> <span class="comment">#Postoder</span></span><br><span class="line">    <span class="comment">#LRN遍历, </span></span><br><span class="line">    <span class="keyword">if</span> len(m) &lt;= <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> m</span><br><span class="line">    mid = len(m) // <span class="number">2</span></span><br><span class="line">    left = merge_sort1(m[:mid])</span><br><span class="line">    right = merge_sort1(m[mid:])</span><br><span class="line">    result = list(merge(left, right))</span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="comment">#step by step soluthon </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(left, right)</span>:</span></span><br><span class="line">    result = []</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left) <span class="keyword">and</span> j &lt; len(right):</span><br><span class="line">        <span class="keyword">if</span> left[i] &lt; right[j]:</span><br><span class="line">            result.append(left[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            result.append(right[j])</span><br><span class="line">            j += <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(left):</span><br><span class="line">        result.append(left[i])</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j &lt; len(right):</span><br><span class="line">        result.append(right[j])</span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span><span class="params">(L)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(L) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> L[:]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        left = mergeSort(L[:mid])</span><br><span class="line">        right = mergeSort(L[mid:])</span><br><span class="line">        <span class="keyword">return</span> merge(left, right)</span><br><span class="line">    <span class="comment">#我的时间管理可能应该是tree的结构.</span></span><br><span class="line"></span><br><span class="line"> <span class="comment">#in-place merge sort</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">merge_inplace</span><span class="params">(A, start, mid, end)</span> -&gt; "<span class="keyword">None</span>":</span></span><br><span class="line">    left = A[start:mid]</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    j = <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> c <span class="keyword">in</span> range(start, end): <span class="comment">#c for cur</span></span><br><span class="line">        <span class="keyword">if</span> j &gt;= len(right) <span class="keyword">or</span> (i &lt; len(left) <span class="keyword">and</span> left[i] &lt; right[j]): <span class="comment">#注意shortcuit的问题.</span></span><br><span class="line">            A[c] = left[i]</span><br><span class="line">            i = i + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            A[c] = right[j]</span><br><span class="line">            j = j + <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mergeSort_inplace</span><span class="params">(A, lo, hi)</span> -&gt; "<span class="keyword">None</span>":</span></span><br><span class="line">    <span class="keyword">if</span> lo &lt; hi - <span class="number">1</span>:</span><br><span class="line">        mid = (lo + hi) // <span class="number">2</span></span><br><span class="line">        mergeSort_inplace(A,lo,mid)</span><br><span class="line">        mergeSort_inplace(A,mid,hi)</span><br><span class="line">        merge_inplace(A, lo, mid, hi)</span><br></pre></td></tr></table></figure>
+<p>归并排序是一种稳定的排序方法。和选择排序一样，归并排序的性能不受输入数据的影响，但表现比选择排序好的多，因为始终都是O(nlogn）的时间复杂度。代价是需要额外的内存空间。</p>
+<blockquote>
+<p>归并算法的代价就是需要额外的存储空间. </p>
+</blockquote>
+<h2 id="5-快速排序（Quick-Sort）"><a href="#5-快速排序（Quick-Sort）" class="headerlink" title="5. 快速排序（Quick Sort）"></a>5. 快速排序（Quick Sort）</h2><p><strong>Quicksort</strong> (sometimes called <strong>partition-exchange sort</strong>) is an <a href="https://en.wikipedia.org/wiki/Algorithm_efficiency" target="_blank" rel="noopener">efficient</a> <a href="https://en.wikipedia.org/wiki/Sorting_algorithm" target="_blank" rel="noopener">sorting algorithm</a>, serving as a systematic method for placing the elements of a <a href="https://en.wikipedia.org/wiki/Random_access" target="_blank" rel="noopener">random access</a> <a href="https://en.wikipedia.org/wiki/Computer_file" target="_blank" rel="noopener">file</a> or an <a href="https://en.wikipedia.org/wiki/Array_data_structure" target="_blank" rel="noopener">array</a> in order. Developed by British computer scientist <a href="https://en.wikipedia.org/wiki/Tony_Hoare" target="_blank" rel="noopener">Tony Hoare</a>in 1959<a href="https://en.wikipedia.org/wiki/Quicksort#cite_note-1" target="_blank" rel="noopener">[1]</a> and published in 1961,<a href="https://en.wikipedia.org/wiki/Quicksort#cite_note-alg64-2" target="_blank" rel="noopener">[2]</a> it is still a commonly used algorithm for sorting. When implemented well, it can be about two or three times faster than its main competitors, <a href="https://en.wikipedia.org/wiki/Merge_sort" target="_blank" rel="noopener">merge sort</a> and <a href="https://en.wikipedia.org/wiki/Heapsort" target="_blank" rel="noopener">heapsort</a>.<a href="https://en.wikipedia.org/wiki/Quicksort#cite_note-skiena-3" target="_blank" rel="noopener">[3]</a>[<em>contradictory</em>]</p>
+<h3 id="5-1-算法描述"><a href="#5-1-算法描述" class="headerlink" title="5.1 算法描述"></a>5.1 算法描述</h3><p>Quicksort is a <a href="https://en.wikipedia.org/wiki/Divide_and_conquer_algorithm" target="_blank" rel="noopener">divide and conquer algorithm</a>. Quicksort first divides a large array into two smaller sub-arrays: the low elements and the high elements. Quicksort can then recursively sort the sub-arrays. The steps are:</p>
+<ol>
+<li>Pick an element, called a <em>pivot</em>, from the array.</li>
+<li><em>Partitioning</em>: reorder the array so that all elements with values less than the pivot come before the pivot, while all elements with values greater than the pivot come after it (equal values can go either way). After this partitioning, the pivot is in its final position. This is called the <em>partition</em> operation.</li>
+<li><a href="https://en.wikipedia.org/wiki/Recursion_(computer_science" target="_blank" rel="noopener">Recursively</a>) apply the above steps to the sub-array of elements with smaller values and separately to the sub-array of elements with greater values.</li>
+</ol>
+<h3 id="5-2-动图演示"><a href="#5-2-动图演示" class="headerlink" title="5.2 动图演示"></a>5.2 动图演示</h3><table>
+<thead>
+<tr>
+<th>Effects</th>
+<th>Demonstration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/220px-Sorting_quicksort_anim.gif" alt="Selection sort animation.gif"></td>
+<td><img src="/home/gaowei/Public/Blog/source/_posts/algorithms-10-kinds-of-classic-algorithms.assets/200px-Quicksort-diagram.svg.png" alt></td>
+</tr>
+</tbody>
+</table>
+<h3 id="5-3-Implementation"><a href="#5-3-Implementation" class="headerlink" title="5.3 Implementation"></a>5.3 Implementation</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(arr) &lt; <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> arr <span class="comment">#base case</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        pivot = arr[<span class="number">0</span>]</span><br><span class="line">        less = [i <span class="keyword">for</span> i <span class="keyword">in</span> arr[<span class="number">1</span>:] <span class="keyword">if</span> i &lt;= pivot] </span><br><span class="line">        more = [i <span class="keyword">for</span> i <span class="keyword">in</span> arr[<span class="number">1</span>:] <span class="keyword">if</span> i &gt; pivot]</span><br><span class="line">        <span class="keyword">return</span> quicksort(less) + [pivot] + quicksort(more)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -4895,238 +5188,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/18/summary-clock-tools-in-emacs/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gabriel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DummyHead">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/18/summary-clock-tools-in-emacs/" class="post-title-link" itemprop="url">Emacs时间管理之Datetime与Clock工具</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-18 12:01:49" itemprop="dateCreated datePublished" datetime="2019-05-18T12:01:49+08:00">2019-05-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-01 15:34:14" itemprop="dateModified" datetime="2019-06-01T15:34:14+08:00">2019-06-01</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/linux-emacs-orgmode/" itemprop="url" rel="index"><span itemprop="name">linux - emacs - orgmode</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/18/summary-clock-tools-in-emacs/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/18/summary-clock-tools-in-emacs/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前文概要"><a href="#前文概要" class="headerlink" title="前文概要:"></a>前文概要:</h2><p><a href="https://alphaalgorithms.github.io/2019/05/15/3-tools-to-manage-time/">时间管理的三件工具</a><br>(clock, datetime, calendar)</p>
-<p><a href="https://alphaalgorithms.github.io/2019/05/13/time-presentation/">时间变量的顺序与时间表示的格式</a><br>(%a %b-d %H:%M %Y)</p>
-<h2 id="Emacs中的时间格式与任务的时间属性"><a href="#Emacs中的时间格式与任务的时间属性" class="headerlink" title="Emacs中的时间格式与任务的时间属性"></a>Emacs中的时间格式与任务的时间属性</h2><p>时间管理的三件工具: 钟表, 日历, 以及二者结合的便利工具datetime.</p>
-<p><a href="https://orgmode.org/manual/Dates-and-Times.html#Dates-and-Times" target="_blank" rel="noopener">The Org Manual: Dates and Times</a>主要应用datetime和clock两个工具管理时间.</p>
-<ul>
-<li><p>时间戳的格式 （Datetime)</p>
-<ul>
-<li><p>datetime格式 <2019-05-18 sat 09:52> C-u C-c . 6个时间变量 %Y-%m-%d %a %H:%M</2019-05-18></p>
-</li>
-<li><p>date格式 <2019-05-18 sat> C-c . 4个时间变量</2019-05-18></p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Datetime时间戳与任务的时间属性"><a href="#Datetime时间戳与任务的时间属性" class="headerlink" title="Datetime时间戳与任务的时间属性"></a>Datetime时间戳与任务的时间属性</h2><ul>
-<li><p>时间(戳)到底什么?<br>时间戳从概念上辨析为两个类别 1) appointment 2) schedule.<br>可以将主动安排的时间理解为schedule, 被动参与的时间为appointment</p>
-</li>
-<li><p>事件(任务)的四个时间属性</p>
-<ul>
-<li><p>Repeater<br>三种repeater,<br>1) standard 时间戳后面 +1w day, week, month, year<br>2) 过期后只需要补上一次, ++1w(比如每周给父母打电话)<br>3) 以档次完成时间为下一个interval的开始点,比如3个周理一次发. 理发 .+3w; 任何时间点上理完发,自动从该时间点上启动下一轮repeat.</p>
-</li>
-<li><p>Time Span<br>会议的时间<br><2019-05-18 sat 10:04>–<2019-05-18 sat 10:05></2019-05-18></2019-05-18></p>
-</li>
-<li><p>Scheduled<br>任务的开始时间,<br>SCHEDULED: <2019-05-18 sat></2019-05-18></p>
-</li>
-<li><p>Deadline<br>任务的截止时间<br>DEADLINE: <2019-05-18 sat></2019-05-18></p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>任务的监控与跟踪 Check<br>整合管理deadline与schedule.<ul>
-<li><code>org-check-deadlines</code>, C-7 C-c / d #7天内将要截止的任务.变量org-deadline-warning-days</li>
-<li><code>org-check-before-date</code>, given-date前的schedule and appointments</li>
-<li><code>org-check-after-date</code>, given-date后的schedule and appointments.</li>
-</ul>
-</li>
-</ul>
-<h2 id="Clock计时与中断处理"><a href="#Clock计时与中断处理" class="headerlink" title="Clock计时与中断处理"></a>Clock计时与中断处理</h2><ol>
-<li><p>基本计时功能,<br><code>org-clock-in</code>, <code>org-clock-out</code><br>可以手动修改计时, 然后调用<code>org-evaluate-time-range</code>或者<code>update-maybe</code></p>
-</li>
-<li><p>任务的第五个属性, efforts<br>总结任务的5个属性,1)schedule 2) deadline 3)repeater 4)time span 5)预测的time span(efforts).<br>efforts是核心参数,逐步提高对时间和任务的掌控.</p>
-</li>
-</ol>
-<ol start="3">
-<li>Resolve idle time and continuous clocking<br>中断计时的问题,<code>调出来org-resolve-clocks</code>重新设置.k(keep), s(substract),只用keep便可.<br>总结:<br>1) 计时与计算 2) 任务的5个时间属性 3)idle中断计时的处理.</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -5173,7 +5234,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -5295,7 +5356,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">28</span>
+                      
+                    
+                    <span class="site-state-item-count">29</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
