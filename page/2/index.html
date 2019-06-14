@@ -238,7 +238,7 @@
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">29</span></a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags<span class="badge">30</span></a>
 
   </li>
         
@@ -276,7 +276,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">30</span></a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives<span class="badge">31</span></a>
 
   </li>
 
@@ -312,6 +312,531 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/06/01/python-format-string/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Gabriel">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DummyHead">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/06/01/python-format-string/" class="post-title-link" itemprop="url">Python Format String</a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-01 15:24:54 / Modified: 17:24:10" itemprop="dateCreated datePublished" datetime="2019-06-01T15:24:54+08:00">2019-06-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/fileManager-textProcessing/" itemprop="url" rel="index"><span itemprop="name">fileManager -textProcessing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">Comments: </span>
+                <a href="/2019/06/01/python-format-string/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/06/01/python-format-string/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Field-Width-and-Alignment"><a href="#Field-Width-and-Alignment" class="headerlink" title="Field Width and Alignment"></a>Field Width and Alignment</h2><blockquote>
+<p>默认左对齐 </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th><code>&#39;hey {:10}&#39;.format(&#39;hello&#39;)</code></th>
+<th>Specify width (Aign left, fill with spaces)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;{:010}&#39;.format(2)</code></td>
+<td>Fill with zeroesOutput: <code>0000000002</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:*^30}&#39;.format(&#39;text&#39;)</code></td>
+<td>Specify width, align to centerOutput: <code>*************text*************</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Meaning, padding</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;&lt;&#39;</code></td>
+<td>Forces the field to be left-aligned within the available space (this is the default for most objects).</td>
+</tr>
+<tr>
+<td><code>&#39;&gt;&#39;</code></td>
+<td>Forces the field to be right-aligned within the available space (this is the default for numbers).</td>
+</tr>
+<tr>
+<td><code>&#39;=&#39;</code></td>
+<td>Forces the padding to be placed after the sign (if any) but before the digits. This is used for printing fields in the form ‘+000000120’. This alignment option is only valid for numeric types. It becomes the default when ‘0’ immediately precedes the field width.</td>
+</tr>
+<tr>
+<td><code>&#39;^&#39;</code></td>
+<td>Forces the field to be centered within the available space.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="Member-and-Element-Access"><a href="#Member-and-Element-Access" class="headerlink" title="Member and Element Access"></a>Member and Element Access</h2><table>
+<thead>
+<tr>
+<th><code>&#39;{0}, {1}, {2}&#39;.format(1, 2, 3)</code></th>
+<th>Access arguments by ordinal positionOutput: <code>1, 2, 3</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;{}, {}, {}&#39;.format(1, 2, 3)</code></td>
+<td>Implicit positional arguments (2.7 and above only)Output: <code>1, 2, 3</code></td>
+</tr>
+<tr>
+<td><code>&#39;{value1}, {value2}, {value2}&#39;.format(value1=1, value2=2, value3=3)</code></td>
+<td>Access keyword arguments by nameOutput: <code>1, 2, 2</code></td>
+</tr>
+<tr>
+<td><code>&#39;{[1]}&#39;.format([&#39;first&#39;, &#39;second&#39;, &#39;third&#39;])</code></td>
+<td>Access element by indexOutput: <code>second</code></td>
+</tr>
+<tr>
+<td><code>&#39;{.name}&#39;.format(sys.stdin)</code></td>
+<td>Access element attributeOutput: <code>&lt;stdin&gt;</code></td>
+</tr>
+<tr>
+<td><code>&#39;{[name]}&#39;.format({&#39;name&#39;: &#39;something&#39;})</code></td>
+<td>Access element by keyOutput: <code>something</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Numerical-Representation"><a href="#Numerical-Representation" class="headerlink" title="Numerical Representation"></a>Numerical Representation</h2><table>
+<thead>
+<tr>
+<th><code>&#39;{:x}&#39;.format(100)</code></th>
+<th>Hexadecimal representationOutput: <code>64</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;{:X}&#39;.format(3487)</code></td>
+<td>Hexadecimal representation (uppercase letters)Output: <code>D9F</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:#x}&#39;.format(100)</code></td>
+<td>Hexadecimal representation (including the <code>0x</code>)Output: <code>0x64</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:b}&#39;.format(100)</code></td>
+<td>Binary representationOutput: <code>1100100</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:c}&#39;.format(100)</code></td>
+<td>Character representationOutput: <code>d</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:d}&#39;.format(100)</code></td>
+<td>Decimal representation (default)Output: <code>100</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:,}&#39;.format(1000000)</code></td>
+<td>With thousands separatorOutput: <code>1,000,000</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:o}&#39;.format(100)</code></td>
+<td>Octal representationOutput: <code>144</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:n}&#39;.format(100)</code></td>
+<td>Like <code>d</code>, but uses locale information for separatorsOutput: <code>100</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:e}&#39;.format(0.0000000001)</code></td>
+<td>Exponent notationOutput: <code>1.000000e-10</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:E}&#39;.format(0.0000000001)</code></td>
+<td>Exponent notation (capital ‘E’)Output: <code>1.000000E-10</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:f}&#39;.format(3/14.0)</code></td>
+<td>Fixed pointOutput: <code>0.214286</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:g}&#39;.format(3/14.0)</code></td>
+<td>General formatOutput: <code>0.214286</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:%}&#39;.format(0.66)</code></td>
+<td>PercentageOutput: <code>66.000000%</code></td>
+</tr>
+<tr>
+<td><code>&#39;{:.3}&#39;.format(0.214286)</code></td>
+<td>PrecisionOutput: <code>0.214</code></td>
+</tr>
+</tbody>
+</table>
+<p>Integers </p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;b&#39;</code></td>
+<td>Binary format. Outputs the number in base 2.</td>
+</tr>
+<tr>
+<td><code>&#39;c&#39;</code></td>
+<td>Character. Converts the integer to the corresponding unicode character before printing.</td>
+</tr>
+<tr>
+<td><code>&#39;d&#39;</code></td>
+<td>Decimal Integer. Outputs the number in base 10.</td>
+</tr>
+<tr>
+<td><code>&#39;o&#39;</code></td>
+<td>Octal format. Outputs the number in base 8.</td>
+</tr>
+<tr>
+<td><code>&#39;x&#39;</code></td>
+<td>Hex format. Outputs the number in base 16, using lower-case letters for the digits above 9.</td>
+</tr>
+<tr>
+<td><code>&#39;X&#39;</code></td>
+<td>Hex format. Outputs the number in base 16, using upper-case letters for the digits above 9.</td>
+</tr>
+<tr>
+<td><code>&#39;n&#39;</code></td>
+<td>Number. This is the same as <code>&#39;d&#39;</code>, except that it uses the current locale setting to insert the appropriate number separator characters.</td>
+</tr>
+<tr>
+<td>None</td>
+<td>The same as <code>&#39;d&#39;</code>.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Floating numbers</p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;e&#39;</code></td>
+<td>Exponent notation. Prints the number in scientific notation using the letter ‘e’ to indicate the exponent. The default precision is <code>6</code>.</td>
+</tr>
+<tr>
+<td><code>&#39;E&#39;</code></td>
+<td>Exponent notation. Same as <code>&#39;e&#39;</code> except it uses an upper case ‘E’ as the separator character.</td>
+</tr>
+<tr>
+<td><code>&#39;f&#39;</code></td>
+<td>Fixed-point notation. Displays the number as a fixed-point number. The default precision is <code>6</code>.</td>
+</tr>
+<tr>
+<td><code>&#39;F&#39;</code></td>
+<td>Fixed-point notation. Same as <code>&#39;f&#39;</code>, but converts <code>nan</code> to <code>NAN</code> and <code>inf</code> to <code>INF</code>.</td>
+</tr>
+<tr>
+<td><code>&#39;g&#39;</code></td>
+<td>General format. For a given precision <code>p &gt;= 1</code>, this rounds the number to <code>p</code>significant digits and then formats the result in either fixed-point format or in scientific notation, depending on its magnitude.The precise rules are as follows: suppose that the result formatted with presentation type <code>&#39;e&#39;</code> and precision <code>p-1</code> would have exponent <code>exp</code>. Then if <code>-4&lt;= exp &lt; p</code>, the number is formatted with presentation type <code>&#39;f&#39;</code> and precision<code>p-1-exp</code>. Otherwise, the number is formatted with presentation type <code>&#39;e&#39;</code> and precision <code>p-1</code>. In both cases insignificant trailing zeros are removed from the significand, and the decimal point is also removed if there are no remaining digits following it.Positive and negative infinity, positive and negative zero, and nans, are formatted as <code>inf</code>, <code>-inf</code>, <code>0</code>, <code>-0</code> and <code>nan</code> respectively, regardless of the precision.A precision of <code>0</code> is treated as equivalent to a precision of <code>1</code>. The default precision is <code>6</code>.</td>
+</tr>
+<tr>
+<td><code>&#39;G&#39;</code></td>
+<td>General format. Same as <code>&#39;g&#39;</code> except switches to <code>&#39;E&#39;</code> if the number gets too large. The representations of infinity and NaN are uppercased, too.</td>
+</tr>
+<tr>
+<td><code>&#39;n&#39;</code></td>
+<td>Number. This is the same as <code>&#39;g&#39;</code>, except that it uses the current locale setting to insert the appropriate number separator characters.</td>
+</tr>
+<tr>
+<td><code>&#39;%&#39;</code></td>
+<td>Percentage. Multiplies the number by 100 and displays in fixed (<code>&#39;f&#39;</code>) format, followed by a percent sign.</td>
+</tr>
+<tr>
+<td>None</td>
+<td>Similar to <code>&#39;g&#39;</code>, except that fixed-point notation, when used, has at least one digit past the decimal point. The default precision is as high as needed to represent the particular value. The overall effect is to match the output of <a href="https://docs.python.org/3/library/stdtypes.html#str" target="_blank" rel="noopener"><code>str()</code></a> as altered by the other format modifiers.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<h2 id="Conversions"><a href="#Conversions" class="headerlink" title="Conversions"></a>Conversions</h2><table>
+<thead>
+<tr>
+<th><code>&#39;{!r}&#39;.format(&#39;string&#39;)</code></th>
+<th>Calling <code>repr</code> on argumentsOutput: <code>&#39;string&#39;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&#39;{!s}&#39;.format(1.53438987)</code></td>
+<td>Calling <code>str</code> on argumentsOutput: <code>1.53438987</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="Number-Formattting"><a href="#Number-Formattting" class="headerlink" title="Number Formattting"></a>Number Formattting</h2><p>The following table shows various ways to format numbers using Python’s  str.format(), including examples for both float formatting and integer formatting.</p>
+<p>To run examples use <code>print(&quot;FORMAT&quot;.format(NUMBER));</code><br>So to get the output of the first example, you would run: <code>print(&quot;{:.2f}&quot;.format(3.1415926));</code></p>
+<table>
+<thead>
+<tr>
+<th>Number</th>
+<th>Format</th>
+<th>Output</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3.1415926</td>
+<td>{:.2f}</td>
+<td>3.14</td>
+<td>2 decimal places</td>
+</tr>
+<tr>
+<td>3.1415926</td>
+<td>{:+.2f}</td>
+<td>+3.14</td>
+<td>2 decimal places with sign</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>{:+.2f}</td>
+<td>-1.00</td>
+<td>2 decimal places with sign</td>
+</tr>
+<tr>
+<td>2.71828</td>
+<td>{:.0f}</td>
+<td>3</td>
+<td>No decimal places</td>
+</tr>
+<tr>
+<td>5</td>
+<td>{:0&gt;2d}</td>
+<td>05</td>
+<td>Pad number with zeros (left padding, width 2)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>{:x&lt;4d}</td>
+<td>5xxx</td>
+<td>Pad number with x’s (right padding, width 4)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>{:x&lt;4d}</td>
+<td>10xx</td>
+<td>Pad number with x’s (right padding, width 4)</td>
+</tr>
+<tr>
+<td>1000000</td>
+<td>{:,}</td>
+<td>1,000,000</td>
+<td>Number format with comma separator</td>
+</tr>
+<tr>
+<td>0.25</td>
+<td>{:.2%}</td>
+<td>25.00%</td>
+<td>Format percentage</td>
+</tr>
+<tr>
+<td>1000000000</td>
+<td>{:.2e}</td>
+<td>1.00e+09</td>
+<td>Exponent notation</td>
+</tr>
+<tr>
+<td>13</td>
+<td>{:10d}</td>
+<td>13</td>
+<td>Right aligned (default, width 10)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>{:&lt;10d}</td>
+<td>13</td>
+<td>Left aligned (width 10)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>{:^10d}</td>
+<td>13</td>
+<td>Center aligned (width 10)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Official-Examples"><a href="#Official-Examples" class="headerlink" title="Official Examples"></a>Official Examples</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1) by position:</span></span><br><span class="line"><span class="string">'&#123;0&#125;, &#123;1&#125;, &#123;2&#125;'</span>.format(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>)</span><br><span class="line"><span class="string">'&#123;&#125;, &#123;&#125;, &#123;&#125;'</span>.format(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>)  <span class="comment"># 3.1+ only</span></span><br><span class="line"><span class="string">'&#123;2&#125;, &#123;1&#125;, &#123;0&#125;'</span>.format(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>)</span><br><span class="line"><span class="string">'&#123;2&#125;, &#123;1&#125;, &#123;0&#125;'</span>.format(*<span class="string">'abc'</span>)      <span class="comment"># unpacking argument sequence</span></span><br><span class="line"><span class="string">'&#123;0&#125;&#123;1&#125;&#123;0&#125;'</span>.format(<span class="string">'abra'</span>, <span class="string">'cad'</span>)   <span class="comment"># arguments' indices can be repeated</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#2) by name </span></span><br><span class="line"><span class="string">'Coordinates: &#123;latitude&#125;, &#123;longitude&#125;'</span>.format(latitude=<span class="string">'37.24N'</span>, longitude=<span class="string">'-115.81W'</span>)</span><br><span class="line">coord = &#123;<span class="string">'latitude'</span>: <span class="string">'37.24N'</span>, <span class="string">'longitude'</span>: <span class="string">'-115.81W'</span>&#125;</span><br><span class="line"><span class="string">'Coordinates: &#123;latitude&#125;, &#123;longitude&#125;'</span>.format(**coord)</span><br><span class="line"></span><br><span class="line"><span class="comment">#3) by attributes</span></span><br><span class="line">c = <span class="number">3</span><span class="number">-5j</span></span><br><span class="line">(<span class="string">'The complex number &#123;0&#125; is formed from the real part &#123;0.real&#125; '</span></span><br><span class="line"> <span class="string">'and the imaginary part &#123;0.imag&#125;.'</span>).format(c)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.x, self.y = x, y</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__str__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">'Point(&#123;self.x&#125;, &#123;self.y&#125;)'</span>.format(self=self)</span><br><span class="line">str(Point(<span class="number">4</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment">#4) by arguments' items </span></span><br><span class="line">coord = (<span class="number">3</span>, <span class="number">5</span>)</span><br><span class="line"><span class="string">'X: &#123;0[0]&#125;;  Y: &#123;0[1]&#125;'</span>.format(coord)</span><br><span class="line"></span><br><span class="line"><span class="comment">#5) 注意这里的aligned用了&gt; &lt; Y与regex的look around保持一直</span></span><br><span class="line"><span class="string">'&#123;:&lt;30&#125;'</span>.format(<span class="string">'left aligned'</span>)</span><br><span class="line"><span class="string">'&#123;:&gt;30&#125;'</span>.format(<span class="string">'right aligned'</span>)</span><br><span class="line"><span class="string">'&#123;:^30&#125;'</span>.format(<span class="string">'centered'</span>)</span><br><span class="line"><span class="string">'&#123;:*^30&#125;'</span>.format(<span class="string">'centered'</span>)  <span class="comment"># use '*' as a fill char</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#6) Replacing %+f, %-f, and % f and specifying a sign:</span></span><br><span class="line"><span class="string">'&#123;:+f&#125;; &#123;:+f&#125;'</span>.format(<span class="number">3.14</span>, <span class="number">-3.14</span>)  <span class="comment"># show it always</span></span><br><span class="line"><span class="string">'&#123;: f&#125;; &#123;: f&#125;'</span>.format(<span class="number">3.14</span>, <span class="number">-3.14</span>)  <span class="comment"># show a space for positive numbers</span></span><br><span class="line"><span class="string">'&#123;:-f&#125;; &#123;:-f&#125;'</span>.format(<span class="number">3.14</span>, <span class="number">-3.14</span>)  <span class="comment"># show only the minus -- same as '&#123;:f&#125;; &#123;:f&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 7) Replacing %x and %o and converting the value to different bases:</span></span><br><span class="line"><span class="comment"># format also supports binary numbers</span></span><br><span class="line"><span class="string">"int: &#123;0:d&#125;;  hex: &#123;0:x&#125;;  oct: &#123;0:o&#125;;  bin: &#123;0:b&#125;"</span>.format(<span class="number">42</span>)</span><br><span class="line"><span class="comment"># with 0x, 0o, or 0b as prefix:</span></span><br><span class="line"><span class="string">"int: &#123;0:d&#125;;  hex: &#123;0:#x&#125;;  oct: &#123;0:#o&#125;;  bin: &#123;0:#b&#125;"</span>.format(<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="Other-Examples"><a href="#Other-Examples" class="headerlink" title="Other Examples"></a>Other Examples</h2><h3 id="Padding-and-aligning-strings"><a href="#Padding-and-aligning-strings" class="headerlink" title="Padding and aligning strings"></a>Padding and aligning strings</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#alight right </span></span><br><span class="line"><span class="string">'%10s'</span> % (<span class="string">'test'</span>,)</span><br><span class="line"><span class="string">'&#123;:&gt;10&#125;'</span>.format(<span class="string">'test'</span>)</span><br><span class="line">      test</span><br><span class="line"> <span class="comment">#align left:</span></span><br><span class="line">  <span class="string">'%-10s'</span> % (<span class="string">'test'</span>,)</span><br><span class="line">   <span class="string">'&#123;:10&#125;'</span>.format(<span class="string">'test'</span>)</span><br><span class="line">    <span class="string">'&#123;:10&#125;'</span>.format(<span class="string">'test'</span>)</span><br><span class="line">         test </span><br><span class="line">   <span class="comment">#new style</span></span><br><span class="line">  <span class="string">'&#123;:_&lt;10&#125;'</span>.format(<span class="string">'test'</span>)</span><br><span class="line">    test______</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#new style</span></span><br><span class="line">    <span class="string">'&#123;:^10&#125;'</span>.format(<span class="string">'test'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Truncating-Long-Strings"><a href="#Truncating-Long-Strings" class="headerlink" title="Truncating Long Strings"></a>Truncating Long Strings</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'%.5s'</span> % (<span class="string">'xylophone'</span>,) <span class="comment">#注意后面的小数点呀是truncate </span></span><br><span class="line"><span class="string">'&#123;:.5&#125;'</span>.format(<span class="string">'xylophone'</span>)</span><br><span class="line">xylop</span><br></pre></td></tr></table></figure>
+<h3 id="Combining-truncating-and-padding"><a href="#Combining-truncating-and-padding" class="headerlink" title="Combining truncating and padding"></a>Combining truncating and padding</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'%-10.5s'</span> % (<span class="string">'xylophone'</span>,)</span><br><span class="line"><span class="string">'&#123;:10.5&#125;'</span>.format(<span class="string">'xylophone'</span>)</span><br><span class="line">xylop</span><br></pre></td></tr></table></figure>
+<h3 id="Numbers"><a href="#Numbers" class="headerlink" title="Numbers"></a>Numbers</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'%d'</span> % (<span class="number">42</span>,)</span><br><span class="line"><span class="string">'&#123;:d&#125;'</span>.format(<span class="number">42</span>)</span><br><span class="line"><span class="number">42</span></span><br><span class="line"></span><br><span class="line"><span class="string">'%f'</span> % (<span class="number">3.141592653589793</span>,)</span><br><span class="line"><span class="string">'&#123;:f&#125;'</span>.format(<span class="number">3.141592653589793</span>)</span><br><span class="line">    <span class="number">3.141593</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">#signed numbers </span></span><br><span class="line"><span class="string">'%+d'</span> % (<span class="number">42</span>,)</span><br><span class="line"><span class="string">'&#123;:+d&#125;'</span>.format(<span class="number">42</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Getitem-and-Getattr"><a href="#Getitem-and-Getattr" class="headerlink" title="Getitem and Getattr"></a>Getitem and Getattr</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">person = &#123;<span class="string">'first'</span>: <span class="string">'Jean-Luc'</span>, <span class="string">'last'</span>: <span class="string">'Picard'</span>&#125;</span><br><span class="line"><span class="string">'&#123;p[first]&#125; &#123;p[last]&#125;'</span>.format(p=person)</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Plant</span><span class="params">(object)</span>:</span></span><br><span class="line">    type = <span class="string">'tree'</span></span><br><span class="line">    <span class="string">'&#123;p.type&#125;'</span>.format(p=Plant())</span><br><span class="line"> <span class="string">'&#123;:&#123;align&#125;&#123;width&#125;&#125;'</span>.format(<span class="string">'test'</span>, align=<span class="string">'^'</span>, width=<span class="string">'10'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="Datetime"><a href="#Datetime" class="headerlink" title="Datetime"></a>Datetime</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"><span class="string">'&#123;:%Y-%m-%d %H:%M&#125;'</span>.format(datetime(<span class="number">2001</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>))</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -4970,229 +5495,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://alphaalgorithms.github.io/2019/05/20/ssh-in-termux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Gabriel">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DummyHead">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/20/ssh-in-termux/" class="post-title-link" itemprop="url">使用Termux把Android手机变成SSH服务器</a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-20 18:17:15" itemprop="dateCreated datePublished" datetime="2019-05-20T18:17:15+08:00">2019-05-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-06-02 15:55:26" itemprop="dateModified" datetime="2019-06-02T15:55:26+08:00">2019-06-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/networking-ssh/" itemprop="url" rel="index"><span itemprop="name">networking - ssh</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-              
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-            
-                <span class="post-meta-item-text">Comments: </span>
-                <a href="/2019/05/20/ssh-in-termux/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/05/20/ssh-in-termux/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>Termux是一款能够为Android手机提供Linux环境的应用。它最大的特点就是无需root，而且自带pkg包管理软件，可以很方便的其他linux应用。</p>
-<ul>
-<li><a href="https://termux.com/" target="_blank" rel="noopener">Termux</a></li>
-<li><a href="https://github.com/termux" target="_blank" rel="noopener">Termux</a></li>
-</ul>
-<h2 id="手机安装Termux"><a href="#手机安装Termux" class="headerlink" title="手机安装Termux"></a>手机安装Termux</h2><p>可以在Google Play Store或F-Droid上搜索Termux来安装，目前的版本是0.47。</p>
-<h2 id="安装sshd"><a href="#安装sshd" class="headerlink" title="安装sshd"></a>安装sshd</h2><p>打开 <code>Termux</code> 会出现一个类似Linux终端的界面。</p>
-<p>由于sshd是包含在openssh包中的，因此我们首先需要在Termux中安装openssh</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pkg install openssh</span><br></pre></td></tr></table></figure>
-<p>安装好之后，我们需要手工启动 <code>sshd</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshd</span><br><span class="line">#当链接不上的时候, 也需要手工启动sshd</span><br></pre></td></tr></table></figure>
-<p>需要指出的是, <code>sshd</code> 监听的是8022端口而不是22号端口，因此可以使用下面命令来验证ssh服务是否开启<br>这里是需要特别注意的一点.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh localhost -p 8022 #助记, 80是http端口, 22是ssh端口</span><br><span class="line">#提示输入密码</span><br><span class="line">passwd#设置密码</span><br></pre></td></tr></table></figure>
-<ul>
-<li><a href="https://android.stackexchange.com/questions/212633/password-to-ssh-connec-to-termux/212634#212634" target="_blank" rel="noopener">Password to ssh connec to termux - Android Enthusiasts Stack Exchange</a></li>
-</ul>
-<p>若要查看sshd的日志，则可以在Termux上执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logcat -s &apos;syslog:*&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="添加Public-key"><a href="#添加Public-key" class="headerlink" title="添加Public key"></a>添加Public key</h2><p>Termux的sshd只能通过密钥登陆，因此你需要在linux客户机上生成密钥对</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen</span><br></pre></td></tr></table></figure>
-<p>把linux客户机上的公钥加到Termux中的 <code>.ssh/authorized_keys</code>,这一步比较麻烦</p>
-<p>因为你无法使用 <code>ssh-copy-id</code>,只能先把 <code>id_rsa.pub</code> 拷贝到手机上，再在手机上打开该文件，拷贝文件内容后在Termux中用 <code>vi</code> 打开 <code>authorized_keys</code>,并复制内容进去.</p>
-<p>不过如果linux客户机上本身也开启了ssh服务的话，则会简单很多，可以在Termux上执行, </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ scp -P 8022 /home/me/.ssh/id_rsa.pub  192.168.1.204:~ </span><br><span class="line">  me@192.168.1.204&apos;s password: </span><br><span class="line">  id_rsa.pub</span><br></pre></td></tr></table></figure>
-<p>就行了，其中linux_clinet为linux客户机的地址，user为登陆用户</p>
-<h2 id="客户端登陆"><a href="#客户端登陆" class="headerlink" title="客户端登陆"></a>客户端登陆</h2><p>在客户端上执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 192.4.4.9 -p 8022</span><br></pre></td></tr></table></figure>
-<p>将这里的 <code>192.4.4.9</code> 修改为手机的ip，就能登陆到Termux中了。</p>
-<p>手机ip可以通过在 <code>Termux</code> 中运行 <code>ifconfig -a</code> 来查看。</p>
-<p>需要说明的是，使用ssh登陆Termux时无需带上用户名，因为Termux是单用户系统。即使你登陆时带上了用户名，Termux也会忽略该用户名</p>
-<p>为了方便，我们可以配置一下ssh client的配置文件,将下面内容加入到 <code>~/.ssh/config</code> 文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host termux</span><br><span class="line">     HostName 192.4.4.9</span><br><span class="line">     Port 8022</span><br></pre></td></tr></table></figure>
-<p>这样只需要执行 <code>ssh termux</code> 就能登陆termx了.</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -5234,7 +5541,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -5358,7 +5665,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">29</span>
+                      
+                    
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
